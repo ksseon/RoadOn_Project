@@ -1,0 +1,16 @@
+@use './../utils' as *;
+
+#footer {
+    background-color: #ebebeb;
+    border: 1px solid #000;
+    width: 100%;
+
+    .inner {
+        height: 300px;
+    }
+    h2 {
+        padding-top: 80px;
+        font-size: 20px;
+        color: #000000;
+    }
+}
