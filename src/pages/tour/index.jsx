@@ -1,4 +1,5 @@
 import './style.scss';
+
 const Tour = () => {
     return (
         <main className="tourPage">
