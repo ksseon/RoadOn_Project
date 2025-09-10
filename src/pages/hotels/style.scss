@@ -4,10 +4,36 @@
     width: 100%;
     .inner {
         padding: 100px 0;
+        display: flex;
+        gap: 40px;
+        .filter-wrap {
+            width: 15.625vw;
+            .map-modal {
+                height: 7.2917vw;
+                border: 1px solid #f00;
+                border-radius: 10px;
+            }
+            .filter {
+                .filtering {
+                    p {
+                    }
+                    ul {
+                        li {
+                            // font-size: 9rem;
+                        }
+                    }
+                }
+            }
+        }
+        .list-wrap {
+            width: 55.2083vw;
+            height: 7.2917vw;
+            border: 1px solid #000;
+        }
     }
-    h2 {
-        font-size: 4rem;
-    }
+    // h2 {
+    //     font-size: 4rem;
+    // }
 }
 @include tablet {
     .about {
