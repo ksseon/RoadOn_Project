@@ -4,12 +4,14 @@ html.is-active {
     overflow-y: hidden;
 }
 #header {
+    z-index: 100;
+    position: fixed;
+    top: 0;
+
     border-bottom: 1px solid #dcdcdc;
     width: 100%;
     height: 95px;
-    // background-color: #000;
     background: rgba($color: #000, $alpha: 0.5);
-    // background-color: #dcdcdc;
 
     .inner {
         height: 100px;
@@ -40,8 +42,25 @@ html.is-active {
         ul {
             display: flex;
             gap: 90px;
+            &.nav-menu {
+                li {
+                    &:nth-child(2) {
+                        &::after {
+                            content: '';
+                            background-image: url('/images/icon/new.png');
+                            background-repeat: no-repeat;
+                            width: 32px;
+                            height: 14px;
+                            position: absolute;
+                            right: 20px;
+                            top: -12px;
+                        }
+                    }
+                }
+            }
             li {
                 position: relative;
+
                 a {
                     display: flex;
                     align-items: center;

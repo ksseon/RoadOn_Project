@@ -1,12 +1,12 @@
 @use '../../styles/utils' as *;
 
-.tourPage {
+#tourPage {
+    background-color: yellow;
     width: 100%;
     .inner {
-        padding: 100px 0;
     }
+
     h2 {
-        font-size: 4rem;
     }
 }
 @include tablet {
