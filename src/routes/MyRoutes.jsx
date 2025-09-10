@@ -1,7 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Layout from '../common/Layout';
-import { Airplane, Home, Hotels, Tour, OttIntro } from '../pages';
-import OttMain from '../pages/ottMain';
+import { Airplane, Home, Hotels, Tour, MyPage, NotFiles, Login } from '../pages';
 
 export const MyRoutes = () => {
     return (
@@ -12,8 +11,9 @@ export const MyRoutes = () => {
                     <Route path="/hotels" element={<Hotels />} />
                     <Route path="/tour" element={<Tour />} />
                     <Route path="/airplane" element={<Airplane />} />
-                    <Route path="/ottIntro" element={<OttIntro />} />
-                    <Route path="/ottMain" element={<OttMain />} />
+                    <Route path="/myPage" element={<MyPage />} />
+                    <Route path="/login" element={<Login />} />
+                    <Route path="/*" element={<NotFiles />} />
                 </Route>
             </Routes>
         </BrowserRouter>

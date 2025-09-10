@@ -6,7 +6,7 @@
         padding: 100px 0;
     }
     h2 {
-        font-size: 4rem;
+        @include font-36px-B;
     }
 }
 @include tablet {
@@ -15,7 +15,7 @@
             padding: 2rem 0;
         }
         h2 {
-            font-size: 2rem;
+            // font-size: 2rem;
         }
     }
 }

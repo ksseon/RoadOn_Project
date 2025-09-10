@@ -7,8 +7,7 @@ const Header = () => {
             <div className="inner">
                 <h1>
                     <Link to="/">
-                        <img src="./vite.svg" alt="" />
-                        로고
+                        <img src="/images/CI.png" alt="" />
                     </Link>
                 </h1>
                 <NavBar />

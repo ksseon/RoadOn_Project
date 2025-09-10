@@ -4,12 +4,35 @@ const NavBar = () => {
     return (
         <>
             <nav className="nav">
-                <ul>
+                <ul className="nav-menu">
                     <li>
-                        <Link to="/hotels">숙소</Link>
-                        <Link to="/tour">투어</Link>
-                        <Link to="/airplane">항공</Link>
-                        <Link to="/ottIntro">OTT</Link>
+                        <Link to="/hotels">
+                            <img src="/images/icon/hotel.png" alt="hotel" />
+                            숙소
+                        </Link>
+                    </li>
+                    <li>
+                        <Link to="/tour">
+                            <img src="/images/icon/tour.png" alt="tour" />
+                            투어
+                        </Link>
+                    </li>
+                    <li>
+                        <Link to="/airplane">
+                            <img src="/images/icon/airport.png" alt="air" />
+                            항공
+                        </Link>
+                    </li>
+                </ul>
+                <ul className="my-menu">
+                    <li>
+                        <Link to="/login">
+                            <img src="/images/icon/human.png" alt="human" />
+                            로그인
+                        </Link>
+                    </li>
+                    <li>
+                        <Link to="/myPage">회원가입</Link>
                     </li>
                 </ul>
             </nav>
