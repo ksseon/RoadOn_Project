@@ -8,8 +8,8 @@ html.is-active {
     width: 100%;
     height: 95px;
     // background-color: #000;
-    // background: transparent;
-    background-color: #dcdcdc;
+    background: rgba($color: #000, $alpha: 0.5);
+    // background-color: #dcdcdc;
 
     .inner {
         height: 100px;
