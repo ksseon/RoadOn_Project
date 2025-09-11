@@ -1,4 +1,3 @@
-import './style.scss';
 
 const TourMainCon3 = () => {
     return (

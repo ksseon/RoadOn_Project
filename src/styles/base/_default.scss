@@ -6,8 +6,8 @@
 
 body {
     background: $main-bg;
-    font-family: 'Pretendard', 'Suit', sans-serif;
-    font-weight: medium;
+    font-family: 'PretendardLatin', 'SuitKorean', sans-serif;
+    font-weight: 500;
     word-break: keep-all;
     // @include paddingX(16px);
     @include desktop {

@@ -3,7 +3,6 @@
 #TourMain {
     background-color: green;
     .tour-main-con {
-        border: 1px solid #000;
         height: vw(1080px);
         position: relative;
         &1 {
@@ -42,10 +41,60 @@
             }
         }
         &2 {
+            .btns-wrap {
+                margin-top: vw(155px);
+                display: flex;
+                justify-content: end;
+                gap: vw(20px);
+                .button {
+                    width: vw(110px);
+                    height: vw(44px);
+                    @include font-14px-B;
+                    line-height: rem(22px);
+                }
+            }
+            .main-section-wrap {
+                margin-top: vw(70px);
+                display: flex;
+                justify-content: space-between;
+
+                .title-section {
+                    .txt-box {
+                        color: $white;
+                        width: vw(640px);
+                        strong {
+                            font-size: rem(45px);
+                            font-weight: 700;
+                        }
+                        h3 {
+                            font-size: rem(62px);
+                            font-weight: 700;
+                        }
+                        p {
+                            margin-top: vw(116px);
+                        }
+                    }
+                    .icons-wrap {
+                        color: $white;
+                    }
+                }
+                .img-section {
+                    margin-top: 70px;
+
+                    width: vw(444px);
+                    height: vw(618px);
+                    background-color: red;
+                }
+            }
+            .more-wrap {
+                display: flex;
+                justify-content: center;
+                .more {
+                    width: vw(162px);
+                    height: vw(46px);
+                    @include font-14px-M;
+                }
+            }
         }
     }
-}
-
-.inner {
-    // background-color: yellow;
 }

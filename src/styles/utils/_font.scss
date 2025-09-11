@@ -1,19 +1,31 @@
 @use './unit' as *;
 
+// px을 clamp(rem) 단위로 변환하는 믹스인 -------------------------------
+@mixin font-size-clamp($value, $base: $rootUnit) {
+    $range: 2px; // 기본값
+
+    @if $value <= 18px {
+        $range: 1px;
+    } @else if $value >= 30px {
+        $range: 4px;
+    }
+
+    font-size: clamp(rem($value - $range, $base), rem($value, $base), rem($value + $range, $base));
+}
+
 // --------------------
 // FONT MIXINS
 // --------------------
 
 // 36px
 @mixin font-36px-B {
-    font-size: rem(36px);
+    @include font-size-clamp(36px);
     font-weight: 700;
     letter-spacing: 0;
     line-height: rem(21px);
 }
-
 @mixin font-36px {
-    font-size: rem(36px);
+    @include font-size-clamp(36px);
     font-weight: 400;
     letter-spacing: 0;
     line-height: rem(21px);
@@ -21,7 +33,7 @@
 
 // 35px
 @mixin font-35px-B {
-    font-size: rem(35px);
+    @include font-size-clamp(35px);
     font-weight: 700;
     letter-spacing: 0;
     line-height: rem(21px);
@@ -29,14 +41,13 @@
 
 // 32px
 @mixin font-32px-B {
-    font-size: rem(32px);
+    @include font-size-clamp(32px);
     font-weight: 700;
     letter-spacing: 0;
     line-height: rem(21px);
 }
-
 @mixin font-32px-SB {
-    font-size: rem(32px);
+    @include font-size-clamp(32px);
     font-weight: 600;
     letter-spacing: 0;
     line-height: rem(21px);
@@ -44,14 +55,13 @@
 
 // 30px
 @mixin font-30px-B {
-    font-size: rem(30px);
+    @include font-size-clamp(30px);
     font-weight: 700;
     letter-spacing: 0;
     line-height: rem(21px);
 }
-
 @mixin font-30px-M {
-    font-size: rem(30px);
+    @include font-size-clamp(30px);
     font-weight: 500;
     letter-spacing: 0;
     line-height: rem(21px);
@@ -59,21 +69,19 @@
 
 // 28px
 @mixin font-28px-B {
-    font-size: rem(28px);
+    @include font-size-clamp(28px);
     font-weight: 700;
     letter-spacing: 0;
     line-height: rem(21px);
 }
-
 @mixin font-28px-EB {
-    font-size: rem(28px);
+    @include font-size-clamp(28px);
     font-weight: 800;
     letter-spacing: 0;
     line-height: rem(21px);
 }
-
 @mixin font-28px-M {
-    font-size: rem(28px);
+    @include font-size-clamp(28px);
     font-weight: 500;
     letter-spacing: 0;
     line-height: rem(21px);
@@ -81,21 +89,19 @@
 
 // 24px
 @mixin font-24px-B {
-    font-size: rem(24px);
+    @include font-size-clamp(24px);
     font-weight: 700;
     letter-spacing: 0;
     line-height: rem(21px);
 }
-
 @mixin font-24px-SB {
-    font-size: rem(24px);
+    @include font-size-clamp(24px);
     font-weight: 600;
     letter-spacing: 0;
     line-height: rem(21px);
 }
-
 @mixin font-24px-M {
-    font-size: rem(24px);
+    @include font-size-clamp(24px);
     font-weight: 500;
     letter-spacing: 0;
     line-height: rem(21px);
@@ -103,7 +109,7 @@
 
 // 22px
 @mixin font-22px {
-    font-size: rem(22px);
+    @include font-size-clamp(22px);
     font-weight: 400;
     letter-spacing: 0;
     line-height: rem(21px);
@@ -111,28 +117,25 @@
 
 // 20px
 @mixin font-20px-B {
-    font-size: rem(20px);
+    @include font-size-clamp(20px);
     font-weight: 700;
     letter-spacing: 0;
     line-height: rem(21px);
 }
-
 @mixin font-20px-SB {
-    font-size: rem(20px);
+    @include font-size-clamp(20px);
     font-weight: 600;
     letter-spacing: 0;
     line-height: rem(21px);
 }
-
 @mixin font-20px-M {
-    font-size: rem(20px);
+    @include font-size-clamp(20px);
     font-weight: 500;
     letter-spacing: 0;
     line-height: rem(21px);
 }
-
 @mixin font-20px {
-    font-size: rem(20px);
+    @include font-size-clamp(20px);
     font-weight: 400;
     letter-spacing: 0;
     line-height: rem(21px);
@@ -140,28 +143,25 @@
 
 // 18px
 @mixin font-18px-B {
-    font-size: rem(18px);
+    @include font-size-clamp(18px);
     font-weight: 700;
     letter-spacing: 0;
     line-height: rem(21px);
 }
-
 @mixin font-18px-SB {
-    font-size: rem(18px);
+    @include font-size-clamp(18px);
     font-weight: 600;
     letter-spacing: 0;
     line-height: rem(21px);
 }
-
 @mixin font-18px-M {
-    font-size: rem(18px);
+    @include font-size-clamp(18px);
     font-weight: 500;
     letter-spacing: 0;
     line-height: rem(21px);
 }
-
 @mixin font-18px {
-    font-size: rem(18px);
+    @include font-size-clamp(18px);
     font-weight: 400;
     letter-spacing: 0;
     line-height: rem(21px);
@@ -169,35 +169,31 @@
 
 // 16px
 @mixin font-16px-EB {
-    font-size: rem(16px);
+    @include font-size-clamp(16px);
     font-weight: 800;
     letter-spacing: 0;
     line-height: rem(21px);
 }
-
 @mixin font-16px-B {
-    font-size: rem(16px);
+    @include font-size-clamp(16px);
     font-weight: 700;
     letter-spacing: 0;
     line-height: rem(21px);
 }
-
 @mixin font-16px-SB {
-    font-size: rem(16px);
+    @include font-size-clamp(16px);
     font-weight: 600;
     letter-spacing: 0;
     line-height: rem(21px);
 }
-
 @mixin font-16px-M {
-    font-size: rem(16px);
+    @include font-size-clamp(16px);
     font-weight: 500;
     letter-spacing: 0;
     line-height: rem(21px);
 }
-
 @mixin font-16px {
-    font-size: rem(16px);
+    @include font-size-clamp(16px);
     font-weight: 400;
     letter-spacing: 0;
     line-height: rem(21px);
@@ -205,28 +201,25 @@
 
 // 14px
 @mixin font-14px-B {
-    font-size: rem(14px);
+    @include font-size-clamp(14px);
     font-weight: 700;
     letter-spacing: 0;
     line-height: rem(21px);
 }
-
 @mixin font-14px-SB {
-    font-size: rem(14px);
+    @include font-size-clamp(14px);
     font-weight: 600;
     letter-spacing: 0;
     line-height: rem(21px);
 }
-
 @mixin font-14px-M {
-    font-size: rem(14px);
+    @include font-size-clamp(14px);
     font-weight: 500;
     letter-spacing: 0;
     line-height: rem(21px);
 }
-
 @mixin font-14px {
-    font-size: rem(14px);
+    @include font-size-clamp(14px);
     font-weight: 400;
     letter-spacing: 0;
     line-height: rem(21px);
@@ -234,28 +227,25 @@
 
 // 12px
 @mixin font-12px-B {
-    font-size: rem(12px);
+    @include font-size-clamp(12px);
     font-weight: 700;
     letter-spacing: 0;
     line-height: rem(21px);
 }
-
 @mixin font-12px-SB {
-    font-size: rem(12px);
+    @include font-size-clamp(12px);
     font-weight: 600;
     letter-spacing: 0;
     line-height: rem(21px);
 }
-
 @mixin font-12px-M {
-    font-size: rem(12px);
+    @include font-size-clamp(12px);
     font-weight: 500;
     letter-spacing: 0;
     line-height: rem(21px);
 }
-
 @mixin font-12px {
-    font-size: rem(12px);
+    @include font-size-clamp(12px);
     font-weight: 400;
     letter-spacing: 0;
     line-height: rem(21px);
