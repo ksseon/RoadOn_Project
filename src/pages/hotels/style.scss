@@ -2,6 +2,7 @@
 
 .hotel {
     width: 100%;
+    margin-top: vw(260px);
     .inner {
         padding: 100px 0;
         display: flex;
@@ -110,6 +111,13 @@
                 width: 55.2083vw;
                 height: 7.2917vw;
                 border: 1px solid #353535;
+                .list-top {
+                }
+                .list-box {
+                    display: flex;
+                    flex-direction: column;
+                    gap: vw(20px);
+                }
             }
         }
         // h2 {

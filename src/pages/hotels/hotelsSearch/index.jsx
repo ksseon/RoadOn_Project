@@ -1,13 +1,15 @@
 // import ModalDemo from '../../components/ui/modal/Modal';
 import HotelBox from '../../../components/hotels/hotelsSearch/hotelBox';
 import MapModal from '../../../components/hotels/hotelsSearch/MapModal';
-import SearchBox from '../../../components/hotels/hotelsSearch/searchBox';
+import SearchBar from '../../../components/ui/SearchBar/SearchBar';
+import useHotelStore from '../../../store/hotelStore';
 import '../style.scss';
 
 function hotelsSearch() {
+    const hotels = useHotelStore((state) => state.hotels);
     return (
         <main className="hotel">
-            <SearchBox />
+            <SearchBar />
             <div className="inner">
                 <div className="filter-wrap">
                     {/* 여기 onClick 걸기 - 상태관리로 클릭으로 t/f으로 관리*/}
@@ -41,10 +43,7 @@ function hotelsSearch() {
                                     <span></span>빌라
                                 </li>
                                 <li>
-                                    <span></span>한옥/전통가옥
-                                </li>
-                                <li>
-                                    <span></span>료칸
+                                    <span></span>한옥
                                 </li>
                                 <li>
                                     <span></span>캡슐호텔
@@ -99,12 +98,17 @@ function hotelsSearch() {
                 </div>
                 <div className="list-wrap">
                     <div className="list-top">
-                        <p>총 ㅁㅁ개 숙소</p> {/* js로 숙소 개수 추가 */}
+                        <p>총 {hotels.length}개 숙소</p> {/* js로 숙소 개수 추가 */}
                         <div className="sort"></div>
                     </div>
                     <div className="list-box">
                         {/* 컴포넌트로 빼기 */}
-                        <HotelBox />
+                        {hotels.map((hotel) => (
+                            <HotelBox
+                                key={hotel.id}
+                                hotelId={hotel.id} // HotelBox에 전달
+                            />
+                        ))}
                     </div>
                 </div>
             </div>

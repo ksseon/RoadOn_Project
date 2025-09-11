@@ -1,6 +1,42 @@
 import '../style.scss';
+import hotelData from '../../../api/hotelsListData';
+import useHotelStore from '../../../store/hotelStore';
 
-const HotelBox = () => {
+const HotelBox = ({ hotelId }) => {
+    const getHotelById = useHotelStore((state) => state.getHotelById);
+    const hotel = getHotelById(hotelId);
+
+    if (!hotel) {
+        return <div>호텔 정보를 찾을 수 없습니다.</div>;
+    }
+
+    const handleHotelClick = () => {
+        navigate(`/hotel/${hotel.slug}`);
+    };
+
+    const calculateStarRating = (rate) => {
+        const roundedRate = Math.floor(rate * 2) / 2;
+
+        if (roundedRate < 1) return 0;
+        if (roundedRate < 1.5) return 1;
+        if (roundedRate < 2) return 1.5;
+        if (roundedRate < 2.5) return 2;
+        if (roundedRate < 3) return 2.5;
+        if (roundedRate < 3.5) return 3;
+        if (roundedRate < 4) return 3.5;
+        if (roundedRate < 4.5) return 4;
+        if (roundedRate < 5) return 4.5;
+        return 5;
+    };
+
+    const getStarImageName = (rating) => {
+        if (rating === 0) return 'star-0-5.svg';
+        return `star-${rating.toString().replace('.', '-')}.svg`;
+    };
+
+    const starRating = calculateStarRating(hotel.rate);
+    const starImageName = getStarImageName(starRating);
+
     return (
         <div className="hotel-box">
             <div className="hotel-image">
@@ -9,19 +45,30 @@ const HotelBox = () => {
             <div className="hotel-info">
                 <div className="info-top">
                     <div className="top-title">
-                        <span>{/*예시*/}호텔 3성급</span>
-                        <h4>그랜드 하얏트 제주</h4>
+                        <span>
+                            {hotel.type} {hotel.star}성급
+                        </span>
+                        <h4>{hotel.name}</h4>
                     </div>
-                    <div className="rate"></div>
+                    <div className="rate">
+                        <img
+                            // src={`../../../public/images/hotels/detail/${starImageName}`}
+                            src={`../../../public/images/hotels/detail/star_rate.svg`}
+                            alt={`${starRating}점`}
+                        />
+                        <span>
+                            {hotel.rate} ({hotel.reviewCount})
+                        </span>
+                    </div>
                 </div>
                 <div className="info-bottom">
                     <div className="bottom-location">
                         <img src="../../../public/images/hotels/search/map_pin.svg" alt="" />
-                        <span>서귀포시, 제주</span>
+                        <span>{hotel.location}</span>
                     </div>
                     <div className="bottom-price">
                         <span>2박, 성인 2명</span>
-                        <strong>326,480원</strong>
+                        <strong>{hotel.price.toLocaleString()}원</strong>
                     </div>
                 </div>
             </div>

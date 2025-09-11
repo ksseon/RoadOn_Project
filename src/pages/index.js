@@ -6,6 +6,7 @@ export { default as NotFiles } from './notFiles';
 export { default as Tour } from './tour';
 export { default as HotelsMain } from './hotels';
 export { default as HotelsSearch } from './hotels/hotelsSearch';
+export { default as HotelsDetail } from './hotels/hotelsDetail';
 
 // export { default as OttIntro } from './ottIntro';
 // export { default as OttMain } from './ottMain';
