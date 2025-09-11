@@ -2,49 +2,50 @@
 
 #TourMain {
     background-color: green;
+    .tour-main-con {
+        border: 1px solid #000;
+        height: vw(1080px);
+        position: relative;
+        &1 {
+            background-color: $black;
+            .head-txt-box {
+                margin-top: vw(260px);
+                text-align: center;
+                color: $white;
+                h2 {
+                    font-size: rem(50px);
+                    font-weight: 700;
+                    margin-bottom: vw(20px);
+                    span {
+                        color: $orange;
+                    }
+                }
+                p {
+                    @include font-24px-M;
+                }
+            }
+            .body-slide {
+                width: 100%;
+                display: flex;
+                gap: 10px;
+                margin-top: vw(150px);
+
+                .img-wrap {
+                    border-radius: 20px;
+                    overflow: hidden;
+                    width: 290px;
+                    height: 300px;
+                    background-color: white;
+                    img {
+                    }
+                }
+            }
+        }
+        &2 {
+        }
+    }
 }
 
 .inner {
     // background-color: yellow;
-}
-
-.tour-main-con {
-    border: 1px solid #000;
-    height: 100vw;
-    position: relative;
-    &1 {
-        background-color: $black;
-        .head-txt-box {
-            margin-top: vw(260px);
-            text-align: center;
-            color: $white;
-            h2 {
-                font-size: rem(50px);
-                font-weight: 700;
-                margin-bottom: vw(20px);
-                span {
-                    color: $orange;
-                }
-            }
-            p {
-                @include font-24px-M;
-            }
-        }
-        .body-slide {
-            width: 100%;
-            display: flex;
-            gap: 10px;
-            margin-top: vw(150px);
-
-            .img-wrap {
-                border-radius: 20px;
-                overflow: hidden;
-                width: 290px;
-                height: 300px;
-                background-color: white;
-                img {
-                }
-            }
-        }
-    }
 }
