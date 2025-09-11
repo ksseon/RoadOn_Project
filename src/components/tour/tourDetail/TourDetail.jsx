@@ -1,6 +1,4 @@
-import SearchBar from '../../ui/SearchBar/SearchBar';
 import DetailBody from './DetailBody';
-import DetailBottom from './DetailBottom';
 import './style.scss';
 
 const TourDetail = () => {

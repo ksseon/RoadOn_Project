@@ -3,9 +3,7 @@ const DetailReviewsItem = () => {
         <li>
             <div className="head">
                 <div className="title">
-                    <div className="thumbs">
-                        <img src="" alt="" />
-                    </div>
+                    <div className="thumbs">{/* <img src="" alt="" /> */}</div>
                     <div className="txt">
                         <strong>닉네임</strong>
                         <p>2025.09.03</p>

@@ -26,14 +26,16 @@
 
     // display: flex;
     display: grid;
+    // grid-template-columns: clamp(500px, vw(920px), 920px) clamp(300px, vw(456px), 456px);
     grid-template-columns: vw(920px) vw(456px);
-    grid-template-columns: 920px 456px;
+    // grid-template-columns: cqw(920px) cqw(456px);
+    // grid-template-columns: 920px 456px;
 
     gap: vw(24px);
     margin-top: vw(30px);
     .left {
-        // width: vw(920px);
-
+        // max-width: clamp(500px, vw(920px), 920px);
+        // width: 47.9167vw;
         box-sizing: border-box;
         background-color: $white;
         .detail-title {
@@ -59,8 +61,7 @@
         }
         .detail-reviews {
             width: 100%;
-            // height: 100px;
-            // border: 1px solid #000;
+
             .list {
                 display: flex;
                 gap: vw(20px);
@@ -117,13 +118,10 @@
             }
         }
         .detail-data {
+            border: 1px solid #000;
             width: 100%;
-            // height: 100px;
-            background-color: #c7c7c7;
-
             &-tab {
                 padding-top: vw(55px);
-                padding-bottom: vw(36px);
                 &-btns-wrap {
                     display: flex;
                     gap: vw(35px);
@@ -140,11 +138,9 @@
                 }
             }
             .con {
-                border: 1px solid #000;
-                height: 200px;
                 h2 {
                     @include font-24px-B;
-                    padding-bottom: vw(30px);
+                    padding: vw(30px) 0;
                 }
 
                 &1 {
@@ -156,8 +152,6 @@
                             display: flex;
                             align-items: center;
                             img {
-                                // height: 70%;
-                                // width: vw(22px);
                                 margin-right: vw(8px);
                             }
                             @include font-16px;
@@ -165,11 +159,93 @@
                     }
                 }
 
-                .advertice {
-                    border: 1px solid #000;
-                    height: vw(90px);
+                &.advertice {
+                    margin: vw(90px) 0;
                 }
                 &2 {
+                    .description-wrap {
+                        // background-color: red;
+                        .itinerary-header {
+                            .txt-wrap {
+                                display: flex;
+                                gap: vw(50px);
+                                align-items: center;
+                                height: vw(50px);
+                                border-bottom: 2px solid $default;
+                                p {
+                                    @include font-20px-B;
+                                    padding: vw(10px);
+                                }
+                            }
+                            .notice {
+                                padding: 50px 0;
+                                @include font-20px-B;
+                                padding-left: vw(15px);
+                                color: #868686;
+                            }
+                        }
+                        .flight-info {
+                            // width: clamp(400px, vw(810px), 810px);
+                            width: vw(810px);
+                            height: vw(150px);
+                            border-radius: 15px;
+                            padding: vw(40px) vw(120px);
+
+                            border: 1px solid $greyscale-600;
+
+                            .flight-card {
+                                // background-color: grey;
+                                width: 570px;
+                                height: vw(70px);
+                                display: flex;
+                                justify-content: space-between;
+                                align-items: center;
+                                .airline {
+                                    display: flex;
+                                    gap: vw(6px);
+                                    .thumbs {
+                                        width: vw(20px);
+                                        height: vw(20px);
+                                        background-color: red;
+                                        img {
+                                        }
+                                    }
+                                    p {
+                                        @include font-16px;
+                                        span {
+                                            @include font-12px;
+                                            color: $greyscale-1000;
+                                        }
+                                    }
+                                }
+                                .schedule {
+                                    display: flex;
+                                    flex-direction: column;
+                                    align-items: center;
+                                    gap: vw(5px);
+
+                                    time {
+                                        @include font-14px;
+                                    }
+                                    strong {
+                                        @include font-18px;
+                                    }
+                                    span {
+                                        @include font-12px;
+                                    }
+                                }
+                                .air-type {
+                                    display: flex;
+                                    flex-direction: column;
+                                    align-items: center;
+                                    gap: vw(10px);
+
+                                    p {
+                                    }
+                                }
+                            }
+                        }
+                    }
                 }
                 &3,
                 &4 {

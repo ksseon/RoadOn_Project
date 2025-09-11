@@ -5,9 +5,7 @@ const DetailSide = () => {
     return (
         <section className="detail-side">
             <div className="box-head">
-                <div className="box-thum">
-                    <img src="" alt="" />
-                </div>
+                <div className="box-thum">{/* <img src="" alt="" /> */}</div>
                 <strong>스페인 테네리페 패키지</strong>
             </div>
             <div className="box-option">

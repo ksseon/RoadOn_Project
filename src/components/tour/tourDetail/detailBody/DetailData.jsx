@@ -1,3 +1,4 @@
+import DetailCon2 from './detailData/DetailCon2';
 import DetailDataTab from './detailData/DetailDataTab';
 import './style.scss';
 
@@ -30,22 +31,23 @@ const DetailData = () => {
                     </li>
                 </ul>
             </div>
-            <div className="con advertice">
+            <div className="con advertise">
                 <img src="/images/tour/detail/advertise.png" alt="advertise.png" />
                 {/* 광고 배너 */}
             </div>
             <div className="con con2 description">
                 <h2>여행 상세 정보</h2>
-                <p></p>
+
+                <DetailCon2 />
             </div>
-            <div className="con con3 location">
+            {/* <div className="con con3 location">
                 <h2>숙소 위치</h2>
                 <p></p>
             </div>
             <div className="con con4 reviews">
                 <h2>방문자 리뷰 (12)</h2>
                 <p></p>
-            </div>
+            </div> */}
         </section>
     );
 };
