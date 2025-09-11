@@ -1,0 +1,147 @@
+@use '../../../styles/utils/' as *;
+
+.searchbar {
+    width: vw(1160px);
+    height: vw(90px);
+    margin: auto;
+    padding: vw(25px);
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: 1fr repeat(2, vw(280px)) vw(120px);
+    grid-template-rows: vw(45px);
+    align-items: center;
+    gap: vw(30px);
+
+    border-radius: vw(140px);
+    background: $white;
+
+    &.transparent {
+        border: vw(1px) solid #d9d9d9;
+        background: rgba(217, 217, 217, 0.1);
+        backdrop-filter: blur(5px);
+        .searchbar {
+            &__field,
+            &__input,
+            &__chip {
+                color: $white;
+                background: rgba(255, 255, 255, 0.15);
+                span {
+                    color: #fff3ee;
+                }
+            }
+            &__input {
+                background-color: transparent;
+                &::placeholder {
+                    color: $white;
+                }
+            }
+        }
+    }
+
+    /* 필드 (검색어) */
+    &__field {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        height: vw(45px);
+        padding: 0 vw(25px);
+        border-radius: 999px;
+        background: #f4f4f4;
+        color: $greyscale-1100;
+    }
+
+    &__icon {
+        width: vw(20px);
+        color: $mint;
+    }
+
+    &__input {
+        border: none;
+        outline: none;
+        background: transparent;
+        color: #333;
+
+        @include font-16px-M;
+
+        &::placeholder {
+            color: $greyscale-1100;
+        }
+    }
+
+    /* 칩 공통 */
+    &__chip {
+        display: inline-flex;
+        align-items: center;
+        gap: vw(14px);
+        height: vw(45px);
+        padding: 0 vw(27px);
+        border: 0;
+        border-radius: vw(140px);
+        background: #f4f4f4;
+
+        span {
+            color: $greyscale-1100;
+            @include font-16px-B;
+        }
+        font: inherit;
+        white-space: nowrap;
+        cursor: pointer;
+
+        .searchbar__icon {
+            width: 18px;
+            height: 18px;
+        }
+
+        &:hover {
+            filter: brightness(0.98);
+        }
+        &:active {
+            transform: translateY(1px);
+        }
+    }
+
+    /* 검색 버튼 */
+    &__submit {
+        height: vw(45px);
+        align-self: center;
+        border: 0;
+        border-radius: vw(140px);
+        background: $mint;
+        color: $white;
+        @include font-16px-SB;
+
+        cursor: pointer;
+        transition: transform 0.05s ease, filter 0.15s ease;
+
+        &:hover {
+            filter: brightness(1.03);
+        }
+        &:active {
+            transform: translateY(1px);
+        }
+    }
+}
+
+/* 모바일 프리셋 */
+// .searchbar--mobile {
+//     // gap: 8px;
+//     // height: 48px;
+//     // padding: 0 10px;
+//     // border-radius: 24px;
+
+//     .searchbar__chip {
+//         height: 36px;
+//         padding: 0 12px;
+//         border-radius: 18px;
+//     }
+
+//     .searchbar__submit {
+//         width: 72px;
+//         font-size: 14px;
+//     }
+
+//     .searchbar__icon {
+//         width: 18px;
+//         height: 18px;
+//     }
+// }

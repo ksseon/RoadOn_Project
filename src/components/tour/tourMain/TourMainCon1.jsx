@@ -1,5 +1,3 @@
-import './style.scss';
-
 const TourMainCon1 = () => {
     return (
         <section className="tour-main-con tour-main-con1">

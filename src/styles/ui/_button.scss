@@ -3,69 +3,112 @@
 // 기본 버튼 스타일
 .button {
     appearance: none;
-    pointer-events: none;
-    background: $header-bg;
+    // pointer-events: none;
+    // background: $header-bg;
+    border-radius: vw(50px);
     border: 0;
-    padding: rem(8px) rem(16px);
+    padding: rem(10px);
+    box-sizing: border-box;
 
-    &None {
-        appearance: none;
-        border: 0;
-        padding: 0;
-        background: none;
+    &.large {
+        width: vw(380px);
+        height: vw(45px);
+    }
+    &.middle {
+        width: vw(180px);
+        height: vw(45px);
+    }
+    &.small {
+        width: vw(120px);
+        height: vw(45px);
     }
 
+    &.Xsmall {
+        width: vw(90px);
+        height: vw(36px);
+    }
+    &.g {
+        background-color: $mint;
+        color: $white;
+
+        &:hover {
+            background-color: $foundation-mint-normalhover;
+        }
+    }
+
+    &.o {
+        color: $white;
+        background-color: $orange;
+        &:hover {
+            background-color: $foundation-orange-normalhover;
+        }
+        &2 {
+            color: $white;
+            background-color: transparent;
+            border: 1px solid $orange;
+            &:hover {
+                background-color: $orange;
+            }
+        }
+    }
+
+    // &None {
+    //     appearance: none;
+    //     border: 0;
+    //     padding: 0;
+    //     background: none;
+    // }
     // 햄버거 버튼
-    &--burger {
-        @include desktop {
-            display: none;
-        }
+    // &--burger {
+    //     @include desktop {
+    //         display: none;
+    //     }
 
-        width: rem(25px);
-        height: rem(25px);
-        overflow: hidden;
-        transform: translate(0, 0);
-        margin-right: 10px;
-        position: absolute;
-        right: 0px;
+    //     width: rem(25px);
+    //     height: rem(25px);
+    //     overflow: hidden;
+    //     transform: translate(0, 0);
+    //     margin-right: 10px;
+    //     position: absolute;
+    //     right: 0px;
 
-        &__top,
-        &__middle,
-        &__bottom {
-            background: $dark-gray;
-            position: absolute;
-            left: 0;
-            width: 100%;
-        }
+    //     &__top,
+    //     &__middle,
+    //     &__bottom {
+    //         background: $dark-gray;
+    //         position: absolute;
+    //         left: 0;
+    //         width: 100%;
+    //     }
 
-        &__top {
-            height: 12%;
-            top: 10%;
-        }
+    //     &__top {
+    //         height: 12%;
+    //         top: 10%;
+    //     }
 
-        &__middle {
-            height: 12%;
-            top: 45%;
-            transform: translateY(5%);
-        }
+    //     &__middle {
+    //         height: 12%;
+    //         top: 45%;
+    //         transform: translateY(5%);
+    //     }
 
-        &__bottom {
-            height: 12%;
-            top: 80%;
-        }
-    }
+    //     &__bottom {
+    //         height: 12%;
+    //         top: 80%;
+    //     }
+    // }
 
-    &-group {
-        padding: rem(2px);
-    }
+    // &-group {
+    //     padding: rem(2px);
+    // }
 
-    &-practice-prev,
-    &-practice-next {
-        border: none;
-        background-color: transparent;
-        @include font-24px-B;
-        color: $black;
-    }
+    // &-practice-prev,
+    // &-practice-next {
+    //     border: none;
+    //     background-color: transparent;
+    //     @include font-24px-B;
+    //     color: $black;
+    // }
 }
 
 button {
