@@ -50,6 +50,13 @@
     line-height: rem(21px);
 }
 
+@mixin font-30px-SB {
+    font-size: rem(30px);
+    font-weight: 600;
+    letter-spacing: 0;
+    line-height: rem(21px);
+}
+
 @mixin font-30px-M {
     font-size: rem(30px);
     font-weight: 500;

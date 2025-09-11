@@ -1,4 +1,6 @@
 // import ModalDemo from '../../components/ui/modal/Modal';
+import HotelBox from '../../../components/hotels/hotelsSearch/hotelBox';
+import MapModal from '../../../components/hotels/hotelsSearch/MapModal';
 import SearchBox from '../../../components/hotels/hotelsSearch/searchBox';
 import '../style.scss';
 
@@ -8,21 +10,48 @@ function hotelsSearch() {
             <SearchBox />
             <div className="inner">
                 <div className="filter-wrap">
-                    <div className="map-modal"></div>
-                    {/* 컴포넌트로 빼기 */}
+                    {/* 여기 onClick 걸기 - 상태관리로 클릭으로 t/f으로 관리*/}
+                    {/* <MapModal /> */}
                     <div className="filter">
                         <div className="filtering type">
-                            <p>숙소 유형</p>
+                            <div className="type-title">
+                                <p>숙소 유형</p>
+                                <div className="redo">
+                                    <img
+                                        src="../../../../public/images/hotels/search/uim_redo.svg"
+                                        alt="초기화"
+                                    />
+                                    <span>초기화</span>
+                                </div>
+                            </div>
                             <ul>
-                                <li>전체</li>
-                                <li>호텔·리조트</li>
-                                <li>펜션</li>
-                                <li>게스트하우스</li>
-                                <li>빌라</li>
-                                <li>한옥/전통가옥</li>
-                                <li>료칸</li>
-                                <li>캡슐호텔</li>
-                                <li>기타</li>
+                                <li>
+                                    <span></span>전체
+                                </li>
+                                <li>
+                                    <span></span>호텔·리조트
+                                </li>
+                                <li>
+                                    <span></span>펜션
+                                </li>
+                                <li>
+                                    <span></span>게스트하우스
+                                </li>
+                                <li>
+                                    <span></span>빌라
+                                </li>
+                                <li>
+                                    <span></span>한옥/전통가옥
+                                </li>
+                                <li>
+                                    <span></span>료칸
+                                </li>
+                                <li>
+                                    <span></span>캡슐호텔
+                                </li>
+                                <li>
+                                    <span></span>기타
+                                </li>
                             </ul>
                         </div>
                         <div className="filtering star">
@@ -57,9 +86,12 @@ function hotelsSearch() {
                             </ul>
                         </div>
                         <div className="filtering discount">
+                            <p>할인</p>
                             <ul>
                                 <li>
-                                    <span>Event</span>특가 할인
+                                    <span></span>
+                                    <p className="event">Event</p>
+                                    <p className="sale">특가 할인</p>
                                 </li>
                             </ul>
                         </div>
@@ -70,8 +102,9 @@ function hotelsSearch() {
                         <p>총 ㅁㅁ개 숙소</p> {/* js로 숙소 개수 추가 */}
                         <div className="sort"></div>
                     </div>
-                    <div className="list-box">\
+                    <div className="list-box">
                         {/* 컴포넌트로 빼기 */}
+                        <HotelBox />
                     </div>
                 </div>
             </div>

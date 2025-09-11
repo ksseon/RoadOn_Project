@@ -10,38 +10,120 @@
             width: 15.625vw;
             .map-modal {
                 height: 7.2917vw;
-                border: 1px solid #f00;
                 border-radius: 10px;
+                margin-bottom: vw(48px);
+                background-image: url('../../../public/images/hotels/search/map_modal.jpg');
+                background-size: cover;
+                background-repeat: no-repeat;
+                cursor: pointer;
             }
             .filter {
                 .filtering {
+                    margin-bottom: vw(48px);
                     p {
+                        @include font-20px-M;
+                        margin-bottom: vw(24px);
                     }
                     ul {
+                        margin-left: vw(20px);
                         li {
-                            // font-size: 9rem;
+                            @include font-16px;
+                            display: flex;
+                            align-items: center;
+                            gap: vw(12px);
+                            color: #353535;
+                            span {
+                                width: vw(14px);
+                                height: vw(14px);
+                                display: inline-block;
+                                border: vw(1px) solid #353535;
+                                border-radius: vw(3px);
+                            }
                         }
                     }
                 }
             }
+            .type {
+                .type-title {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    p {
+                    }
+                    .redo {
+                        color: $greyscale-1000;
+                        @include font-16px;
+                        cursor: pointer;
+                        display: flex;
+                        align-items: center;
+                        gap: vw(6px);
+                        margin-bottom: vw(24px);
+                    }
+                }
+                ul {
+                    margin-left: vw(20px);
+                    display: flex;
+                    flex-direction: column;
+                    gap: vw(10px);
+                }
+            }
+            .star,
+            .service {
+                ul {
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: vw(12px);
+                    li {
+                        padding: vw(6px) vw(15px);
+                        box-sizing: border-box;
+                        border-radius: vw(40px);
+                        border: 1px solid $greyscale-1000;
+                        cursor: pointer;
+                    }
+                }
+            }
+            .discount {
+                ul {
+                    li {
+                        display: flex;
+                        align-items: center;
+                        span {
+                        }
+                        .event {
+                            display: inline-block;
+                            font-size: vw(12px);
+                            padding: vw(2px) vw(8px);
+                            background-color: $foundation-orange-lightactive;
+                            border-radius: vw(20px);
+                            margin-bottom: 0;
+                        }
+                        .sale {
+                            display: inline-block;
+                            @include font-16px;
+                            margin-bottom: 0;
+                            transform: translateX(vw(-5px));
+                        }
+                    }
+                }
+            }
+            .list-wrap {
+                width: 55.2083vw;
+                height: 7.2917vw;
+                border: 1px solid #353535;
+            }
         }
-        .list-wrap {
-            width: 55.2083vw;
-            height: 7.2917vw;
-            border: 1px solid #000;
-        }
+        // h2 {
+        //     font-size: 4rem;
+        // }
     }
-    // h2 {
-    //     font-size: 4rem;
-    // }
-}
-@include tablet {
-    .about {
-        .inner {
-            padding: 2rem 0;
-        }
-        h2 {
-            font-size: 2rem;
+    @include tablet {
+        .about {
+            .inner {
+                padding: 2rem 0;
+            }
+            h2 {
+                font-size: 2rem;
+            }
         }
     }
 }
