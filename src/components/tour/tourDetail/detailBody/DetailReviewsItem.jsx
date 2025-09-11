@@ -1,7 +1,7 @@
 const DetailReviewsItem = () => {
     return (
         <li>
-            <div className="head">
+            <div className="lis-head">
                 <div className="title">
                     <div className="thumbs">{/* <img src="" alt="" /> */}</div>
                     <div className="txt">
@@ -11,7 +11,7 @@ const DetailReviewsItem = () => {
                 </div>
                 <div className="rate-box">별별별별별</div>
             </div>
-            <div className="body">
+            <div className="lis-body">
                 <p>
                     리뷰 내용입니다. 리뷰 내용입니다. 리뷰 내용입니다. 리뷰 내용입니다. 리뷰
                     내용입니다. 리뷰 내용입니다. 리뷰 내용입니다. 리뷰 내용입니다. 리뷰 내용입니다.

@@ -24,18 +24,12 @@
 .detail-body-info {
     height: 3000px;
 
-    // display: flex;
     display: grid;
-    // grid-template-columns: clamp(500px, vw(920px), 920px) clamp(300px, vw(456px), 456px);
     grid-template-columns: vw(920px) vw(456px);
-    // grid-template-columns: cqw(920px) cqw(456px);
-    // grid-template-columns: 920px 456px;
 
     gap: vw(24px);
     margin-top: vw(30px);
     .left {
-        // max-width: clamp(500px, vw(920px), 920px);
-        // width: 47.9167vw;
         box-sizing: border-box;
         background-color: $white;
         .detail-title {
@@ -72,46 +66,48 @@
                     border-radius: vw(10px);
                     border: 1px solid $greyscale-400;
                     padding: vw(24px) vw(20px);
-                    .head {
-                        display: flex;
-                        justify-content: space-between;
-                        .title {
+                    .lis {
+                        &-head {
                             display: flex;
                             justify-content: space-between;
-                            width: vw(120px);
-                            .thumbs {
-                                width: vw(40px);
-                                height: vw(40px);
-                                border-radius: vw(999px);
-                                background-color: grey;
-                                position: relative;
-                                img {
-                                    position: absolute;
-                                    left: 50%;
-                                    top: 50%;
-                                    transform: translate(-50%, -50%);
+                            .title {
+                                display: flex;
+                                justify-content: space-between;
+                                width: vw(120px);
+                                .thumbs {
+                                    width: vw(40px);
+                                    height: vw(40px);
+                                    border-radius: vw(999px);
+                                    background-color: grey;
+                                    position: relative;
+                                    img {
+                                        position: absolute;
+                                        left: 50%;
+                                        top: 50%;
+                                        transform: translate(-50%, -50%);
+                                    }
+                                }
+                                .txt {
+                                    width: vw(64px);
+                                    strong {
+                                        @include font-14px;
+                                    }
+                                    p {
+                                    }
                                 }
                             }
-                            .txt {
-                                width: vw(64px);
-                                strong {
-                                    @include font-14px;
-                                }
-                                p {
-                                }
+                            .rate-box {
                             }
                         }
-                        .rate-box {
-                        }
-                    }
-                    .body {
-                        p {
-                            display: -webkit-box;
-                            -webkit-line-clamp: 4; // 최대 4줄
-                            -webkit-box-orient: vertical;
-                            overflow: hidden;
-                            text-overflow: ellipsis;
-                            white-space: normal; // 줄바꿈 허용
+                        &-body {
+                            p {
+                                display: -webkit-box;
+                                -webkit-line-clamp: 4; // 최대 4줄
+                                -webkit-box-orient: vertical;
+                                overflow: hidden;
+                                text-overflow: ellipsis;
+                                white-space: normal; // 줄바꿈 허용
+                            }
                         }
                     }
                 }
