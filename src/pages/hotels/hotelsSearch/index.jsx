@@ -14,6 +14,7 @@ function hotelsSearch() {
                 <div className="filter-wrap">
                     {/* 여기 onClick 걸기 - 상태관리로 클릭으로 t/f으로 관리*/}
                     {/* <MapModal /> */}
+                    <div className="map-modal"></div>
                     <div className="filter">
                         <div className="filtering type">
                             <div className="type-title">
