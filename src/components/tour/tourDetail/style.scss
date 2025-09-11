@@ -1,1 +1,21 @@
-@use '../../styles/utils' as *;
+@use '../../../styles/utils' as *;
+
+#TourDetail {
+    & > .inner {
+        padding-top: 95px;
+    }
+    background-color: #dcdcdc;
+    section {
+        height: vw(1080px);
+    }
+    .searchBar-BG {
+        background-color: green;
+        padding: 120px 0;
+    }
+}
+#DetailBody {
+    background-color: red;
+}
+#DetailBottom {
+    background-color: green;
+}

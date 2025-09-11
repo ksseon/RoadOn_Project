@@ -17,30 +17,44 @@ const TourMainCon2 = () => {
                         </div>
                         <div className="icons-wrap">
                             <div className="icon-box">
-                                <img src="" alt="" />
+                                <b className="img-wrap">
+                                    <img src="/images/icon/icon-calender.png" alt="calender" />
+                                </b>
                                 <p>3박5일</p>
                             </div>
                             <div className="icon-box">
-                                <img src="" alt="" />
+                                <b className="img-wrap">
+                                    <img src="/images/icon/icon-plane.png" alt="plane" />
+                                </b>
                                 <p> 대한한공</p>
                             </div>
                             <div className="icon-box">
-                                <img src="" alt="" />
+                                <b className="img-wrap">
+                                    <img src="/images/icon/icon-suitcase.png" alt="suitcase" />
+                                </b>
                                 <p>쇼핑 3회</p>
                             </div>
                             <div className="icon-box">
-                                <img src="" alt="" />
-                                <p>가이드 경비 $60</p>
+                                <b className="img-wrap">
+                                    <img src="/images/icon/icon-dollar.png" alt="dollar" />
+                                </b>
+                                <p>
+                                    가이드 경비 <br /> $60
+                                </p>
                             </div>
                             <div className="icon-box">
-                                <img src="" alt="" />
-                                <p></p>
+                                <b className="img-wrap">
+                                    <img src="/images/icon/icon-checklist.png" alt="checklist" />
+                                </b>
+                                <p>
+                                    선택관광 <br /> 있음
+                                </p>
                             </div>
                         </div>
                     </section>
                     <section className="img-section">
                         <div className="img-wrap">
-                            <img src="" alt="" />
+                            <img src="/images/tour/main/con2_02.png" alt="con2_02" />
                         </div>
                     </section>
                 </article>

@@ -12,7 +12,7 @@ const NavBar = () => {
                         </Link>
                     </li>
                     <li>
-                        <Link to="/tour" classname="tour">
+                        <Link to="/tour" className="tour">
                             <img src="/images/icon/tour.png" alt="tour" />
                             씬투어
                         </Link>
