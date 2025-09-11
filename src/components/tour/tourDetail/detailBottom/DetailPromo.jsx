@@ -1,7 +1,7 @@
 import './style.scss';
 
 const DetailPromo = () => {
-    return <div></div>;
+    return <div>DetailPromo</div>;
 };
 
 export default DetailPromo;

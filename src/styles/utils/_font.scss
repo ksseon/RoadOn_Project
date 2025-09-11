@@ -106,6 +106,12 @@
     letter-spacing: 0;
     line-height: rem(21px);
 }
+@mixin font-24px {
+    @include font-size-clamp(24px);
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: rem(21px);
+}
 
 // 22px
 @mixin font-22px {

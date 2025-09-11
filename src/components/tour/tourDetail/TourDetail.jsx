@@ -6,7 +6,7 @@ import './style.scss';
 const TourDetail = () => {
     return (
         <main id="TourDetail">
-            <div className="searchBar-BG">
+            {/* <div className="searchBar-BG">
                 <SearchBar
                     size="web"
                     defaultQuery=""
@@ -19,10 +19,10 @@ const TourDetail = () => {
                     className="transparent"
                     onSearch={(p) => console.log('SEARCH', p)}
                 />
-            </div>
+            </div> */}
             <div className="inner">
                 <DetailBody />
-                <DetailBottom />
+                {/* <DetailBottom /> */}
             </div>
         </main>
     );

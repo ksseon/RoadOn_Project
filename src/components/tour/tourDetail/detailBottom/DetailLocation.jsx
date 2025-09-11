@@ -1,7 +1,7 @@
 import './style.scss';
 
 const DetailLocation = () => {
-    return <div></div>;
+    return <div>DetailLocation</div>;
 };
 
 export default DetailLocation;

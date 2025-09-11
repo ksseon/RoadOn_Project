@@ -1,7 +1,7 @@
 import './style.scss';
 
 const DetailBotReviews = () => {
-    return <div></div>;
+    return <div>DetailBotReviews</div>;
 };
 
 export default DetailBotReviews;
