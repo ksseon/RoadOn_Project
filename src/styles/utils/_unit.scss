@@ -23,6 +23,10 @@ $rootUnit: 16px !default;
 }
 
 // px을 vw 단위로 변경하는 함수 ------------------------------------------------------- /
-@function vw($value, $base: 1920px) {
-    @return (removeUnit(math.div($value, $base))) * 100vw;
+// @function vw($value, $base: 1920px) {
+//     @return (removeUnit(math.div($value, $base))) * 100vw;
+// }
+// px 단위를 기준(px)로 나눠 단위를 상쇄 → 순수 숫자 × vw
+@function vw($px, $base: 1920px) {
+    @return math.div($px, $base) * 100vw;
 }

@@ -23,18 +23,22 @@
 }
 .detail-body-info {
     height: 3000px;
-    border: 1px solid #000;
-    display: flex;
-    justify-content: space-between;
+
+    // display: flex;
+    display: grid;
+    grid-template-columns: vw(920px) vw(456px);
+    grid-template-columns: 920px 456px;
+
     gap: vw(24px);
     margin-top: vw(30px);
     .left {
-        width: vw(920px);
+        // width: vw(920px);
 
+        box-sizing: border-box;
         background-color: $white;
         .detail-title {
             width: 100%;
-            height: vw(390px);
+            height: vw(330px);
 
             &-head {
                 color: $default;
@@ -55,7 +59,7 @@
         }
         .detail-reviews {
             width: 100%;
-            height: 100px;
+            // height: 100px;
             // border: 1px solid #000;
             .list {
                 display: flex;
@@ -114,14 +118,67 @@
         }
         .detail-data {
             width: 100%;
-            height: 100px;
-            // border: 1px solid #000;
+            // height: 100px;
             background-color: #c7c7c7;
+
+            &-tab {
+                padding-top: vw(55px);
+                padding-bottom: vw(36px);
+                &-btns-wrap {
+                    display: flex;
+                    gap: vw(35px);
+                    button {
+                        background-color: transparent;
+                        padding: vw(10px);
+                        border: none;
+                        @include font-16px;
+                        color: $greyscale-1100;
+                        &.on {
+                            border-bottom: vw(2px) solid $greyscale-1100;
+                        }
+                    }
+                }
+            }
+            .con {
+                border: 1px solid #000;
+                height: 200px;
+                h2 {
+                    @include font-24px-B;
+                    padding-bottom: vw(30px);
+                }
+
+                &1 {
+                    .service-wrap {
+                        display: flex;
+                        gap: vw(70px);
+                        height: vw(24px);
+                        li {
+                            display: flex;
+                            align-items: center;
+                            img {
+                                // height: 70%;
+                                // width: vw(22px);
+                                margin-right: vw(8px);
+                            }
+                            @include font-16px;
+                        }
+                    }
+                }
+
+                .advertice {
+                    border: 1px solid #000;
+                    height: vw(90px);
+                }
+                &2 {
+                }
+                &3,
+                &4 {
+                    width: 1400px;
+                }
+            }
         }
     }
     .right {
-        width: vw(456px);
-        background-color: brown;
         .detail-side {
             width: 100%;
             height: vw(460px);
@@ -130,6 +187,9 @@
             padding: vw(40px) vw(30px);
             border: 1px solid #c7c7c7;
             background-color: $white;
+
+            // position: sticky;
+            // top: vw(110px);
             .box {
                 &-thum {
                     width: vw(60px);
@@ -188,6 +248,14 @@
                         em {
                             @include font-24px;
                         }
+                    }
+                }
+            }
+            .btn-wrap {
+                button {
+                    &.reserve {
+                        width: 100%;
+                        border-radius: vw(8px);
                     }
                 }
             }

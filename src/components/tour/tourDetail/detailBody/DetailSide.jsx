@@ -46,7 +46,9 @@ const DetailSide = () => {
                     <em>462,540원</em>
                 </div>
             </div>
-            <button className="button large o">예약하기</button>
+            <div className="btn-wrap">
+                <button className="button large o reserve">예약하기</button>
+            </div>
         </section>
     );
 };

@@ -9,6 +9,7 @@ body {
     background: $main-bg;
     font-family: 'PretendardLatin', 'SuitKorean', sans-serif;
     font-weight: 500;
+    color: $default;
     @include font-16px;
     word-break: keep-all;
     // @include paddingX(16px);

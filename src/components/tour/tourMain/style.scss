@@ -12,6 +12,7 @@
                 color: $white;
                 h2 {
                     font-size: rem(50px);
+                    line-height: 1.6;
                     font-weight: 700;
                     margin-bottom: vw(20px);
                     span {
@@ -71,6 +72,7 @@
                             font-weight: 700;
                         }
                         h3 {
+                            padding-top: vw(30px);
                             font-size: rem(62px);
                             font-weight: 700;
                         }
@@ -145,6 +147,7 @@
             }
             .package-wrap {
                 display: flex;
+                gap: vw(60px);
                 justify-content: space-between;
                 li {
                     width: vw(326px);
