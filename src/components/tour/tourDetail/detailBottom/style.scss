@@ -1,1 +1,260 @@
 @use '../../../../styles/utils/' as *;
+
+// 공통
+.title {
+    @include font-24px-SB;
+    padding-top: vw(60px);
+}
+
+#detail-loaction {
+    .map {
+        background-color: #dcdcdc;
+        height: vw(350px);
+        margin: vw(30px) vw(10px) vw(20px);
+    }
+    .address {
+        margin-top: vw(20px);
+        margin-left: vw(40px);
+
+        strong {
+            @include font-18px-SB;
+        }
+        .vector {
+            margin-top: vw(17px);
+            li {
+                position: relative;
+                &::after {
+                    content: '';
+                    position: absolute;
+                    left: 0.2%;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    width: 4px;
+                    height: 4px;
+                    background-color: $default;
+                    @include circle;
+                }
+                padding-left: vw(20px);
+                margin-bottom: vw(5px);
+            }
+        }
+    }
+}
+#detail-Bot-Reviews {
+    .title {
+        span {
+            margin-left: vw(10px);
+            color: #5c5c5c;
+        }
+    }
+    .reviews {
+        &-wrap {
+            &-head {
+                margin-top: vw(70px);
+                display: flex;
+                flex-direction: column;
+                padding-bottom: vw(60px);
+                border-bottom: vw(1px) solid #ddd;
+
+                .rate {
+                    margin: 0 vw(240px);
+                    margin-bottom: vw(40px);
+
+                    span {
+                        color: $star;
+                        margin-right: vw(10px);
+                    }
+                    @include font-30px-M;
+                }
+                &-imgs {
+                    height: vw(150px);
+                    display: flex;
+                    justify-content: center;
+                    gap: vw(4px);
+
+                    .img-wrap {
+                        border-radius: vw(7px);
+                        overflow: hidden;
+                        width: vw(150px);
+                        background-color: #5c5c5c;
+                        img {
+                        }
+                    }
+                }
+            }
+            &-body {
+                &-list {
+                    li {
+                        height: vw(420px);
+                        padding: vw(20px);
+                        display: flex;
+                        justify-content: space-between;
+                        .name-line {
+                            width: vw(220px);
+
+                            display: flex;
+                            gap: 15px;
+                            .thumbs {
+                                @include circle;
+                                width: vw(40px);
+                                height: vw(40px);
+                                background-color: #000;
+                                img {
+                                }
+                            }
+                            .txts {
+                                display: flex;
+                                flex-direction: column;
+                                strong {
+                                    @include font-16px;
+                                }
+                                em {
+                                    @include font-14px;
+                                }
+                            }
+                        }
+                        .img-line {
+                            width: vw(1090px);
+                            .rate-zone {
+                                @include font-14px-M;
+                                display: flex;
+                                .stars {
+                                    color: $star;
+                                    margin-right: vw(10px);
+                                }
+                                .date {
+                                    color: $greyscale-1100;
+                                }
+                            }
+                            .img-zone {
+                                height: vw(222px);
+                                display: flex;
+                                gap: vw(25px);
+
+                                .img-wrap {
+                                    border-radius: 15px;
+                                    overflow: hidden;
+                                    background-color: #5c5c5c;
+                                    width: vw(222px);
+                                    img {
+                                    }
+                                }
+                            }
+                            .type {
+                                padding-top: vw(15px);
+                                strong {
+                                    color: $greyscale-1000;
+                                }
+                                p {
+                                    margin-top: vw(5px);
+                                    @include font-14px-M;
+
+                                    display: -webkit-box;
+                                    -webkit-line-clamp: 3;
+                                    -webkit-box-orient: vertical;
+                                    overflow: hidden;
+                                    text-overflow: ellipsis;
+                                    white-space: normal;
+                                }
+                                .more {
+                                    margin-top: vw(15px);
+                                    background-color: transparent;
+                                    &.button {
+                                        padding: 0;
+                                        width: 60px;
+                                        height: 16px;
+                                        @include font-12px-B;
+                                        color: #333;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    > .button {
+        border: vw(1px) solid $greyscale-900;
+        margin: vw(75px) auto;
+        width: vw(500px);
+        height: vw(55px);
+        border-radius: vw(5px);
+        cursor: pointer;
+        &:hover {
+            background-color: $greyscale-200;
+            p {
+                color: $greyscale-1000;
+            }
+        }
+        p {
+            color: $greyscale-800;
+            text-align: center;
+            @include font-16px-M;
+            line-height: 2;
+        }
+    }
+}
+#detail-Promo {
+    h2 {
+        &.title {
+            padding-bottom: vw(30px);
+        }
+    }
+    .promo-list {
+        display: flex;
+        gap: vw(32px);
+
+        height: vw(500px);
+        &-item {
+            width: vw(326px);
+            border: vw(1px) solid $greyscale-500;
+            border-radius: vw(10px);
+            overflow: hidden;
+            .img-wrap {
+                background-color: #333;
+                width: vw(325px);
+                height: vw(290px);
+                img {
+                }
+            }
+            .txt-wrap {
+                padding: vw(20px);
+                display: flex;
+                flex-direction: column;
+                gap: vw(14px);
+                strong {
+                    em {
+                        @include font-18px;
+                    }
+                    @include font-20px-B;
+                    display: block;
+                }
+                .rate {
+                    @include font-18px;
+                    line-height: 1.2;
+                    span {
+                        font-size: rem(15px);
+                    }
+                }
+                .info {
+                    padding-top: vw(30px);
+                    display: flex;
+                    justify-content: space-between;
+
+                    .loc {
+                        @include font-16px;
+                        color: #6b6b6b;
+                    }
+                    .pri {
+                        @include font-20px;
+                        span {
+                            @include font-16px;
+                            color: #707070;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

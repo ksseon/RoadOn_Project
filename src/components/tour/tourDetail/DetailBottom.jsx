@@ -6,7 +6,6 @@ import './style.scss';
 const DetailBottom = () => {
     return (
         <section id="DetailBottom">
-            바닥
             <DetailLocation />
             <DetailBotReviews />
             <DetailPromo />
