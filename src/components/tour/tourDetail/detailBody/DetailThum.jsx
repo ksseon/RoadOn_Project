@@ -1,7 +1,14 @@
 import './style.scss';
 
 const DetailThum = () => {
-    return <div>이미지슬라이드 들어갈곳</div>;
+    return (
+        <section className="detail-thum">
+            <div className="big-img img-box">{/* <img src="" alt="big-img" /> */}</div>
+            <div className="imgs-all-wrap img-box">
+                <div className="img-wrap">{/* <img src="" alt="img" /> */}</div>
+            </div>
+        </section>
+    );
 };
 
 export default DetailThum;

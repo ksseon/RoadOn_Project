@@ -1,14 +1,13 @@
-import Detailside from './detailBody/Detailside';
+import DetailBodyInfo from './detailBody/DetailBodyInfo';
 import DetailThum from './detailBody/DetailThum';
-import DetailTitle from './detailBody/DetailTitle';
+
 import './style.scss';
 
 const DetailBody = () => {
     return (
         <section id="DetailBody">
             <DetailThum />
-            <DetailTitle />
-            <Detailside />
+            <DetailBodyInfo />
         </section>
     );
 };

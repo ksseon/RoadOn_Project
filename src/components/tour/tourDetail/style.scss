@@ -4,17 +4,16 @@
     & > .inner {
         padding-top: 95px;
     }
-    background-color: #dcdcdc;
-    section {
-        height: vw(1080px);
-    }
+    // background-color: #dcdcdc;
+
     .searchBar-BG {
         background-color: green;
         padding: 120px 0;
     }
 }
 #DetailBody {
-    background-color: red;
+    padding-top: vw(130px);
+    // background-color: red;
 }
 #DetailBottom {
     background-color: green;
