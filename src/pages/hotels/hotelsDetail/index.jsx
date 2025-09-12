@@ -32,7 +32,6 @@ const HotelsDetail = () => {
 
             <div className="hotel-detail-content">
                 <div className="hotel-images">
-                    {/* 호텔 이미지들 */}
                     <img src={`/images/hotels/${hotel.image[0]}`} alt={hotel.name} />
                 </div>
 

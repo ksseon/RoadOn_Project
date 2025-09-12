@@ -67,7 +67,7 @@ const HotelBox = ({ hotelId }) => {
                         <span>{hotel.location}</span>
                     </div>
                     <div className="bottom-price">
-                        <span>2박, 성인 2명</span>
+                        <span>2박, 성인 2명</span> {/* 검색창이랑 연결 */}
                         <strong>{hotel.price.toLocaleString()}원</strong>
                     </div>
                 </div>

@@ -22,13 +22,13 @@
     @include font-size-clamp(36px);
     font-weight: 700;
     letter-spacing: 0;
-    line-height: rem(21px);
+    line-height: rem(54px);
 }
 @mixin font-36px {
     @include font-size-clamp(36px);
     font-weight: 400;
     letter-spacing: 0;
-    line-height: rem(21px);
+    line-height: rem(54px);
 }
 
 // 35px
@@ -36,7 +36,7 @@
     @include font-size-clamp(35px);
     font-weight: 700;
     letter-spacing: 0;
-    line-height: rem(21px);
+    line-height: rem(52.5px);
 }
 
 // 32px
@@ -44,13 +44,13 @@
     @include font-size-clamp(32px);
     font-weight: 700;
     letter-spacing: 0;
-    line-height: rem(21px);
+    line-height: rem(481px);
 }
 @mixin font-32px-SB {
     @include font-size-clamp(32px);
     font-weight: 600;
     letter-spacing: 0;
-    line-height: rem(21px);
+    line-height: rem(48px);
 }
 
 // 30px
@@ -58,19 +58,19 @@
     @include font-size-clamp(30px);
     font-weight: 700;
     letter-spacing: 0;
-    line-height: rem(21px);
+    line-height: rem(45px);
 }
 @mixin font-30px-SB {
     font-size: rem(30px);
     font-weight: 600;
     letter-spacing: 0;
-    line-height: rem(21px);
+    line-height: rem(45px);
 }
 @mixin font-30px-M {
     @include font-size-clamp(30px);
     font-weight: 500;
     letter-spacing: 0;
-    line-height: rem(21px);
+    line-height: rem(45px);
 }
 
 // 28px
@@ -78,7 +78,7 @@
     @include font-size-clamp(28px);
     font-weight: 700;
     letter-spacing: 0;
-    line-height: rem(21px);
+    line-height: rem(42px);
 }
 @mixin font-28px-EB {
     @include font-size-clamp(28px);
@@ -90,7 +90,7 @@
     @include font-size-clamp(28px);
     font-weight: 500;
     letter-spacing: 0;
-    line-height: rem(21px);
+    line-height: rem(42px);
 }
 
 // 24px
@@ -98,19 +98,25 @@
     @include font-size-clamp(24px);
     font-weight: 700;
     letter-spacing: 0;
-    line-height: rem(21px);
+    line-height: rem(36px);
 }
 @mixin font-24px-SB {
     @include font-size-clamp(24px);
     font-weight: 600;
     letter-spacing: 0;
-    line-height: rem(21px);
+    line-height: rem(36px);
 }
 @mixin font-24px-M {
     @include font-size-clamp(24px);
     font-weight: 500;
     letter-spacing: 0;
-    line-height: rem(21px);
+    line-height: rem(36px);
+}
+@mixin font-24px {
+    @include font-size-clamp(24px);
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: rem(36px);
 }
 
 // 22px
@@ -118,7 +124,7 @@
     @include font-size-clamp(22px);
     font-weight: 400;
     letter-spacing: 0;
-    line-height: rem(21px);
+    line-height: rem(33px);
 }
 
 // 20px
@@ -126,25 +132,25 @@
     @include font-size-clamp(20px);
     font-weight: 700;
     letter-spacing: 0;
-    line-height: rem(21px);
+    line-height: rem(30px);
 }
 @mixin font-20px-SB {
     @include font-size-clamp(20px);
     font-weight: 600;
     letter-spacing: 0;
-    line-height: rem(21px);
+    line-height: rem(30px);
 }
 @mixin font-20px-M {
     @include font-size-clamp(20px);
     font-weight: 500;
     letter-spacing: 0;
-    line-height: rem(21px);
+    line-height: rem(30px);
 }
 @mixin font-20px {
     @include font-size-clamp(20px);
     font-weight: 400;
     letter-spacing: 0;
-    line-height: rem(21px);
+    line-height: rem(30px);
 }
 
 // 18px
@@ -152,25 +158,25 @@
     @include font-size-clamp(18px);
     font-weight: 700;
     letter-spacing: 0;
-    line-height: rem(21px);
+    line-height: rem(27px);
 }
 @mixin font-18px-SB {
     @include font-size-clamp(18px);
     font-weight: 600;
     letter-spacing: 0;
-    line-height: rem(21px);
+    line-height: rem(27px);
 }
 @mixin font-18px-M {
     @include font-size-clamp(18px);
     font-weight: 500;
     letter-spacing: 0;
-    line-height: rem(21px);
+    line-height: rem(27px);
 }
 @mixin font-18px {
     @include font-size-clamp(18px);
     font-weight: 400;
     letter-spacing: 0;
-    line-height: rem(21px);
+    line-height: rem(27px);
 }
 
 // 16px
@@ -178,31 +184,31 @@
     @include font-size-clamp(16px);
     font-weight: 800;
     letter-spacing: 0;
-    line-height: rem(21px);
+    line-height: rem(24px);
 }
 @mixin font-16px-B {
     @include font-size-clamp(16px);
     font-weight: 700;
     letter-spacing: 0;
-    line-height: rem(21px);
+    line-height: rem(24px);
 }
 @mixin font-16px-SB {
     @include font-size-clamp(16px);
     font-weight: 600;
     letter-spacing: 0;
-    line-height: rem(21px);
+    line-height: rem(24px);
 }
 @mixin font-16px-M {
     @include font-size-clamp(16px);
     font-weight: 500;
     letter-spacing: 0;
-    line-height: rem(21px);
+    line-height: rem(24px);
 }
 @mixin font-16px {
     @include font-size-clamp(16px);
     font-weight: 400;
     letter-spacing: 0;
-    line-height: rem(21px);
+    line-height: rem(24px);
 }
 
 // 14px
@@ -236,23 +242,23 @@
     @include font-size-clamp(12px);
     font-weight: 700;
     letter-spacing: 0;
-    line-height: rem(21px);
+    line-height: rem(18px);
 }
 @mixin font-12px-SB {
     @include font-size-clamp(12px);
     font-weight: 600;
     letter-spacing: 0;
-    line-height: rem(21px);
+    line-height: rem(18px);
 }
 @mixin font-12px-M {
     @include font-size-clamp(12px);
     font-weight: 500;
     letter-spacing: 0;
-    line-height: rem(21px);
+    line-height: rem(18px);
 }
 @mixin font-12px {
     @include font-size-clamp(12px);
     font-weight: 400;
     letter-spacing: 0;
-    line-height: rem(21px);
+    line-height: rem(18px);
 }

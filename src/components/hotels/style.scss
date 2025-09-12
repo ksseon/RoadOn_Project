@@ -7,67 +7,87 @@
     border-radius: vw(10px);
 }
 
-.hotel-box {
-    width: vw(1060px);
-    height: vw(280px);
-    border: vw(1px) solid $greyscale-600;
-    border-radius: vw(10px);
-    display: flex;
-    gap: vw(40px);
-    padding: vw(20px) vw(24px);
-    box-sizing: border-box;
-    .hotel-image {
-        width: vw(290px);
-        height: vw(240px);
-        background-color: #333;
-        border-radius: vw(4px);
-        .heart {
+.list-wrap {
+    .list-top {
+        p {
+            @include font-24px-M;
+            margin-bottom: vw(60px);
+        }
+        .sort {
         }
     }
-    .hotel-info {
+    .list-box {
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
-        .info-top {
-            .top-title {
-                span {
-                    color: $greyscale-1100;
-                    @include font-18px-M;
-                }
-                h4 {
-                    @include font-24px-M;
-                }
-            }
-            .rate {
-            }
-        }
-        .info-bottom {
+        gap: vw(20px);
+        .hotel-box {
+            width: vw(1060px);
+            height: vw(280px);
+            border: vw(1px) solid $greyscale-600;
+            border-radius: vw(10px);
             display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
-            width: vw(655px);
-            margin-bottom: vw(20px);
-            .bottom-location {
-                display: flex;
-                gap: vw(6px);
-                align-items: center;
-                img {
-                }
-                span {
-                    @include font-20px;
+            gap: vw(40px);
+            padding: vw(20px) vw(24px);
+            box-sizing: border-box;
+            cursor: pointer;
+            .hotel-image {
+                width: vw(290px);
+                height: vw(240px);
+                background-color: #333;
+                border-radius: vw(4px);
+                .heart {
                 }
             }
-            .bottom-price {
-                text-align: right;
-                span {
-                    display: block;
-                    @include font-20px-M;
-                    color: $greyscale-1000;
-                    margin-bottom: vw(16px);
+            .hotel-info {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                .info-top {
+                    margin-top: vw(15px);
+                    .top-title {
+                        margin-bottom: vw(15px);
+                        span {
+                            color: $greyscale-1100;
+                            @include font-18px-M;
+                            display: block;
+                            margin-bottom: vw(6px);
+                        }
+                        h4 {
+                            @include font-24px-M;
+                        }
+                    }
+                    .rate {
+                    }
                 }
-                strong {
-                    display: block;
-                    @include font-30px-SB;
+                .info-bottom {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: flex-end;
+                    width: vw(655px);
+                    margin-bottom: vw(20px);
+                    .bottom-location {
+                        display: flex;
+                        gap: vw(6px);
+                        align-items: center;
+                        img {
+                        }
+                        span {
+                            @include font-20px;
+                        }
+                    }
+                    .bottom-price {
+                        text-align: right;
+                        span {
+                            display: block;
+                            @include font-20px-M;
+                            color: $greyscale-1000;
+                            margin-bottom: vw(16px);
+                        }
+                        strong {
+                            display: block;
+                            @include font-30px-SB;
+                        }
+                    }
                 }
             }
         }
