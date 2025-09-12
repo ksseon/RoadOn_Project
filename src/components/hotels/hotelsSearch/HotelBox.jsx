@@ -1,17 +1,19 @@
 import '../style.scss';
 import hotelData from '../../../api/hotelsListData';
 import useHotelStore from '../../../store/hotelStore';
+import { useNavigate } from 'react-router-dom';
 
 const HotelBox = ({ hotelId }) => {
     const getHotelById = useHotelStore((state) => state.getHotelById);
     const hotel = getHotelById(hotelId);
+    const navigate = useNavigate();
 
     if (!hotel) {
         return <div>호텔 정보를 찾을 수 없습니다.</div>;
     }
 
     const handleHotelClick = () => {
-        navigate(`/hotel/${hotel.slug}`);
+        navigate(`/hotels/${hotel.slug}`);
     };
 
     const calculateStarRating = (rate) => {
@@ -38,7 +40,7 @@ const HotelBox = ({ hotelId }) => {
     const starImageName = getStarImageName(starRating);
 
     return (
-        <div className="hotel-box">
+        <div className="hotel-box" onClick={handleHotelClick} style={{ cursor: 'pointer' }}>
             <div className="hotel-image">
                 <span className="heart"></span>
             </div>

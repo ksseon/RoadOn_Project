@@ -21,7 +21,7 @@ export const MyRoutes = () => {
                     <Route path="/hotels" element={<HotelsMain />} />
                     <Route path="/hotelsSearch" element={<HotelsSearch />} />
                     {/* <Route path="/hotelsDetail" element={<HotelsDetail />} /> */}
-                    <Route path="/hotelsDetail/:slug" element={<HotelsDetail />} />
+                    <Route path="/hotels/:slug" element={<HotelsDetail />} />
                     <Route path="/tour" element={<Tour />} />
                     <Route path="/airplane" element={<Airplane />} />
                     <Route path="/myPage" element={<MyPage />} />
