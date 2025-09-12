@@ -1,15 +1,12 @@
 import './style.scss';
+import AirportMain from '../../components/airport/airportMain/AirportMain';
 
-const Airplane = () => {
+const Airport = () => {
     return (
-        <div className="airplanPage">
-            <div className="inner">
-                <h2>airplanPage</h2>
-                <p>text</p>
-                {/* <ModalDemo /> */}
-            </div>
-        </div>
+        <main id="AirportPage">
+            <AirportMain />
+        </main>
     );
 };
 
-export default Airplane;
+export default Airport;
