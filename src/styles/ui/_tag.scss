@@ -12,6 +12,10 @@
     word-break: keep-all;
 }
 
+.circle {
+    @include circle;
+}
+
 // .html__tag {
 //     background-color: $orange-red;
 //     color: $white;
