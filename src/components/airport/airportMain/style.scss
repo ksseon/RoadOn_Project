@@ -14,7 +14,7 @@
     width: 100%;
     height: vh(60px);
     position: relative;
-    z-index: 2;
+    z-index: 0;
     display: flex;
     justify-content: center;
     padding: vw(20px) 0 vw(60px);
@@ -24,7 +24,7 @@
     z-index: 2;
 }
 .search-title {
-    padding-top: vw(175px);
+    padding-top: vw(119px);
     text-align: center;
     font-size: rem(28px);
     font-weight: 700;
@@ -62,27 +62,49 @@
     align-items: center;
     gap: vw(12px);
     flex-wrap: wrap;
+    .icon {
+        color: #fff;
+        font-size: rem(18px);
+        margin-right: vw(10px);
+    }
+    .people {
+        font-size: rem(22px);
+    }
+    .plus {
+        font-size: rem(16px);
+    }
     .form-item {
-        min-width: vw(200px);
+        display: flex;
+        align-items: center;
+        width: vw(260px);
         height: vw(45px);
         padding: vw(12px) vw(20px);
         border-radius: vw(45px);
         background: rgba(255, 255, 255, 0.15);
         color: #fff;
-        font-size: rem(14px);
+        font-size: rem(16px);
         position: relative;
         cursor: pointer;
+        &.start {
+            width: vw(215px);
+        }
+        &.end {
+            width: vw(215px);
+        }
+        &.people {
+            width: vw(260px);
+        }
         &:hover {
             background: rgba(255, 255, 255, 0.25);
         }
         &.small {
             flex: none;
-            min-width: unset;
+
             width: vw(280px);
             height: vw(45px);
             padding: vw(12px) vw(20px);
             border-radius: vw(30px);
-            font-size: rem(14px);
+            font-size: rem(16px);
         }
         .dropdown {
             position: absolute;
@@ -101,7 +123,7 @@
                 margin-bottom: vw(10px);
                 border: 1px solid #ddd;
                 border-radius: vw(6px);
-                font-size: rem(14px);
+                font-size: rem(16px);
                 color: #353535;
             }
             ul {
@@ -114,7 +136,7 @@
                     padding: vw(8px);
                     border-radius: vw(6px);
                     cursor: pointer;
-                    font-size: rem(14px);
+                    font-size: rem(16px);
                     line-height: 1.6;
                     color: #353535;
 
@@ -123,21 +145,7 @@
                     }
                 }
             }
-            .confirm-btn {
-                margin-top: vw(10px);
-                width: 100%;
-                padding: vw(10px);
-                border-radius: vw(40px);
-                border: none;
-                background: #ff7f50;
-                color: #fff;
-                font-weight: 700;
-                cursor: pointer;
 
-                &:hover {
-                    background: #e67248;
-                }
-            }
             .people-btn {
                 border: none;
                 width: vw(40px);
@@ -148,12 +156,13 @@
                 background: #ff7f50;
                 color: #fff;
                 font-size: rem(16px);
-                font-weight: bold;
+                font-weight: 500;
                 cursor: pointer;
                 &:hover {
                     background: #e67248;
                 }
             }
+
             .seat-control {
                 margin-top: vw(10px);
                 span {
@@ -167,17 +176,31 @@
                     }
                 }
             }
+            .confirm-btn {
+                margin-top: vw(10px);
+                width: 100%;
+                padding: vw(10px);
+                border-radius: vw(40px);
+                border: none;
+                background: #ff7f50;
+                color: #fff;
+                font-weight: 500;
+                cursor: pointer;
+                &:hover {
+                    background: #e67248;
+                }
+            }
         }
     }
     .search-btn {
-        width: vw(100px);
+        width: vw(120px);
         height: vw(45px);
         padding: vw(10px);
         border-radius: vw(30px);
-        border: vw(1px) solid #ff7f50;
+        border: vw(2px) solid #ff7f50;
         background: transparent;
         color: #ff7f50;
-        font-weight: 700;
+        font-weight: 500;
         cursor: pointer;
         &:hover {
             background: #e67248;
@@ -185,8 +208,10 @@
         }
     }
     .add-btn {
+        display: flex;
+        align-items: center;
         padding: vw(10px) vw(14px);
-        height: vw(45px);
+        height: vw(35px);
         border-radius: vw(30px);
         border: vw(1px) dashed #ddd;
         background: rgba(255, 255, 255, 0.15);
@@ -214,6 +239,15 @@
         align-items: center;
         gap: vw(12px);
         width: 100%;
+
+        .form-item {
+            &.start {
+                width: vw(220px);
+            }
+            &.end {
+                width: vw(220px);
+            }
+        }
     }
 }
 
@@ -238,7 +272,7 @@
 .search-form .form-item .react-datepicker {
     margin-top: vw(10px);
     border: none;
-    width: vw(100px);
+    width: 100%;
     font-size: rem(14px);
     border-radius: vw(10px);
     padding: vw(14px);
@@ -262,7 +296,7 @@
     background: #fff;
     border-bottom: vw(1px) solid #eee;
     font-size: rem(14px);
-    font-weight: 600;
+    font-weight: 500;
     padding: vw(10px) 0;
     text-align: center;
 }
@@ -280,8 +314,9 @@
     margin: 0;
 }
 .search-form .form-item .react-datepicker__day:hover {
-    background: #e67248;
+    background: #ff7f50;
     color: #fff;
+    border-radius: 50%;
     width: vw(30px);
     height: vw(30px);
 }

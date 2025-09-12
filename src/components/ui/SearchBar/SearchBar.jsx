@@ -45,7 +45,7 @@ const SearchBar = ({
         <div
             className={`searchbar searchbar--${size} ${className}`}
             role="search"
-            aria-label="패키지 검색"
+            aria-label=""
         >
             {/* 검색어 필드 */}
             <div className="searchbar__field">

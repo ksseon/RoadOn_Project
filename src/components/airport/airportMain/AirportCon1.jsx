@@ -3,7 +3,9 @@ import DatePicker from 'react-datepicker';
 import { ko } from 'date-fns/locale';
 import 'react-datepicker/dist/react-datepicker.css';
 import './style.scss';
-import { FiX } from 'react-icons/fi';
+import { FiX, FiCalendar, FiPlus } from 'react-icons/fi';
+import { IoSearch } from 'react-icons/io5';
+import { MdOutlinePersonOutline } from 'react-icons/md';
 
 const AirportCon1 = () => {
     const [mode, setMode] = useState('roundtrip');
@@ -18,13 +20,13 @@ const AirportCon1 = () => {
     const [openDropdown, setOpenDropdown] = useState(null);
     const [searchTerm, setSearchTerm] = useState('');
 
-    const locations = ['서울', '부산', '제주', '여수', '속초', '광주', '대구'];
+    const locations = ['서울', '인천', '제주'];
 
     const increasePeople = () => setPeople((p) => p + 1);
     const decreasePeople = () => setPeople((p) => (p > 1 ? p - 1 : 1));
 
     const handleAddSegment = () => {
-        if (segments.length < 3) {
+        if (segments.length < 2) {
             setSegments([...segments, { from: '', to: '', date: null }]);
         }
     };
@@ -43,7 +45,7 @@ const AirportCon1 = () => {
         setOpenDropdown(null);
     };
 
-    // 출발지/도착지 드롭다운
+    // 출발지-도착지 드롭다운
     const renderLocationDropdown = (index, field, dropdownKey) =>
         openDropdown === dropdownKey && (
             <div className="dropdown location-dropdown" onClick={(e) => e.stopPropagation()}>
@@ -97,7 +99,9 @@ const AirportCon1 = () => {
                         {/* 왕복 */}
                         {mode === 'roundtrip' && (
                             <div className="search-form">
-                                <div className="form-item">
+                                {/* 날짜 */}
+                                <div className="form-item date">
+                                    <FiCalendar className="calendar icon" />
                                     <DatePicker
                                         selectsRange
                                         startDate={roundDates[0]}
@@ -110,20 +114,31 @@ const AirportCon1 = () => {
                                     />
                                 </div>
 
-                                <div className="form-item" onClick={() => setOpenDropdown('from')}>
+                                {/* 출발지-도착지 */}
+                                <div
+                                    className="form-item start"
+                                    onClick={() => setOpenDropdown('from')}
+                                >
+                                    <IoSearch className="searchbar icon" />
                                     {segments[0].from || '출발지'}
                                     {renderLocationDropdown(0, 'from', 'from')}
                                 </div>
 
-                                <div className="form-item" onClick={() => setOpenDropdown('to')}>
+                                <div
+                                    className="form-item end"
+                                    onClick={() => setOpenDropdown('to')}
+                                >
+                                    <IoSearch className="searchbar icon" />
                                     {segments[0].to || '도착지'}
                                     {renderLocationDropdown(0, 'to', 'to')}
                                 </div>
 
+                                {/* 인원 */}
                                 <div
                                     className="form-item"
                                     onClick={() => setOpenDropdown('peopleSeat')}
                                 >
+                                    <MdOutlinePersonOutline className="people icon" />
                                     인원 {people} · {seat}
                                     {openDropdown === 'peopleSeat' && (
                                         <div
@@ -147,6 +162,7 @@ const AirportCon1 = () => {
                                                 </button>
                                             </div>
 
+                                            {/* 좌석선택 */}
                                             <div className="seat-control">
                                                 {[
                                                     '일반석',
@@ -159,6 +175,8 @@ const AirportCon1 = () => {
                                                     </span>
                                                 ))}
                                             </div>
+
+                                            {/* 선택버튼 */}
                                             <button
                                                 className="confirm-btn"
                                                 onClick={() => setOpenDropdown(null)}
@@ -169,6 +187,7 @@ const AirportCon1 = () => {
                                     )}
                                 </div>
 
+                                {/* 검색 버튼 */}
                                 <button className="search-btn">검색</button>
                             </div>
                         )}
@@ -176,7 +195,9 @@ const AirportCon1 = () => {
                         {/* 편도 */}
                         {mode === 'oneway' && (
                             <div className="search-form">
-                                <div className="form-item">
+                                {/* 날짜 */}
+                                <div className="form-item date">
+                                    <FiCalendar className="calendar icon" />
                                     <DatePicker
                                         selected={onewayDate}
                                         onChange={(date) => setOnewayDate(date)}
@@ -186,21 +207,31 @@ const AirportCon1 = () => {
                                         shouldCloseOnSelect={true}
                                     />
                                 </div>
-
-                                <div className="form-item" onClick={() => setOpenDropdown('from')}>
+                                {/* 출발지-도착지 */}
+                                <div
+                                    className="form-item start"
+                                    onClick={() => setOpenDropdown('from')}
+                                >
+                                    <IoSearch className="searchbar icon" />
                                     {segments[0].from || '출발지'}
                                     {renderLocationDropdown(0, 'from', 'from')}
                                 </div>
 
-                                <div className="form-item" onClick={() => setOpenDropdown('to')}>
+                                <div
+                                    className="form-item end"
+                                    onClick={() => setOpenDropdown('to')}
+                                >
+                                    <IoSearch className="searchbar icon" />
                                     {segments[0].to || '도착지'}
                                     {renderLocationDropdown(0, 'to', 'to')}
                                 </div>
 
+                                {/* 인원 */}
                                 <div
-                                    className="form-item"
+                                    className="form-item people"
                                     onClick={() => setOpenDropdown('peopleSeat')}
                                 >
+                                    <MdOutlinePersonOutline className="people icon" />
                                     성인 {people}명 · {seat}
                                     {openDropdown === 'peopleSeat' && (
                                         <div
@@ -224,6 +255,7 @@ const AirportCon1 = () => {
                                                 </button>
                                             </div>
 
+                                            {/* 좌석석택 */}
                                             <div className="seat-control">
                                                 {[
                                                     '일반석',
@@ -236,6 +268,8 @@ const AirportCon1 = () => {
                                                     </span>
                                                 ))}
                                             </div>
+
+                                            {/* 선택버튼 */}
                                             <button
                                                 className="confirm-btn"
                                                 onClick={() => setOpenDropdown(null)}
@@ -246,6 +280,7 @@ const AirportCon1 = () => {
                                     )}
                                 </div>
 
+                                {/* 검색버튼 */}
                                 <button className="search-btn">검색</button>
                             </div>
                         )}
@@ -255,7 +290,9 @@ const AirportCon1 = () => {
                             <div className="search-form multicity">
                                 {segments.map((seg, i) => (
                                     <div className="multi-row" key={i}>
-                                        <div className="form-item small">
+                                        {/* 날짜 */}
+                                        <div className="form-item date">
+                                            <FiCalendar className="calendar icon" />
                                             <DatePicker
                                                 selected={seg.date}
                                                 onChange={(date) => {
@@ -270,18 +307,21 @@ const AirportCon1 = () => {
                                             />
                                         </div>
 
+                                        {/* 출발지-도착지 */}
                                         <div
-                                            className="form-item small"
+                                            className="form-item start"
                                             onClick={() => setOpenDropdown(`segment-${i}-from`)}
                                         >
+                                            <IoSearch className="searchbar icon" />
                                             {seg.from || '출발지'}
                                             {renderLocationDropdown(i, 'from', `segment-${i}-from`)}
                                         </div>
 
                                         <div
-                                            className="form-item small"
+                                            className="form-item end"
                                             onClick={() => setOpenDropdown(`segment-${i}-to`)}
                                         >
+                                            <IoSearch className="searchbar icon" />
                                             {seg.to || '도착지'}
                                             {renderLocationDropdown(i, 'to', `segment-${i}-to`)}
                                         </div>
@@ -295,21 +335,24 @@ const AirportCon1 = () => {
                                             </button>
                                         )}
 
+                                        {/* 구간추가 */}
                                         {i === segments.length - 1 && (
                                             <>
-                                                {segments.length < 3 && (
+                                                {segments.length < 2 && (
                                                     <button
                                                         className="add-btn"
                                                         onClick={handleAddSegment}
                                                     >
-                                                        + 구간추가
+                                                        <FiPlus className="plus icon" /> 구간추가
                                                     </button>
                                                 )}
 
+                                                {/* 인원 */}
                                                 <div
-                                                    className="form-item"
+                                                    className="form-item people"
                                                     onClick={() => setOpenDropdown('peopleSeat')}
                                                 >
+                                                    <MdOutlinePersonOutline className="people icon" />
                                                     성인 {people}명 · {seat}
                                                     {openDropdown === 'peopleSeat' && (
                                                         <div
@@ -333,6 +376,7 @@ const AirportCon1 = () => {
                                                                 </button>
                                                             </div>
 
+                                                            {/* 좌석선택 */}
                                                             <div className="seat-control">
                                                                 {[
                                                                     '일반석',
@@ -348,6 +392,8 @@ const AirportCon1 = () => {
                                                                     </span>
                                                                 ))}
                                                             </div>
+
+                                                            {/* 선택버튼 */}
                                                             <button
                                                                 className="confirm-btn"
                                                                 onClick={() =>
@@ -360,6 +406,7 @@ const AirportCon1 = () => {
                                                     )}
                                                 </div>
 
+                                                {/* 검색버튼 */}
                                                 <button className="search-btn">검색</button>
                                             </>
                                         )}
