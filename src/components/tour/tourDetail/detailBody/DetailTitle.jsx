@@ -1,5 +1,7 @@
-import DetailReviews from './DetailReviews';
 import './style.scss';
+import DetailReviews from './DetailReviews';
+import { FaStar } from 'react-icons/fa';
+
 const DetailTitle = () => {
     return (
         <section className="detail-title">
@@ -7,7 +9,12 @@ const DetailTitle = () => {
                 <em>《윤식당 2》</em>
                 <h3>스페인 테네리페 패키지</h3>
                 <b>Grand Hyatt jeju</b>
-                <p className="rate">★4.8 (536)</p>
+                <p className="rate">
+                    <span>
+                        <FaStar />
+                    </span>
+                    4.8 (536)
+                </p>
             </article>
             <DetailReviews />
         </section>
