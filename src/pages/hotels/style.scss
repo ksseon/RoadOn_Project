@@ -135,3 +135,277 @@
         }
     }
 }
+
+.hotel-detail {
+    .inner {
+        .hotel-thum {
+            display: flex;
+            gap: vw(24px);
+            .img-box {
+                height: vw(425px);
+                background-color: #ff0;
+                border-radius: vw(15px);
+            }
+            .big-img-1 {
+                width: vw(920px);
+            }
+            .big-img-2 {
+                width: vw(456px);
+            }
+            .img-all-wrap {
+                .img-wrap {
+                }
+            }
+        }
+        .hotel-body-info {
+            // height: 3000px;
+            display: grid;
+            grid-template-columns: vw(920px) vw(456px);
+
+            gap: vw(24px);
+            // margin-top: vw(30px);
+            .left {
+                box-sizing: border-box;
+                // background-color: $white;
+                .detail-title {
+                    width: 100%;
+                    height: vw(330px);
+
+                    &-head {
+                        color: $default;
+                        margin-bottom: vw(30px);
+                        em {
+                            @include font-16px;
+                        }
+                        h3 {
+                            @include font-32px-SB;
+                        }
+                        b {
+                            @include font-14px;
+                            color: #c7c7c7;
+                        }
+                        .rate {
+                        }
+                    }
+                }
+                .detail-reviews {
+                    width: 100%;
+
+                    .list {
+                        display: flex;
+                        gap: vw(20px);
+
+                        li {
+                            width: vw(340px);
+                            height: vw(170px);
+                            border-radius: vw(10px);
+                            border: 1px solid $greyscale-400;
+                            padding: vw(24px) vw(20px);
+                            .lis {
+                                &-head {
+                                    display: flex;
+                                    justify-content: space-between;
+                                    .title {
+                                        display: flex;
+                                        justify-content: space-between;
+                                        width: vw(120px);
+                                        .thumbs {
+                                            width: vw(40px);
+                                            height: vw(40px);
+                                            border-radius: vw(999px);
+                                            background-color: grey;
+                                            position: relative;
+                                            img {
+                                                position: absolute;
+                                                left: 50%;
+                                                top: 50%;
+                                                transform: translate(-50%, -50%);
+                                            }
+                                        }
+                                        .txt {
+                                            width: vw(64px);
+                                            strong {
+                                                @include font-14px;
+                                            }
+                                            p {
+                                            }
+                                        }
+                                    }
+                                    .rate-box {
+                                    }
+                                }
+                                &-body {
+                                    p {
+                                        display: -webkit-box;
+                                        -webkit-line-clamp: 4; // 최대 4줄
+                                        -webkit-box-orient: vertical;
+                                        overflow: hidden;
+                                        text-overflow: ellipsis;
+                                        white-space: normal; // 줄바꿈 허용
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                .detail-data {
+                    border: 1px solid #000;
+                    width: 100%;
+                    &-tab {
+                        padding-top: vw(55px);
+                        &-btns-wrap {
+                            display: flex;
+                            gap: vw(35px);
+                            button {
+                                background-color: transparent;
+                                padding: vw(10px);
+                                border: none;
+                                @include font-16px;
+                                color: $greyscale-1100;
+                                &.on {
+                                    border-bottom: vw(2px) solid $greyscale-1100;
+                                }
+                            }
+                        }
+                    }
+                    .advertise {
+                        width: vw(920px);
+                        img {
+                            width: vw(920px);
+                        }
+                    }
+                    .room-select {
+                        h2 {
+                        }
+                        .room-filter {
+                            li {
+                            }
+                        }
+                        .room-select-wrap {
+                            .room-select-box {
+                                .room-img {
+                                    .heart {
+                                    }
+                                }
+                            }
+                            .room-info {
+                                width: vw(920px);
+                                height: vw(240px);
+                                border: 1px solid #000;
+                                h3 {
+                                }
+                                ul {
+                                    li {
+                                        display: flex;
+                                        align-items: center;
+                                        gap: vw(20px);
+                                        img {
+                                        }
+                                        span {
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    .con {
+                        h2 {
+                            @include font-24px-B;
+                            padding: vw(30px) 0;
+                        }
+
+                        &1 {
+                            h2 {
+                            }
+                            .services-list {
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .right {
+            .detail-side {
+                width: 100%;
+                height: vw(460px);
+                border-radius: vw(15px);
+                background-color: grey;
+                padding: vw(40px) vw(30px);
+                border: 1px solid #c7c7c7;
+                background-color: $white;
+
+                // position: sticky;
+                // top: vw(110px);
+                .box {
+                    &-thum {
+                        width: vw(60px);
+                        height: vw(55px);
+                        background-color: red;
+                        img {
+                        }
+                    }
+                    &-head {
+                        display: flex;
+                        gap: vw(25px);
+                        margin-bottom: vw(70px);
+                        strong {
+                            @include font-20px-M;
+                        }
+                    }
+                    &-option {
+                        height: vw(190px);
+                        margin-bottom: vw(10px);
+                        background-color: #f5f5f5;
+
+                        border-radius: vw(15px);
+                        padding: vw(22px);
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: space-between;
+                        .people,
+                        .peop-wrap,
+                        .total-wrap {
+                            display: flex;
+                            justify-content: space-between;
+                        }
+                        .people {
+                            .peop-wrap {
+                                width: vw(150px);
+                                .type {
+                                }
+                                .price {
+                                }
+                            }
+                            .step {
+                                .button {
+                                    background-color: transparent;
+                                    &.minus {
+                                    }
+                                    &.plus {
+                                    }
+                                }
+                            }
+                        }
+                        .total-wrap {
+                            padding: vw(15px) 0;
+                            strong {
+                                @include font-20px-B;
+                            }
+                            em {
+                                @include font-24px;
+                            }
+                        }
+                    }
+                }
+                .btn-wrap {
+                    button {
+                        &.reserve {
+                            width: 100%;
+                            border-radius: vw(8px);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

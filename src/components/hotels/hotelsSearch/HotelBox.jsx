@@ -48,7 +48,7 @@ const HotelBox = ({ hotelId }) => {
                 <div className="info-top">
                     <div className="top-title">
                         <span>
-                            {hotel.type} {hotel.star}성급
+                            {hotel.type} {hotel.star}
                         </span>
                         <h4>{hotel.name}</h4>
                     </div>

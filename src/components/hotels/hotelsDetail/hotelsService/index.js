@@ -1,0 +1,10 @@
+export { default as Wifi } from './Wifi';
+export { default as Bbq } from './Bbq';
+export { default as Breakfast } from './Breakfast';
+export { default as CheckIn } from './CheckIn';
+export { default as Luggage } from './Luggage';
+export { default as Parking } from './Parking';
+export { default as Pet } from './Pet';
+export { default as Pool } from './Pool';
+export { default as Spa } from './Spa';
+export { default as Restaurant } from './Restaurant';

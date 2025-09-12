@@ -5,11 +5,11 @@ export default [
         engName: 'Grand Hyatt Jeju',
         slug: 'grand-hyatt-jeju',
         type: '호텔', // hotel/resort, pension, guesthouse, hanok, villa, capsule, etc
-        star: 3, // 성급
+        star: '3성급', // 성급
         location: '제주 제주시',
         price: 326480,
         rate: 4.8,
-        reviewCount: 256, // 개수 세는 함수..?
+        reviewCount: 25, // 개수 세는 함수..?
         about: '어쩌구', // 숙소 설명
         phone: '06060606', // 숙소 전화번호,
         mail: '@naver.com', // 숙소 이메일
@@ -19,18 +19,17 @@ export default [
         landmark: ['어쩌구', '어쩌구'],
         service: [
             '무료 와이파이',
-            '조식제공',
-            '짐보관',
+            '조식 제공',
+            '수화물 보관',
             '수영장',
             '레스토랑',
-            '반려동물',
+            '반려동물 동반',
             '주차',
-            '오션뷰',
-            '바베큐',
+            '24시간 체크인',
             '스파',
-            '금연실',
+            '개별 바베큐',
         ],
-        image: ['hotel1.jpg'],
+        image: ['ht-1-a.jpg', 'ht-1-b.jpg'],
         // 박 수, 인원은 검색창에서 데이터 받아와야함
         // 이 배열?안에 리뷰 데이터도 있어야 아니다 리뷰 데이터는 따로 관리하고 id로 연결
         // 객실 선택 데이터 따로 만들기 - 숙소 타입별로 분류?
@@ -41,7 +40,7 @@ export default [
         engName: 'Lotte Hotel Seoul',
         slug: 'lotte-hotel-seoul',
         type: '호텔',
-        star: 5,
+        star: '5성급',
         location: '서울 중구',
         price: 310000, // 임시
         rate: 4.6,
@@ -72,7 +71,7 @@ export default [
         engName: 'Paradise Hotel Busan',
         slug: 'paradise-hotel-busan',
         type: '호텔',
-        star: 5,
+        star: '5성급',
         location: '부산 해운대구',
         price: 270000, // 임시
         rate: 4.8,
@@ -103,7 +102,7 @@ export default [
         engName: 'Westin Josun Busan',
         slug: 'westin-josun-busan',
         type: '호텔',
-        star: 5,
+        star: '5성급',
         location: '부산 해운대구',
         price: 250000, // 임시
         rate: 4.5,
@@ -134,7 +133,7 @@ export default [
         engName: 'Kensington Hotel Pyeongchang',
         slug: 'kensington-hotel-pyeongchang',
         type: '호텔',
-        star: 4,
+        star: '4성급',
         location: '강원 평창군',
         price: 180000, // 임시
         rate: 4.4,
@@ -169,7 +168,7 @@ export default [
         engName: 'Lotte Resort Sokcho',
         slug: 'lotte-resort-sokcho',
         type: '호텔',
-        star: 4,
+        star: '4성급',
         location: '강원 속초시',
         price: 200000, // 임시
         rate: 4.6,
@@ -204,7 +203,7 @@ export default [
         engName: 'Hilton Gyeongju',
         slug: 'hilton-gyeongju',
         type: '호텔',
-        star: 5,
+        star: '5성급',
         location: '경북 경주시',
         price: 240000, // 임시
         rate: 4.5,
@@ -235,7 +234,7 @@ export default [
         engName: 'Ramada Plaza Jeju Hotel',
         slug: 'ramada-plaza-jeju',
         type: '호텔',
-        star: 5,
+        star: '5성급',
         location: '제주시 제주',
         price: 210000, // 임시
         rate: 4.4,
@@ -266,7 +265,7 @@ export default [
         engName: 'Grand Hyatt Jeju',
         slug: 'grand-hyatt-jeju',
         type: '호텔',
-        star: 5,
+        star: '5성급',
         location: '제주 제주시',
         price: 320000, // 임시
         rate: 4.8,
@@ -297,7 +296,7 @@ export default [
         engName: 'Rahan Hotel Jeonju',
         slug: 'rahan-hotel-jeonju',
         type: '호텔',
-        star: 4,
+        star: '4성급',
         location: '전북 전주시',
         price: 150000, // 임시
         rate: 4.3,
