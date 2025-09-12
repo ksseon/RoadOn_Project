@@ -155,7 +155,7 @@
                 border-radius: vw(8px);
                 background: #ff7f50;
                 color: #fff;
-                font-size: rem(16px);
+                // font-size: rem(16px);
                 font-weight: 500;
                 cursor: pointer;
                 &:hover {
@@ -182,7 +182,7 @@
                 padding: vw(10px);
                 border-radius: vw(40px);
                 border: none;
-                background: #ff7f50;
+                background: $foundation-orange-normal;
                 color: #fff;
                 font-weight: 500;
                 cursor: pointer;

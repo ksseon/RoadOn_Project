@@ -54,8 +54,8 @@ const HotelBox = ({ hotelId }) => {
                     </div>
                     <div className="rate">
                         <img
-                            // src={`../../../public/images/hotels/detail/${starImageName}`}
-                            src={`../../../public/images/hotels/detail/star_rate.svg`}
+                            src={`/images/hotels/detail/${starImageName}`}
+                            // src={`/images/hotels/detail/star_rate.svg`}
                             alt={`${starRating}점`}
                         />
                         <span>
