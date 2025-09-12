@@ -1,5 +1,5 @@
 import './style.scss';
-import DetailReviews from './DetailReviews';
+
 import DetailTitle from './DetailTitle';
 import DetailSide from './DetailSide';
 import DetailData from './DetailData';

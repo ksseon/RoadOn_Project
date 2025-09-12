@@ -12,17 +12,15 @@
     }
     .big-img {
         width: vw(920px);
-
         background-color: grey;
     }
     .imgs-all-wrap {
         width: vw(456px);
-
         background-color: aqua;
     }
 }
 .detail-body-info {
-    height: 3000px;
+    height: vw(3000px);
 
     display: grid;
     grid-template-columns: vw(920px) vw(456px);
@@ -30,6 +28,8 @@
     gap: vw(24px);
     margin-top: vw(30px);
     .left {
+        // border: 1px solid #000;
+        // min-height: vw(2500px);
         box-sizing: border-box;
         background-color: $white;
         .detail-title {
@@ -114,7 +114,7 @@
             }
         }
         .detail-data {
-            border: 1px solid #000;
+            // border: 1px solid #000;
             width: 100%;
             &-tab {
                 padding-top: vw(55px);
@@ -155,43 +155,41 @@
                     }
                 }
 
-                &.advertice {
+                &.advertise {
                     margin: vw(90px) 0;
                 }
                 &2 {
                     .description-wrap {
-                        // background-color: red;
                         .itinerary-header {
                             .txt-wrap {
                                 display: flex;
                                 gap: vw(50px);
                                 align-items: center;
                                 height: vw(50px);
-                                border-bottom: 2px solid $default;
+                                border-bottom: vw(2px) solid $default;
                                 p {
                                     @include font-20px-B;
                                     padding: vw(10px);
                                 }
                             }
                             .notice {
-                                padding: 50px 0;
+                                padding: vw(50px) 0;
                                 @include font-20px-B;
                                 padding-left: vw(15px);
                                 color: #868686;
                             }
                         }
+
                         .flight-info {
-                            // width: clamp(400px, vw(810px), 810px);
                             width: vw(810px);
                             height: vw(150px);
-                            border-radius: 15px;
+                            border-radius: vw(15px);
                             padding: vw(40px) vw(120px);
 
                             border: 1px solid $greyscale-600;
 
                             .flight-card {
-                                // background-color: grey;
-                                width: 570px;
+                                width: vw(570px);
                                 height: vw(70px);
                                 display: flex;
                                 justify-content: space-between;
@@ -227,7 +225,8 @@
                                         @include font-18px;
                                     }
                                     span {
-                                        @include font-12px;
+                                        @include font-12px-SB;
+                                        color: $greyscale-1000;
                                     }
                                 }
                                 .air-type {
@@ -235,8 +234,149 @@
                                     flex-direction: column;
                                     align-items: center;
                                     gap: vw(10px);
+                                    .line-wrap {
+                                        width: vw(112px);
+                                        height: vw(8px);
+                                        display: flex;
+                                        justify-content: space-between;
+                                        position: relative;
+                                        .circle {
+                                            width: vw(8px);
+                                            height: vw(8px);
+                                            background-color: #d9d9d9;
+                                        }
+                                        .line {
+                                            position: absolute;
+                                            width: 100%;
+                                            height: vw(1px);
+                                            background-color: #d9d9d9;
+                                            top: 50%;
+                                            left: 0;
+                                            transform: translateY(-50%);
+                                        }
+                                    }
 
                                     p {
+                                        color: #737373;
+                                        font-family: 'Pretendard';
+
+                                        &:last-child {
+                                            color: $orange;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        .point {
+                            position: relative;
+                            &::after {
+                                position: absolute;
+                                content: '';
+                                background-color: $orange;
+                                left: vw(-140px);
+                                top: vw(35px);
+                                width: vw(10px);
+                                height: vw(10px);
+                                z-index: 2;
+                                @include circle;
+                            }
+                            &.point-end {
+                                &::before {
+                                    position: absolute;
+                                    content: '';
+                                    background-color: $white;
+                                    left: vw(-140px);
+                                    top: 45px;
+                                    width: 10px;
+                                    height: 100%;
+                                    z-index: 3;
+                                }
+                            }
+                        }
+                        .section-wrap {
+                            padding-left: vw(32px);
+                            position: relative;
+                            &::after {
+                                position: absolute;
+                                content: '';
+                                background-color: $greyscale-500;
+                                width: vw(2px);
+                                height: 100%;
+                                left: vw(10px);
+                                top: vw(35px);
+                                z-index: 1;
+                            }
+                            .notice-section {
+                                li {
+                                    @include font-18px-SB;
+                                    margin-bottom: vw(5px);
+                                    span {
+                                        @include font-16px-M;
+                                    }
+                                }
+                                p {
+                                    @include font-14px-SB;
+                                    color: $greyscale-900;
+                                }
+                            }
+                            .airport-section {
+                                margin-top: vw(60px);
+                                h2 {
+                                    padding-bottom: vw(10px);
+                                    &:last-child {
+                                        padding-top: vw(5px);
+                                    }
+                                }
+                            }
+                            .schedule-section {
+                                margin-top: vw(60px);
+                                em {
+                                    @include font-16px-M;
+                                }
+                                li {
+                                    @include font-18px-SB;
+                                }
+                                .photo-wrap {
+                                    width: vw(880px);
+                                    padding-top: vw(72px);
+                                    display: flex;
+                                    gap: vw(16px);
+                                    div {
+                                        width: vw(200px);
+                                        height: vw(197px);
+                                        border-radius: vw(20px);
+                                        background: #d9d9d9;
+                                    }
+                                }
+                            }
+                            .hotel-section {
+                                p {
+                                    @include font-18px-SB;
+                                }
+                                .tabs {
+                                    margin: vw(80px);
+                                    li {
+                                        padding: vw(30px);
+                                        border: 1px solid #c5c5c5;
+                                        width: vw(600px);
+                                        height: vw(84px);
+                                        border-radius: 15px;
+                                        margin-bottom: 14px;
+                                        display: flex;
+                                        align-items: center;
+                                        gap: 12px;
+                                        .img-wrap {
+                                            width: 24px;
+                                            height: 24px;
+                                            img {
+                                                width: 100%;
+                                            }
+                                        }
+                                        strong {
+                                            @include font-12px-SB;
+                                            display: flex;
+                                            flex-direction: column;
+                                        }
                                     }
                                 }
                             }
@@ -245,12 +385,13 @@
                 }
                 &3,
                 &4 {
-                    width: 1400px;
+                    width: vw(1400px);
                 }
             }
         }
     }
     .right {
+        // height: vw(2500px);
         .detail-side {
             width: 100%;
             height: vw(460px);
@@ -259,9 +400,9 @@
             padding: vw(40px) vw(30px);
             border: 1px solid #c7c7c7;
             background-color: $white;
+            position: sticky;
+            top: vw(100px);
 
-            // position: sticky;
-            // top: vw(110px);
             .box {
                 &-thum {
                     width: vw(60px);

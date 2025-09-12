@@ -1,4 +1,5 @@
 import DetailBody from './DetailBody';
+import DetailBottom from './DetailBottom';
 import './style.scss';
 
 const TourDetail = () => {
@@ -20,7 +21,7 @@ const TourDetail = () => {
             </div> */}
             <div className="inner">
                 <DetailBody />
-                {/* <DetailBottom /> */}
+                <DetailBottom />
             </div>
         </main>
     );
