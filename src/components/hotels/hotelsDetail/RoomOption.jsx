@@ -1,29 +1,38 @@
+import '../style.scss'
+import { BsPeople } from "react-icons/bs";
+import { IoBedOutline } from "react-icons/io5";
 
-const RoomOption = () => {
+const RoomOption = ({ roomData }) => {
     return (        
-            <div className="room-option-box">
-                <div className="room-img">
-                    <span className="heart"></span>
+            <div className="room-option-box">    
+                <div className="room-option-img">
+                    <img src={`/images/hotels/detail/roomOptions/${roomData.image[0]}`} alt="" />
                 </div>
-            
-                <div className="room-info">
-                    <h3>룸 타입</h3>
-                    <ul>
-                        <li>
-                            <img
-                                src="/images/hotels/detail/info-people.svg"
-                                alt="인원"
-                            />
-                            <span>기준 3인/최대 3인</span>
-                        </li>
-                        <li>
-                            <img
-                                src="/images/hotels/detail/info-beds-0.svg"
-                                alt="침대"
-                            />
-                            <span>싱글 침대 2개</span>
-                        </li>
-                    </ul>
+                <div className="room-option-info">
+                    <div className="info-left">
+                        <h3>{roomData.name}</h3>
+                        <ul className="room-details">
+                            <li>
+                                <BsPeople />
+                                <span>기준 {roomData.party}인/최대 {roomData.party}인</span>
+                            </li>
+                            <li>
+                                <IoBedOutline />
+                                <span>{roomData.beds}</span>
+                            </li>
+                        </ul>
+                        <ul className="room-include">
+                            <li><img src="/images/hotels/detail/icon/check-mint.svg" alt="체크" />{roomData.include[0]}</li>
+                            <li><img src="/images/hotels/detail/icon/check-mint.svg" alt="체크" />{roomData.include[1]}</li>
+                        </ul>
+                    </div>
+                    <div className="info-right">
+                        <div className="room-price">
+                            <span>세금 및 수수료 포함</span>
+                            <strong>{roomData.price.toLocaleString()}원 <span> / 박</span></strong>
+                        </div>
+                        <button>객실 선택</button>
+                    </div>
                 </div>
             </div>
     );

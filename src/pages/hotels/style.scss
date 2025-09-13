@@ -286,30 +286,102 @@
                             display: flex;
                             flex-direction: column;
                             gap: vw(24px);
-                            .room-option-box {
-                                .room-img {
-                                    .heart {
-                                    }
+                            
+                        }
+                    }
+                    .hotel-info-wrap {
+                        p {
+                            margin-left: vw(16px);
+                            margin-bottom: vw(20px);
+                        }
+                        .contact {
+                            margin-left: vw(16px);
+                            display: flex;
+                            flex-direction: column;
+                            gap: vw(2px);
+                            span {
+                                color: $greyscale-1200;
+                                display: flex;
+                                gap: vw(10px);
+                                align-items: center;
+                            }
+                        }
+                    }
+                    .hotel-policies-wrap {
+                        .follows {
+                            margin-left: vw(16px);
+                            li {
+                                position: relative;
+                                &::before {
+                                    content: '';
+                                    display: block;
+                                    width: vw(4px);
+                                    height: vw(4px);
+                                    border-radius: 100%;
+                                    background-color: $greyscale-1200;
+                                    position: absolute;
+                                    top: 50%;
+                                    transform: translateY(-50%);
+                                    transform: translateX(vw(-60px))
                                 }
-                                .room-info {
-                                    width: vw(920px);
-                                    height: vw(240px);
-                                    border: 1px solid $greyscale-500;
-                                    border-radius: vw(10px);
-                                    h3 {
-                                        @include font-22px;
-                                    }
-                                    ul {
-                                        li {
-                                            display: flex;
-                                            align-items: center;
-                                            gap: vw(20px);
-                                            img {
-                                            }
-                                            span {
-                                            }
-                                        }
-                                    }
+                            }
+                        }
+                    }
+                    .hotel-cancel-wrap {
+                        .follows {
+                            margin-left: vw(16px);
+                            li {
+                                position: relative;
+                                &::before {
+                                    content: '';
+                                    display: block;
+                                    width: vw(4px);
+                                    height: vw(4px);
+                                    border-radius: 100%;
+                                    background-color: $greyscale-1200;
+                                    position: absolute;
+                                    top: 50%;
+                                    transform: translateY(-50%);
+                                    transform: translateX(vw(-60px))
+                                }
+                            }
+                        }
+                    }
+                    .hotel-location-wrap {
+                        .hotel-map {
+                            width: 100%;
+                            height: vw(350px);
+                            background-color:#ff0;
+                            iframe {
+
+                            }
+                        }
+                        p {
+                            @include font-18px-SB;
+                            margin-left: vw(16px);
+                            margin-bottom: vw(12px);
+                            margin-top: vw(12px);
+                            span {
+                                cursor: pointer;
+                                margin-left: vw(2px);      
+                            }
+                        }
+                        .landmarks {
+                            margin-left: vw(36px);
+                            li {
+                                @include font-16px;
+                            position: relative;
+                                 &::before {
+                                    content: '';
+                                    display: block;
+                                    width: vw(4px);
+                                    height: vw(4px);
+                                    border-radius: 100%;
+                                    background-color: $greyscale-1200;
+                                    position: absolute;
+                                    top: 50%;
+                                    transform: translateY(-50%);
+                                    transform: translateX(vw(-60px))
                                 }
                             }
                         }

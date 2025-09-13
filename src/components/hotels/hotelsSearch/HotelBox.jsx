@@ -42,7 +42,7 @@ const HotelBox = ({ hotelId }) => {
     return (
         <div className="hotel-box" onClick={handleHotelClick} style={{ cursor: 'pointer' }}>
             <div className="hotel-image">
-                <img src={`/images/hotels/detail/${hotel.image[0]}`} alt="" /><span className="heart"></span>
+                <img src={`/images/hotels/detail/hotelsList/${hotel.image[0]}`} alt="" /><span className="heart"></span>
             </div>
             <div className="hotel-info">
                 <div className="info-top">
@@ -69,7 +69,7 @@ const HotelBox = ({ hotelId }) => {
                         <span>{hotel.location}</span>
                     </div>
                     <div className="bottom-price">
-                        <span>2박, 성인 2명</span> {/* 검색창이랑 연결 */}
+                        <span>1박, 성인 2명</span> {/* 검색창이랑 연결 */}
                         <strong>{hotel.price.toLocaleString()}원</strong>
                     </div>
                 </div>
