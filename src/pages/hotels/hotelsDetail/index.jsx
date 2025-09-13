@@ -17,6 +17,7 @@ import {
     Spa,
     Bbq,
 } from '../../../components/hotels/hotelsDetail/hotelsService';
+import RoomOption from '../../../components/hotels/hotelsDetail/RoomOption';
 
 const HotelsDetail = () => {
     const { slug } = useParams(); // URL에서 slug 가져오기
@@ -70,7 +71,7 @@ const HotelsDetail = () => {
                     </div>
                 </section>
                 <section className="detail-body-info">
-                    <div className="left">
+                    <div className="detail-left">
                         <section className="detail-title">
                             <article className="detail-title-head">
                                 <em>
@@ -79,7 +80,7 @@ const HotelsDetail = () => {
                                 <h3>{hotel.name}</h3>
                                 <b>{hotel.engName}</b>
                                 <p className="rate">
-                                    <img src={`/images/hotels/detail/star_rate.svg`} alt={`별점`} />
+                                    <img src={`/images/hotels/detail/icon/star_rate.svg`} alt={`별점`} />
                                     {hotel.rate} ({hotel.reviewCount})
                                 </p>
                             </article>
@@ -122,81 +123,32 @@ const HotelsDetail = () => {
                                     alt="login_first.png"
                                 />
                             </div>
-                            <div className="con con2 room-select">
+                            <div className="con con2 room-option-wrap">
                                 <h2>객실 선택</h2>
                                 <ul className="room-filter">
                                     <li>조식 포함</li>
                                     <li>무료 취소</li>
                                 </ul>
-                                <div className="room-select-wrap">
-                                    <div className="room-select-box">
-                                        <div className="room-img">
-                                            <span className="heart"></span>
-                                        </div>
-                                    </div>
-                                    <div className="room-info">
-                                        <h3>룸 타입</h3>
-                                        <ul>
-                                            <li>
-                                                <img
-                                                    src="/images/hotels/detail/info-people.svg"
-                                                    alt="인원"
-                                                />
-                                                <span>기준 3인/최대 3인</span>
-                                            </li>
-                                            <li>
-                                                <img
-                                                    src="/images/hotels/detail/info-beds-0.svg"
-                                                    alt="침대"
-                                                />
-                                                <span>싱글 침대 2개</span>
-                                            </li>
-                                        </ul>
-                                    </div>
+                                <div className="room-box-list">
+                                <RoomOption/>
+                                <RoomOption/>
+                                <RoomOption/>
                                 </div>
                             </div>
                         </section>
                     </div>
-                    <div className="right">
+                    <div className="detail-right">
                         <section className="detail-side">
                             <div className="box-head">
                                 <div className="box-thum">{/* <img src="" alt="" /> */}</div>
                                 <strong>{hotel.name}</strong>
                             </div>
                             <div className="box-option">
-                                <div className="people people1">
-                                    <div className="peop-wrap">
-                                        <p className="type">아동</p>
-                                        <p className="price">231,270원</p>
-                                    </div>
-                                    <div className="step">
-                                        <button className="button minus">
-                                            <FiMinus />
-                                        </button>
-                                        <span>0</span>
-                                        <button className="button plus">
-                                            <FiPlus />
-                                        </button>
-                                    </div>
-                                </div>
-                                <div className="people people2">
-                                    <div className="peop-wrap">
-                                        <p className="type">성인</p>
-                                        <p className="price">231,270원</p>
-                                    </div>
-                                    <div className="step">
-                                        <button className="button minus">
-                                            <FiMinus />
-                                        </button>
-                                        <span>0</span>
-                                        <button className="button plus">
-                                            <FiPlus />
-                                        </button>
-                                    </div>
-                                </div>
+                                
+                                
                                 <div className="total-wrap">
                                     <strong>총액</strong>
-                                    <em>462,540원</em>
+                                    <em>{hotel.price.toLocaleString()}원</em> {/* 곱하기 박 수*/}
                                 </div>
                             </div>
                             <div className="btn-wrap">

@@ -120,9 +120,6 @@
                 }
             }
         }
-        // h2 {
-        //     font-size: 4rem;
-        // }
     }
     @include tablet {
         .about {
@@ -157,16 +154,12 @@
                 }
             }
         }
-        .hotel-body-info {
-            // height: 3000px;
+        .detail-body-info {
             display: grid;
             grid-template-columns: vw(920px) vw(456px);
-
             gap: vw(24px);
-            // margin-top: vw(30px);
-            .left {
+            .detail-left {
                 box-sizing: border-box;
-                // background-color: $white;
                 .detail-title {
                     width: 100%;
                     height: vw(330px);
@@ -237,11 +230,11 @@
                                 &-body {
                                     p {
                                         display: -webkit-box;
-                                        -webkit-line-clamp: 4; // 최대 4줄
+                                        -webkit-line-clamp: 4;
                                         -webkit-box-orient: vertical;
                                         overflow: hidden;
                                         text-overflow: ellipsis;
-                                        white-space: normal; // 줄바꿈 허용
+                                        white-space: normal;
                                     }
                                 }
                             }
@@ -249,7 +242,6 @@
                     }
                 }
                 .detail-data {
-                    border: 1px solid #000;
                     width: 100%;
                     &-tab {
                         padding-top: vw(55px);
@@ -274,34 +266,48 @@
                             width: vw(920px);
                         }
                     }
-                    .room-select {
+                    .room-option-wrap {
                         h2 {
                         }
                         .room-filter {
+                            display: flex;
+                            gap: vw(15px);
+                            margin-bottom: vw(30px);
                             li {
+                                @include font-16px;
+                                box-sizing: border-box;
+                                padding: vw(6px) vw(15px);
+                                background-color: $greyscale-300;
+                                border-radius: vw(40px);
+                                cursor: pointer;    
                             }
                         }
-                        .room-select-wrap {
-                            .room-select-box {
+                        .room-box-list {
+                            display: flex;
+                            flex-direction: column;
+                            gap: vw(24px);
+                            .room-option-box {
                                 .room-img {
                                     .heart {
                                     }
                                 }
-                            }
-                            .room-info {
-                                width: vw(920px);
-                                height: vw(240px);
-                                border: 1px solid #000;
-                                h3 {
-                                }
-                                ul {
-                                    li {
-                                        display: flex;
-                                        align-items: center;
-                                        gap: vw(20px);
-                                        img {
-                                        }
-                                        span {
+                                .room-info {
+                                    width: vw(920px);
+                                    height: vw(240px);
+                                    border: 1px solid $greyscale-500;
+                                    border-radius: vw(10px);
+                                    h3 {
+                                        @include font-22px;
+                                    }
+                                    ul {
+                                        li {
+                                            display: flex;
+                                            align-items: center;
+                                            gap: vw(20px);
+                                            img {
+                                            }
+                                            span {
+                                            }
                                         }
                                     }
                                 }
@@ -323,85 +329,83 @@
                     }
                 }
             }
-        }
-        .right {
-            .detail-side {
-                width: 100%;
-                height: vw(460px);
-                border-radius: vw(15px);
-                background-color: grey;
-                padding: vw(40px) vw(30px);
-                border: 1px solid #c7c7c7;
-                background-color: $white;
+            .detail-right {
+                .detail-side {
+                    width: 100%;
+                    height: vw(460px);
+                    border-radius: vw(15px);
+                    background-color: grey;
+                    padding: vw(40px) vw(30px);
+                    border: 1px solid #c7c7c7;
+                    background-color: $white;
 
-                // position: sticky;
-                // top: vw(110px);
-                .box {
-                    &-thum {
-                        width: vw(60px);
-                        height: vw(55px);
-                        background-color: red;
-                        img {
+                    .box {
+                        &-thum {
+                            width: vw(60px);
+                            height: vw(55px);
+                            background-color: red;
+                            img {
+                            }
                         }
-                    }
-                    &-head {
-                        display: flex;
-                        gap: vw(25px);
-                        margin-bottom: vw(70px);
-                        strong {
-                            @include font-20px-M;
-                        }
-                    }
-                    &-option {
-                        height: vw(190px);
-                        margin-bottom: vw(10px);
-                        background-color: #f5f5f5;
-
-                        border-radius: vw(15px);
-                        padding: vw(22px);
-                        display: flex;
-                        flex-direction: column;
-                        justify-content: space-between;
-                        .people,
-                        .peop-wrap,
-                        .total-wrap {
+                        &-head {
                             display: flex;
-                            justify-content: space-between;
-                        }
-                        .people {
-                            .peop-wrap {
-                                width: vw(150px);
-                                .type {
-                                }
-                                .price {
-                                }
-                            }
-                            .step {
-                                .button {
-                                    background-color: transparent;
-                                    &.minus {
-                                    }
-                                    &.plus {
-                                    }
-                                }
-                            }
-                        }
-                        .total-wrap {
-                            padding: vw(15px) 0;
+                            gap: vw(25px);
+                            margin-bottom: vw(70px);
                             strong {
-                                @include font-20px-B;
+                                @include font-20px-M;
                             }
-                            em {
-                                @include font-24px;
+                        }
+                        &-option {
+                            height: vw(190px);
+                            margin-bottom: vw(10px);
+                            background-color: #f5f5f5;
+
+                            border-radius: vw(15px);
+                            padding: vw(22px);
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: space-between;
+                            .people,
+                            .peop-wrap,
+                            .total-wrap {
+                                display: flex;
+                                justify-content: space-between;
+                            }
+                            .people {
+                                .peop-wrap {
+                                    width: vw(150px);
+                                    .type {
+                                    }
+                                    .price {
+                                    }
+                                }
+                                .step {
+                                    .button {
+                                        background-color: transparent;
+                                        &.minus {
+                                        }
+                                        &.plus {
+                                        }
+                                    }
+                                }
+                            }
+                            .total-wrap {
+                                padding: vw(15px) 0;
+                                strong {
+                                    @include font-20px-B;
+                                }
+                                em {
+                                    @include font-24px;
+                                }
                             }
                         }
                     }
-                }
-                .btn-wrap {
-                    button {
-                        &.reserve {
-                            width: 100%;
-                            border-radius: vw(8px);
+                    .btn-wrap {
+                        button {
+                            &.reserve {
+                                width: 100%;
+                                border-radius: vw(8px);
+                            }
                         }
                     }
                 }
