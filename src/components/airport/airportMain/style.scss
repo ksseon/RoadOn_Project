@@ -73,6 +73,13 @@
     z-index: 10;
     width: 100%;
     margin: auto 0;
+    .search-title {
+      padding-top: vw(119px);
+      text-align: center;
+      @include font-28px-M;
+      color: $white;
+      margin: vw(40px) 0 vw(20px);
+    }
   }
 }
 

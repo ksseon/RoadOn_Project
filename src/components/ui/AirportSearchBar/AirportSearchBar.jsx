@@ -75,7 +75,6 @@ const AirportSearchBar = () => {
 
   return (
     <>
-      <h2 className="search-title">날짜를 선택해 예약하세요</h2>
       <div className="search-box">
         <div className="search-tabs">
           <button
