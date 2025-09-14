@@ -7,8 +7,6 @@ import { FiMinus, FiPlus } from 'react-icons/fi';
 import options from '../../../api/hotelsRoomTypeData';
 import { BsTelephone } from "react-icons/bs";
 import { MdOutlineEmail } from "react-icons/md";
-import { HiOutlineClipboardDocument } from "react-icons/hi2";
-import { CopyToClipboard } from 'react-copy-to-clipboard';
 
 import {
     Wifi,
@@ -33,13 +31,7 @@ const HotelsDetail = () => {
 
     const hotel = hotels.find((h) => h.slug === slug);
 
-    const [copied, setCopied] = useState(false);
     const [selectedRoom, setSelectedRoom] = useState(options[0]);
-
-    const handleCopySuccess = () => {
-        setCopied(true);
-        setTimeout(() => setCopied(false), 2000); // 2초 후 상태 초기화
-    };
 
     const handleRoomSelect = (roomData) => {
         setSelectedRoom(roomData);
@@ -68,7 +60,7 @@ const HotelsDetail = () => {
     };
 
     return (
-        <div className="hotel-detail">
+        <main className="hotel-detail">
             <div className="inner">
                 <section className="hotel-thum">
                     <div
@@ -207,7 +199,7 @@ const HotelsDetail = () => {
                         </div>
                 </section>
             </div>
-        </div>
+        </main>
     );
 };
 

@@ -10,6 +10,7 @@ import {
     Login,
     HotelsSearch,
     HotelsDetail,
+    HotelsPayment,
 } from '../pages';
 
 export const MyRoutes = () => {
@@ -20,8 +21,8 @@ export const MyRoutes = () => {
                     <Route index element={<Home />} />
                     <Route path="/hotels" element={<HotelsMain />} />
                     <Route path="/hotelsSearch" element={<HotelsSearch />} />
-                    {/* <Route path="/hotelsDetail" element={<HotelsDetail />} /> */}
                     <Route path="/hotels/:slug" element={<HotelsDetail />} />
+                    <Route path="/hotelsPayment" element={<HotelsPayment />} />
                     <Route path="/tour" element={<Tour />} />
                     <Route path="/airplane" element={<Airplane />} />
                     <Route path="/myPage" element={<MyPage />} />

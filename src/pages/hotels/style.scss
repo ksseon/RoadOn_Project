@@ -432,6 +432,7 @@
                 }
             }
             .detail-right {
+                
                 .detail-side {
                     width: 100%;
                     height: vw(460px);
@@ -535,5 +536,12 @@
                 }
             }
         }
+    }
+}
+
+.hotel-payment {
+    .inner {
+        display: flex;
+        gap: vw(55px);
     }
 }
