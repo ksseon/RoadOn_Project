@@ -1,11 +1,7 @@
 import { useEffect, useMemo, useRef } from 'react';
-// import useTourStore, { CATEGORY_LABELS } from '../../store/useTourStore';
-
-// 최신 Swiper 방식
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination } from 'swiper/modules';
+import { Pagination, Autoplay } from 'swiper/modules';
 import 'swiper/css';
-import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import useTourStore, { CATEGORY_LABELS } from '../../../store/tourStore';
 
@@ -24,7 +20,7 @@ const CategoryTabs = ({ active, onChange }) => (
     </div>
 );
 
-// 아이콘 매핑 (필요한 만큼 추가)
+// 아이콘 매핑
 const ICONS = {
     calendar: '/images/icon/icon-calender.png',
     airplane: '/images/icon/icon-plane.png',
@@ -46,14 +42,35 @@ const ICONS = {
     bus: '/images/icon/icon-checklist.png',
 };
 
+/** 카테고리 자동 순환 훅 */
+function useAutoRotateCategories(enabled = true, intervalMs = 8000) {
+    const activeCategory = useTourStore((s) => s.activeCategory);
+    const setCategory = useTourStore((s) => s.setCategory);
+    const timerRef = useRef(null);
+
+    useEffect(() => {
+        if (!enabled) return;
+        clearInterval(timerRef.current);
+        timerRef.current = setInterval(() => {
+            const idx = CATEGORY_LABELS.indexOf(activeCategory);
+            const next = CATEGORY_LABELS[(idx + 1) % CATEGORY_LABELS.length];
+            setCategory(next);
+        }, intervalMs);
+        return () => clearInterval(timerRef.current);
+    }, [enabled, intervalMs, activeCategory, setCategory]);
+}
+
 export default function TourMainCon2({
     initialCategory = '예능',
     initialIndex = 0,
-    initialTourId, // 있으면 해당 투어로 이동(블랙핑크는 기본 제외라 매칭 안 됨)
+    initialTourId,
+    autoRotateCategories = true, // 카테고리 자동 순환 on/off
+    categoryIntervalMs = 8000, // 카테고리 전환 간격
+    slideDelayMs = 3500, // 슬라이드 자동 전환 간격
 }) {
     const swiperRef = useRef(null);
 
-    // Zustand state/selectors
+    // Zustand
     const activeCategory = useTourStore((s) => s.activeCategory);
     const activeIndex = useTourStore((s) => s.activeIndex);
     const tours = useTourStore((s) => s.tours);
@@ -61,21 +78,22 @@ export default function TourMainCon2({
     const setCategory = useTourStore((s) => s.setCategory);
     const setIndex = useTourStore((s) => s.setIndex);
 
-    // 카테고리 + 제외 반영된 현재 슬라이드 목록
-    const slides = useMemo(() => {
-        return tours.filter((t) => !excludedIds.has(t.id) && t.category === activeCategory);
-    }, [tours, excludedIds, activeCategory]);
+    // 카테고리 자동 순환
+    useAutoRotateCategories(autoRotateCategories, categoryIntervalMs);
+
+    // 현재 카테고리의 슬라이드들
+    const slides = useMemo(
+        () => tours.filter((t) => !excludedIds.has(t.id) && t.category === activeCategory),
+        [tours, excludedIds, activeCategory]
+    );
 
     // 초기 세팅
     useEffect(() => {
-        // 1) 초기 카테고리
         setCategory(initialCategory);
 
-        // 2) 특정 tourId로 열기 (제외 대상이면 무시)
         if (initialTourId) {
             const target = tours.find((t) => t.tourId === initialTourId && !excludedIds.has(t.id));
             if (target) {
-                // 해당 카테고리로 전환 후 인덱스 계산
                 setTimeout(() => {
                     setCategory(target.category);
                     const idx = tours
@@ -90,7 +108,6 @@ export default function TourMainCon2({
             }
         }
 
-        // 3) 단순 인덱스로 시작
         setTimeout(() => {
             setIndex(initialIndex);
             swiperRef.current?.swiper?.slideTo(initialIndex, 0);
@@ -109,6 +126,7 @@ export default function TourMainCon2({
 
     const current = slides[activeIndex];
     const bgUrl = current?.backgroundImg || '';
+    const enableLoop = slides.length > 1;
 
     return (
         <section
@@ -120,23 +138,26 @@ export default function TourMainCon2({
             }}
         >
             <div className="inner">
-                {/* 카테고리 버튼 */}
                 <CategoryTabs active={activeCategory} onChange={handleCategoryChange} />
 
-                {/* 메인 슬라이더 */}
                 <Swiper
+                    key={activeCategory} // 카테고리 바뀔 때 Swiper 재초기화
                     ref={swiperRef}
                     className="main-section-wrap"
-                    modules={[Navigation, Pagination]}
-                    navigation
+                    modules={[Pagination, Autoplay]} // 화살표 X, 자동 슬라이드 O
                     pagination={{ clickable: true }}
+                    autoplay={{
+                        delay: slideDelayMs,
+                        disableOnInteraction: false,
+                        pauseOnMouseEnter: true,
+                    }}
+                    loop={enableLoop}
                     onSlideChange={handleSlideChange}
                     speed={550}
                 >
                     {slides.map((item) => (
                         <SwiperSlide key={item.id}>
                             <article className="main-section-wrap">
-                                {/* 제목/설명 */}
                                 <section className="title-section">
                                     <div className="txt-box">
                                         <strong>{item.title}</strong>
@@ -144,7 +165,6 @@ export default function TourMainCon2({
                                         <p>“{item.description}”</p>
                                     </div>
 
-                                    {/* 아이콘 요약 */}
                                     <div className="icons-wrap">
                                         {(item.benefits || []).slice(0, 5).map((b, i) => (
                                             <div className="icon-box" key={`${item.id}-b-${i}`}>
@@ -160,7 +180,6 @@ export default function TourMainCon2({
                                     </div>
                                 </section>
 
-                                {/* 이미지 */}
                                 <section className="img-section">
                                     <div className="img-wrap">
                                         <img src={item.posterImg} alt={item.slug || item.id} />
@@ -171,7 +190,6 @@ export default function TourMainCon2({
                     ))}
                 </Swiper>
 
-                {/* 자세히 보기 */}
                 <div className="more-wrap">
                     <button
                         className="button more o"

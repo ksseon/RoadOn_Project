@@ -1,1 +1,62 @@
-@use '../../styles/utils' as *;
+@use '../../../styles/utils/' as *;
+
+#reserve {
+    .mypage-title {
+        margin-bottom: vw(30px);
+    }
+    .reserve-table {
+        &-wrap {
+            margin-top: vw(50px);
+            colgroup {
+                col {
+                    &:nth-child(1) {
+                        width: vw(140px);
+                    }
+                    &:nth-child(2) {
+                        width: vw(160px);
+                    }
+                    &:nth-child(3) {
+                        width: vw(350px);
+                    }
+                    &:nth-child(4) {
+                        width: vw(150px);
+                    }
+                    &:nth-child(5) {
+                        width: vw(140px);
+                    }
+                    &:nth-child(6) {
+                        width: vw(160px);
+                    }
+                    &:nth-child(7) {
+                        width: vw(110px);
+                    }
+                }
+            }
+        }
+        thead {
+            background-color: #fafafa;
+            @include font-20px-B;
+            height: vw(50px);
+            tr {
+                padding: vw(10px);
+                th {
+                    vertical-align: middle;
+                }
+            }
+        }
+        tbody {
+            tr {
+                height: vw(90px);
+                border-bottom: 1px solid $greyscale-400;
+
+                td {
+                    vertical-align: middle;
+                    @include font-18px-M;
+                    text-align: center;
+                    &:nth-child(3) {
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,1 +1,10 @@
-@use '../../styles/utils' as *;
+@use '../../../styles/utils/' as *;
+
+#wish-list {
+    margin-top: vw(170px);
+    .wish-list-main {
+        &-wrap {
+            margin-top: vw(30px);
+        }
+    }
+}
