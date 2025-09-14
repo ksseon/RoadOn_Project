@@ -1,85 +1,70 @@
-import "../style.scss";
-import hotelData from "../../../api/hotelsListData";
-import useHotelStore from "../../../store/hotelStore";
+import "./style.scss";
+import useAirportStore from "../../../store/airportStore";
 import { useNavigate } from "react-router-dom";
 
-const AirportBox = ({ hotelId }) => {
-  const getHotelById = useHotelStore((state) => state.getHotelById);
-  const hotel = getHotelById(hotelId);
+const AirportBox = ({ airportId }) => {
+  const getAirportById = useAirportStore((state) => state.getAirportById);
+  const airport = getAirportById(airportId);
   const navigate = useNavigate();
 
-  if (!hotel) {
-    return <div>호텔 정보를 찾을 수 없습니다.</div>;
+  if (!airport) {
+    return <div>항공권 정보를 찾을 수 없습니다.</div>;
   }
 
-  const handleHotelClick = () => {
-    navigate(`/hotels/${hotel.slug}`);
+  const handleAirportClick = () => {
+    navigate(`/airports/${airport.slug}`);
   };
-
-  const calculateStarRating = (rate) => {
-    const roundedRate = Math.floor(rate * 2) / 2;
-
-    if (roundedRate < 1) return 0;
-    if (roundedRate < 1.5) return 1;
-    if (roundedRate < 2) return 1.5;
-    if (roundedRate < 2.5) return 2;
-    if (roundedRate < 3) return 2.5;
-    if (roundedRate < 3.5) return 3;
-    if (roundedRate < 4) return 3.5;
-    if (roundedRate < 4.5) return 4;
-    if (roundedRate < 5) return 4.5;
-    return 5;
-  };
-
-  const getStarImageName = (rating) => {
-    if (rating === 0) return "star-0-5.svg";
-    return `star-${rating.toString().replace(".", "-")}.svg`;
-  };
-
-  const starRating = calculateStarRating(hotel.rate);
-  const starImageName = getStarImageName(starRating);
 
   return (
     <div
-      className="hotel-box"
-      onClick={handleHotelClick}
+      className="airport-box"
+      onClick={handleAirportClick}
       style={{ cursor: "pointer" }}
     >
-      <div className="hotel-image">
-        <span className="heart"></span>
+      {/* 항공사 */}
+      <div className="airline">
+        <div className="logo">
+          {airport.logo ? (
+            <img src={airport.logo} alt={airport.airline} />
+          ) : (
+            <span className="placeholder" />
+          )}
+        </div>
+        <div className="info">
+          <p className="name">{airport.airline}</p>
+          <p className="code">{airport.flightNo}</p>
+        </div>
       </div>
-      <div className="hotel-info">
-        <div className="info-top">
-          <div className="top-title">
-            <span>
-              {hotel.type} {hotel.star}
-            </span>
-            <h4>{hotel.name}</h4>
-          </div>
-          <div className="rate">
-            <img
-              // src={`../../../public/images/hotels/detail/${starImageName}`}
-              src={`../../../public/images/hotels/detail/star_rate.svg`}
-              alt={`${starRating}점`}
-            />
-            <span>
-              {hotel.rate} ({hotel.reviewCount})
-            </span>
-          </div>
+
+      {/* 출발 */}
+      <div className="departure">
+        <p className="date">{airport.departureDate}</p>
+        <p className="time">{airport.departureTime}</p>
+        <p className="airport">{airport.departureAirport}</p>
+      </div>
+
+      {/* 비행 정보 */}
+      <div className="airport-info">
+        <div className="timeline">
+          <p className="duration">{airport.duration}</p>
+          <img
+            src="../../../../public/images/airport/timeline.png"
+            className="timeline-img"
+          />
+          <p className="direct">{airport.direct ? "직항" : "경유"}</p>
         </div>
-        <div className="info-bottom">
-          <div className="bottom-location">
-            <img
-              src="../../../public/images/hotels/search/map_pin.svg"
-              alt=""
-            />
-            <span>{hotel.location}</span>
-          </div>
-          <div className="bottom-price">
-            <span>2박, 성인 2명</span> {/* 검색창이랑 연결 */}
-            <strong>{hotel.price.toLocaleString()}원</strong>
-          </div>
-        </div>
+      </div>
+
+      {/* 도착 */}
+      <div className="arrival">
+        <p className="date">{airport.arrivalDate}</p>
+        <p className="time">{airport.arrivalTime}</p>
+        <p className="airport">{airport.arrivalAirport}</p>
+      </div>
+
+      {/* 가격 */}
+      <div className="price">
+        <p>{airport.price.toLocaleString()}원</p>
       </div>
     </div>
   );

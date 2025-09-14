@@ -6,7 +6,7 @@ import "./style.scss";
 import { FiX, FiCalendar, FiPlus, FiSearch } from "react-icons/fi";
 import { MdOutlinePersonOutline } from "react-icons/md";
 
-const AirportSearchBar = () => {
+const AirportSearchBarList = () => {
   const [mode, setMode] = useState("roundtrip");
   const [people, setPeople] = useState(2);
   const [seat, setSeat] = useState("일반석");
@@ -74,7 +74,7 @@ const AirportSearchBar = () => {
     );
 
   return (
-    <div className="airport-searchbar">
+    <div className="airport-searchbarlist">
       <div className="search-box">
         <div className="search-tabs">
           <button
@@ -395,4 +395,4 @@ const AirportSearchBar = () => {
   );
 };
 
-export default AirportSearchBar;
+export default AirportSearchBarList;

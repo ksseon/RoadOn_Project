@@ -1,36 +1,31 @@
-// import ModalDemo from '../../components/ui/modal/Modal';
-import Filter from "../../../components/hotels/hotelsSearch/Filter";
-import HotelBox from "../../../components/hotels/hotelsSearch/hotelBox";
-import MapModal from "../../../components/hotels/hotelsSearch/MapModal";
-import SearchBar from "../../../components/ui/SearchBar/SearchBar";
-import useHotelStore from "../../../store/hotelStore";
+import AirportSearchBarList from "../../../components/ui/AirportSearchBarList/AirportSearchBarList";
+import Filter from "../../../components/airport/airportSearch/Filter";
+import AirportBox from "../../../components/airport/airportSearch/AirportBox";
+import useAirportStore from "../../../store/airportStore";
 import "../style.scss";
 
-function hotelsSearch() {
-  const hotels = useHotelStore((state) => state.hotels);
+const AirportSearch = () => {
+  const airports = useAirportStore((state) => state.airports);
+
   return (
-    <main className="hotel">
-      <SearchBar />
+    <main className="airport">
+      <AirportSearchBarList />
       <div className="inner">
         <Filter />
         <div className="list-wrap">
           <div className="list-top">
-            <p>총 {hotels.length}개 숙소</p> {/* js로 숙소 개수 추가 */}
+            <p>총 {airports.length}개 항공권</p>
             <div className="sort"></div>
           </div>
           <div className="list-box">
-            {/* 컴포넌트로 빼기 */}
-            {hotels.map((hotel) => (
-              <HotelBox
-                key={hotel.id}
-                hotelId={hotel.id} // HotelBox에 전달
-              />
+            {airports.map((airport) => (
+              <AirportBox key={airport.id} airportId={airport.id} />
             ))}
           </div>
         </div>
       </div>
     </main>
   );
-}
+};
 
-export default hotelsSearch;
+export default AirportSearch;

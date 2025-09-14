@@ -11,7 +11,6 @@ import {
   HotelsSearch,
   HotelsDetail,
   AirportSearch,
-  // AirportSearch,
 } from "../pages";
 
 export const MyRoutes = () => {

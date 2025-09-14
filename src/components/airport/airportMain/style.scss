@@ -366,13 +366,13 @@
         box-shadow: 0 vw(6px) vw(12px) rgba(0, 0, 0, 0.1);
       }
       &.card1 {
-        background-color: #ecfbfe;
+        background-color: #e1f2f8;
       }
       &.card2 {
-        background-color: #d4e3ff;
+        background-color: #e3edff;
       }
       &.card3 {
-        background-color: #ffebac;
+        background-color: #e2e8ff;
       }
       p {
         @include font-20px-M;

@@ -1,13 +1,10 @@
-import "./style.scss";
 import AirportSearchBar from "../../../components/ui/AirportSearchBar/AirportSearchBar";
 
 const AirportCon1 = () => {
   return (
     <section className="airport-main-con airport-main-con1">
       <div className="visual-bg"></div>
-
       <div className="inner">
-        {" "}
         <h2 className="search-title">날짜를 선택해 예약하세요</h2>
         <AirportSearchBar />
       </div>

@@ -1,100 +1,296 @@
-@use "../../styles/utils" as *;
+@use "../../../styles/utils" as *;
 
-.modal_wrap {
-  width: vw(1500px);
-  height: vw(800px);
-  background-color: #fff;
-  border-radius: vw(10px);
-}
-
-.list-wrap {
-  .list-top {
-    p {
-      @include font-24px-M;
-      margin-bottom: vw(60px);
-    }
-    .sort {
-    }
-  }
-  .list-box {
+// 왼쪽 필터
+.airport {
+  width: 100%;
+  margin-top: vw(260px);
+  .inner {
+    padding: 100px 0;
     display: flex;
-    flex-direction: column;
-    gap: vw(20px);
-    .hotel-box {
-      width: vw(1060px);
-      height: vw(280px);
-      border: vw(1px) solid $greyscale-600;
-      border-radius: vw(10px);
-      display: flex;
-      gap: vw(40px);
-      padding: vw(20px) vw(24px);
-      box-sizing: border-box;
-      cursor: pointer;
-      .hotel-image {
-        width: vw(290px);
-        height: vw(240px);
-        background-color: #333;
-        border-radius: vw(4px);
-        .heart {
+    gap: 40px;
+    .filter-wrap {
+      width: vw(300px);
+      .event-modal {
+        margin: 0 auto;
+        margin-bottom: vw(48px);
+        .swiper-slide {
+          display: flex;
+          justify-content: center;
+          align-items: center;
         }
-      }
-      .hotel-info {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        .info-top {
-          margin-top: vw(15px);
-          .top-title {
-            margin-bottom: vw(15px);
-            span {
-              color: $greyscale-1100;
-              @include font-18px-M;
-              display: block;
-              // margin-bottom: vw(6px);
-            }
-            h4 {
-              @include font-24px-M;
-            }
-          }
-          .rate {
-          }
-        }
-        .info-bottom {
+        .event-card {
+          height: vw(140px);
+          border-radius: vw(12px);
+          padding: vw(20px);
           display: flex;
           justify-content: space-between;
-          align-items: flex-end;
-          width: vw(655px);
-          margin-bottom: vw(15px);
-          .bottom-location {
-            display: flex;
-            gap: vw(6px);
-            align-items: center;
-            margin-bottom: vw(8px);
-            img {
-            }
-            span {
-              @include font-20px;
-            }
+          align-items: center;
+          p {
+            @include font-16px;
+            color: $default;
+            line-height: 1.5;
           }
-          .bottom-price {
-            text-align: right;
-            span {
-              display: block;
-              @include font-20px-M;
-              color: $greyscale-1000;
-            }
-            strong {
-              display: block;
-              @include font-30px-SB;
+          img {
+            width: vw(48px);
+            object-fit: contain;
+          }
+        }
+
+        // 네비게이션 버튼 조정 (화살표 카드 밖으로 밀기)
+        .swiper-button-prev,
+        .swiper-button-next {
+          color: transparent;
+        }
+      }
+      .filter {
+        .filtering {
+          margin-bottom: vw(48px);
+          p {
+            @include font-20px-M;
+            margin-bottom: vw(24px);
+          }
+          ul {
+            margin-left: vw(20px);
+            li {
+              @include font-16px;
+              display: flex;
+              align-items: center;
+              gap: vw(12px);
+              color: $default;
+              span {
+                width: vw(14px);
+                height: vw(14px);
+                display: inline-block;
+                border: vw(1px) solid $default;
+                border-radius: vw(3px);
+              }
             }
           }
         }
+      }
+
+      .type {
+        .type-title {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          .redo {
+            color: $greyscale-1000;
+            @include font-16px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: vw(6px);
+            margin-bottom: vw(24px);
+          }
+        }
+
+        ul {
+          margin-left: vw(20px);
+          display: flex;
+          flex-direction: column;
+          gap: vw(10px);
+        }
+      }
+
+      .star {
+        ul {
+          display: flex;
+          flex-wrap: wrap;
+          gap: vw(12px);
+
+          li {
+            padding: vw(6px) vw(15px);
+            box-sizing: border-box;
+            border-radius: vw(40px);
+            border: 1px solid $greyscale-1000;
+            cursor: pointer;
+          }
+        }
+      }
+      .service {
+        ul {
+          display: flex;
+          flex-wrap: wrap;
+          gap: vw(12px);
+
+          li {
+            padding: vw(6px) vw(15px);
+            box-sizing: border-box;
+            border-radius: vw(40px);
+            border: 1px solid $greyscale-1000;
+            cursor: pointer;
+          }
+        }
+      }
+      .discount {
+        ul {
+          display: flex;
+          flex-direction: column;
+          gap: vw(10px); // 항목 간격
+
+          li {
+            display: flex;
+            align-items: center;
+            gap: vw(8px);
+
+            span {
+              width: vw(14px);
+              height: vw(14px);
+              display: inline-block;
+              border: vw(1px) solid #353535;
+              border-radius: vw(3px);
+            }
+            strong {
+              @include font-16px;
+              color: $default;
+            }
+          }
+        }
+      }
+
+      .list-wrap {
+        width: 55.2083vw;
+        border: 1px solid $default;
+
+        .list-top {
+        }
+
+        .list-box {
+          display: flex;
+          flex-direction: column;
+          gap: vw(20px);
+        }
+      }
+    }
+  }
+
+  @include tablet {
+    .about {
+      .inner {
+        padding: 2rem 0;
+      }
+      h2 {
+        font-size: 2rem;
       }
     }
   }
 }
 
-.reco-box {
-  width: vw(326px);
-  height: vw(500px);
+// 오른쪽 항공정보
+.airport-box {
+  display: grid;
+  grid-template-columns: 1.5fr 1.2fr 1fr 1.2fr auto; // 항공사 / 출발 / 비행정보 / 도착 / 가격
+  align-items: center;
+  gap: vw(10px);
+  width: vw(1050px);
+  height: vw(280px);
+  padding: vw(35px);
+  border: 1px solid $greyscale-500;
+  border-radius: vw(15px);
+  background: #fff;
+  box-shadow: 0 vw(2px) vw(6px) rgba(0, 0, 0, 0.05);
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 vw(6px) vw(14px) rgba(0, 0, 0, 0.1);
+  }
+
+  /* 항공사 */
+  .airline {
+    display: flex;
+    align-items: center;
+    gap: vw(25px);
+    .logo {
+      width: vw(80px);
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+      .placeholder {
+        display: block;
+        width: 100%;
+        height: 100%;
+        background: $greyscale-200;
+        border-radius: 50%;
+      }
+    }
+    .info {
+      text-align: left;
+      .name {
+        @include font-24px-M;
+      }
+      .code {
+        @include font-16px;
+        color: $greyscale-700;
+        margin-top: vw(10px);
+      }
+    }
+  }
+
+  /* 출발, 도착 */
+  .departure,
+  .arrival {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: vw(20px);
+
+    .date {
+      @include font-16px;
+      color: $greyscale-700;
+    }
+    .time {
+      @include font-28px-M;
+    }
+    .airport {
+      @include font-14px;
+      color: $greyscale-800;
+      margin: 0;
+      text-align: center;
+    }
+  }
+
+  /* 비행 경로 (타임라인 + 직항/경유) */
+  .airport-info {
+    text-align: center;
+    .timeline {
+      align-items: center;
+      gap: vw(8px); // 점·라인 사이 간격
+      margin-bottom: vw(6px);
+
+      .dot {
+        width: vw(6px);
+        height: vw(6px);
+        background: $greyscale-500;
+        border-radius: 50%;
+      }
+
+      .line {
+        flex: 1;
+        height: 1px;
+        background: $greyscale-400;
+      }
+
+      .duration {
+        @include font-18px;
+        color: $greyscale-900;
+        white-space: nowrap;
+      }
+    }
+
+    .direct {
+      @include font-18px-M;
+      color: $mint;
+    }
+  }
+
+  /* 가격 */
+  .price {
+    text-align: right;
+    @include font-28px-M;
+    color: $default;
+  }
 }
