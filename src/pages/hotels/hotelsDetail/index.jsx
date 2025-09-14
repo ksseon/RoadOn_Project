@@ -8,6 +8,7 @@ import options from '../../../api/hotelsRoomTypeData';
 import { BsTelephone } from "react-icons/bs";
 import { MdOutlineEmail } from "react-icons/md";
 import { HiOutlineClipboardDocument } from "react-icons/hi2";
+import { CopyToClipboard } from 'react-copy-to-clipboard';
 
 import {
     Wifi,
@@ -22,12 +23,27 @@ import {
     Bbq,
 } from '../../../components/hotels/hotelsDetail/hotelsService';
 import RoomOption from '../../../components/hotels/hotelsDetail/RoomOption';
+import { useState } from 'react';
+import Policies from '../../../components/hotels/hotelsDetail/Policies';
+import Location from '../../../components/hotels/hotelsDetail/Location';
 
 const HotelsDetail = () => {
     const { slug } = useParams(); // URL에서 slug 가져오기
     const hotels = useHotelStore((state) => state.hotels);
 
     const hotel = hotels.find((h) => h.slug === slug);
+
+    const [copied, setCopied] = useState(false);
+    const [selectedRoom, setSelectedRoom] = useState(options[0]);
+
+    const handleCopySuccess = () => {
+        setCopied(true);
+        setTimeout(() => setCopied(false), 2000); // 2초 후 상태 초기화
+    };
+
+    const handleRoomSelect = (roomData) => {
+        setSelectedRoom(roomData);
+    };
 
     if (!hotel) {
         return (
@@ -76,135 +92,119 @@ const HotelsDetail = () => {
                 </section>
                 <section className="detail-body-info">
                     <div className="detail-left">
-                        <section className="detail-title">
-                            <article className="detail-title-head">
-                                <em>
-                                    {hotel.type} {hotel.star}
-                                </em>
-                                <h3>{hotel.name}</h3>
-                                <b>{hotel.engName}</b>
-                                <p className="rate">
-                                    <img src={`/images/hotels/detail/icon/star_rate.svg`} alt={`별점`} />
-                                    {hotel.rate} ({hotel.reviewCount})
-                                </p>
-                            </article>
-                            <section className="detail-reviews">
-                                <ul className="list">
-                                    {/* <DetailReviewsItem />
-                                <DetailReviewsItem />
-                                <DetailReviewsItem /> */}
-                                </ul>
+                            <section className="detail-title">
+                                <article className="detail-title-head">
+                                    <em>
+                                        {hotel.type} {hotel.star}
+                                    </em>
+                                    <h3>{hotel.name}</h3>
+                                    <b>{hotel.engName}</b>
+                                    <p className="rate">
+                                        <img src={`/images/hotels/detail/icon/star_rate.svg`} alt={`별점`} />
+                                        {hotel.rate} ({hotel.reviewCount})
+                                    </p>
+                                </article>
+                                <section className="detail-reviews">
+                                    <ul className="list">
+                                        {/* <DetailReviewsItem />
+                                    <DetailReviewsItem />
+                                    <DetailReviewsItem /> */}
+                                    </ul>
+                                </section>
                             </section>
-                        </section>
-                        <section className="detail-data">
-                            <section className="detail-data-tab">
-                                <div className="detail-data-tab-btns-wrap">
-                                    <button className="building on">시설/서비스</button>
-                                    <button className="room-option">객실 선택</button>
-                                    <button className="hotel-info">숙소 정보</button>
-                                    <button className="location">위치</button>
-                                    <button className="reviews">리뷰</button>
+                            <section className="detail-data">
+                                <section className="detail-data-tab">
+                                    <div className="detail-data-tab-btns-wrap">
+                                        <button className="building on">시설/서비스</button>
+                                        <button className="room-option">객실 선택</button>
+                                        <button className="hotel-info">숙소 정보</button>
+                                        <button className="location">위치</button>
+                                        <button className="reviews">리뷰</button>
+                                    </div>
+                                </section>
+                                <div className="con con1 building">
+                                    <h2>시설/서비스</h2>
+                                    <ul className="services-list">
+                                        {hotel.service.map((serviceName, index) => {
+                                            const ServiceComponent = serviceComponentMap[serviceName];
+                                            return ServiceComponent ? (
+                                                <ServiceComponent key={index} />
+                                            ) : (
+                                                <li key={index} className="service-icon">
+                                                    <span>{serviceName}</span>
+                                                </li>
+                                            );
+                                        })}
+                                    </ul>
                                 </div>
-                            </section>
-                            <div className="con con1 building">
-                                <h2>시설/서비스</h2>
-                                <ul className="services-list">
-                                    {hotel.service.map((serviceName, index) => {
-                                        const ServiceComponent = serviceComponentMap[serviceName];
-                                        return ServiceComponent ? (
-                                            <ServiceComponent key={index} />
-                                        ) : (
-                                            <li key={index} className="service-icon">
-                                                <span>{serviceName}</span>
-                                            </li>
-                                        );
-                                    })}
-                                </ul>
-                            </div>
-                            <div className="con advertise">
-                                <img
-                                    src="/images/hotels/detail/login_first.png"
-                                    alt="login_first.png"
-                                />
-                            </div>
-                            <div className="con con2 room-option-wrap">
-                                <h2>객실 선택</h2>
-                                <ul className="room-filter">
-                                    <li>조식 포함</li>
-                                    <li>무료 취소</li>
-                                </ul>
-                               <div className="room-box-list">
+                                <div className="con advertise">
+                                    <img
+                                        src="/images/hotels/detail/login_first.png"
+                                        alt="login_first.png"
+                                    />
+                                </div>
+                                <div className="con con2 room-option-wrap">
+                                    <h2>객실 선택</h2>
+                                    <ul className="room-filter">
+                                        <li>조식 포함</li>
+                                        <li>무료 취소</li>
+                                    </ul>
+                                <div className="room-box-list">
                                     {options.map((option) => (
-                                        <RoomOption key={option.id} roomData={option} />
+                                        <RoomOption 
+                                            key={option.id} 
+                                            roomData={option} 
+                                            onSelect={handleRoomSelect}
+                                            isSelected={selectedRoom.id === option.id}
+                                        />
                                     ))}
                                 </div>
-                            </div>
-                            <div className="con con3 hotel-info-wrap">
-                                <h2>숙소 정보</h2>
-                                <p>{hotel.about}</p>
-                                <div className="contact">
-                                    <span><BsTelephone /> {hotel.phone}</span>
-                                    <span><MdOutlineEmail /> {hotel.mail}</span>
                                 </div>
-                            </div>
-                            <div className="con con4 hotel-policies-wrap">
-                                <h2>숙소 규정</h2>
-                                <ul className="follows">
-                                    <li>{hotel.policies[0]}</li>
-                                    <li>{hotel.policies[1]}</li>
-                                    <li>{hotel.policies[2]}</li>
-                                    <li>{hotel.policies[3]}</li>
-                                    <li>{hotel.policies[4]}</li>
-                                </ul>
-                            </div>
-                            <div className="con con5 hotel-cancel-wrap">
-                                    <h2>취소/변경 안내</h2>
-                                    <ul className="follows">
-                                        <li>{hotel.cancellation[0]}</li>
-                                        <li>{hotel.cancellation[1]}</li>
-                                        <li>{hotel.cancellation[2]}</li>
-                                    </ul>
-                            </div>
-                            <div className="con con6 hotel-location-wrap">
-                                <h2>위치</h2>
-                                <div className="hotel-map">
-                                    <iframe
-                                    width="100%"
-                                    height="400"
-                                    frameBorder="0"
-                                    style={{ border: 0 }}
-                                    src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyAqhJ-A1LpQ9SWq7t2G1NDu9PrOz4z6z-Y&q=${encodeURIComponent(hotel.address || hotel.location)}`}
-                                    allowFullScreen
-                                />
+                                <div className="con con3 hotel-info-wrap">
+                                    <h2>숙소 정보</h2>
+                                    <p>{hotel.about}</p>
+                                    <div className="contact">
+                                        <span><BsTelephone /> {hotel.phone}</span>
+                                        <span><MdOutlineEmail /> {hotel.mail}</span>
+                                    </div>
                                 </div>
-                                <p>{hotel.address} <span><HiOutlineClipboardDocument /></span></p>
-                                <ul className="landmarks">
-                                    <li>{hotel.landmark[0]}</li>
-                                    <li>{hotel.landmark[1]}</li>
-                                    <li>{hotel.landmark[2]}</li>
-                                </ul>
-                            </div>
-                        </section>
-                    </div>
-                    <div className="detail-right">
-                        <section className="detail-side">
-                            <div className="box-head">
-                                <div className="box-thum">{/* <img src="" alt="" /> */}</div>
-                                <strong>{hotel.name}</strong>
-                            </div>
-                            <div className="box-option">
-                                
-                                
-                                <div className="total-wrap">
-                                    <strong>총액</strong>
-                                    <em>{hotel.price.toLocaleString()}원</em> {/* 곱하기 박 수*/}
+                                <div className="con con4 hotel-policies-wrap">
+                                    <Policies hotel={hotel}/>
                                 </div>
-                            </div>
-                            <div className="btn-wrap">
-                                <button className="button large o reserve">예약하기</button>
-                            </div>
-                        </section>
-                    </div>
+                                <div className="con con5 hotel-cancel-wrap">
+                                        <h2>취소/변경 안내</h2>
+                                        <ul className="follows">
+                                            <li>{hotel.cancellation[0]}</li>
+                                            <li>{hotel.cancellation[1]}</li>
+                                            <li>{hotel.cancellation[2]}</li>
+                                        </ul>
+                                </div>
+                                <div className="con con6 hotel-location-wrap">
+                                    <Location hotel={hotel}/>
+                                </div>
+                            </section>
+                        </div>
+                         <div className="detail-right">
+                            <section className="detail-side">
+                                <div className="box-head">
+                                    <div className="box-thum"><img src={`/images/hotels/detail/roomOptions/${selectedRoom.image[0]}`} alt="" /></div>
+                                    <div className="box-select">
+                                        <strong>{selectedRoom.name}</strong>
+                                        <span>기준 {selectedRoom.party}인 / 최대 {selectedRoom.party}인</span>
+                                        <p>{selectedRoom.price.toLocaleString()}원 / 박</p>
+                                    </div>
+                                </div>
+                                <div className="box-option">
+                                    <div className="total-wrap">
+                                        <strong>총액</strong>
+                                        <em>{selectedRoom.price.toLocaleString()}원</em>
+                                    </div>
+                                </div>
+                                <div className="btn-wrap">
+                                    <button className="button large o reserve">예약하기</button>
+                                </div>
+                            </section>
+                        </div>
                 </section>
             </div>
         </div>

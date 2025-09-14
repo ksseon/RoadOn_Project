@@ -206,3 +206,22 @@
            }
         }
     }
+
+.follows {
+                            margin-left: vw(16px);
+                            li {
+                                position: relative;
+                                &::before {
+                                    content: '';
+                                    display: block;
+                                    width: vw(4px);
+                                    height: vw(4px);
+                                    border-radius: 100%;
+                                    background-color: $greyscale-1200;
+                                    position: absolute;
+                                    top: 50%;
+                                    transform: translateY(-50%);
+                                    transform: translateX(vw(-60px))
+                                }
+                            }
+                        }

@@ -2,9 +2,17 @@ import '../style.scss'
 import { BsPeople } from "react-icons/bs";
 import { IoBedOutline } from "react-icons/io5";
 
-const RoomOption = ({ roomData }) => {
+const RoomOption = ({ roomData, onSelect, isSelected }) => {
+    const handleClick = () => {
+        onSelect(roomData);
+    };
+
     return (        
-            <div className="room-option-box">    
+           <div 
+            className={`room-option-box ${isSelected ? 'selected' : ''}`}
+            onClick={handleClick}
+            style={{ cursor: 'pointer' }}
+        >  
                 <div className="room-option-img">
                     <img src={`/images/hotels/detail/roomOptions/${roomData.image[0]}`} alt="" />
                 </div>

@@ -7,7 +7,7 @@ import { FiX, FiCalendar, FiPlus } from 'react-icons/fi';
 import { IoSearch } from 'react-icons/io5';
 import { MdOutlinePersonOutline } from 'react-icons/md';
 
-const AirportCon1 = () => {
+const HotelsMainCon1 = () => {
     const [mode, setMode] = useState('roundtrip');
     const [people, setPeople] = useState(2);
     const [seat, setSeat] = useState('일반석');
@@ -70,7 +70,7 @@ const AirportCon1 = () => {
 
     return (
         <section className="airport-main-con airport-main-con1">
-            <div className="visual-bg-ap">
+            <div className="visual-bg-ht">
                 <div className="inner">
                     <h2 className="search-title">날짜를 선택해 예약하세요</h2>
 
@@ -421,4 +421,4 @@ const AirportCon1 = () => {
     );
 };
 
-export default AirportCon1;
+export default HotelsMainCon1;
