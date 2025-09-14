@@ -10,6 +10,7 @@ import {
   Login,
   HotelsSearch,
   HotelsDetail,
+  AirportSearch,
   // AirportSearch,
 } from "../pages";
 
@@ -25,7 +26,7 @@ export const MyRoutes = () => {
           <Route path="/hotels/:slug" element={<HotelsDetail />} />
           <Route path="/tour" element={<Tour />} />
           <Route path="/airplane" element={<Airplane />} />
-          {/* <Route path="/airPortSearch" element={<AirportSearch />} /> */}
+          <Route path="/airportSearch" element={<AirportSearch />} />
           <Route path="/myPage" element={<MyPage />} />
           <Route path="/login" element={<Login />} />
           <Route path="/*" element={<NotFiles />} />
