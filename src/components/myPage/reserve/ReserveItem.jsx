@@ -6,9 +6,12 @@ const ReserveItem = () => {
                 <strong>JKP140251013TWN</strong>
             </td>
             <td data-label="상품명">
-                <div className="product-name ellipsis-1">
+                <div className="product-name ellipsis-2">
                     [초특별정] 규슈 4일 #가이드팁포함 #유유자적 온천관광소 #인기
-                    NO.1히타/벳푸온천관광...
+                    NO.1히타/벳푸온천관광[초특별정] 규슈 4일 #가이드팁포함 #유유자적 온천관광소
+                    #인기 NO.1히타/벳푸온천관광[초특별정] 규슈 4일 #가이드팁포함 #유유자적
+                    온천관광소 #인기 NO.1히타/벳푸온천관광[초특별정] 규슈 4일 #가이드팁포함
+                    #유유자적 온천관광소 #인기 NO.1히타/벳푸온천관광
                 </div>
             </td>
             <td data-label="결제 금액">
