@@ -15,6 +15,8 @@ import {
 import RoomOption from './RoomOption';
 import Policies from './Policies';
 import Location from './Location';
+import DetailReviewsItem from '../../tour/tourDetail/detailBody/DetailReviewsItem';
+import DetailBotReviewsItem from '../../tour/tourDetail/detailBottom/DetailBotReviewsItem';
 
 const DetailLeft = ({
     hotel,
@@ -62,9 +64,9 @@ const DetailLeft = ({
                 </article>
                 <section className="detail-reviews">
                     <ul className="list">
-                        {/* <DetailReviewsItem />
                         <DetailReviewsItem />
-                        <DetailReviewsItem /> */}
+                        <DetailReviewsItem />
+                        <DetailReviewsItem />
                     </ul>
                 </section>
             </section>
@@ -158,10 +160,51 @@ const DetailLeft = ({
                             <li>{hotel.cancellation[2]}</li>
                         </ul>
                     </div>
-                    <div className="con con6 hotel-location-wrap">
-                        <Location hotel={hotel} />
-                    </div>
                 </div>
+                {/* <div className="con con6 hotel-location-wrap">
+                    <Location hotel={hotel} />
+                </div>
+                <section id="detail-Bot-Reviews">
+                    <h2 className="title">
+                        방문자 리뷰
+                        <span>(12)</span>
+                    </h2>
+                    <div className="reviews-wrap-head">
+                        <div className="rate">
+                            <img src="/images/icon/star_rate.svg" alt="별점" />
+                            4.84
+                        </div>
+                        <div className="reviews-wrap-head-imgs">
+                            <div className="img-wrap">
+                                <img src="" alt="" />
+                            </div>
+                            <div className="img-wrap">
+                                <img src="" alt="" />
+                            </div>
+                            <div className="img-wrap">
+                                <img src="" alt="" />
+                            </div>
+                            <div className="img-wrap">
+                                <img src="" alt="" />
+                            </div>
+                            <div className="img-wrap">
+                                <img src="" alt="" />
+                            </div>
+                            <div className="img-wrap">
+                                <img src="" alt="" />
+                            </div>
+                        </div>
+                    </div>
+                    <div className="reviews-wrap-body">
+                        <ul className="reviews-wrap-body-list">
+                            <DetailBotReviewsItem />
+                            <DetailBotReviewsItem />
+                        </ul>
+                    </div>
+                    <div className="button">
+                        <p>방문자 리뷰 전체보기</p>
+                    </div>
+                </section> */}
             </section>
         </div>
     );

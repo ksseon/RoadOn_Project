@@ -58,6 +58,7 @@ const HotelsDetail = () => {
                     </div>
                     <div className="img-box big-img-2">
                         <img src={`/images/hotels/detail/hotelsList/${hotel.image[1]}`} alt="" />
+                        
                     </div>
                 </section>
                 <section className="detail-body-info">

@@ -570,3 +570,153 @@
         display: flex;
     }
 }
+
+.detail-right {
+    width: vw(455px);
+    height: vw(477px);
+    .detail-side {
+        width: 100%;
+        height: vw(460px);
+        border-radius: vw(15px);
+        background-color: grey;
+        padding: vw(40px) vw(30px);
+        border: 1px solid $greyscale-500;
+        background-color: $white;
+        position: sticky;
+        top: vw(30px);
+
+        .box {
+            &-thum {
+                width: vw(60px);
+                height: vw(55px);
+                background-color: red;
+                img {
+                }
+            }
+            &-head {
+                display: flex;
+                gap: vw(25px);
+                margin-bottom: vw(24px);
+                strong {
+                    @include font-20px-M;
+                }
+                .box-thum {
+                    width: vw(60px);
+                    height: vw(55px);
+                    overflow: hidden;
+                    border-radius: vw(4px);
+                    img {
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                    }
+                }
+                .box-select {
+                    strong {
+                        display: block;
+                    }
+                    .party {
+                        color: $greyscale-900;
+                        margin-top: vw(4px);
+                        display: block;
+                    }
+                }
+            }
+            .per-day {
+                @include font-20px-M;
+                margin-bottom: vw(24px);
+                span {
+                    @include font-16px;
+                    color: $greyscale-900;
+                }
+            }
+            &-option {
+                height: vw(190px);
+                margin-bottom: vw(10px);
+                background-color: #f5f5f5;
+
+                border-radius: vw(15px);
+                padding: vw(22px);
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                // .people,
+                // .peop-wrap,
+                // .total-wrap {
+                //     display: flex;
+                //     justify-content: space-between;
+                // }
+                // .people {
+                //     .peop-wrap {
+                //         width: vw(150px);
+                //         .type {
+                //         }
+                //         .price {
+                //         }
+                //     }
+                //     .step {
+                //         .button {
+                //             background-color: transparent;
+                //             &.minus {
+                //             }
+                //             &.plus {
+                //             }
+                //         }
+                //     }
+                // }
+                // .total-wrap {
+                //     padding: vw(15px) 0;
+                //     strong {
+                //         @include font-20px-B;
+                //     }
+                //     em {
+                //         @include font-24px;
+                //     }
+                // }
+                .res-prices {
+                    .total {
+                        color: $greyscale-900;
+                        display: flex;
+                        flex-direction: column;
+                        gap: vw(5px);
+                        li {
+                            display: flex;
+                            justify-content: space-between;
+                        }
+                    }
+                    .total-wrap {
+                        display: flex;
+                        justify-content: space-between;
+                        margin-top: vw(35px);
+                        position: relative;
+                        &::before {
+                            content: '';
+                            display: block;
+                            background-color: $greyscale-600;
+                            width: vw(350px);
+                            height: vw(1px);
+                            position: absolute;
+                            top: vw(-80px);
+                        }
+                        strong {
+                        }
+                        em {
+                            @include font-24px;
+                        }
+                    }
+                }
+            }
+        }
+        .btn-wrap {
+            button {
+                margin-top: vw(20px);
+                @include font-20px;
+                height: vw(52px);
+                &.reserve {
+                    width: 100%;
+                    border-radius: vw(8px);
+                }
+            }
+        }
+    }
+}
