@@ -1,6 +1,7 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Layout from '../common/Layout';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Layout from "../common/Layout";
 import {
+
     Airplane,
     Home,
     HotelsMain,
@@ -37,4 +38,5 @@ export const MyRoutes = () => {
             </Routes>
         </BrowserRouter>
     );
+ main
 };
