@@ -5,8 +5,8 @@ import './style.scss';
 const Tour = () => {
     return (
         <main id="tourPage">
-            {/* <TourMain /> */}
-            <TourDetail />
+            <TourMain />
+            {/* <TourDetail /> */}
         </main>
     );
 };
