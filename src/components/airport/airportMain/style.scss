@@ -6,7 +6,7 @@
     margin: 0 auto;
     padding: 0 20px;
 }
-.visual-bg {
+.visual-bg-ap {
     background-image: url('/images/airport/visual_bg.png');
     background-size: cover;
     background-position: center;
@@ -19,6 +19,22 @@
     justify-content: center;
     padding: vw(20px) 0 vw(60px);
 }
+// 숙소 메인 비주얼 코드
+.visual-bg-ht {
+    background-image: url('/images/hotels/main/hotels-main-visual.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: vh(60px);
+    position: relative;
+    z-index: 0;
+    display: flex;
+    justify-content: center;
+    padding: vw(20px) 0 vw(60px);
+}
+
+
 .airport-main-con1 {
     position: relative;
     z-index: 2;
@@ -155,7 +171,7 @@
                 border-radius: vw(8px);
                 background: #ff7f50;
                 color: #fff;
-                font-size: rem(16px);
+                // font-size: rem(16px);
                 font-weight: 500;
                 cursor: pointer;
                 &:hover {
@@ -182,7 +198,7 @@
                 padding: vw(10px);
                 border-radius: vw(40px);
                 border: none;
-                background: #ff7f50;
+                background: $foundation-orange-normal;
                 color: #fff;
                 font-weight: 500;
                 cursor: pointer;
