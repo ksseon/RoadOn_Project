@@ -12,11 +12,11 @@ const MyPage = () => {
         <section id="myPage">
             <div className="inner">
                 <Profile />
-                {/* <Reserve /> */}
-                {/* <WishList /> */}
-                {/* <Reward /> */}
-                {/* <Grade /> */}
-                {/* <Recom /> */}
+                <Reserve />
+                <WishList />
+                <Reward />
+                <Grade />
+                <Recom />
                 <Support />
             </div>
         </section>
