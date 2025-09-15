@@ -16,6 +16,5 @@ const AirportMain = () => {
         </main>
     );
 };
-//sssssssssssssssssssssssss
 
 export default AirportMain;

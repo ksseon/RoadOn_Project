@@ -64,7 +64,7 @@ const AirportCon2 = () => {
                 <small className="type">{p.type}</small>
                 <h5 className="title">{p.title}</h5>
                 <p className="location">
-                  <FiMapPin  className="icon" /> {p.location}
+                  <FiMapPin className="icon" /> {p.location}
                 </p>
                 <div className="price-box">
                   <del className="original">{p.originalPrice}</del>

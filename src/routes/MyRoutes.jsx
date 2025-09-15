@@ -1,5 +1,5 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Layout from "../common/Layout";
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Layout from '../common/Layout';
 import {
     Airplane,
     Home,
@@ -10,6 +10,7 @@ import {
     Login,
     HotelsSearch,
     HotelsDetail,
+    AirportSearch,
 } from '../pages';
 
 export const MyRoutes = () => {
@@ -22,6 +23,7 @@ export const MyRoutes = () => {
                     <Route path="/hotelsSearch" element={<HotelsSearch />} />
                     {/* <Route path="/hotelsDetail" element={<HotelsDetail />} /> */}
                     <Route path="/hotels/:slug" element={<HotelsDetail />} />
+                    <Route path="/airportSearch" element={<AirportSearch />} />
                     <Route path="/tour" element={<Tour />} />
                     <Route path="/airplane" element={<Airplane />} />
                     <Route path="/myPage" element={<MyPage />} />
