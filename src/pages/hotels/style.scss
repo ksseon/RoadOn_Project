@@ -135,6 +135,7 @@
 
 .hotel-detail {
     .inner {
+        padding: 0;
         .hotel-thum {
             display: flex;
             gap: vw(24px);
@@ -149,8 +150,12 @@
             .big-img-2 {
                 width: vw(456px);
             }
-            .img-all-wrap {
-                .img-wrap {
+            .img-box {
+                overflow: hidden;
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
                 }
             }
         }
@@ -165,19 +170,36 @@
                     height: vw(330px);
 
                     &-head {
-                        color: $default;
-                        margin-bottom: vw(30px);
-                        em {
-                            @include font-16px;
+                        display: flex;
+                        justify-content: space-between;
+                        .head-left {
+                            color: $default;
+                            margin-bottom: vw(30px);
+                            em {
+                                @include font-16px;
+                            }
+                            h3 {
+                                @include font-32px-SB;
+                            }
+                            b {
+                                @include font-14px;
+                                color: #c7c7c7;
+                                display: block;
+                                margin-bottom: vw(8px);
+                            }
+                            .rate {
+                                display: flex;
+                                gap: vw(6px);
+                            }
                         }
-                        h3 {
-                            @include font-32px-SB;
-                        }
-                        b {
-                            @include font-14px;
-                            color: #c7c7c7;
-                        }
-                        .rate {
+                        .more-btn {
+                            display: flex;
+                            gap: vw(15px);
+                            margin-top: vw(22px);
+                            img {
+                                width: vw(50px);
+                                height: vw(50px);
+                            }
                         }
                     }
                 }
@@ -260,179 +282,205 @@
                             }
                         }
                     }
-                    .advertise {
-                        width: vw(920px);
-                        img {
+                    .detail-contents {
+                        display: flex;
+                        flex-direction: column;
+                        gap: vw(60px);
+                        .advertise {
                             width: vw(920px);
-                        }
-                    }
-                    .room-option-wrap {
-                        h2 {
-                        }
-                        .room-filter {
-                            display: flex;
-                            gap: vw(15px);
-                            margin-bottom: vw(30px);
-                            li {
-                                @include font-16px;
-                                box-sizing: border-box;
-                                padding: vw(6px) vw(15px);
-                                background-color: $greyscale-300;
-                                border-radius: vw(40px);
-                                cursor: pointer;    
+                            img {
+                                width: vw(920px);
                             }
                         }
-                        .room-box-list {
-                            display: flex;
-                            flex-direction: column;
-                            gap: vw(24px);
-                            
-                        }
-                    }
-                    .hotel-info-wrap {
-                        p {
-                            margin-left: vw(16px);
-                            margin-bottom: vw(20px);
-                        }
-                        .contact {
-                            margin-left: vw(16px);
-                            display: flex;
-                            flex-direction: column;
-                            gap: vw(2px);
-                            span {
-                                color: $greyscale-1200;
-                                display: flex;
-                                gap: vw(10px);
-                                align-items: center;
-                            }
-                        }
-                    }
-                    .hotel-policies-wrap {
-                        .follows {
-                            margin-left: vw(16px);
-                            li {
-                                position: relative;
-                                &::before {
-                                    content: '';
-                                    display: block;
-                                    width: vw(4px);
-                                    height: vw(4px);
-                                    border-radius: 100%;
-                                    background-color: $greyscale-1200;
-                                    position: absolute;
-                                    top: 50%;
-                                    transform: translateY(-50%);
-                                    transform: translateX(vw(-60px))
-                                }
-                            }
-                        }
-                    }
-                    .hotel-cancel-wrap {
-                        .follows {
-                            margin-left: vw(16px);
-                            li {
-                                position: relative;
-                                &::before {
-                                    content: '';
-                                    display: block;
-                                    width: vw(4px);
-                                    height: vw(4px);
-                                    border-radius: 100%;
-                                    background-color: $greyscale-1200;
-                                    position: absolute;
-                                    top: 50%;
-                                    transform: translateY(-50%);
-                                    transform: translateX(vw(-60px))
-                                }
-                            }
-                        }
-                    }
-                    .hotel-location-wrap {
-                        .hotel-map {
-                            width: 100%;
-                            height: vw(350px);
-                            background-color:#ff0;
-                            iframe {
-
-                            }
-                        }
-                        
-                        p {
-                            @include font-18px-SB;
-                            margin-left: vw(16px);
-                            margin-bottom: vw(12px);
-                            margin-top: vw(12px);
-                            position: relative;
-                            .copy-icon {
-                                transition: color 0.2s ease;
-                                
-                                &:hover {
-                                    color: $greyscale-1100;
-                                }
-                            }
-
-                            .copy-feedback {
-                                font-size: 12px;
-                                color: $white;
-                                box-sizing: border-box;
-                                padding: vw(2px) vw(12px);
-                                background-color: rgba($default, 0.8);
-                                border-radius: vw(4px);
-                                margin-left: 8px;
-                                animation: fadeInOut 2s ease-in-out;
-                                position: absolute;
-                                left: 38%;
-                                top: 0;
-                            }
-
-                            @keyframes fadeInOut {
-                                0% { opacity: 0; }
-                                20% { opacity: 1; }
-                                80% { opacity: 1; }
-                                100% { opacity: 0; }
-                            }
-                            span {
-                                cursor: pointer;
-                                margin-left: vw(2px);      
-                            }
-                        }
-                        .landmarks {
-                            margin-left: vw(36px);
-                            li {
-                                @include font-16px;
-                            position: relative;
-                                 &::before {
-                                    content: '';
-                                    display: block;
-                                    width: vw(4px);
-                                    height: vw(4px);
-                                    border-radius: 100%;
-                                    background-color: $greyscale-1200;
-                                    position: absolute;
-                                    top: 50%;
-                                    transform: translateY(-50%);
-                                    transform: translateX(vw(-60px))
-                                }
-                            }
-                        }
-                    }
-                    .con {
-                        h2 {
-                            @include font-24px-B;
-                            padding: vw(30px) 0;
-                        }
-
-                        &1 {
+                        .room-option-wrap {
                             h2 {
                             }
-                            .services-list {
+                            .room-filter {
+                                display: flex;
+                                gap: vw(15px);
+                                margin-bottom: vw(30px);
+                                li {
+                                    @include font-16px;
+                                    box-sizing: border-box;
+                                    padding: vw(6px) vw(15px);
+                                    background-color: $greyscale-300;
+                                    border-radius: vw(40px);
+                                    cursor: pointer;
+                                }
+                            }
+                            .room-box-list {
+                                display: flex;
+                                flex-direction: column;
+                                gap: vw(24px);
+                                .more {
+                                    width: vw(200px);
+                                    height: vw(54px);
+                                    border: 1px solid $greyscale-800;
+                                    color: $greyscale-800;
+                                    @include font-16px-M;
+                                    background-color: transparent;
+                                    border-radius: vw(5px);
+                                    text-align: center;
+                                    box-sizing: border-box;
+                                    padding: vw(15px) 0;
+                                    transform: translateX(vw(360px));
+                                    margin-top: vw(30px);
+                                }
+                            }
+                        }
+                        .hotel-info-wrap {
+                            p {
+                                margin-left: vw(16px);
+                                margin-bottom: vw(20px);
+                            }
+                            .contact {
+                                margin-left: vw(16px);
+                                display: flex;
+                                flex-direction: column;
+                                gap: vw(2px);
+                                span {
+                                    color: $greyscale-1200;
+                                    display: flex;
+                                    gap: vw(10px);
+                                    align-items: center;
+                                }
+                            }
+                        }
+                        .hotel-policies-wrap {
+                            .follows {
+                                margin-left: vw(16px);
+                                li {
+                                    position: relative;
+                                    &::before {
+                                        content: '';
+                                        display: block;
+                                        width: vw(4px);
+                                        height: vw(4px);
+                                        border-radius: 100%;
+                                        background-color: $greyscale-1200;
+                                        position: absolute;
+                                        top: 50%;
+                                        transform: translateY(-50%);
+                                        transform: translateX(vw(-60px));
+                                    }
+                                }
+                            }
+                        }
+                        .hotel-cancel-wrap {
+                            .follows {
+                                margin-left: vw(16px);
+                                li {
+                                    position: relative;
+                                    &::before {
+                                        content: '';
+                                        display: block;
+                                        width: vw(4px);
+                                        height: vw(4px);
+                                        border-radius: 100%;
+                                        background-color: $greyscale-1200;
+                                        position: absolute;
+                                        top: 50%;
+                                        transform: translateY(-50%);
+                                        transform: translateX(vw(-60px));
+                                    }
+                                }
+                            }
+                        }
+                        .hotel-location-wrap {
+                            .hotel-map {
+                                width: 100%;
+                                height: vw(350px);
+                                background-color: #ff0;
+                                iframe {
+                                }
+                            }
+
+                            p {
+                                @include font-18px-SB;
+                                margin-left: vw(16px);
+                                margin-bottom: vw(12px);
+                                margin-top: vw(12px);
+                                position: relative;
+                                .copy-icon {
+                                    transition: color 0.2s ease;
+
+                                    &:hover {
+                                        color: $greyscale-1100;
+                                    }
+                                }
+
+                                .copy-feedback {
+                                    font-size: 12px;
+                                    color: $white;
+                                    box-sizing: border-box;
+                                    padding: vw(2px) vw(12px);
+                                    background-color: rgba($default, 0.8);
+                                    border-radius: vw(4px);
+                                    margin-left: 8px;
+                                    animation: fadeInOut 2s ease-in-out;
+                                    position: absolute;
+                                    left: 38%;
+                                    top: 0;
+                                }
+
+                                @keyframes fadeInOut {
+                                    0% {
+                                        opacity: 0;
+                                    }
+                                    20% {
+                                        opacity: 1;
+                                    }
+                                    80% {
+                                        opacity: 1;
+                                    }
+                                    100% {
+                                        opacity: 0;
+                                    }
+                                }
+                                span {
+                                    cursor: pointer;
+                                    margin-left: vw(2px);
+                                }
+                            }
+                            .landmarks {
+                                margin-left: vw(36px);
+                                li {
+                                    @include font-16px;
+                                    position: relative;
+                                    &::before {
+                                        content: '';
+                                        display: block;
+                                        width: vw(4px);
+                                        height: vw(4px);
+                                        border-radius: 100%;
+                                        background-color: $greyscale-1200;
+                                        position: absolute;
+                                        top: 50%;
+                                        transform: translateY(-50%);
+                                        transform: translateX(vw(-60px));
+                                    }
+                                }
+                            }
+                        }
+                        .con {
+                            h2 {
+                                @include font-24px-B;
+                                padding: vw(30px) 0;
+                            }
+
+                            &1 {
+                                h2 {
+                                }
+                                .services-list {
+                                }
                             }
                         }
                     }
                 }
             }
             .detail-right {
-                
+                width: vw(455px);
+                height: vw(477px);
                 .detail-side {
                     width: 100%;
                     height: vw(460px);
@@ -441,7 +489,7 @@
                     padding: vw(40px) vw(30px);
                     border: 1px solid $greyscale-500;
                     background-color: $white;
-                    position: sticky;               
+                    position: sticky;
                     top: vw(30px);
 
                     .box {
@@ -455,7 +503,7 @@
                         &-head {
                             display: flex;
                             gap: vw(25px);
-                            margin-bottom: vw(70px);
+                            margin-bottom: vw(24px);
                             strong {
                                 @include font-20px-M;
                             }
@@ -474,10 +522,19 @@
                                 strong {
                                     display: block;
                                 }
-                                span {}
-                                p {
-                                    @include font-20px-M;
+                                .party {
+                                    color: $greyscale-900;
+                                    margin-top: vw(4px);
+                                    display: block;
                                 }
+                            }
+                        }
+                        .per-day {
+                            @include font-20px-M;
+                            margin-bottom: vw(24px);
+                            span {
+                                @include font-16px;
+                                color: $greyscale-900;
                             }
                         }
                         &-option {
@@ -490,43 +547,78 @@
                             display: flex;
                             flex-direction: column;
                             justify-content: space-between;
-                            .people,
-                            .peop-wrap,
-                            .total-wrap {
-                                display: flex;
-                                justify-content: space-between;
-                            }
-                            .people {
-                                .peop-wrap {
-                                    width: vw(150px);
-                                    .type {
-                                    }
-                                    .price {
+                            // .people,
+                            // .peop-wrap,
+                            // .total-wrap {
+                            //     display: flex;
+                            //     justify-content: space-between;
+                            // }
+                            // .people {
+                            //     .peop-wrap {
+                            //         width: vw(150px);
+                            //         .type {
+                            //         }
+                            //         .price {
+                            //         }
+                            //     }
+                            //     .step {
+                            //         .button {
+                            //             background-color: transparent;
+                            //             &.minus {
+                            //             }
+                            //             &.plus {
+                            //             }
+                            //         }
+                            //     }
+                            // }
+                            // .total-wrap {
+                            //     padding: vw(15px) 0;
+                            //     strong {
+                            //         @include font-20px-B;
+                            //     }
+                            //     em {
+                            //         @include font-24px;
+                            //     }
+                            // }
+                            .res-prices {
+                                .total {
+                                    color: $greyscale-900;
+                                    display: flex;
+                                    flex-direction: column;
+                                    gap: vw(5px);
+                                    li {
+                                        display: flex;
+                                        justify-content: space-between;
                                     }
                                 }
-                                .step {
-                                    .button {
-                                        background-color: transparent;
-                                        &.minus {
-                                        }
-                                        &.plus {
-                                        }
+                                .total-wrap {
+                                    display: flex;
+                                    justify-content: space-between;
+                                    margin-top: vw(35px);
+                                    position: relative;
+                                    &::before {
+                                        content: '';
+                                        display: block;
+                                        background-color: $greyscale-600;
+                                        width: vw(350px);
+                                        height: vw(1px);
+                                        position: absolute;
+                                        top: vw(-80px);
                                     }
-                                }
-                            }
-                            .total-wrap {
-                                padding: vw(15px) 0;
-                                strong {
-                                    @include font-20px-B;
-                                }
-                                em {
-                                    @include font-24px;
+                                    strong {
+                                    }
+                                    em {
+                                        @include font-24px;
+                                    }
                                 }
                             }
                         }
                     }
                     .btn-wrap {
                         button {
+                            margin-top: vw(20px);
+                            @include font-20px;
+                            height: vw(52px);
                             &.reserve {
                                 width: 100%;
                                 border-radius: vw(8px);
