@@ -68,7 +68,7 @@
                 border-radius: vw(45px);
                 background-color: $greyscale-300;
                 color: $greyscale-1100;
-                @include font-16px;
+                @include font-14px;
                 position: relative;
                 cursor: pointer;
                 &.start {
@@ -78,7 +78,7 @@
                     width: vw(215px);
                 }
                 &.date {
-                    width: vw(200px);
+                    width: vw(210px);
                 }
                 &.people {
                     width: vw(260px);
@@ -200,11 +200,12 @@
                     background: transparent;
                     border: none;
                     outline: none;
-                    color: $white;
+                    color: $default;
                     cursor: pointer;
+                    @include font-14px;
                     &::placeholder {
-                        @include font-16px-B;
-                        color: $greyscale-1000;
+                        @include font-14px;
+                        color: $default;
                     }
                 }
             }
@@ -327,7 +328,7 @@
         .react-datepicker__day--keyboard-selected,
         .react-datepicker__day--in-range {
             background-color: $orange;
-            color: $greyscale-400;
+            color: $greyscale-1100;
             border-radius: 50%;
             width: vw(30px);
             height: vw(30px);

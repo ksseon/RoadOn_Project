@@ -90,10 +90,10 @@
   border-radius: clamp(8.4375px, 2.34375vw, 45px);
   background-color: #f2f2f2;
   color: #646464;
-  font-size: 1rem;
+  font-size: 0.875rem;
   font-weight: 400;
   letter-spacing: 0;
-  line-height: 1.5rem;
+  line-height: 1.3125rem;
   position: relative;
   cursor: pointer;
 }
@@ -104,7 +104,7 @@
   width: clamp(40.3125px, 11.1979166667vw, 215px);
 }
 .airport-searchbarlist .search-box .search-form .form-item.date {
-  width: clamp(37.5px, 10.4166666667vw, 200px);
+  width: clamp(39.375px, 10.9375vw, 210px);
 }
 .airport-searchbarlist .search-box .search-form .form-item.people {
   width: clamp(48.75px, 13.5416666667vw, 260px);
@@ -232,23 +232,27 @@
   background: transparent;
   border: none;
   outline: none;
-  color: #fff;
+  color: #353535;
   cursor: pointer;
+  font-size: 0.875rem;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1.3125rem;
 }
 .airport-searchbarlist .search-box .search-form .form-item .react-datepicker-wrapper::-moz-placeholder, .airport-searchbarlist .search-box .search-form .form-item .react-datepicker__input-container input::-moz-placeholder {
-  font-size: 1rem;
-  font-weight: 700;
+  font-size: 0.875rem;
+  font-weight: 400;
   letter-spacing: 0;
-  line-height: 1.5rem;
-  color: #828282;
+  line-height: 1.3125rem;
+  color: #353535;
 }
 .airport-searchbarlist .search-box .search-form .form-item .react-datepicker-wrapper::placeholder,
 .airport-searchbarlist .search-box .search-form .form-item .react-datepicker__input-container input::placeholder {
-  font-size: 1rem;
-  font-weight: 700;
+  font-size: 0.875rem;
+  font-weight: 400;
   letter-spacing: 0;
-  line-height: 1.5rem;
-  color: #828282;
+  line-height: 1.3125rem;
+  color: #353535;
 }
 .airport-searchbarlist .search-box .search-form .search-btn {
   width: clamp(22.5px, 6.25vw, 120px);
@@ -373,7 +377,7 @@
 .airport-searchbarlist .react-datepicker .react-datepicker__day--keyboard-selected,
 .airport-searchbarlist .react-datepicker .react-datepicker__day--in-range {
   background-color: #ff7f50;
-  color: #ebebeb;
+  color: #646464;
   border-radius: 50%;
   width: clamp(5.625px, 1.5625vw, 30px);
   height: clamp(5.625px, 1.5625vw, 30px);

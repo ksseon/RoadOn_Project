@@ -76,11 +76,11 @@
         width: 100%;
         margin: auto 0;
         .search-title {
-            padding-top: vw(119px);
+            padding-top: vw(100px);
             text-align: center;
             @include font-28px-M;
             color: $white;
-            margin: vw(40px) 0 vw(20px);
+            margin: vw(20px) 0;
         }
     }
 }

@@ -26,13 +26,13 @@
                     justify-content: space-between;
                     align-items: center;
                     p {
-                        @include font-16px;
+                        @include font-18px;
                         color: $default;
                         line-height: 1.5;
                     }
                     img {
-                        width: vw(48px);
-                        object-fit: contain;
+                        width: vw(60px);
+                        margin: 0 vw(10px);
                     }
                 }
 
@@ -84,12 +84,39 @@
                         margin-bottom: vw(24px);
                     }
                 }
-
                 ul {
                     margin-left: vw(20px);
                     display: flex;
                     flex-direction: column;
                     gap: vw(10px);
+                    input[type='checkbox'] {
+                        position: relative;
+                        appearance: none;
+                        -webkit-appearance: none;
+                        width: vw(18px);
+                        height: vw(18px);
+                        display: inline-block;
+                        border: vw(1px) solid #353535;
+                        border-radius: vw(3px);
+                        cursor: pointer;
+                        &:checked {
+                            background-color: $orange;
+                            border-color: $orange;
+                        }
+                        &:checked::after {
+                            content: '✔';
+                            position: absolute;
+                            top: 50%;
+                            left: 50%;
+                            transform: translate(-50%, -50%);
+                            color: $white;
+                            @include font-12px;
+                        }
+                    }
+                    strong {
+                        @include font-16px;
+                        color: $default;
+                    }
                 }
             }
 
@@ -98,13 +125,21 @@
                     display: flex;
                     flex-wrap: wrap;
                     gap: vw(12px);
-
                     li {
-                        padding: vw(6px) vw(15px);
-                        box-sizing: border-box;
-                        border-radius: vw(40px);
-                        border: 1px solid $greyscale-1000;
-                        cursor: pointer;
+                        background-color: none;
+                        button {
+                            padding: vw(6px) vw(15px);
+                            box-sizing: border-box;
+                            background-color: $white;
+                            border-radius: vw(40px);
+                            border: 1px solid $greyscale-1000;
+                            cursor: pointer;
+                            color: $default;
+                            @include font-14px-M;
+                            &:hover {
+                                background-color: $greyscale-400;
+                            }
+                        }
                     }
                 }
             }
@@ -113,38 +148,51 @@
                     display: flex;
                     flex-wrap: wrap;
                     gap: vw(12px);
-
                     li {
                         padding: vw(6px) vw(15px);
                         box-sizing: border-box;
                         border-radius: vw(40px);
                         border: 1px solid $greyscale-1000;
                         cursor: pointer;
+                        &:hover {
+                            background-color: $greyscale-400;
+                        }
                     }
                 }
             }
             .discount {
                 ul {
+                    margin-left: vw(20px);
                     display: flex;
                     flex-direction: column;
-                    gap: vw(10px); // 항목 간격
-
-                    li {
-                        display: flex;
-                        align-items: center;
-                        gap: vw(8px);
-
-                        span {
-                            width: vw(14px);
-                            height: vw(14px);
-                            display: inline-block;
-                            border: vw(1px) solid #353535;
-                            border-radius: vw(3px);
+                    gap: vw(10px);
+                    input[type='checkbox'] {
+                        position: relative;
+                        appearance: none;
+                        -webkit-appearance: none;
+                        width: vw(18px);
+                        height: vw(18px);
+                        display: inline-block;
+                        border: vw(1px) solid #353535;
+                        border-radius: vw(3px);
+                        cursor: pointer;
+                        &:checked {
+                            background-color: $orange;
+                            border-color: $orange;
                         }
-                        strong {
-                            @include font-16px;
-                            color: $default;
+                        &:checked::after {
+                            content: '✔';
+                            position: absolute;
+                            top: 50%;
+                            left: 50%;
+                            transform: translate(-50%, -50%);
+                            color: $white;
+                            @include font-12px;
                         }
+                    }
+                    strong {
+                        @include font-16px;
+                        color: $default;
                     }
                 }
             }
@@ -192,6 +240,7 @@
     box-shadow: 0 vw(2px) vw(6px) rgba(0, 0, 0, 0.05);
     cursor: pointer;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
+    margin-bottom: vw(20px);
     &:hover {
         transform: translateY(-3px);
         box-shadow: 0 vw(6px) vw(14px) rgba(0, 0, 0, 0.1);
@@ -222,12 +271,11 @@
         .info {
             text-align: left;
             .name {
-                @include font-20px-SB;
+                @include font-20px;
             }
             .code {
                 @include font-16px;
-                color: $greyscale-700;
-                margin-top: vw(10px);
+                color: $greyscale-1000;
             }
         }
     }
@@ -239,17 +287,18 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: vw(10px);
+        gap: vw(4px);
         .date {
             @include font-14px;
-            color: $greyscale-700;
+            color: $greyscale-900;
         }
         .time {
             @include font-22px;
+            color: $default;
         }
         .airport {
             @include font-14px;
-            color: $greyscale-800;
+            color: $greyscale-900;
             margin: 0;
             text-align: center;
         }
@@ -262,27 +311,12 @@
             align-items: center;
             gap: vw(8px); // 점·라인 사이 간격
             margin-bottom: vw(6px);
-
-            .dot {
-                width: vw(6px);
-                height: vw(6px);
-                background: $greyscale-500;
-                border-radius: 50%;
-            }
-
-            .line {
-                flex: 1;
-                height: 1px;
-                background: $greyscale-400;
-            }
-
             .duration {
                 @include font-18px;
-                color: $greyscale-900;
+                color: $default;
                 white-space: nowrap;
             }
         }
-
         .direct {
             @include font-18px-M;
             color: $mint;

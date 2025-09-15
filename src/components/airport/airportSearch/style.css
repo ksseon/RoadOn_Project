@@ -38,17 +38,16 @@
   align-items: center;
 }
 .airport .inner .filter-wrap .event-modal .event-card p {
-  font-size: 1rem;
+  font-size: 1.125rem;
   font-weight: 400;
   letter-spacing: 0;
-  line-height: 1.5rem;
+  line-height: 1.6875rem;
   color: #353535;
   line-height: 1.5;
 }
 .airport .inner .filter-wrap .event-modal .event-card img {
-  width: clamp(9px, 2.5vw, 48px);
-  -o-object-fit: contain;
-     object-fit: contain;
+  width: clamp(11.25px, 3.125vw, 60px);
+  margin: 0 clamp(1.875px, 0.5208333333vw, 10px);
 }
 .airport .inner .filter-wrap .event-modal .swiper-button-prev,
 .airport .inner .filter-wrap .event-modal .swiper-button-next {
@@ -107,17 +106,64 @@
   flex-direction: column;
   gap: clamp(1.875px, 0.5208333333vw, 10px);
 }
+.airport .inner .filter-wrap .type ul input[type=checkbox] {
+  position: relative;
+  -moz-appearance: none;
+       appearance: none;
+  -webkit-appearance: none;
+  width: clamp(3.375px, 0.9375vw, 18px);
+  height: clamp(3.375px, 0.9375vw, 18px);
+  display: inline-block;
+  border: clamp(0.1875px, 0.0520833333vw, 1px) solid #353535;
+  border-radius: clamp(0.5625px, 0.15625vw, 3px);
+  cursor: pointer;
+}
+.airport .inner .filter-wrap .type ul input[type=checkbox]:checked {
+  background-color: #ff7f50;
+  border-color: #ff7f50;
+}
+.airport .inner .filter-wrap .type ul input[type=checkbox]:checked::after {
+  content: "✔";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1.125rem;
+}
+.airport .inner .filter-wrap .type ul strong {
+  font-size: 1rem;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1.5rem;
+  color: #353535;
+}
 .airport .inner .filter-wrap .star ul {
   display: flex;
   flex-wrap: wrap;
   gap: clamp(2.25px, 0.625vw, 12px);
 }
 .airport .inner .filter-wrap .star ul li {
+  background-color: none;
+}
+.airport .inner .filter-wrap .star ul li button {
   padding: clamp(1.125px, 0.3125vw, 6px) clamp(2.8125px, 0.78125vw, 15px);
   box-sizing: border-box;
+  background-color: #fff;
   border-radius: clamp(7.5px, 2.0833333333vw, 40px);
   border: 1px solid #828282;
   cursor: pointer;
+  color: #353535;
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: 1.3125rem;
+}
+.airport .inner .filter-wrap .star ul li button:hover {
+  background-color: #ebebeb;
 }
 .airport .inner .filter-wrap .service ul {
   display: flex;
@@ -131,24 +177,44 @@
   border: 1px solid #828282;
   cursor: pointer;
 }
+.airport .inner .filter-wrap .service ul li:hover {
+  background-color: #ebebeb;
+}
 .airport .inner .filter-wrap .discount ul {
+  margin-left: clamp(3.75px, 1.0416666667vw, 20px);
   display: flex;
   flex-direction: column;
   gap: clamp(1.875px, 0.5208333333vw, 10px);
 }
-.airport .inner .filter-wrap .discount ul li {
-  display: flex;
-  align-items: center;
-  gap: clamp(1.5px, 0.4166666667vw, 8px);
-}
-.airport .inner .filter-wrap .discount ul li span {
-  width: clamp(2.625px, 0.7291666667vw, 14px);
-  height: clamp(2.625px, 0.7291666667vw, 14px);
+.airport .inner .filter-wrap .discount ul input[type=checkbox] {
+  position: relative;
+  -moz-appearance: none;
+       appearance: none;
+  -webkit-appearance: none;
+  width: clamp(3.375px, 0.9375vw, 18px);
+  height: clamp(3.375px, 0.9375vw, 18px);
   display: inline-block;
   border: clamp(0.1875px, 0.0520833333vw, 1px) solid #353535;
   border-radius: clamp(0.5625px, 0.15625vw, 3px);
+  cursor: pointer;
 }
-.airport .inner .filter-wrap .discount ul li strong {
+.airport .inner .filter-wrap .discount ul input[type=checkbox]:checked {
+  background-color: #ff7f50;
+  border-color: #ff7f50;
+}
+.airport .inner .filter-wrap .discount ul input[type=checkbox]:checked::after {
+  content: "✔";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1.125rem;
+}
+.airport .inner .filter-wrap .discount ul strong {
   font-size: 1rem;
   font-weight: 400;
   letter-spacing: 0;
@@ -180,13 +246,14 @@
   gap: clamp(1.875px, 0.5208333333vw, 10px);
   width: clamp(196.875px, 54.6875vw, 1050px);
   height: clamp(52.5px, 14.5833333333vw, 280px);
-  padding: clamp(11.25px, 3.125vw, 60px);
+  padding: clamp(9.375px, 2.6041666667vw, 50px);
   border: 1px solid #e1e1e1;
   border-radius: clamp(2.8125px, 0.78125vw, 15px);
   background: #fff;
   box-shadow: 0 clamp(0.375px, 0.1041666667vw, 2px) clamp(1.125px, 0.3125vw, 6px) rgba(0, 0, 0, 0.05);
   cursor: pointer;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+  margin-bottom: clamp(3.75px, 1.0416666667vw, 20px);
   /* 항공사 */
   /* 출발, 도착 */
   /* 비행 경로 (타임라인 + 직항/경유) */
@@ -224,7 +291,7 @@
 }
 .airport-box .airline .info .name {
   font-size: 1.25rem;
-  font-weight: 600;
+  font-weight: 400;
   letter-spacing: 0;
   line-height: 1.875rem;
 }
@@ -233,8 +300,7 @@
   font-weight: 400;
   letter-spacing: 0;
   line-height: 1.5rem;
-  color: #c5c5c5;
-  margin-top: clamp(1.875px, 0.5208333333vw, 10px);
+  color: #828282;
 }
 .airport-box .departure,
 .airport-box .arrival {
@@ -242,7 +308,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: clamp(1.875px, 0.5208333333vw, 10px);
+  gap: clamp(0.75px, 0.2083333333vw, 4px);
 }
 .airport-box .departure .date,
 .airport-box .arrival .date {
@@ -250,7 +316,7 @@
   font-weight: 400;
   letter-spacing: 0;
   line-height: 1.3125rem;
-  color: #c5c5c5;
+  color: #9c9c9c;
 }
 .airport-box .departure .time,
 .airport-box .arrival .time {
@@ -258,6 +324,7 @@
   font-weight: 400;
   letter-spacing: 0;
   line-height: 2.0625rem;
+  color: #353535;
 }
 .airport-box .departure .airport,
 .airport-box .arrival .airport {
@@ -265,7 +332,7 @@
   font-weight: 400;
   letter-spacing: 0;
   line-height: 1.3125rem;
-  color: #b2b2b2;
+  color: #9c9c9c;
   margin: 0;
   text-align: center;
 }
@@ -277,23 +344,12 @@
   gap: clamp(1.5px, 0.4166666667vw, 8px);
   margin-bottom: clamp(1.125px, 0.3125vw, 6px);
 }
-.airport-box .airport-info .timeline .dot {
-  width: clamp(1.125px, 0.3125vw, 6px);
-  height: clamp(1.125px, 0.3125vw, 6px);
-  background: #e1e1e1;
-  border-radius: 50%;
-}
-.airport-box .airport-info .timeline .line {
-  flex: 1;
-  height: 1px;
-  background: #ebebeb;
-}
 .airport-box .airport-info .timeline .duration {
   font-size: 1.125rem;
   font-weight: 400;
   letter-spacing: 0;
   line-height: 1.6875rem;
-  color: #9c9c9c;
+  color: #353535;
   white-space: nowrap;
 }
 .airport-box .airport-info .direct {
