@@ -3,83 +3,37 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import { Navigation, Autoplay } from "swiper/modules";
-import { useMemo } from "react";
 import useAirportStore from "../../../store/airportStore";
 
-const PriceSlider = () => {
-  const airports = useAirportStore((s) => s.airports);
-  const { priceMin, priceMax } = useAirportStore((s) => s.filters);
+const Filter = () => {
+  const setFilter = useAirportStore((s) => s.setFilter);
+  const resetFilter = useAirportStore((s) => s.resetFilter);
   const setPriceRange = useAirportStore((s) => s.setPriceRange);
 
-  // 절대 최소/최대 가격
-  const { absMin, absMax } = useMemo(() => {
-    const min = Math.min(...airports.map((a) => a.price));
-    const max = Math.max(...airports.map((a) => a.price));
-    return { absMin: min, absMax: max };
-  }, [airports]);
+  const filters = useAirportStore((s) => s.filters);
+  const absMin = useAirportStore((s) => s.priceMin);
+  const absMax = useAirportStore((s) => s.priceMax);
+  const STEP = useAirportStore((s) => s.STEP);
 
-  const step = 1000;
-  const toPercent = (v) => ((v - absMin) / (absMax - absMin)) * 100;
+  const [minPrice, maxPrice] = filters.priceRange;
 
-  const handleMin = (e) => {
-    const v = Math.min(Number(e.target.value), priceMax - step);
-    setPriceRange(v, priceMax);
-  };
-  const handleMax = (e) => {
-    const v = Math.max(Number(e.target.value), priceMin + step);
-    setPriceRange(priceMin, v);
+  // 최저 가격 핸들
+  const onMinChange = (e) => {
+    const v = Number(e.target.value);
+    const safeMin = Math.min(v, maxPrice - STEP);
+    if (safeMin !== minPrice) setPriceRange(safeMin, maxPrice);
   };
 
-  const mid = (priceMin + priceMax) / 2;
-  const fillStyle = {
-    left: `${toPercent(priceMin)}%`,
-    right: `${100 - toPercent(priceMax)}%`,
+  // 최고 가격 핸들
+  const onMaxChange = (e) => {
+    const v = Number(e.target.value);
+    const safeMax = Math.max(v, minPrice + STEP);
+    if (safeMax !== maxPrice) setPriceRange(minPrice, safeMax);
   };
-  const tooltipStyle = { left: `${toPercent(mid)}%` };
 
-  const fmt = (n) => n.toLocaleString();
-
-  return (
-    <div className="price-slider">
-      <div className="ranges">
-        <div className="base-track" />
-        <div className="track-fill" style={fillStyle} />
-        <input
-          type="range"
-          min={absMin}
-          max={absMax}
-          step={step}
-          value={priceMin}
-          onChange={handleMin}
-        />
-        <input
-          type="range"
-          min={absMin}
-          max={absMax}
-          step={step}
-          value={priceMax}
-          onChange={handleMax}
-        />
-        <div className="price-tooltip" style={tooltipStyle}>
-          {fmt(priceMin)}원 ~ {fmt(priceMax)}원
-        </div>
-      </div>
-
-      <p className="desc">
-        출발일자 기준 최저 금액 <strong>{fmt(priceMin)}원</strong> 부터
-      </p>
-      <p className="desc">
-        출발일자 기준 최고 금액 <strong>{fmt(priceMax)}원</strong> 까지
-      </p>
-    </div>
-  );
-};
-
-const Filter = () => {
-  const { setFilter, resetFilter } = useAirportStore((s) => ({
-    setFilter: s.setFilter,
-    resetFilter: s.resetFilter,
-  }));
+  // 툴팁 위치(선택 구간 중앙)
+  const posPct =
+    (((minPrice + maxPrice) / 2 - absMin) / (absMax - absMin)) * 100;
 
   const events = [
     {
@@ -94,18 +48,9 @@ const Filter = () => {
     },
     {
       id: 3,
-      desc: "카드사 혜 해외 항공권을 가볍게",
+      desc: "카드사 혜택 해외 항공권을 가볍게",
       img: "/images/airport/event_img3.png",
     },
-  ];
-
-  const airlines = [
-    "전체",
-    "대한항공",
-    "에어서울",
-    "진에어",
-    "제주항공",
-    "티웨이항공",
   ];
 
   return (
@@ -124,7 +69,7 @@ const Filter = () => {
             <SwiperSlide key={ev.id}>
               <div className="event-card">
                 <div className="text-box">
-                  <img src={ev.img} alt="" />
+                  <img src={ev.img} alt={ev.desc} />
                   <p className="desc">{ev.desc}</p>
                 </div>
               </div>
@@ -133,8 +78,8 @@ const Filter = () => {
         </Swiper>
       </div>
 
-      {/* 경유 */}
       <div className="filter">
+        {/* 경유 */}
         <div className="filtering type">
           <div className="type-title">
             <p>경유</p>
@@ -148,6 +93,7 @@ const Filter = () => {
               <input
                 type="checkbox"
                 id="direct"
+                checked={filters.direct === true}
                 onChange={(e) =>
                   setFilter({ direct: e.target.checked ? true : null })
                 }
@@ -160,6 +106,7 @@ const Filter = () => {
               <input
                 type="checkbox"
                 id="transfer"
+                checked={filters.direct === false}
                 onChange={(e) =>
                   setFilter({ direct: e.target.checked ? false : null })
                 }
@@ -175,24 +122,92 @@ const Filter = () => {
         <div className="filtering star">
           <p>항공사</p>
           <ul>
-            {airlines.map((airline) => (
-              <li key={airline}>
-                <button
-                  onClick={() =>
-                    setFilter({ airline: airline === "전체" ? null : airline })
-                  }
-                >
-                  {airline}
-                </button>
-              </li>
-            ))}
+            {[
+              "전체",
+              "대한항공",
+              "에어서울",
+              "진에어",
+              "제주항공",
+              "티웨이항공",
+            ].map((airline) => {
+              const active =
+                (filters.airline === null && airline === "전체") ||
+                filters.airline === airline;
+              return (
+                <li key={airline}>
+                  <button
+                    className={active ? "active" : ""}
+                    onClick={() =>
+                      setFilter({
+                        airline: airline === "전체" ? null : airline,
+                      })
+                    }
+                  >
+                    {airline}
+                  </button>
+                </li>
+              );
+            })}
           </ul>
         </div>
 
         {/* 가격 */}
         <div className="filtering price">
           <p>가격</p>
-          <PriceSlider />
+
+          <div className="price-slider">
+            <div className="ranges">
+              {/* 회색 기본 바 (가장 아래) */}
+              <div className="base-track" />
+
+              {/* 왼쪽(최저) */}
+              <input
+                type="range"
+                min={absMin}
+                max={Math.max(absMin, maxPrice - STEP)}
+                step={STEP}
+                value={minPrice}
+                onChange={onMinChange}
+              />
+
+              {/* 오른쪽(최고) */}
+              <input
+                type="range"
+                min={Math.min(absMax, minPrice + STEP)}
+                max={absMax}
+                step={STEP}
+                value={maxPrice}
+                onChange={onMaxChange}
+              />
+
+              {/* 선택 구간 주황 하이라이트 */}
+              <div
+                className="track-fill"
+                style={{
+                  left: `${((minPrice - absMin) / (absMax - absMin)) * 100}%`,
+                  right: `${
+                    (1 - (maxPrice - absMin) / (absMax - absMin)) * 100
+                  }%`,
+                }}
+              />
+
+              {/* 툴팁 */}
+              <div className="price-tooltip" style={{ left: `${posPct}%` }}>
+                {minPrice.toLocaleString("ko-KR")}원 ~{" "}
+                {maxPrice.toLocaleString("ko-KR")}원
+              </div>
+            </div>
+            <div className="desc">
+              <div>
+                출발일자 기준 최저 금액{" "}
+                <strong>{minPrice.toLocaleString("ko-KR")}</strong>원 부터
+              </div>
+              <div>
+                출발일자 기준 최고 금액{" "}
+                <strong>{maxPrice.toLocaleString("ko-KR")}</strong>원 까지
+              </div>
+            </div>
+          </div>
         </div>
 
         {/* 무료 수화물 */}
@@ -203,6 +218,7 @@ const Filter = () => {
               <input
                 type="checkbox"
                 id="baggage"
+                checked={filters.baggage === "포함"}
                 onChange={(e) =>
                   setFilter({ baggage: e.target.checked ? "포함" : null })
                 }
