@@ -22,11 +22,33 @@
         border: none;
         background-color: transparent;
         padding: vw(10px) vw(5px);
+        transition: 0.3s;
+        position: relative;
         &:not(:last-child) {
             margin-right: vw(15px);
         }
+        &::after {
+            position: absolute;
+            content: '';
+            background-color: $greyscale-1100;
+            width: 0%;
+            height: vw(2px);
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            transition: 0.3s;
+        }
         &.on {
-            border-bottom: 2px solid $greyscale-1100;
+            &::after {
+                width: 100%;
+            }
+        }
+        &:hover {
+            background-color: $greyscale-200;
+
+            &::after {
+                width: 100%;
+            }
         }
     }
 }

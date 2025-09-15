@@ -1,0 +1,53 @@
+@use '../../../styles/utils/' as *;
+
+#recom {
+    .package-wrap {
+        display: flex;
+        gap: vw(60px);
+        justify-content: space-between;
+        margin-top: vw(20px);
+        li {
+            width: vw(326px);
+            // height: vw(552px);
+            border: vw(1px) solid $default;
+            overflow: hidden;
+            border-radius: vw(10px);
+            .img-wrap {
+                width: 100%;
+                height: vw(320px);
+                position: relative;
+                img {
+                    height: 100%;
+
+                    position: absolute;
+                    left: 50%;
+                    top: 50%;
+                    transform: translate(-50%, -50%);
+                }
+            }
+            .txt-wrap {
+                padding: vw(20px);
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                gap: vw(14px);
+                .title {
+                    @include font-20px-B;
+
+                    white-space: pre-line;
+                    line-height: 1.4;
+                    padding: 0;
+                }
+                .des {
+                    @include font-16px;
+                }
+                .info {
+                    @include font-16px;
+                }
+                .price {
+                    @include font-14px-B;
+                }
+            }
+        }
+    }
+}

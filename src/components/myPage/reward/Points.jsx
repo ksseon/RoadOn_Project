@@ -1,11 +1,19 @@
+// Points.jsx
+import useCouponStore from '../../../store/couponStore';
 import PointsItem from './PointsItem';
 
-const Points = ({ userName, balance, items }) => {
+const Points = () => {
+    const points = useCouponStore((s) => s.points);
+    const { userName, items } = points;
+
+    // balance = items 합계(적립 +, 사용 -)
+    const balance = items.reduce((sum, it) => sum + (Number(it.amount) || 0), 0);
+
     return (
         <section className="points">
             <p className="points-info">
-                <strong>{userName}</strong>님이 보유하고 있는 적립금은 <em>{balance}P</em>
-                입니다.
+                <strong>{userName}</strong>님이 보유하고 있는 적립금은{' '}
+                <em>{balance.toLocaleString()}P</em>입니다.
             </p>
 
             <div className="points-table-wrap">
@@ -18,10 +26,10 @@ const Points = ({ userName, balance, items }) => {
                     </colgroup>
                     <thead>
                         <tr>
-                            <th scope="col">날짜</th>
-                            <th scope="col">구분</th>
-                            <th scope="col">금액</th>
-                            <th scope="col">상태</th>
+                            <th>날짜</th>
+                            <th>구분</th>
+                            <th>금액</th>
+                            <th>상태</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -32,15 +40,8 @@ const Points = ({ userName, balance, items }) => {
                                 </td>
                             </tr>
                         )}
-
                         {items.map((row, i) => (
-                            <PointsItem
-                                key={i}
-                                date={row.date}
-                                type={row.type}
-                                amount={row.amount}
-                                status={row.status}
-                            />
+                            <PointsItem key={i} {...row} />
                         ))}
                     </tbody>
                 </table>
