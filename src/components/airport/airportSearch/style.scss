@@ -9,6 +9,7 @@
     gap: 40px;
     .filter-wrap {
       width: vw(300px);
+
       .event-modal {
         margin: 0 auto;
         margin-bottom: vw(48px);
@@ -125,7 +126,6 @@
           flex-wrap: wrap;
           gap: vw(12px);
           li {
-            background-color: none;
             button {
               padding: vw(6px) vw(15px);
               box-sizing: border-box;
@@ -138,10 +138,135 @@
               &:hover {
                 background-color: $greyscale-400;
               }
+              &.active {
+                background-color: $orange;
+                border: none;
+                color: $white;
+              }
             }
           }
         }
       }
+
+      /* === 가격 슬라이더 (핸들만 드래그) === */
+      .price {
+        .price-slider {
+          .ranges {
+            position: relative;
+            height: vw(30px);
+            margin: 0 vw(6px) vw(10px);
+
+            /* 회색 기본 바 */
+            .base-track {
+              position: absolute;
+              top: 50%;
+              left: 0;
+              right: 0;
+              transform: translateY(-50%);
+              height: vw(4px);
+              background: $greyscale-400;
+              border-radius: vw(6px);
+              z-index: 5;
+              pointer-events: none;
+            }
+
+            /* ▶ 여기 수정: range를 세로 중앙에 고정하고, 높이를 thumb와 동일하게 */
+            input[type="range"] {
+              position: absolute;
+              left: 0;
+              right: 0;
+              top: 50%;
+              transform: translateY(-50%);
+              height: vw(18px); /* thumb 크기와 동일 */
+              margin: 0;
+              background: none;
+
+              pointer-events: none; /* 트랙 클릭 방지 (thumb만 드래그) */
+              -webkit-appearance: none;
+              z-index: 30;
+            }
+            input[type="range"]:nth-of-type(2) {
+              z-index: 40;
+            }
+
+            /* 네이티브 트랙은 투명 */
+            input[type="range"]::-webkit-slider-runnable-track {
+              height: vw(6px);
+              background: transparent;
+              border-radius: vw(6px);
+              pointer-events: none;
+            }
+            input[type="range"]::-moz-range-track {
+              height: vw(6px);
+              background: transparent;
+              border-radius: vw(6px);
+              pointer-events: none;
+            }
+
+            /* thumb (마진 보정 제거) */
+            input[type="range"]::-webkit-slider-thumb {
+              -webkit-appearance: none;
+              width: vw(18px);
+              height: vw(18px);
+              border-radius: 50%;
+              background: $orange;
+              border: 0;
+              box-shadow: 0 0 0 vw(2px) $white;
+              cursor: pointer;
+              pointer-events: auto;
+              margin-top: 0; /* 중요: 세로 센터 유지 */
+              position: relative;
+            }
+            input[type="range"]::-moz-range-thumb {
+              width: vw(18px);
+              height: vw(18px);
+              border-radius: 50%;
+              background: $orange;
+              border: 0;
+              cursor: pointer;
+              pointer-events: auto;
+              margin: 0;
+              position: relative;
+            }
+
+            /* 주황 선택 구간 — 동일하게 50% 중앙 */
+            .track-fill {
+              position: absolute;
+              top: vw(20px);
+              transform: translateY(-50%);
+              height: vw(4px);
+              background: $orange;
+              border-radius: vw(6px);
+              z-index: 15; /* 회색 위, thumb 아래 */
+              left: 0;
+              right: 0;
+              pointer-events: none;
+            }
+
+            .price-tooltip {
+              position: absolute;
+              bottom: vw(30px);
+              transform: translateX(-50%);
+              background: #4a4a4a;
+              color: #fff;
+              padding: 6px 10px;
+              border-radius: 6px;
+              white-space: nowrap;
+              z-index: 50;
+              pointer-events: none;
+            }
+          }
+          .desc {
+            @include font-14px;
+            color: $default;
+            strong {
+              color: $orange;
+              @include font-16px-M;
+            }
+          }
+        }
+      }
+
       .service {
         ul {
           display: flex;
@@ -159,6 +284,7 @@
           }
         }
       }
+
       .discount {
         ul {
           margin-left: vw(20px);
@@ -199,10 +325,8 @@
       .list-wrap {
         width: 55.2083vw;
         border: 1px solid $default;
-
         .list-top {
         }
-
         .list-box {
           display: flex;
           flex-direction: column;
@@ -224,10 +348,10 @@
   }
 }
 
-// 오른쪽 항공정보
+/* 오른쪽 영역(항공 카드) */
 .airport-box {
   display: grid;
-  grid-template-columns: 2fr 0fr 1fr 1fr 2fr; // 항공사 / 출발 / 비행정보 / 도착 / 가격
+  grid-template-columns: 2fr 0fr 1fr 1fr 2fr; /* 항공사 / 출발 / 비행정보 / 도착 / 가격 */
   align-items: center;
   gap: vw(10px);
   width: vw(1050px);
@@ -245,7 +369,6 @@
     box-shadow: 0 vw(6px) vw(14px) rgba(0, 0, 0, 0.1);
   }
 
-  /* 항공사 */
   .airline {
     display: flex;
     align-items: center;
@@ -279,7 +402,6 @@
     }
   }
 
-  /* 출발, 도착 */
   .departure,
   .arrival {
     width: vw(160px);
@@ -303,12 +425,11 @@
     }
   }
 
-  /* 비행 경로 (타임라인 + 직항/경유) */
   .airport-info {
     text-align: center;
     .timeline {
       align-items: center;
-      gap: vw(8px); // 점·라인 사이 간격
+      gap: vw(8px);
       margin-bottom: vw(6px);
       .duration {
         @include font-18px;
@@ -322,7 +443,6 @@
     }
   }
 
-  /* 가격 */
   .price {
     text-align: right;
     @include font-22px;

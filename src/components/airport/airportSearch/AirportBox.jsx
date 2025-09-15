@@ -1,24 +1,24 @@
 import "./style.scss";
 import useAirportStore from "../../../store/airportStore";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 
 const AirportBox = ({ airportId }) => {
   const getAirportById = useAirportStore((state) => state.getAirportById);
   const airport = getAirportById(airportId);
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   if (!airport) {
     return <div>항공권 정보를 찾을 수 없습니다.</div>;
   }
 
-  const handleAirportClick = () => {
-    navigate(`/airports/${airport.slug}`);
-  };
+  // const handleAirportClick = () => {
+  //   navigate(`/airports/${airport.slug}`);
+  // };
 
   return (
     <div
       className="airport-box"
-      onClick={handleAirportClick}
+      // onClick={handleAirportClick}
       style={{ cursor: "pointer" }}
     >
       {/* 항공사 */}
@@ -48,8 +48,9 @@ const AirportBox = ({ airportId }) => {
         <div className="timeline">
           <p className="duration">{airport.duration}</p>
           <img
-            src="../../../../public/images/airport/timeline.png"
+            src="/images/airport/timeline.png"
             className="timeline-img"
+            alt="timeline"
           />
           <p className="direct">{airport.direct ? "직항" : "경유"}</p>
         </div>
