@@ -70,7 +70,7 @@ const AirportCon1 = () => {
 
     return (
         <section className="airport-main-con airport-main-con1">
-            <div className="visual-bg">
+            <div className="visual-bg-ap">
                 <div className="inner">
                     <h2 className="search-title">날짜를 선택해 예약하세요</h2>
 
