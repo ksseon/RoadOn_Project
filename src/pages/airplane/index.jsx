@@ -1,4 +1,3 @@
-import './style.scss';
 import AirportMain from '../../components/airport/airportMain/AirportMain';
 
 const Airport = () => {

@@ -1,10 +1,10 @@
-@use '../../styles/utils' as *;
+@use "../../styles/utils" as *;
 
 .modal_wrap {
-    width: vw(1500px);
-    height: vw(800px);
-    background-color: #fff;
-    border-radius: vw(10px);
+  width: vw(1500px);
+  height: vw(800px);
+  background-color: #fff;
+  border-radius: vw(10px);
 }
 
 .list-wrap {
@@ -33,14 +33,9 @@
             .hotel-image {
                 width: vw(290px);
                 height: vw(240px);
+                background-color: #333;
                 border-radius: vw(4px);
-                overflow: hidden;
                 .heart {
-                }
-                img {
-                    width: 100%;
-                    height: 100%;
-                    object-fit: cover;
                 }
             }
             .hotel-info {
@@ -62,9 +57,6 @@
                         }
                     }
                     .rate {
-                        display: flex;
-                        align-items: center;
-                        gap: vw(6px);
                     }
                 }
                 .info-bottom {
@@ -103,8 +95,8 @@
 }
 
 .reco-box {
-    width: vw(326px);
-    height: vw(500px);
+  width: vw(326px);
+  height: vw(500px);
 }
 
 .room-option-box {

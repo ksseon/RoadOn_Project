@@ -1,11 +1,4 @@
-import { useState } from 'react';
-import DatePicker from 'react-datepicker';
-import { ko } from 'date-fns/locale';
-import 'react-datepicker/dist/react-datepicker.css';
-import './style.scss';
-import { FiX, FiCalendar, FiPlus } from 'react-icons/fi';
-import { IoSearch } from 'react-icons/io5';
-import { MdOutlinePersonOutline } from 'react-icons/md';
+import AirportSearchBar from "../../../components/ui/AirportSearchBar/AirportSearchBar";
 
 const AirportCon1 = () => {
     const [mode, setMode] = useState('roundtrip');
@@ -70,7 +63,7 @@ const AirportCon1 = () => {
 
     return (
         <section className="airport-main-con airport-main-con1">
-            <div className="visual-bg-ap">
+            <div className="visual-bg">
                 <div className="inner">
                     <h2 className="search-title">날짜를 선택해 예약하세요</h2>
 
