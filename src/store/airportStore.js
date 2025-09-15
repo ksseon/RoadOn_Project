@@ -1,31 +1,40 @@
 import { create } from "zustand";
 import airportData from "../api/airportListData";
 
-// 전체 가격 범위(데이터에서 계산)
-const allPrices = airportData.map((a) => a.price);
-const ABS_MIN_PRICE = Math.min(...allPrices);
-const ABS_MAX_PRICE = Math.max(...allPrices);
-const STEP = 1000; // 1,000원 단위
+// 가격 절대 범위(데이터 기준)
+const ABS_MIN = Math.min(...airportData.map((a) => a.price));
+const ABS_MAX = Math.max(...airportData.map((a) => a.price));
 
 const useAirportStore = create((set, get) => ({
+  // 원본 데이터
   airports: airportData,
 
-  priceMin: ABS_MIN_PRICE,
-  priceMax: ABS_MAX_PRICE,
-
+  // 현재 필터 값
   filters: {
-    direct: null, // true(직항) | false(경유) | null(전체)
-    airline: null, // 항공사명 or null
-    baggage: null, // '포함' or null
-    priceRange: [ABS_MIN_PRICE, ABS_MAX_PRICE], // [min, max]
+    direct: null, // true: 직항, false: 경유, null: 전체
+    airline: null, // '대한항공' | '에어서울' | ... | null
+    baggage: null, // '포함' | null
+    priceMin: ABS_MIN,
+    priceMax: ABS_MAX,
   },
 
-  getAirportById: (id) => get().airports.find((a) => a.id === id),
+  // 정렬: none | price-asc | price-desc
+  sortOrder: "none",
 
-  setFilter: (patch) => set((s) => ({ filters: { ...s.filters, ...patch } })),
+  // === 셀렉터/액션들 ===
+  getAbsPriceRange: () => ({ min: ABS_MIN, max: ABS_MAX }),
+
+  // AirportBox에서 사용
+  getAirportById: (id) => {
+    const { airports } = get();
+    return airports.find((a) => a.id === id);
+  },
+
+  setFilter: (partial) =>
+    set((s) => ({ filters: { ...s.filters, ...partial } })),
 
   setPriceRange: (min, max) =>
-    set((s) => ({ filters: { ...s.filters, priceRange: [min, max] } })),
+    set((s) => ({ filters: { ...s.filters, priceMin: min, priceMax: max } })),
 
   resetFilter: () =>
     set({
@@ -33,24 +42,33 @@ const useAirportStore = create((set, get) => ({
         direct: null,
         airline: null,
         baggage: null,
-        priceRange: [ABS_MIN_PRICE, ABS_MAX_PRICE],
+        priceMin: ABS_MIN,
+        priceMax: ABS_MAX,
       },
     }),
 
-  getFilteredAirports: () => {
-    const { airports, filters } = get();
-    const [minP, maxP] = filters.priceRange;
+  setSortOrder: (order) => set({ sortOrder: order }),
 
-    return airports.filter((a) => {
-      if (filters.direct !== null && a.direct !== filters.direct) return false;
-      if (filters.airline && a.airline !== filters.airline) return false;
-      if (filters.baggage && a.baggage !== filters.baggage) return false;
-      if (a.price < minP || a.price > maxP) return false;
+  // 필터 + 정렬 결과
+  getFilteredAirports: () => {
+    const { airports, filters, sortOrder } = get();
+    const { direct, airline, baggage, priceMin, priceMax } = filters;
+
+    let list = airports.filter((a) => {
+      if (direct !== null && a.direct !== direct) return false;
+      if (airline && a.airline !== airline) return false;
+      if (baggage && a.baggage !== baggage) return false;
+      if (a.price < priceMin || a.price > priceMax) return false;
       return true;
     });
-  },
 
-  STEP,
+    if (sortOrder === "price-asc")
+      list = [...list].sort((a, b) => a.price - b.price);
+    if (sortOrder === "price-desc")
+      list = [...list].sort((a, b) => b.price - a.price);
+
+    return list;
+  },
 }));
 
 export default useAirportStore;

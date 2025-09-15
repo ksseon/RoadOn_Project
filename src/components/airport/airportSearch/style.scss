@@ -1,18 +1,26 @@
 @use "../../../styles/utils" as *;
 
+/* =========================
+   레이아웃
+   ========================= */
 .airport {
   width: 100%;
   margin-top: vw(260px);
+
   .inner {
     padding: 100px 0;
     display: flex;
     gap: 40px;
+
+    /* 좌측 필터 박스 */
     .filter-wrap {
       width: vw(300px);
 
+      /* 이벤트 카드(있을 때) */
       .event-modal {
         margin: 0 auto;
         margin-bottom: vw(48px);
+
         .event-card {
           width: vw(300px);
           height: vw(140px);
@@ -22,14 +30,17 @@
           justify-content: space-between;
           align-items: center;
           background: #f9f9f9;
+
           .text-box {
             display: flex;
             justify-content: center;
             align-items: center;
+
             p {
               @include font-18px-M;
               color: $default;
             }
+
             img {
               width: vw(60px);
               margin: 0 vw(10px);
@@ -37,26 +48,33 @@
           }
         }
       }
+
+      /* 스와이퍼 화살표 숨김 (있는 경우) */
       .swiper-button-prev,
       .swiper-button-next {
         color: transparent;
       }
 
+      /* 공통 필터 블럭 */
       .filter {
         .filtering {
           margin-bottom: vw(48px);
+
           p {
             @include font-20px-M;
             margin-bottom: vw(24px);
           }
+
           ul {
             margin-left: vw(20px);
+
             li {
               @include font-16px;
               display: flex;
               align-items: center;
               gap: vw(12px);
               color: $default;
+
               span {
                 width: vw(14px);
                 height: vw(14px);
@@ -69,11 +87,13 @@
         }
       }
 
+      /* 경유 체크박스 */
       .type {
         .type-title {
           display: flex;
           justify-content: space-between;
           align-items: center;
+
           .redo {
             color: $greyscale-1000;
             @include font-16px;
@@ -84,11 +104,13 @@
             margin-bottom: vw(24px);
           }
         }
+
         ul {
           margin-left: vw(20px);
           display: flex;
           flex-direction: column;
           gap: vw(10px);
+
           input[type="checkbox"] {
             position: relative;
             appearance: none;
@@ -99,10 +121,12 @@
             border: vw(1px) solid #353535;
             border-radius: vw(3px);
             cursor: pointer;
+
             &:checked {
               background-color: $orange;
               border-color: $orange;
             }
+
             &:checked::after {
               content: "✔";
               position: absolute;
@@ -113,6 +137,7 @@
               @include font-12px;
             }
           }
+
           strong {
             @include font-16px;
             color: $default;
@@ -120,11 +145,13 @@
         }
       }
 
+      /* 항공사 선택 버튼 */
       .star {
         ul {
           display: flex;
           flex-wrap: wrap;
           gap: vw(12px);
+
           li {
             button {
               padding: vw(6px) vw(15px);
@@ -135,9 +162,11 @@
               cursor: pointer;
               color: $default;
               @include font-14px-M;
+
               &:hover {
                 background-color: $greyscale-400;
               }
+
               &.active {
                 background-color: $orange;
                 border: none;
@@ -148,62 +177,48 @@
         }
       }
 
-      /* === 가격 슬라이더 (핸들만 드래그) === */
+      /* ===== 가격 더블 슬라이더 ===== */
       .price {
         .price-slider {
           .ranges {
             position: relative;
-            height: vw(30px);
+            height: vw(38px); /* 툴팁 공간 포함 */
             margin: 0 vw(6px) vw(10px);
 
-            /* 회색 기본 바 */
-            .base-track {
-              position: absolute;
-              top: 50%;
-              left: 0;
-              right: 0;
-              transform: translateY(-50%);
-              height: vw(4px);
-              background: $greyscale-400;
-              border-radius: vw(6px);
-              z-index: 5;
-              pointer-events: none;
-            }
-
-            /* ▶ 여기 수정: range를 세로 중앙에 고정하고, 높이를 thumb와 동일하게 */
+            /* 2개의 range를 동일 위치에 겹치기 */
             input[type="range"] {
               position: absolute;
-              left: 0;
-              right: 0;
-              top: 50%;
-              transform: translateY(-50%);
-              height: vw(18px); /* thumb 크기와 동일 */
+              inset: 0;
+              width: 100%;
+              height: vw(10px);
               margin: 0;
               background: none;
-
-              pointer-events: none; /* 트랙 클릭 방지 (thumb만 드래그) */
+              pointer-events: none; /* 트랙에 클릭 못하게 */
               -webkit-appearance: none;
-              z-index: 30;
-            }
-            input[type="range"]:nth-of-type(2) {
-              z-index: 40;
+              appearance: none;
+              z-index: 10; /* 기본 z-index */
             }
 
-            /* 네이티브 트랙은 투명 */
+            /* 오른쪽 슬라이더가 위로 오도록 */
+            input[type="range"]:nth-of-type(2) {
+              z-index: 200;
+            }
+
+            /* 기본 트랙(회색) */
             input[type="range"]::-webkit-slider-runnable-track {
               height: vw(6px);
-              background: transparent;
+              background: $greyscale-400;
               border-radius: vw(6px);
               pointer-events: none;
             }
             input[type="range"]::-moz-range-track {
               height: vw(6px);
-              background: transparent;
+              background: $greyscale-400;
               border-radius: vw(6px);
               pointer-events: none;
             }
 
-            /* thumb (마진 보정 제거) */
+            /* 핸들(thumb) — 트랙 위 & 세로 가운데 정렬  */
             input[type="range"]::-webkit-slider-thumb {
               -webkit-appearance: none;
               width: vw(18px);
@@ -211,11 +226,12 @@
               border-radius: 50%;
               background: $orange;
               border: 0;
-              box-shadow: 0 0 0 vw(2px) $white;
               cursor: pointer;
-              pointer-events: auto;
-              margin-top: 0; /* 중요: 세로 센터 유지 */
+              pointer-events: auto; /* thumb만 드래그 가능 */
               position: relative;
+              z-index: 3; /* 회색 트랙/주황 라인 위 */
+              margin-top: -6px; /* (thumb 18 - track 6)/2 = 6 */
+              box-shadow: 0 0 0 vw(2px) $white;
             }
             input[type="range"]::-moz-range-thumb {
               width: vw(18px);
@@ -225,24 +241,25 @@
               border: 0;
               cursor: pointer;
               pointer-events: auto;
-              margin: 0;
               position: relative;
+              z-index: 3;
             }
 
-            /* 주황 선택 구간 — 동일하게 50% 중앙 */
+            /* 선택 구간(주황 라인) — 트랙 위에 표시 */
             .track-fill {
               position: absolute;
-              top: vw(20px);
+              top: 50%;
               transform: translateY(-50%);
-              height: vw(4px);
+              height: vw(6px);
               background: $orange;
               border-radius: vw(6px);
-              z-index: 15; /* 회색 위, thumb 아래 */
+              z-index: 2; /* 트랙 위, thumb 아래 */
               left: 0;
-              right: 0;
+              right: 0; /* JS에서 left/right 업데이트 */
               pointer-events: none;
             }
 
+            /* 가격 툴팁 */
             .price-tooltip {
               position: absolute;
               bottom: vw(30px);
@@ -252,45 +269,32 @@
               padding: 6px 10px;
               border-radius: 6px;
               white-space: nowrap;
-              z-index: 50;
+              @include font-14px;
               pointer-events: none;
+              z-index: 30;
             }
           }
+
           .desc {
             @include font-14px;
             color: $default;
+
             strong {
-              color: $orange;
+              color: $mint;
               @include font-16px-M;
             }
           }
         }
       }
 
-      .service {
-        ul {
-          display: flex;
-          flex-wrap: wrap;
-          gap: vw(12px);
-          li {
-            padding: vw(6px) vw(15px);
-            box-sizing: border-box;
-            border-radius: vw(40px);
-            border: 1px solid $greyscale-1000;
-            cursor: pointer;
-            &:hover {
-              background-color: $greyscale-400;
-            }
-          }
-        }
-      }
-
+      /* 무료 수화물 */
       .discount {
         ul {
           margin-left: vw(20px);
           display: flex;
           flex-direction: column;
           gap: vw(10px);
+
           input[type="checkbox"] {
             position: relative;
             appearance: none;
@@ -301,10 +305,12 @@
             border: vw(1px) solid #353535;
             border-radius: vw(3px);
             cursor: pointer;
+
             &:checked {
               background-color: $orange;
               border-color: $orange;
             }
+
             &:checked::after {
               content: "✔";
               position: absolute;
@@ -315,23 +321,37 @@
               @include font-12px;
             }
           }
+
           strong {
             @include font-16px;
             color: $default;
           }
         }
       }
+    }
 
-      .list-wrap {
-        width: 55.2083vw;
-        border: 1px solid $default;
-        .list-top {
+    /* 오른쪽 리스트 영역 */
+    .list-wrap {
+      flex: 1;
+
+      .sort-select {
+        display: flex;
+        justify-content: flex-end;
+        margin-bottom: vw(12px);
+
+        select {
+          padding: 6px 10px;
+          border: 1px solid #d5d9df;
+          border-radius: 6px;
+          background: #fff;
+          @include font-14px;
         }
-        .list-box {
-          display: flex;
-          flex-direction: column;
-          gap: vw(20px);
-        }
+      }
+
+      .list-box {
+        display: flex;
+        flex-direction: column;
+        gap: vw(20px);
       }
     }
   }
@@ -348,40 +368,46 @@
   }
 }
 
-/* 오른쪽 영역(항공 카드) */
+/* =========================
+   항공 카드
+   ========================= */
 .airport-box {
   display: grid;
-  grid-template-columns: 2fr 0fr 1fr 1fr 2fr; /* 항공사 / 출발 / 비행정보 / 도착 / 가격 */
+  grid-template-columns: 2fr 1fr 1fr 1fr 1fr; /* 항공사 / 출발 / 비행정보 / 도착 / 가격 */
   align-items: center;
   gap: vw(10px);
-  width: vw(1050px);
-  height: vw(280px);
-  padding: vw(50px);
+  width: 100%;
+  padding: vw(28px);
   border: 1px solid $greyscale-500;
   border-radius: vw(15px);
   background: #fff;
   box-shadow: 0 vw(2px) vw(6px) rgba(0, 0, 0, 0.05);
-  cursor: pointer;
+  cursor: default;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
-  margin-bottom: vw(20px);
+
   &:hover {
     transform: translateY(-3px);
     box-shadow: 0 vw(6px) vw(14px) rgba(0, 0, 0, 0.1);
   }
 
+  /* 항공사 */
   .airline {
     display: flex;
     align-items: center;
-    gap: vw(25px);
+    gap: vw(16px);
+
     .logo {
-      width: vw(35px);
+      width: vw(36px);
+      height: vw(36px);
+
       img {
         width: 100%;
         height: 100%;
         object-fit: contain;
-        border-radius: vw(50px);
+        border-radius: 50%;
         border: 1px solid $greyscale-400;
       }
+
       .placeholder {
         display: block;
         width: 100%;
@@ -390,8 +416,10 @@
         border-radius: 50%;
       }
     }
+
     .info {
       text-align: left;
+
       .name {
         @include font-20px;
       }
@@ -402,6 +430,7 @@
     }
   }
 
+  /* 출발/도착 */
   .departure,
   .arrival {
     width: vw(160px);
@@ -409,6 +438,7 @@
     flex-direction: column;
     align-items: center;
     gap: vw(4px);
+
     .date {
       @include font-14px;
       color: $greyscale-900;
@@ -425,24 +455,29 @@
     }
   }
 
+  /* 비행 정보 */
   .airport-info {
     text-align: center;
+
     .timeline {
       align-items: center;
       gap: vw(8px);
       margin-bottom: vw(6px);
+
       .duration {
         @include font-18px;
         color: $default;
         white-space: nowrap;
       }
     }
+
     .direct {
       @include font-18px-M;
       color: $mint;
     }
   }
 
+  /* 가격 */
   .price {
     text-align: right;
     @include font-22px;
