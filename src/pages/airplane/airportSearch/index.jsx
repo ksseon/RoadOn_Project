@@ -1,5 +1,5 @@
 import "./style.scss";
-import AirportSearchBarList from "../../../components/ui/AirportSearchBarList";
+import AirportSearchBarList from "../../../components/ui/AirportSearchBarList/AirportSearchBarList";
 import Filter from "../../../components/airport/airportSearch/Filter";
 import AirportBoxList from "../../../components/airport/airportSearch/AirportBoxList";
 

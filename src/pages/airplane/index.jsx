@@ -1,4 +1,4 @@
-import AirportMain from "../../../components/airport/airportMain";
+import AirportMain from "../../components/airport/airportMain/AirportMain";
 
 const Airport = () => {
   return (
