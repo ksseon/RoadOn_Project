@@ -72,7 +72,7 @@ const Profile = () => {
                         <p>내 후기</p>
                         <p>내 문의 내역</p>
                         <p className="none-line">찜 목록</p>
-                        <p>회원 정보 변경</p>
+                        <p className="none-line ">회원 정보 변경</p>
                     </div>
                 </div>
                 <div className="profile-menu-support">
@@ -81,7 +81,7 @@ const Profile = () => {
                         <p>공지사항</p>
                         <p>투어 이용 안내</p>
                         <p className="none-line">자주찾는질문</p>
-                        <p>고객센터 안내</p>
+                        <p className="none-line ">고객센터 안내</p>
                     </div>
                 </div>
             </article>

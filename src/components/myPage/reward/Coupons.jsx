@@ -1,9 +1,14 @@
 import { useState } from 'react';
 import DropdownPill from '../../ui/dropdownPill/DropdownPill';
 import TabButton2 from '../../ui/tabButton/TabButton2';
+import CouponTicket from '../../ui/coupon/CouponTicket';
+import useCouponStore from '../../../store/couponStore';
 
 const Coupons = () => {
     // 탭 상태(전체/숙소/투어)
+
+    const coupons = useCouponStore((state) => state.coupons);
+
     const [tab, setTab] = useState('전체');
 
     // 드롭다운 상태(사용가능/사용완료)
@@ -22,9 +27,13 @@ const Coupons = () => {
                         value={status} // ✅ 현재 선택값
                         onChange={setStatus} // ✅ 변경 핸들러
                         options={statusOptions} // ✅ 외부에서 옵션 주입
-                        width={160}
                     />
                 </div>
+            </section>
+            <section className="coupons-body">
+                {coupons.map((coupon, i) => (
+                    <CouponTicket key={i} {...coupon} />
+                ))}
             </section>
         </div>
     );

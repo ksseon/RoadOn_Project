@@ -61,5 +61,18 @@
             display: flex;
             justify-content: space-between;
         }
+        &-body {
+            padding: vw(20px);
+            width: 100%;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            align-content: flex-start;
+            align-items: start; // 세로 정렬: 위로 붙임
+            justify-items: stretch; // 가로로 셀 폭 가득 채움(=카드가 동일 폭)
+            column-gap: vw(20px);
+            row-gap: vw(50px);
+
+            // justify-content: flex-start;
+        }
     }
 }

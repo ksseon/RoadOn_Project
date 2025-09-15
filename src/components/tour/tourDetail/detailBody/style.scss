@@ -115,11 +115,11 @@
                         &-body {
                             p {
                                 display: -webkit-box;
-                                -webkit-line-clamp: 4; // 최대 4줄
+                                -webkit-line-clamp: 4;
                                 -webkit-box-orient: vertical;
                                 overflow: hidden;
                                 text-overflow: ellipsis;
-                                white-space: normal; // 줄바꿈 허용
+                                white-space: normal;
                             }
                         }
                     }

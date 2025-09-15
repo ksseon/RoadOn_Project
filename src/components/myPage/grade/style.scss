@@ -1,0 +1,258 @@
+@use '../../../styles/utils/' as *;
+
+.mypage-grade-main-wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    gap: vw(20px);
+    padding-top: vw(160px);
+    padding-bottom: vw(400px);
+}
+
+.grade-col {
+    width: vw(335px);
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+
+    &__header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: vw(12px);
+    }
+
+    &__badge {
+        width: vw(40px);
+        height: vw(40px);
+        overflow: visible;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        font-weight: 800;
+        color: #fff;
+        background-size: cover;
+    }
+    &__title {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: vw(12px);
+        align-items: center;
+        @include font-24px;
+    }
+
+    &__cond {
+        width: 100%;
+        @include font-14px;
+        color: $white;
+        border-radius: vw(10px) vw(10px) 0 0;
+        padding: 10px 12px;
+        box-sizing: border-box;
+        text-align: center;
+
+        em {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+
+    &__coupons {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: vw(40px);
+
+        background-color: $greyscale-200;
+        padding: vw(40px);
+
+        .coupon-ticket {
+            // width: 100%;
+            height: vw(130px);
+
+            &__left {
+                width: 54px;
+            }
+            &__right {
+                gap: 0;
+                min-width: vw(205px);
+            }
+            &__price {
+                @include font-24px-B;
+            }
+            &__cond {
+                @include font-18px-B;
+            }
+        }
+    }
+
+    // &__footer {
+    //     margin-top: 4px;
+    //     padding: 12px;
+    //     border-radius: 12px;
+    //     border: 1px dashed $greyscale-200;
+    //     text-align: center;
+    // }
+    &__accrual {
+        @include font-28px-B;
+        width: vw(255px);
+        height: vw(130px);
+        text-align: center;
+        color: $white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: vw(10px);
+        span {
+            padding: 30px;
+            margin: auto;
+        }
+    }
+}
+
+/* 👉 각 컬럼별 색상 지정 */
+.c-welcome {
+    .grade-col__badge {
+        background-color: $greyscale-1100;
+    }
+    .grade-col__cond {
+        @include font-24px-B;
+        background-color: $greyscale-1100;
+    }
+    .grade-col__accrual {
+        background-color: $greyscale-1100;
+    }
+    .grade-col__coupons {
+        .coupon-ticket {
+            &__left {
+                background-color: $greyscale-1100 !important;
+            }
+            &__right {
+            }
+            &__price,
+            &__cond,
+            &__date {
+                color: $greyscale-1100;
+            }
+        }
+    }
+}
+
+.c-family {
+    .grade-col__badge {
+        border-radius: 0;
+        background-image: url('/images/myPage/badge_F.png');
+    }
+    .grade-col__cond {
+        padding: vw(25px) 0;
+        // height: vw(80px);
+        background: $blue;
+        @include font-24px-B;
+    }
+    .grade-col__accrual {
+        background-color: $blue;
+    }
+    .grade-col__coupons {
+        .coupon-ticket {
+            &__left {
+                background-color: $blue !important;
+            }
+            &__right {
+            }
+            &__price,
+            &__cond,
+            &__date {
+                color: $blue;
+            }
+        }
+    }
+}
+
+.c-vip {
+    .grade-col__badge {
+        border-radius: 0;
+        background-image: url('/images/myPage/badge_v.png');
+    }
+    .grade-col__cond {
+        padding: vw(30px);
+        @include font-24px-B;
+        background: $orange;
+    }
+    .grade-col__accrual {
+        background-color: $orange;
+    }
+    .grade-col__title {
+        @include font-28px-M;
+    }
+    .grade-col__coupons {
+        .coupon-ticket {
+            &__left {
+                background-color: $orange !important;
+            }
+            &__right {
+            }
+            &__price,
+            &__cond,
+            &__date {
+                color: $orange;
+            }
+        }
+    }
+}
+
+.c-vvip {
+    .grade-col__badge {
+        border-radius: 0;
+        background-image: url('/images/myPage/badge_v2.png');
+        background-position: 0 vw(-5px);
+        background-repeat: no-repeat;
+        position: relative;
+        &::after {
+            content: '2';
+            position: absolute;
+            right: vw(16px);
+            top: 0;
+            width: vw(2px);
+            height: vw(2px);
+            font-size: rem(16px);
+
+            color: white;
+            -webkit-text-stroke: vw(1px) $mint;
+        }
+    }
+    .grade-col__cond {
+        padding: vw(40px);
+        @include font-24px-B;
+        background: $mint;
+    }
+    .grade-col__accrual {
+        background-color: $mint;
+    }
+    .grade-col__title {
+        @include font-28px-M;
+    }
+    .grade-col__coupons {
+        .coupon-ticket {
+            &__left {
+                background-color: $mint !important;
+            }
+            &__right {
+            }
+            &__price,
+            &__cond,
+            &__date {
+                color: $mint;
+            }
+        }
+    }
+}
+
+/* 쿠폰 좌측 바는 기존처럼 유지 */
+.coupon-ticket.c-hotel .coupon-ticket__left {
+    background: $mint;
+}
+.coupon-ticket.c-tour .coupon-ticket__left {
+    background: $orange;
+}
