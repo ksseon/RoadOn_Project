@@ -1,0 +1,78 @@
+@use '../../../styles/utils/' as *;
+
+#reward {
+    .tab-button-wrap {
+        margin-top: vw(73px);
+        margin-bottom: vw(115px);
+    }
+    .points {
+        &-info {
+            @include font-24px;
+            margin-bottom: vw(30px);
+            strong {
+                @include font-24px-B;
+            }
+        }
+        &-table {
+            &-wrap {
+            }
+            colgroup {
+                col {
+                    &:nth-child(1) {
+                        width: vw(140px);
+                    }
+                    &:nth-child(2) {
+                    }
+                    &:nth-child(3) {
+                        width: vw(350px);
+                    }
+                    &:nth-child(1) {
+                        width: vw(150px);
+                    }
+                }
+            }
+            thead {
+                background-color: #fafafa;
+                @include font-20px-B;
+                height: vw(50px);
+                tr {
+                    padding: vw(10px);
+                    th {
+                        vertical-align: middle;
+                    }
+                }
+            }
+            tbody {
+                tr {
+                    height: vw(90px);
+                    border-bottom: 1px solid $greyscale-400;
+
+                    td {
+                        vertical-align: middle;
+                        @include font-18px-M;
+                        text-align: center;
+                    }
+                }
+            }
+        }
+    }
+    .coupons {
+        &-head {
+            display: flex;
+            justify-content: space-between;
+        }
+        &-body {
+            padding: vw(20px);
+            width: 100%;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            align-content: flex-start;
+            align-items: start; // 세로 정렬: 위로 붙임
+            justify-items: stretch; // 가로로 셀 폭 가득 채움(=카드가 동일 폭)
+            column-gap: vw(20px);
+            row-gap: vw(50px);
+
+            // justify-content: flex-start;
+        }
+    }
+}

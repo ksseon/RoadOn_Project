@@ -1,6 +1,7 @@
 import useHotelStore from '../../../store/hotelStore';
 import useHotelStor from '../../../../public/images/hotels/detail/star-0.svg';
-import '../style
+import '../style.scss';
+
 const Rate = () => {
     const getHotelById = useHotelStore((state) => state.getHotelById);
     const hotel = getHotelById(hotelId);
@@ -31,14 +32,17 @@ const Rate = () => {
     };
 
     const getRatingImage = (rate) => {
-        if (rate >= 0 && rate < 1) return '../../../../public/images/hotels/detail/star-0.svg';
-        if (rate >= 1 && rate < 1.5) return '../../../../public/images/hotels/detail/star-1.svg';
-        if (rate >= 1.5 && rate < 2) return 'star-1-5.svg';
-        if (rate >= 2 && rate < 2.5) return 'star-2.svg';
-        if (rate >= 2 && rate < 2.5) return 'star-2.svg';
-        if (rate >= 2 && rate < 2.5) return 'star-2.svg';
-        if (rate >= 2 && rate < 2.5) return 'star-2.svg';
-        if (rate >= 2 && rate < 2.5) return 'star-2.svg';
+        if (rate >= 0 && rate < 0.5) return '/images/hotels/detail/icon/star-0.svg';
+        if (rate >= 0.5 && rate < 1) return '/images/hotels/detail/icon/star-0-5.svg';
+        if (rate >= 1 && rate < 1.5) return '/images/hotels/detail/icon/star-1.svg';
+        if (rate >= 1.5 && rate < 2) return '/images/hotels/detail/icon/star-1-5.svg';
+        if (rate >= 2 && rate < 2.5) return '/images/hotels/detail/icon/star-2.svg';
+        if (rate >= 2.5 && rate < 2.5) return '/images/hotels/detail/icon/star-2-5.svg';
+        if (rate >= 3 && rate < 2.5) return '/images/hotels/detail/icon/star-3.svg';
+        if (rate >= 3.5 && rate < 2.5) return '/images/hotels/detail/icon/star-3-5.svg';
+        if (rate >= 4 && rate < 2.5) return '/images/hotels/detail/icon/star-4.svg';
+        if (rate >= 4.5 && rate < 2.5) return '/images/hotels/detail/icon/star-4-5.svg';
+        if (rate == 5) return '/images/hotels/detail/icon/star-5.svg';
         return 'star-5.svg';
     };
 

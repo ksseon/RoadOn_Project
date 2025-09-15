@@ -1,1 +1,28 @@
 @use '../../styles/utils' as *;
+
+#myPage {
+    .inner {
+        padding-top: vw(140px);
+        .mypage-title {
+            @include font-32px-B;
+            color: $default;
+
+            &-wrap {
+                height: vw(40px);
+                display: flex;
+                justify-content: space-between;
+                .more {
+                    cursor: pointer;
+                    display: flex;
+                    align-items: end;
+
+                    em {
+                        @include font-16px-B;
+                        height: vw(22px);
+                        padding-left: 10px;
+                    }
+                }
+            }
+        }
+    }
+}

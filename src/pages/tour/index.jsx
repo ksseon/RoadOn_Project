@@ -3,12 +3,12 @@ import TourMain from "../../components/tour/tourMain/TourMain";
 import "./style.scss";
 
 const Tour = () => {
-  return (
-    <main id="tourPage">
-      {/* <TourMain /> */}
-      <TourDetail />
-    </main>
-  );
+    return (
+        <main id="tourPage">
+            {/* <TourMain /> */}
+            <TourDetail />
+        </main>
+    );
 };
 
 export default Tour;
