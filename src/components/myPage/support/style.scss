@@ -1,1 +1,99 @@
 @use '../../../styles/utils/' as *;
+
+#support {
+    .tab-button-wrap {
+        margin-top: vw(98px);
+        margin-bottom: vw(35px);
+    }
+    .support {
+        &-notice {
+            &-table {
+                &-wrap {
+                    margin-top: vw(50px);
+                    colgroup {
+                        col {
+                            &:nth-child(1) {
+                                width: vw(180px);
+                            }
+                            &:nth-child(2) {
+                            }
+                            &:nth-child(3) {
+                                width: vw(165px);
+                            }
+                        }
+                    }
+                }
+                thead {
+                    background-color: #fafafa;
+                    @include font-20px-B;
+                    height: vw(50px);
+                    tr {
+                        padding: vw(10px);
+                        th {
+                            vertical-align: middle;
+                        }
+                    }
+                }
+                tbody {
+                    tr {
+                        height: vw(90px);
+                        border-bottom: vw(1px) solid $greyscale-400;
+
+                        td {
+                            vertical-align: middle;
+                            @include font-18px-M;
+                            padding: 0 vw(30px);
+                            &:not(:nth-child(2)) {
+                                text-align: center;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .faq {
+    }
+    .guide {
+        &-main {
+            &-wrap {
+                display: flex;
+                gap: vw(20px);
+            }
+            &-box {
+                width: vw(330px);
+                height: vw(110px);
+                display: flex;
+                align-items: center;
+                justify-content: start;
+                gap: 20px;
+                background-color: $foundation-mint-light;
+                border-radius: vw(20px);
+                padding: vw(20px);
+
+                cursor: pointer;
+                &:hover {
+                    transform: translateY(-5%);
+                    transition: 0.2s;
+                    box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.2);
+                }
+                .img-box {
+                    width: 30px;
+                    height: 30px;
+                }
+                .txt-box {
+                    display: flex;
+                    flex-direction: column;
+                    h2 {
+                        @include font-20px-B;
+                        color: $greyscale-1200;
+                    }
+                    p {
+                        @include font-14px-M;
+                        color: $greyscale-1000;
+                    }
+                }
+            }
+        }
+    }
+}
