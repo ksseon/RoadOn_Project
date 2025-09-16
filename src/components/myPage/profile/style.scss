@@ -1,1 +1,191 @@
-@use '../../styles/utils' as *;
+@use '../../../styles/utils/' as *;
+
+#profile {
+    .inner {
+    }
+    .mypage {
+        &-title {
+        }
+    }
+    .profile {
+        &-name {
+            &-wrap {
+                padding: vw(20px) vw(15px);
+                display: flex;
+                justify-content: space-between;
+                height: vw(180px);
+                border-top: 1px solid $greyscale-600;
+                border-bottom: 1px solid $greyscale-600;
+                .profile-img-wrap {
+                    width: vw(140px);
+                    height: vw(140px);
+                    background-color: red;
+                    border-radius: vw(8px);
+                    img {
+                    }
+                }
+                .profile-name-zone {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    width: vw(700px);
+                    padding: vw(10px) 0;
+                    strong {
+                        @include font-24px-B;
+
+                        span {
+                            padding-left: vw(5px);
+                            @include font-20px-M;
+                        }
+                    }
+                    .grade {
+                        display: flex;
+                        align-items: center;
+                        gap: vw(5px);
+                        color: $blue;
+                        p {
+                            @include font-16px-EB;
+                            em {
+                                @include font-14px-B;
+                                padding-left: vw(5px);
+                                color: $default;
+                            }
+                        }
+                        &-circle {
+                            background-color: $blue;
+                            width: vw(30px);
+                            height: vw(30px);
+                            line-height: vw(30px);
+                            text-align: center;
+                            @include circle;
+                            p {
+                                @include font-14px-B;
+                                color: $white;
+                                line-height: 200%;
+                            }
+                        }
+                    }
+                }
+                .profile-coupons-wrap {
+                    width: vw(450px);
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    .box {
+                        width: vw(190px);
+                        background-color: $greyscale-200;
+                        border-radius: vw(10px);
+                        height: vw(102px);
+                        strong {
+                            @include font-28px-B;
+                            span {
+                                @include font-20px;
+                            }
+                        }
+                    }
+                    .profile {
+                        &-coupon,
+                        &-points {
+                            display: flex;
+                            flex-direction: column;
+                            align-items: center;
+                            justify-content: center;
+                            gap: vw(10px);
+                            .head {
+                                display: flex;
+                                align-items: center;
+                                p {
+                                    @include font-20px;
+                                    em {
+                                        font-size: vw(16px);
+                                    }
+                                }
+                                img {
+                                }
+                            }
+                        }
+                        &-coupon {
+                        }
+                        &-points {
+                        }
+                    }
+                }
+            }
+        }
+
+        &-menu {
+            &-wrap {
+                margin-top: vw(40px);
+                margin-bottom: vw(140px);
+                background-color: $greyscale-100;
+                border-radius: vw(15px);
+                height: vw(204px);
+                display: flex;
+                justify-content: space-between;
+            }
+            &-reserve,
+            &-user,
+            &-support {
+                width: vw(460px);
+                padding: vw(30px);
+                box-sizing: border-box;
+                .category {
+                    &-title {
+                        @include font-24px-B;
+                    }
+                    &-con {
+                        display: flex;
+                        flex-wrap: wrap;
+                        gap: vw(10px);
+                        padding-right: vw(40px);
+
+                        p {
+                            cursor: pointer;
+                            @include font-20px;
+                            color: #636363;
+                            padding-right: vw(10px);
+                            position: relative;
+                            &:hover {
+                                &::before {
+                                    transform: translateX(-50%) scaleX(1);
+                                }
+                            }
+                            &::before {
+                                content: '';
+                                position: absolute;
+                                width: 100%;
+                                height: 5%;
+                                left: 50%;
+                                bottom: 0;
+                                transform: translateX(-50%) scaleX(0);
+                                background-color: $greyscale-600;
+                                transition: 0.3s;
+                            }
+                            &::after {
+                                position: absolute;
+                                content: '';
+                                height: 60%;
+                                width: 1px;
+                                right: 0;
+                                top: 50%;
+                                transform: translateY(-50%);
+                                background-color: #636363;
+                            }
+                            &.none-line {
+                                &::after {
+                                    background-color: transparent;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            &-reserve {
+            }
+            &-user {
+            }
+            &-support {
+            }
+        }
+    }
+}
