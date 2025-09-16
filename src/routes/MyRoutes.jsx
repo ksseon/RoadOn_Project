@@ -1,19 +1,18 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Layout from "../common/Layout";
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Layout from '../common/Layout';
 import {
-
     Airplane,
     Home,
     HotelsMain,
-    Tour,
     MyPage,
     NotFiles,
     Login,
-    HotelsSearch,
-    HotelsDetail,
     HotelsPayment,
     HotelsPayCompleted,
     AirportSearch,
+    HotelsDetail,
+    HotelsSearch,
+    Tour,
 } from '../pages';
 
 export const MyRoutes = () => {
@@ -38,5 +37,5 @@ export const MyRoutes = () => {
             </Routes>
         </BrowserRouter>
     );
- main
+    main;
 };
