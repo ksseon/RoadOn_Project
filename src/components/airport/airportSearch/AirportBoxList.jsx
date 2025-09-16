@@ -10,8 +10,8 @@ const AirportBoxList = () => {
 
   const [sortType, setSortType] = useState("all");
   const [isOpen, setIsOpen] = useState(false);
-  const [page, setPage] = useState(1); // ✅ Pagination.jsx 구조에 맞춤
-  const pageSize = 10; // ✅ Pagination.jsx 구조에 맞춤
+  const [page, setPage] = useState(1); // Pagination.jsx 구조에 맞춤
+  const pageSize = 10; // Pagination.jsx 구조에 맞춤
 
   const dropdownRef = useRef(null);
 
@@ -36,7 +36,7 @@ const AirportBoxList = () => {
     { value: "high", label: "높은 가격순" },
   ];
 
-  // ✅ 페이지네이션에 맞게 slice
+  // 페이지네이션에 맞게 slice
   const startIndex = (page - 1) * pageSize;
   const currentAirports = airports.slice(startIndex, startIndex + pageSize);
 
@@ -67,7 +67,7 @@ const AirportBoxList = () => {
                   onClick={() => {
                     setSortType(option.value);
                     setIsOpen(false);
-                    setPage(1); // ✅ 정렬 변경 시 1페이지로 초기화
+                    setPage(1); // 정렬 변경 시 1페이지로 초기화
                   }}
                 >
                   {option.label}
@@ -85,7 +85,7 @@ const AirportBoxList = () => {
         <p>조건에 맞는 항공권이 없습니다.</p>
       )}
 
-      {/* ✅ Pagination.jsx 구조에 맞춰 props 변경 */}
+      {/* Pagination.jsx 구조에 맞춰 props 변경 */}
       <Pagination
         page={page}
         total={airports.length}

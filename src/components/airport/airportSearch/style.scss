@@ -359,10 +359,6 @@
 
       .list-wrap {
         width: 55.2083vw;
-        border: 1px solid $default;
-
-        .list-top {
-        }
 
         .list-box {
           display: flex;
@@ -374,8 +370,9 @@
   }
 }
 
-// 오른쪽 영역 (항공 카드)
-.airport-box-list {
+// 오른쪽 영역 (항공 리스트) - Search & Detail 공통
+.airport-box-list,
+.airport-detail-list {
   .list-header {
     display: flex;
     justify-content: space-between;
@@ -388,7 +385,7 @@
 
     .custom-dropdown {
       position: relative;
-      width: vw(125px);
+      width: vw(140px);
       cursor: pointer;
 
       .dropdown-selected {
@@ -397,7 +394,7 @@
         justify-content: center;
         height: vw(40px);
         border-radius: vw(10px);
-        background-color: $greyscale-300;
+        background-color: $greyscale-200;
         color: $default;
         @include font-16px-M;
 
@@ -424,7 +421,7 @@
         overflow: hidden;
 
         li {
-          padding: vw(10px) 0;
+          padding: vw(12px) 0;
           text-align: center;
           @include font-16px;
           color: $default;
@@ -445,6 +442,7 @@
   }
 }
 
+// 공통 항공권 카드
 .airport-box {
   display: flex;
   flex-direction: column;
