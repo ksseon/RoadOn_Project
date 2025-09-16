@@ -1,6 +1,8 @@
+import useSupportStore from '../../../store/supportStore';
 import NoticeItem from './NoticeItem';
 
 const Notice = () => {
+    const notices = useSupportStore((state) => state.notices);
     return (
         <div className="notice">
             <div className="support-notice-table-wrap">
@@ -20,9 +22,12 @@ const Notice = () => {
                     </thead>
 
                     <tbody>
-                        <NoticeItem />
-                        <NoticeItem />
-                        <NoticeItem />
+                        {notices.map((notice, i) => (
+                            <NoticeItem key={notice.id} notice={notice} />
+                        ))}
+
+                        {/* <NoticeItem />
+                        <NoticeItem /> */}
                     </tbody>
                 </table>
             </div>
