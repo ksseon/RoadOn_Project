@@ -43,6 +43,32 @@ const useHotelStore = create((set, get) => ({
         }));
     },
 
+    getHighRatedReviews: (hotelId, count = 3) => {
+    const { reviews } = get();
+    
+    // 3점 이상 리뷰만 필터링
+    const highRatedReviews = reviews.filter(review => review.rate >= 3);
+    
+    // 호텔 ID 기반 시드로 고정된 순서
+    const seededRandom = (seed) => {
+        let x = Math.sin(seed) * 10000;
+        return x - Math.floor(x);
+    };
+    
+    // 고정된 순서로 섞기
+    const shuffledReviews = [...highRatedReviews].sort((a, b) => {
+        const seedA = seededRandom(hotelId * 200 + a.id); // 다른 시드 사용
+        const seedB = seededRandom(hotelId * 200 + b.id);
+        return seedA - seedB;
+    });
+    
+    return shuffledReviews.slice(0, count).map((review, index) => ({
+        ...review,
+        hotelId: hotelId,
+        uniqueId: `mini-${hotelId}-${review.id}-${index}`
+    }));
+},
+
 }));
 
 export default useHotelStore;

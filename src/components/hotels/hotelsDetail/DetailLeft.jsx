@@ -15,7 +15,7 @@ import {
 import RoomOption from './RoomOption';
 import Policies from './Policies';
 import Location from './Location';
-import DetailReviewsItem from '../../tour/tourDetail/detailBody/DetailReviewsItem';
+import MiniReviewItem from './MiniReviewItem'
 import DetailBotReviewsItem from '../../tour/tourDetail/detailBottom/DetailBotReviewsItem';
 
 const DetailLeft = ({
@@ -29,6 +29,7 @@ const DetailLeft = ({
     handleRoomSelect,
     handleShowMore,
     averageRating,
+    miniReviews,
 }) => {
     const serviceComponentMap = {
         '무료 와이파이': Wifi,
@@ -42,6 +43,7 @@ const DetailLeft = ({
         스파: Spa,
         '개별 바베큐': Bbq,
     };
+    console.log('miniReviews:', miniReviews);
 
     return (
         <div className="detail-left">
@@ -63,13 +65,18 @@ const DetailLeft = ({
                         <img src="/images/icon/like.svg" alt="찜하기" />
                     </div>
                 </article>
-                <section className="detail-reviews">
-                    <ul className="list">
-                        <DetailReviewsItem />
-                        <DetailReviewsItem />
-                        <DetailReviewsItem />
-                    </ul>
-                </section>
+               <section className="detail-reviews" style={{marginBottom: '20px'}}>
+    <ul className="list" style={{listStyle: 'none', padding: 0}}>
+        {miniReviews.map((review) => (
+            <MiniReviewItem 
+                key={review.uniqueId} 
+                review={review} 
+                style={{padding: '15px', border: '1px solid #ddd', marginBottom: '10px', borderRadius: '5px'}}
+            />
+        ))}
+    </ul>
+</section>
+            
             </section>
             <section className="detail-data">
                 <section className="detail-data-tab">
@@ -162,50 +169,6 @@ const DetailLeft = ({
                         </ul>
                     </div>
                 </div>
-                {/* <div className="con con6 hotel-location-wrap">
-                    <Location hotel={hotel} />
-                </div>
-                <section id="detail-Bot-Reviews">
-                    <h2 className="title">
-                        방문자 리뷰
-                        <span>(12)</span>
-                    </h2>
-                    <div className="reviews-wrap-head">
-                        <div className="rate">
-                            <img src="/images/icon/star_rate.svg" alt="별점" />
-                            4.84
-                        </div>
-                        <div className="reviews-wrap-head-imgs">
-                            <div className="img-wrap">
-                                <img src="" alt="" />
-                            </div>
-                            <div className="img-wrap">
-                                <img src="" alt="" />
-                            </div>
-                            <div className="img-wrap">
-                                <img src="" alt="" />
-                            </div>
-                            <div className="img-wrap">
-                                <img src="" alt="" />
-                            </div>
-                            <div className="img-wrap">
-                                <img src="" alt="" />
-                            </div>
-                            <div className="img-wrap">
-                                <img src="" alt="" />
-                            </div>
-                        </div>
-                    </div>
-                    <div className="reviews-wrap-body">
-                        <ul className="reviews-wrap-body-list">
-                            <DetailBotReviewsItem />
-                            <DetailBotReviewsItem />
-                        </ul>
-                    </div>
-                    <div className="button">
-                        <p>방문자 리뷰 전체보기</p>
-                    </div>
-                </section> */}
             </section>
         </div>
     );

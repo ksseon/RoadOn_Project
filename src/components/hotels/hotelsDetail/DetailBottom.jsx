@@ -2,8 +2,17 @@ import { useState } from "react";
 import DetailBotReviewsItem from "../../tour/tourDetail/detailBottom/DetailBotReviewsItem";
 import DetailPromoItem from "../../tour/tourDetail/detailBottom/DetailPromoItem";
 import DetailReviewItem from "./DetailReviewItem";
+import { CopyToClipboard } from 'react-copy-to-clipboard';
+import { HiOutlineClipboardDocument } from "react-icons/hi2";
 
 const DetailBottom = ({hotel, reviews}) => {
+     const [copied, setCopied] = useState(false);
+
+    const handleCopySuccess = () => {
+        setCopied(true);
+        setTimeout(() => setCopied(false), 2000); // 2초 후 상태 초기화
+    };
+
     const calculateAverageRating = (reviews) => {
         if (!reviews || reviews.length === 0) return 0;
         
@@ -51,6 +60,7 @@ const DetailBottom = ({hotel, reviews}) => {
             return `방문자 리뷰 더보기`;
         }
     };
+    
 
     return (
         <section className="detail-bottom-info">
@@ -59,7 +69,16 @@ const DetailBottom = ({hotel, reviews}) => {
             <div className="map"></div>
             <div className="address">
                 <strong>
-                    {hotel.address} <span></span>
+                    {hotel.address} 
+                    <CopyToClipboard 
+        text={hotel.address || hotel.location} 
+        onCopy={handleCopySuccess}
+    >
+        <span className="copy-icon" style={{ cursor: 'pointer', marginLeft: '8px' }}>
+            <HiOutlineClipboardDocument />
+        </span>
+    </CopyToClipboard>
+    {copied && <span className="copy-feedback">주소가 복사되었습니다.</span>}                 
                 </strong>
                 <ul className="vector">
                     {hotel.landmark.map((place, idx)=>

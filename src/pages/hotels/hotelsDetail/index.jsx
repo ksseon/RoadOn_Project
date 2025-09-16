@@ -76,6 +76,9 @@ const HotelsDetail = () => {
 
     const averageRating = calculateAverageRating(hotelReviews);
 
+    const getHighRatedReviews = useHotelStore((state) => state.getHighRatedReviews);
+    const miniReviews = getHighRatedReviews(hotel.id, 3);
+
 
     return (
         <main className="hotel-detail">
@@ -101,6 +104,7 @@ const HotelsDetail = () => {
                         handleRoomSelect={handleRoomSelect}
                         handleShowMore={handleShowMore}
                         averageRating={averageRating}
+                        miniReviews={miniReviews}
                     />
                     <DetailRight hotel={hotel} selectedRoom={selectedRoom} />
                 </section>
