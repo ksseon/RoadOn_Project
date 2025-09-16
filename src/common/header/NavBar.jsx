@@ -18,7 +18,7 @@ const NavBar = () => {
                         </Link>
                     </li>
                     <li>
-                        <Link to="/airplane">
+                        <Link to="/airport">
                             <img src="/images/icon/airport.png" alt="air" />
                             항공
                         </Link>

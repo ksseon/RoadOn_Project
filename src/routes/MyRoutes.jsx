@@ -1,9 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Layout from '../common/Layout';
 import {
-    Airplane,
     Home,
-    HotelsMain,
     MyPage,
     NotFiles,
     Login,
@@ -13,6 +11,8 @@ import {
     HotelsDetail,
     HotelsSearch,
     Tour,
+    Airport,
+    Hotels,
 } from '../pages';
 
 export const MyRoutes = () => {
@@ -22,20 +22,24 @@ export const MyRoutes = () => {
                 <Route path="/" element={<Layout />}>
                     <Route index element={<Home />} />
 
-                    {/* Hotels 그룹 */}
-                    <Route path="hotels" element={<HotelsMain />}>
+                    <Route path="hotels">
+                        <Route index element={<Hotels />} />
                         <Route path="search" element={<HotelsSearch />} />
                         <Route path=":slug" element={<HotelsDetail />} />
                         <Route path="payment" element={<HotelsPayment />} />
                         <Route path="payment/completed" element={<HotelsPayCompleted />} />
                     </Route>
 
-                    {/* 나머지 라우트 */}
-                    <Route path="airportSearch" element={<AirportSearch />} />
+                    <Route path="airport">
+                        <Route index element={<Airport />} />
+                        <Route path="search" element={<AirportSearch />} />
+                    </Route>
                     <Route path="tour" element={<Tour />} />
-                    <Route path="airplane" element={<Airplane />} />
+
                     <Route path="myPage" element={<MyPage />} />
-                    <Route path="login" element={<Login />} />
+                    <Route path="login">
+                        <Route index element={<Login />} />
+                    </Route>
                     <Route path="*" element={<NotFiles />} />
                 </Route>
             </Routes>

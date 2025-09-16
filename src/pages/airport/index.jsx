@@ -1,12 +1,11 @@
 import AirportMain from '../../components/airport/airportMain/AirportMain';
-import './style.scss';
 
-const Hotels = () => {
+const Airport = () => {
     return (
-        <main className="hotel-main">
+        <main id="AirportPage">
             <AirportMain />
         </main>
     );
 };
 
-export default Hotels;
+export default Airport;
