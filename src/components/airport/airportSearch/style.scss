@@ -446,12 +446,8 @@
 }
 
 .airport-box {
-  display: grid;
-  grid-template-columns: 1.1fr 1fr 1.5fr 1fr 1fr;
-  align-items: center;
-  width: vw(1050px);
-  height: vw(280px);
-  padding: vw(60px);
+  display: flex;
+  flex-direction: column;
   border: 1px solid $greyscale-500;
   border-radius: vw(15px);
   background: #fff;
@@ -459,106 +455,114 @@
   margin-bottom: vw(20px);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   cursor: pointer;
+  width: vw(1050px);
 
   &:hover {
     transform: translateY(-3px);
     box-shadow: 0 vw(6px) vw(14px) rgba(0, 0, 0, 0.1);
   }
 
-  .airline {
-    display: flex;
+  .flight-row {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr 1.5fr 1fr 1fr;
     align-items: center;
-    gap: vw(10px);
+    padding: vw(30px) vw(40px);
+    border-bottom: 1px solid $greyscale-300;
 
-    .flight-logo {
-      margin-right: vw(15px);
+    &:last-child {
+      border-bottom: none;
+    }
+
+    .airline {
       display: flex;
       align-items: center;
-      justify-content: center;
-      background: #fff;
+      gap: vw(10px);
 
-      img {
-        width: vw(30px);
-        height: vw(30px);
-        border-radius: 50%;
-        border: 1px solid $greyscale-400;
+      .flight-logo {
+        margin-right: vw(15px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #fff;
+
+        img {
+          width: vw(30px);
+          height: vw(30px);
+          border-radius: 50%;
+          border: 1px solid $greyscale-400;
+        }
+
+        .placeholder {
+          width: vw(30px);
+          height: vw(30px);
+          border-radius: 50%;
+          background: $greyscale-200;
+        }
       }
 
-      .placeholder {
-        width: vw(30px);
-        height: vw(30px);
-        border-radius: 50%;
-        background: $greyscale-200;
+      .info {
+        display: flex;
+        flex-direction: column;
+
+        .name {
+          @include font-20px;
+          white-space: nowrap;
+        }
+
+        .code {
+          @include font-16px;
+          color: $greyscale-1000;
+        }
       }
     }
 
-    .info {
+    .departure,
+    .arrival {
       display: flex;
       flex-direction: column;
-      justify-content: center;
-
-      .name {
-        @include font-20px;
-        white-space: nowrap;
-      }
-
-      .code {
-        @include font-16px;
-        color: $greyscale-1000;
-        white-space: nowrap;
-      }
-    }
-  }
-
-  .departure,
-  .arrival {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: vw(4px);
-
-    .date {
-      @include font-14px;
-      color: $greyscale-900;
-    }
-
-    .time {
-      @include font-22px;
-      color: $default;
-    }
-
-    .airport {
-      @include font-14px;
-      color: $greyscale-900;
-      margin: 0;
-      text-align: center;
-    }
-  }
-
-  .airport-info {
-    text-align: center;
-
-    .timeline {
       align-items: center;
-      gap: vw(8px);
-      margin-bottom: vw(6px);
+
+      .date {
+        @include font-14px;
+        color: $greyscale-900;
+      }
+
+      .time {
+        @include font-22px;
+        color: $default;
+      }
+      .airport {
+        @include font-14px;
+        color: $greyscale-900;
+        text-align: center;
+        margin-top: vw(-2px);
+      }
+    }
+
+    .airport-info {
+      text-align: center;
 
       .duration {
         @include font-18px;
         color: $default;
-        white-space: nowrap;
+        margin-bottom: vw(4px);
+      }
+
+      .timeline-img {
+        width: vw(120px);
+        margin: vw(4px) auto;
+      }
+
+      .direct {
+        @include font-16px-M;
+        color: $mint;
       }
     }
 
-    .direct {
-      @include font-18px-M;
-      color: $mint;
+    .price {
+      text-align: right;
+      @include font-22px;
+      color: $default;
     }
-  }
-
-  .price {
-    text-align: right;
-    @include font-22px;
-    color: $default;
   }
 }

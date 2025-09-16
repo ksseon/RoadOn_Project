@@ -19,7 +19,7 @@ const AirportSearchBar = () => {
   const [openDropdown, setOpenDropdown] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
 
-  // 출발지 & 도착지 데이터
+  // 가는날 & 오는날 데이터
   const fromLocations = ["김포", "인천", "제주"];
   const toLocations = [
     "방콕",
@@ -159,7 +159,7 @@ const AirportSearchBar = () => {
                 onChange={(update) => setRoundDates(update)}
                 locale={ko}
                 dateFormat="MM.dd (eee)"
-                placeholderText="출발일 - 도착일"
+                placeholderText="가는날 - 오는날"
                 shouldCloseOnSelect={true}
               />
             </div>
@@ -208,7 +208,7 @@ const AirportSearchBar = () => {
                 onChange={(date) => setOnewayDate(date)}
                 locale={ko}
                 dateFormat="MM.dd (eee)"
-                placeholderText="출발일"
+                placeholderText="가는날"
                 shouldCloseOnSelect={true}
               />
             </div>
@@ -260,7 +260,7 @@ const AirportSearchBar = () => {
                     }}
                     locale={ko}
                     dateFormat="MM.dd (eee)"
-                    placeholderText="출발일"
+                    placeholderText="가는날"
                     shouldCloseOnSelect={true}
                   />
                 </div>

@@ -11,15 +11,17 @@ const AirportSearchBarList = () => {
   const [mode, setMode] = useState("roundtrip"); // 왕복 / 편도 / 다구간
   const [people, setPeople] = useState(2);
   const [seat, setSeat] = useState("일반석");
-  const [roundDates, setRoundDates] = useState([null, null]); // 왕복 날짜
-  const [onewayDate, setOnewayDate] = useState(null); // 편도 날짜
-  const [segments, setSegments] = useState([{ from: "", to: "", date: null }]); // 다구간
+
+  const [roundDates, setRoundDates] = useState([null, null]);
+  const [onewayDate, setOnewayDate] = useState(null);
+  const [segments, setSegments] = useState([{ from: "", to: "", date: null }]);
+
   const [openDropdown, setOpenDropdown] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
 
   const setFilter = useAirportStore((s) => s.setFilter);
 
-  // 출발지 & 도착지 목록
+  // 가는날 & 오는날
   const fromLocations = ["김포", "인천", "제주"];
   const toLocations = [
     "방콕",
@@ -32,7 +34,7 @@ const AirportSearchBarList = () => {
     "코타키나발루",
   ];
 
-  // 인원
+  // 인원 증가/감소
   const increasePeople = () => setPeople((p) => p + 1);
   const decreasePeople = () => setPeople((p) => (p > 1 ? p - 1 : 1));
 
@@ -48,7 +50,7 @@ const AirportSearchBarList = () => {
     }
   };
 
-  // 출발/도착 선택
+  // 선택
   const handleSelectLocation = (index, field, value) => {
     const next = [...segments];
     next[index][field] = value;
@@ -57,14 +59,14 @@ const AirportSearchBarList = () => {
     setOpenDropdown(null);
   };
 
-  // 검색 버튼 → store에 조건 저장
+  // 검색 → Store 저장
   const handleSearch = () => {
     if (mode === "roundtrip") {
       setFilter({
         mode,
         from: segments[0].from,
         to: segments[0].to,
-        dates: roundDates, // [출발일, 도착일]
+        dates: roundDates,
         people,
         seat,
       });
@@ -73,21 +75,21 @@ const AirportSearchBarList = () => {
         mode,
         from: segments[0].from,
         to: segments[0].to,
-        dates: [onewayDate, null], // 편도는 출발일만
+        dates: [onewayDate, null],
         people,
         seat,
       });
     } else if (mode === "multicity") {
       setFilter({
         mode,
-        segments, // [{from,to,date}, ...]
+        segments,
         people,
         seat,
       });
     }
   };
 
-  // 출발지/도착지 드롭다운
+  // 위치 드롭다운
   const renderLocationDropdown = (index, field, dropdownKey) => {
     const locations = field === "from" ? fromLocations : toLocations;
     return (
@@ -121,7 +123,7 @@ const AirportSearchBarList = () => {
     );
   };
 
-  // 인원 & 좌석 드롭다운
+  // 인원 & 좌석
   const renderPeopleSeatDropdown = () =>
     openDropdown === "peopleSeat" && (
       <div
@@ -157,7 +159,7 @@ const AirportSearchBarList = () => {
       <div className="search-box">
         <p>검색결과</p>
 
-        {/* 탭 버튼 */}
+        {/* 탭 */}
         <div className="search-tabs">
           <button
             className={mode === "roundtrip" ? "active" : ""}
@@ -191,7 +193,7 @@ const AirportSearchBarList = () => {
                 onChange={(update) => setRoundDates(update)}
                 locale={ko}
                 dateFormat="MM.dd (eee)"
-                placeholderText="출발일 - 도착일"
+                placeholderText="가는날 - 오는날"
                 shouldCloseOnSelect={true}
               />
             </div>
@@ -235,7 +237,7 @@ const AirportSearchBarList = () => {
                 onChange={(date) => setOnewayDate(date)}
                 locale={ko}
                 dateFormat="MM.dd (eee)"
-                placeholderText="출발일"
+                placeholderText="가는날"
                 shouldCloseOnSelect={true}
               />
             </div>
@@ -285,7 +287,7 @@ const AirportSearchBarList = () => {
                     }}
                     locale={ko}
                     dateFormat="MM.dd (eee)"
-                    placeholderText="출발일"
+                    placeholderText="가는날"
                     shouldCloseOnSelect={true}
                   />
                 </div>
@@ -305,6 +307,7 @@ const AirportSearchBarList = () => {
                   {seg.to || "도착지"}
                   {renderLocationDropdown(i, "to", `segment-${i}-to`)}
                 </div>
+
                 {segments.length > 1 && (
                   <button
                     className="remove-btn"
@@ -313,6 +316,7 @@ const AirportSearchBarList = () => {
                     <FiX className="icon" />
                   </button>
                 )}
+
                 {i === segments.length - 1 && (
                   <>
                     {segments.length < 3 && (

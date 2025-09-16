@@ -12,10 +12,11 @@ const useAirportStore = create((set, get) => ({
   priceMin: ABS_MIN_PRICE,
   priceMax: ABS_MAX_PRICE,
   filters: {
-    direct: null, // true(직항) | false(경유) | null(전체)
-    airline: null, // 항공사명 or null
-    baggage: null, // '포함' or null
-    priceRange: [ABS_MIN_PRICE, ABS_MAX_PRICE], // [min, max]
+    mode: "roundtrip", // ✅ 왕복/편도/다구간
+    direct: null,
+    airline: null,
+    baggage: null,
+    priceRange: [ABS_MIN_PRICE, ABS_MAX_PRICE],
   },
 
   getAirportById: (id) => get().airports.find((a) => a.id === id),
@@ -33,6 +34,7 @@ const useAirportStore = create((set, get) => ({
   resetFilter: () =>
     set({
       filters: {
+        mode: "roundtrip",
         direct: null,
         airline: null,
         baggage: null,
