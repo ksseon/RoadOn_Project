@@ -10,5 +10,6 @@ export { default as HotelsSearch } from './hotels/hotelsSearch';
 export { default as HotelsDetail } from './hotels/hotelsDetail';
 export { default as HotelsPayment } from './hotels/hotelsPayment';
 export { default as HotelsPayCompleted } from './hotels/hotelPayCompleted';
+
 // export { default as OttIntro } from './ottIntro';
 // export { default as OttMain } from './ottMain';
