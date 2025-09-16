@@ -1,25 +1,21 @@
 import { create } from "zustand";
 import airportData from "../api/airportListData";
 
+// 전체 가격 범위(데이터에서 계산)
 const allPrices = airportData.map((a) => a.price);
 const ABS_MIN_PRICE = Math.min(...allPrices);
 const ABS_MAX_PRICE = Math.max(...allPrices);
-const STEP = 1000;
+const STEP = 1000; // 1,000원 단위
 
 const useAirportStore = create((set, get) => ({
   airports: airportData,
   priceMin: ABS_MIN_PRICE,
   priceMax: ABS_MAX_PRICE,
   filters: {
-    direct: null, // 직항 여부
-    airline: null, // 항공사
-    baggage: null, // 수하물 여부
-    priceRange: [ABS_MIN_PRICE, ABS_MAX_PRICE],
-    from: null, // 출발지
-    to: null, // 도착지
-    dates: null, // 날짜 (왕복/편도/다구간 포함)
-    people: 1,
-    seat: "일반석",
+    direct: null, // true(직항) | false(경유) | null(전체)
+    airline: null, // 항공사명 or null
+    baggage: null, // '포함' or null
+    priceRange: [ABS_MIN_PRICE, ABS_MAX_PRICE], // [min, max]
   },
 
   getAirportById: (id) => get().airports.find((a) => a.id === id),
@@ -29,6 +25,11 @@ const useAirportStore = create((set, get) => ({
       filters: { ...s.filters, ...patch },
     })),
 
+  setPriceRange: (min, max) =>
+    set((s) => ({
+      filters: { ...s.filters, priceRange: [min, max] },
+    })),
+
   resetFilter: () =>
     set({
       filters: {
@@ -36,11 +37,6 @@ const useAirportStore = create((set, get) => ({
         airline: null,
         baggage: null,
         priceRange: [ABS_MIN_PRICE, ABS_MAX_PRICE],
-        from: null,
-        to: null,
-        dates: null,
-        people: 1,
-        seat: "일반석",
       },
     }),
 
@@ -53,8 +49,6 @@ const useAirportStore = create((set, get) => ({
       if (filters.airline && a.airline !== filters.airline) return false;
       if (filters.baggage && a.baggage !== filters.baggage) return false;
       if (a.price < minP || a.price > maxP) return false;
-      if (filters.from && a.departureAirport !== filters.from) return false;
-      if (filters.to && a.arrivalAirport !== filters.to) return false;
       return true;
     });
   },
