@@ -1,5 +1,5 @@
-import { create } from 'zustand';
-import airportData from '../api/airportListData';
+import { create } from "zustand";
+import airportData from "../api/airportListData";
 
 // 전체 가격 범위(데이터에서 계산)
 const allPrices = airportData.map((a) => a.price);
@@ -8,49 +8,52 @@ const ABS_MAX_PRICE = Math.max(...allPrices);
 const STEP = 1000; // 1,000원 단위
 
 const useAirportStore = create((set, get) => ({
-    airports: airportData,
+  airports: airportData,
+  priceMin: ABS_MIN_PRICE,
+  priceMax: ABS_MAX_PRICE,
+  filters: {
+    direct: null, // true(직항) | false(경유) | null(전체)
+    airline: null, // 항공사명 or null
+    baggage: null, // '포함' or null
+    priceRange: [ABS_MIN_PRICE, ABS_MAX_PRICE], // [min, max]
+  },
 
-    priceMin: ABS_MIN_PRICE,
-    priceMax: ABS_MAX_PRICE,
+  getAirportById: (id) => get().airports.find((a) => a.id === id),
 
-    filters: {
-        direct: null, // true(직항) | false(경유) | null(전체)
-        airline: null, // 항공사명 or null
-        baggage: null, // '포함' or null
-        priceRange: [ABS_MIN_PRICE, ABS_MAX_PRICE], // [min, max]
-    },
+  setFilter: (patch) =>
+    set((s) => ({
+      filters: { ...s.filters, ...patch },
+    })),
 
-    getAirportById: (id) => get().airports.find((a) => a.id === id),
+  setPriceRange: (min, max) =>
+    set((s) => ({
+      filters: { ...s.filters, priceRange: [min, max] },
+    })),
 
-    setFilter: (patch) => set((s) => ({ filters: { ...s.filters, ...patch } })),
+  resetFilter: () =>
+    set({
+      filters: {
+        direct: null,
+        airline: null,
+        baggage: null,
+        priceRange: [ABS_MIN_PRICE, ABS_MAX_PRICE],
+      },
+    }),
 
-    setPriceRange: (min, max) =>
-        set((s) => ({ filters: { ...s.filters, priceRange: [min, max] } })),
+  getFilteredAirports: () => {
+    const { airports, filters } = get();
+    const [minP, maxP] = filters.priceRange;
 
-    resetFilter: () =>
-        set({
-            filters: {
-                direct: null,
-                airline: null,
-                baggage: null,
-                priceRange: [ABS_MIN_PRICE, ABS_MAX_PRICE],
-            },
-        }),
+    return airports.filter((a) => {
+      if (filters.direct !== null && a.direct !== filters.direct) return false;
+      if (filters.airline && a.airline !== filters.airline) return false;
+      if (filters.baggage && a.baggage !== filters.baggage) return false;
+      if (a.price < minP || a.price > maxP) return false;
+      return true;
+    });
+  },
 
-    getFilteredAirports: () => {
-        const { airports, filters } = get();
-        const [minP, maxP] = filters.priceRange;
-
-        return airports.filter((a) => {
-            if (filters.direct !== null && a.direct !== filters.direct) return false;
-            if (filters.airline && a.airline !== filters.airline) return false;
-            if (filters.baggage && a.baggage !== filters.baggage) return false;
-            if (a.price < minP || a.price > maxP) return false;
-            return true;
-        });
-    },
-
-    STEP,
+  STEP,
 }));
 
 export default useAirportStore;
