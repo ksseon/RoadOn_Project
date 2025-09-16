@@ -1,0 +1,60 @@
+@use "../../../../styles/utils" as *;
+
+.themeSection {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 80px 120px;
+  background-image: url(./images/maind/drama1.png);
+  .left {
+    flex: 1;
+
+   
+
+    .contentTitle {
+      font-size: 36px;
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 16px;
+
+      span {
+        font-weight: inherit;
+      }
+    }
+
+    .contentDesc {
+      font-size: 14px;
+      line-height: 1.8;
+      margin-bottom: 28px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 28px;
+      border-radius: 6px;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+    }
+  }
+
+  .right {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .mainImg {
+      width: 380px;
+      overflow: hidden;
+      // 이미지 잘린 효과
+      clip-path: ellipse(70% 60% at 50% 40%);
+
+      img {
+        width: 100%;
+        display: block;
+      }
+    }
+  }
+}
