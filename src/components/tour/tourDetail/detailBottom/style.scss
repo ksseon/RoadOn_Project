@@ -40,12 +40,18 @@
         }
     }
 }
+
 #detail-Bot-Reviews {
+    
     .title {
+        display: flex;
         span {
             margin-left: vw(10px);
             color: #5c5c5c;
         }
+    }
+    .rate {
+        display: flex;
     }
     .reviews {
         &-wrap {
@@ -53,13 +59,11 @@
                 margin-top: vw(70px);
                 display: flex;
                 flex-direction: column;
-                padding-bottom: vw(60px);
                 border-bottom: vw(1px) solid #ddd;
 
                 .rate {
-                    margin: 0 vw(240px);
-                    margin-bottom: vw(40px);
-
+                    display: flex;
+                    @include font-24px-M;
                     span {
                         color: $star;
                         margin-right: vw(10px);
@@ -89,6 +93,9 @@
                         padding: vw(20px);
                         display: flex;
                         justify-content: space-between;
+.rate-zone {
+    margin-bottom: vw(15px);
+}
                         .name-line {
                             width: vw(220px);
 
@@ -97,10 +104,14 @@
                             .thumbs {
                                 @include circle;
                                 width: vw(40px);
-                                height: vw(40px);
-                                background-color: #000;
-                                img {
-                                }
+        height: vw(40px);
+        border-radius: 100%;
+        overflow: hidden;
+        img {
+            width: 100%;
+            height: 100%;
+
+        }
                             }
                             .txts {
                                 display: flex;
@@ -144,6 +155,7 @@
                                 padding-top: vw(15px);
                                 strong {
                                     color: $greyscale-1000;
+                                    @include font-14px-SB;
                                 }
                                 p {
                                     margin-top: vw(5px);
@@ -159,6 +171,9 @@
                                 .more {
                                     margin-top: vw(15px);
                                     background-color: transparent;
+                                    display: flex;
+                                    align-items: center;
+                                    gap: vw(5px);
                                     &.button {
                                         padding: 0;
                                         width: 60px;
@@ -195,6 +210,7 @@
         }
     }
 }
+
 #detail-Promo {
     h2 {
         &.title {

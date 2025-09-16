@@ -5,11 +5,27 @@ import options from '../../../api/hotelsRoomTypeData';
 import { useState } from 'react';
 import DetailLeft from '../../../components/hotels/hotelsDetail/DetailLeft';
 import DetailRight from '../../../components/hotels/hotelsDetail/DetailRight';
+import DetailBottom from '../../../components/hotels/hotelsDetail/DetailBottom';
 
 const HotelsDetail = () => {
     const { slug } = useParams();
     const hotels = useHotelStore((state) => state.hotels);
     const hotel = hotels.find((h) => h.slug === slug);
+    const getHotelReviews = useHotelStore((state) => state.getHotelReviews);
+
+    // hotel이 없을 때 early return
+    if (!hotel) {
+        return (
+            <div className="hotel-detail-error">
+                <h2>호텔을 찾을 수 없습니다.</h2>
+                <p>요청하신 호텔 정보가 존재하지 않습니다.</p>
+            </div>
+        );
+    }
+
+    const allReviews = useHotelStore((state) => state.reviews);    
+    const hotelReviews = getHotelReviews(hotel.id, hotel.reviewCount);
+
 
     const [showAllRooms, setShowAllRooms] = useState(false);
     const [selectedRoom, setSelectedRoom] = useState(options[0]);
@@ -49,6 +65,18 @@ const HotelsDetail = () => {
         );
     }
 
+     const calculateAverageRating = (reviews) => {
+        if (!reviews || reviews.length === 0) return "0.00";
+        
+        const totalRating = reviews.reduce((sum, review) => sum + review.rate, 0);
+        const average = totalRating / reviews.length;
+        
+        return average.toFixed(2);
+    };
+
+    const averageRating = calculateAverageRating(hotelReviews);
+
+
     return (
         <main className="hotel-detail">
             <div className="inner">
@@ -72,9 +100,11 @@ const HotelsDetail = () => {
                         handleFilterClick={handleFilterClick}
                         handleRoomSelect={handleRoomSelect}
                         handleShowMore={handleShowMore}
+                        averageRating={averageRating}
                     />
                     <DetailRight hotel={hotel} selectedRoom={selectedRoom} />
                 </section>
+                    <DetailBottom hotel={hotel} reviews={hotelReviews} />
             </div>
         </main>
     );

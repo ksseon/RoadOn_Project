@@ -28,6 +28,7 @@ const DetailLeft = ({
     handleFilterClick,
     handleRoomSelect,
     handleShowMore,
+    averageRating,
 }) => {
     const serviceComponentMap = {
         '무료 와이파이': Wifi,
@@ -54,7 +55,7 @@ const DetailLeft = ({
                         <b>{hotel.engName}</b>
                         <p className="rate">
                             <img src="/images/hotels/detail/icon/star_rate.svg" alt="별점" />
-                            {hotel.rate} ({hotel.reviewCount})
+                            {averageRating} ({hotel.reviewCount})
                         </p>
                     </div>
                     <div className="more-btn">
