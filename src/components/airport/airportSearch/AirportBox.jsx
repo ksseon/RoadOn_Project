@@ -3,9 +3,31 @@ import useAirportStore from "../../../store/airportStore";
 
 const AirportBox = ({ airportId }) => {
   const getAirportById = useAirportStore((state) => state.getAirportById);
+  const filters = useAirportStore((state) => state.filters);
   const airport = getAirportById(airportId);
 
   if (!airport) return <div>항공권 정보를 찾을 수 없습니다.</div>;
+
+  // ✅ 날짜 포맷 함수
+  const formatDate = (date) =>
+    date
+      ? date.toLocaleDateString("ko-KR", {
+          year: "numeric",
+          month: "2-digit",
+          day: "2-digit",
+          weekday: "short",
+        })
+      : "";
+
+  let departureDate = "";
+  let arrivalDate = "";
+
+  if (filters.mode === "roundtrip") {
+    departureDate = formatDate(filters.dates?.[0]);
+    arrivalDate = formatDate(filters.dates?.[1]);
+  } else if (filters.mode === "oneway") {
+    departureDate = formatDate(filters.dates?.[0]);
+  }
 
   return (
     <section className="airport-box">
@@ -26,7 +48,7 @@ const AirportBox = ({ airportId }) => {
 
       {/* 출발 */}
       <div className="departure">
-        <p className="date">{airport.departureDate}</p>
+        <p className="date">{departureDate}</p>
         <p className="time">{airport.departureTime}</p>
         <p className="airport">{airport.departureAirport}</p>
       </div>
@@ -46,7 +68,7 @@ const AirportBox = ({ airportId }) => {
 
       {/* 도착 */}
       <div className="arrival">
-        <p className="date">{airport.arrivalDate}</p>
+        <p className="date">{arrivalDate}</p>
         <p className="time">{airport.arrivalTime}</p>
         <p className="airport">{airport.arrivalAirport}</p>
       </div>
