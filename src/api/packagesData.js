@@ -1,10 +1,19 @@
-const packages = [
+export default [
     // 1. 드라마 - 갯마을 차차차
     {
         contents: '드라마',
         title: '갯마을 차차차 촬영지 성지순례 패키지',
         subtitle: '포항 2박 3일 성지순례 여행',
         desc: '드라마 속 공진마을을 따라가며 포항의 대표 촬영지와 명소를 즐기는 특별한 패키지',
+        backgroundImg: '/images/tour/main/guryongpo-bg.png',
+        posterImg: '/images/tour/main/chachacha.png',
+        benefits: [
+            { icon: 'walk', text: '바닷마을 산책' },
+            { icon: 'cafe', text: '핫플 카페 2곳' },
+            { icon: 'map', text: '로케 지도 제공' },
+            { icon: 'bus', text: '왕복 셔틀' },
+        ],
+        slug: 'hometown-chachacha-tour',
         date: '상시출발',
         duration: '2박 3일',
         flight: 'KTX 왕복',
@@ -90,12 +99,26 @@ const packages = [
         },
     },
 
+    ,
     // 2. 예능 - 윤식당
     {
         contents: '예능',
         title: '윤식당 스페인 투어',
         subtitle: '스페인 가라치코 3박 4일',
         desc: "tvN 예능 '윤식당' 촬영지 가라치코에서 맛과 풍경을 즐기는 여행",
+        backgroundImg: '/images/tour/main/tenerife-bg.png',
+        posterImg: '/images/tour/main/younskitchen2.png',
+        images: [
+            '/images/tour/main/younskitchen2-sub1.png',
+            '/images/tour/main/younskitchen2-sub2.png',
+        ],
+        benefits: [
+            { icon: 'calendar', text: '6박 8일' },
+            { icon: 'airplane', text: '왕복 항공권' },
+            { icon: 'hotel', text: '4성급 호텔' },
+            { icon: 'food', text: '조식 포함' },
+        ],
+        slug: 'younskitchen2-tenerife',
         date: '출발일 지정',
         duration: '3박 4일',
         flight: '대한항공 직항',
@@ -140,12 +163,23 @@ const packages = [
         },
     },
 
+    ,
     // 3. 드라마 - 폭싹 속았수다
     {
         contents: '드라마',
         title: '폭싹 속았수다 촬영지 성지순례 패키지',
         subtitle: '제주 2박 3일 감성 여행',
         desc: '드라마 주요 촬영지를 100% 방문하며 제주 자연과 로컬 먹거리를 함께 즐기는 성지순례 패키지',
+        backgroundImg: '/images/tour/main/jeju-bg.png',
+        posterImg: '/images/tour/main/tangerines.png',
+        images: ['/images/tour/main/tangerines-sub1.png', '/images/tour/main/tangerines-sub2.png'],
+        benefits: [
+            { icon: 'calendar', text: '1박 2일' },
+            { icon: 'hotel', text: '부티크호텔' },
+            { icon: 'food', text: '조식 2회' },
+            { icon: 'ticket', text: '입장권 포함' },
+        ],
+        slug: 'when-life-gives-you-tangerines',
         date: '상시출발',
         duration: '2박 3일',
         flight: '김포-제주 왕복',
@@ -220,12 +254,22 @@ const packages = [
         },
     },
 
+    ,
     // 4. 영화 - 케데헌
     {
         contents: '영화',
         title: '케데헌 성지순례 패키지',
         subtitle: 'K-POP × 판타지 2박 3일',
         desc: 'K-POP 성지와 영화 판타지 세계관을 동시에 경험하는 여행',
+        backgroundImg: '/images/tour/main/seoul-kpop-bg.png',
+        posterImg: '/images/tour/main/kpop-demonhunters.png',
+        benefits: [
+            { icon: 'music', text: '댄스/보컬 체험' },
+            { icon: 'camera', text: '포토스팟 5곳' },
+            { icon: 'shopping', text: 'MD 스토어 방문' },
+            { icon: 'night', text: '한강 야경 코스' },
+        ],
+        slug: 'kpop-demon-hunters-tour',
         date: '일정 고정 (1~6명)',
         duration: '2박 3일',
         flight: '서울 투어',
@@ -288,12 +332,23 @@ const packages = [
         },
     },
 
+    ,
     // 5. K-POP - BTS
     {
         contents: 'K-POP',
         title: 'BTS 부산 콘서트 성지순례 & 도시투어',
         subtitle: 'Yet to Come in Cinemas – 부산 2박 3일',
         desc: "BTS 'Yet to Come in Busan' 콘서트 현장과 부산 명소 투어",
+        backgroundImg: '/images/tour/main/bts-bg.png',
+        posterImg: '/images/tour/main/bts-yet-to-come.png',
+        images: ['/images/tour/main/bts-sub1.png', '/images/tour/main/bts-sub2.png'],
+        benefits: [
+            { icon: 'calendar', text: '2박 3일' },
+            { icon: 'ticket', text: '영화 관람 포함' },
+            { icon: 'hotel', text: '특급호텔' },
+            { icon: 'tourbus', text: 'BTS 성지 투어' },
+        ],
+        slug: 'bts-yet-to-come-tour',
         date: '일정 고정 (1~6명)',
         duration: '2박 3일',
         flight: 'KTX/항공',
@@ -362,12 +417,23 @@ const packages = [
         },
     },
 
+    ,
     // 6. K-POP - BLACKPINK
     {
         contents: 'K-POP',
         title: 'BLACKPINK 다큐 성지 & K-POP 체험',
         subtitle: 'Light Up the Sky – 서울 2박 3일',
         desc: 'BLACKPINK 다큐 속 감성과 서울 K-POP 성지를 따라가는 투어',
+        backgroundImg: '/images/tour/main/blackpink-bg.png',
+        posterImg: '/images/tour/main/blackpink.png',
+        images: ['/images/tour/main/blackpink-sub1.png', '/images/tour/main/blackpink-sub2.png'],
+        benefits: [
+            { icon: 'calendar', text: '2박 3일' },
+            { icon: 'hotel', text: '5성급 호텔' },
+            { icon: 'ticket', text: '콘서트 티켓 포함' },
+            { icon: 'shopping', text: '굿즈샵 투어' },
+        ],
+        slug: 'blackpink-worldtour-seoul',
         date: '일정 고정 (1~6명)',
         duration: '2박 3일',
         flight: '서울 집결',
@@ -430,12 +496,22 @@ const packages = [
         },
     },
 
+    ,
     // 7. 예능 - 서진이네
     {
         contents: '예능',
         title: '서진이네 성지순례 패키지',
         subtitle: '멕시코 바칼라르 3박 4일',
         desc: "tvN '서진이네' 촬영지 멕시코 바칼라르에서 한식당 성지와 라군을 즐기는 여행",
+        backgroundImg: '/images/tour/main/bacalar-bg.png',
+        posterImg: '/images/tour/main/seojin.png',
+        benefits: [
+            { icon: 'calendar', text: '4박 6일' },
+            { icon: 'boat', text: '라군 보트 투어' },
+            { icon: 'food', text: '로컬 맛집 3회' },
+            { icon: 'camera', text: '촬영 포인트 방문' },
+        ],
+        slug: 'seojin-mexico-bacalar',
         date: '출발일 지정',
         duration: '3박 4일',
         flight: '대한항공 + 멕시코 국내선',
@@ -514,6 +590,105 @@ const packages = [
             },
         },
     },
-];
 
-export default packages;
+    // 8. 영화 - 하얼빈
+    {
+        contents: '영화',
+        title: '하얼빈 시티투어 패키지',
+        subtitle: '하얼빈 & 시티투어 3박 4일',
+        desc: '영화 《하얼빈》 속 무대를 따라가는 역사·감성 여행',
+        date: '매주 월요일 출발',
+        duration: '3박 4일',
+        flight: '대한항공 직항',
+        shopping: '자유 쇼핑 가능',
+        guide_fee: '포함',
+        optional: false,
+        adult_fee: 1290000,
+        child_fee: 1090000,
+        itinerary: [
+            {
+                day: 1,
+                country: '중국',
+                city: '하얼빈',
+                tours: [
+                    { place: '인천공항 → 하얼빈 도착', desc: '공항 이동 및 가이드 미팅' },
+                    { place: '하얼빈 시내 투어', desc: '성 소피아 성당, 중앙대가 산책' },
+                    { place: '저녁', desc: '중국 동북식 만찬' },
+                ],
+                hotel: {
+                    name: '하얼빈 특급호텔',
+                    room_type: '2인 1실',
+                    desc: '시내 중심 숙소',
+                },
+            },
+            {
+                day: 2,
+                country: '중국',
+                city: '하얼빈',
+                tours: [
+                    { place: '영화 촬영지 투어', desc: '대표 장면 재현 포토스팟' },
+                    { place: '독립군 테마 트레킹', desc: '역사적 현장 탐방' },
+                    { place: '점심', desc: '하얼빈식 요리' },
+                    { place: '송화강 산책', desc: '야경 & 야시장 체험' },
+                ],
+                hotel: {
+                    name: '하얼빈 특급호텔',
+                    room_type: '2인 1실',
+                    desc: '시내 중심 숙소',
+                },
+            },
+            {
+                day: 3,
+                country: '중국',
+                city: '하얼빈',
+                tours: [
+                    { place: '태양도 공원', desc: '영화 배경지 & 레저 체험' },
+                    { place: '박물관 방문', desc: '하얼빈 역사와 문화 탐방' },
+                    { place: '석식', desc: '전통 중국식 만찬' },
+                ],
+                hotel: {
+                    name: '하얼빈 특급호텔',
+                    room_type: '2인 1실',
+                    desc: '시내 중심 숙소',
+                },
+            },
+            {
+                day: 4,
+                country: '중국',
+                city: '하얼빈',
+                tours: [
+                    { place: '기념품 쇼핑', desc: '굿즈: 《하얼빈》 한정판 기념품 증정' },
+                    { place: '하얼빈 공항 출발 → 인천 도착', desc: '귀국' },
+                ],
+                hotel: { name: '', room_type: '', desc: '숙박 없음' },
+            },
+        ],
+        flight_info: {
+            departure: {
+                airline: '대한항공',
+                time_start: '10:00',
+                time_end: '12:30',
+                airport_start: '인천공항',
+                airport_end: '하얼빈공항',
+                duration: '2시간 30분',
+            },
+            arrival: {
+                time_start: '14:00',
+                time_end: '16:30',
+                airport_start: '하얼빈공항',
+                airport_end: '인천공항',
+                duration: '2시간 30분',
+            },
+        },
+        backgroundImg: '/images/tour/main/harbin-bg.png',
+        posterImg: '/images/tour/main/harbin.png',
+        images: ['/images/tour/main/harbin-sub1.png', '/images/tour/main/harbin-sub2.png'],
+        benefits: [
+            { icon: 'calendar', text: '3박 4일' },
+            { icon: 'hotel', text: '특급호텔' },
+            { icon: 'plane', text: '항공 포함' },
+            { icon: 'gift', text: '기념품 증정' },
+        ],
+        slug: 'harbin-film-tour',
+    },
+];

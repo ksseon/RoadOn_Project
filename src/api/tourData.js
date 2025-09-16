@@ -145,7 +145,7 @@ export default [
     {
         id: 'kpop-demonhunters',
         tourId: 6,
-        category: 'K-POP',
+        category: '영화',
         title: '《K-POP Demon Hunters》',
         subtitle: '서울 K-컬처 테마 투어',
         description: 'K-POP 연습실 체험부터 한강 야경까지, 하루 몰아보기',
