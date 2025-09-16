@@ -1,29 +1,17 @@
 import './style.scss';
 import useAirportStore from '../../../store/airportStore';
-// import { useNavigate } from "react-router-dom";
 
 const AirportBox = ({ airportId }) => {
     const getAirportById = useAirportStore((state) => state.getAirportById);
     const airport = getAirportById(airportId);
-    // const navigate = useNavigate();
 
-    if (!airport) {
-        return <div>항공권 정보를 찾을 수 없습니다.</div>;
-    }
-
-    // const handleAirportClick = () => {
-    //   navigate(`/airports/${airport.slug}`);
-    // };
+    if (!airport) return <div>항공권 정보를 찾을 수 없습니다.</div>;
 
     return (
-        <section
-            className="airport-box"
-            // onClick={handleAirportClick}
-            style={{ cursor: 'pointer' }}
-        >
+        <section className="airport-box">
             {/* 항공사 */}
             <div className="airline">
-                <div className="logo">
+                <div className="flight-logo">
                     {airport.logo ? (
                         <img src={airport.logo} alt={airport.airline} />
                     ) : (

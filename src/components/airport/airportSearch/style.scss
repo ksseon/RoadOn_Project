@@ -10,7 +10,6 @@
         gap: 40px;
         .filter-wrap {
             width: vw(300px);
-
             .event-modal {
                 margin: 0 auto;
                 margin-bottom: vw(48px);
@@ -342,19 +341,18 @@
     }
     .airport-box {
         display: grid;
-        grid-template-columns: 2fr 0fr 1fr 1fr 2fr; /* 항공사 / 출발 / 비행정보 / 도착 / 가격 */
+        grid-template-columns: 1.1fr 1fr 1.5fr 1fr 1fr;
         align-items: center;
-        gap: vw(10px);
         width: vw(1050px);
         height: vw(280px);
-        padding: vw(50px);
+        padding: vw(60px);
         border: 1px solid $greyscale-500;
         border-radius: vw(15px);
         background: #fff;
         box-shadow: 0 vw(2px) vw(6px) rgba(0, 0, 0, 0.05);
-        cursor: pointer;
-        transition: transform 0.2s ease, box-shadow 0.2s ease;
         margin-bottom: vw(20px);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+        cursor: pointer;
         &:hover {
             transform: translateY(-3px);
             box-shadow: 0 vw(6px) vw(14px) rgba(0, 0, 0, 0.1);
@@ -363,39 +361,47 @@
         .airline {
             display: flex;
             align-items: center;
-            gap: vw(25px);
-            .logo {
-                width: vw(35px);
+            gap: vw(10px);
+            .flight-logo {
+                margin-right: vw(15px);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background: #fff;
                 img {
-                    width: 100%;
-                    height: 100%;
-                    object-fit: contain;
-                    border-radius: vw(50px);
+                    width: vw(30px);
+                    height: vw(30px);
+                    border-radius: 50%;
                     border: 1px solid $greyscale-400;
                 }
                 .placeholder {
-                    display: block;
-                    width: 100%;
-                    height: 100%;
-                    background: $greyscale-200;
+                    width: vw(30px);
+                    height: vw(30px);
                     border-radius: 50%;
+                    background: $greyscale-200;
                 }
             }
+
             .info {
-                text-align: left;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+
                 .name {
                     @include font-20px;
+                    white-space: nowrap;
                 }
+
                 .code {
                     @include font-16px;
                     color: $greyscale-1000;
+                    white-space: nowrap;
                 }
             }
         }
 
         .departure,
         .arrival {
-            width: vw(160px);
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -418,16 +424,19 @@
 
         .airport-info {
             text-align: center;
+
             .timeline {
                 align-items: center;
                 gap: vw(8px);
                 margin-bottom: vw(6px);
+
                 .duration {
                     @include font-18px;
                     color: $default;
                     white-space: nowrap;
                 }
             }
+
             .direct {
                 @include font-18px-M;
                 color: $mint;

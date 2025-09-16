@@ -13,7 +13,7 @@ const AirportBoxList = () => {
     return (
         <section className="airport-box-list">
             <h3>총 {airports.length.toLocaleString('ko-KR')}개 항공권</h3>
-            <div className="fillter-box"></div>
+            <div className="fillter-boxs"></div>
             {airports.length > 0 ? (
                 airports.map((a) => <AirportBox key={a.id} airportId={a.id} />)
             ) : (
