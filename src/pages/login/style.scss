@@ -1,1 +1,291 @@
 @use '../../styles/utils' as *;
+
+#Join {
+    padding: vw(150px);
+    .title {
+        padding: vw(30px) vw(10px);
+        @include font-32px-B;
+        position: relative;
+        text-align: left;
+
+        &-wrap {
+            border-bottom: vw(1px) solid $default;
+            width: 100%;
+        }
+
+        &-des {
+            margin-top: vw(15px);
+            display: flex;
+            justify-content: end;
+            @include font-16px;
+            color: $greyscale-900;
+            margin-bottom: vw(100px);
+
+            p {
+                width: max-content;
+                height: min-content;
+                padding-left: 1%;
+                position: relative;
+
+                &::after {
+                    content: '';
+                    position: absolute;
+                    background-color: $mint;
+                    width: vw(8px);
+                    height: vw(8px);
+                    left: 0;
+                    top: 0;
+                    @include circle;
+                }
+            }
+        }
+    }
+
+    .form {
+        width: vw(1200px);
+        margin: 0 auto;
+
+        /* ---- 공통 행 ---- */
+        .form-row {
+            width: 100%;
+            display: flex;
+            align-items: flex-end;
+            gap: vw(24px);
+
+            .gender {
+                width: min-content;
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                gap: 0;
+            }
+        }
+
+        /* ---- 공통 그룹 ---- */
+        .form-group {
+            width: 100%;
+            display: flex;
+            align-items: flex-start;
+            gap: vw(16px);
+            margin-top: vw(20px);
+
+            /* 영문 이름(2열) */
+            &.en {
+                .fields-2col {
+                    flex: 1 1 auto;
+                    min-width: 0;
+                    display: grid;
+                    grid-template-columns: repeat(2, minmax(0, 1fr));
+                    gap: vw(20px);
+                }
+                .field {
+                    display: flex;
+                    flex-direction: column;
+                    min-width: 0;
+
+                    .sublabel {
+                        padding-left: vw(10px);
+                        padding-bottom: vw(5px);
+                        color: $greyscale-1000;
+                        @include font-14px;
+                    }
+                    input {
+                        width: 100%;
+                    }
+                }
+            }
+
+            /* 연락처 / 인증 공통 버튼 사이즈 */
+            &.phone,
+            &.phoneAuth {
+                button {
+                    @include font-24px;
+                    min-width: vw(250px);
+                    height: vw(52px);
+                    border-radius: vw(10px);
+                    color: $white;
+                    transition: 0.2s;
+                }
+            }
+
+            &.phone {
+                align-items: center;
+
+                .btn-outline {
+                    margin-left: auto;
+                    white-space: nowrap;
+                }
+                button {
+                    background-color: $greyscale-900;
+                }
+            }
+
+            &.phoneAuth {
+                align-items: flex-start;
+
+                button {
+                    background-color: $foundation-mint-normalactive;
+                }
+            }
+
+            /* 라벨 고정폭 */
+            .label {
+                width: vw(250px);
+                min-width: vw(250px);
+                height: vw(50px);
+                color: #353535;
+                display: flex;
+                align-items: center;
+
+                span {
+                    height: vw(15px);
+                    width: vw(5px);
+                    position: relative;
+
+                    &::after {
+                        content: '';
+                        display: block;
+                        width: vw(5px);
+                        height: vw(5px);
+                        @include circle;
+                        background: $mint;
+                        position: absolute;
+                        top: 0;
+                        left: vw(5px);
+                    }
+                }
+            }
+
+            /* 입력 래퍼: 남은 폭 전부 + 수축 허용 */
+            .input-wrap {
+                flex: 1 1 auto;
+                min-width: 0;
+                display: flex;
+                flex-direction: column;
+
+                &.row {
+                    flex-direction: row;
+                    gap: vw(12px);
+                    align-items: center;
+
+                    > input {
+                        flex: 1 1 auto;
+                        min-width: 0;
+                    }
+                }
+            }
+
+            /* 인풋 공통 */
+            input {
+                width: 100%;
+                height: vw(52px);
+                border: vw(1px) solid $greyscale-400;
+                padding: vw(14px) vw(20px);
+                border-radius: vw(5px);
+                transition: border-color 0.15s;
+
+                &:focus {
+                    border-color: $greyscale-1000;
+                    outline: none;
+                }
+
+                &[aria-invalid='true'] {
+                    border-color: $red;
+                }
+            }
+        }
+
+        .form-actions {
+            width: 100%;
+            margin-top: vw(30px);
+            display: flex;
+            justify-content: center;
+            gap: vw(12px);
+
+            button {
+                @include font-20px;
+
+                &.back {
+                    color: $greyscale-1000;
+                    background-color: $greyscale-700;
+                }
+            }
+        }
+    }
+
+    /* 도움문구 */
+    .help-text {
+        padding-left: vw(10px);
+        margin-top: vw(6px);
+        font-size: vw(12px);
+        line-height: 1.4;
+
+        &.error {
+            color: $red;
+        }
+    }
+
+    /* 버튼 유틸 */
+    .btn-outline {
+        padding: vw(12px) vw(16px);
+        border: vw(1px) solid $greyscale-400;
+        background: #fff;
+        border-radius: vw(6px);
+        cursor: pointer;
+
+        &:hover {
+            background: $greyscale-100;
+        }
+    }
+
+    .btn-solid {
+        padding: vw(12px) vw(16px);
+        border: none;
+        background: $greyscale-1000;
+        color: #fff;
+        border-radius: vw(6px);
+        cursor: pointer;
+
+        &:hover {
+            background: $greyscale-900;
+        }
+    }
+
+    /* 성별 토글 */
+    .gender-group {
+        display: flex;
+        border: vw(1px) solid #ccc;
+        border-radius: vw(8px);
+        overflow: hidden;
+
+        label {
+            flex: 1;
+            text-align: center;
+            padding: vw(10px) 0;
+            cursor: pointer;
+            background: #f9f9f9;
+            color: #333;
+            transition: 0.2s;
+            width: vw(110px);
+            height: vw(52px);
+
+            input {
+                display: none;
+            }
+
+            &:hover {
+                background: $greyscale-500;
+            }
+
+            &.active {
+                background: $greyscale-1000;
+                color: #fff;
+                font-weight: 700;
+            }
+
+            &:not(:last-child) {
+                border-right: vw(1px) solid #ccc;
+            }
+        }
+    }
+}

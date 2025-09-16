@@ -20,7 +20,7 @@ const Support = () => {
                     onClick={() => setActiveTab('notice')}
                 />
                 <TabButton
-                    label="자주찾는질문"
+                    label="자주하는질문"
                     isActive={activeTab === 'faq'}
                     onClick={() => setActiveTab('faq')}
                 />

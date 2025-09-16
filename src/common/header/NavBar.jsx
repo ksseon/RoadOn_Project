@@ -32,7 +32,10 @@ const NavBar = () => {
                         </Link>
                     </li>
                     <li>
-                        <Link to="/myPage">회원가입</Link>
+                        <Link to="/join">회원가입</Link>
+                    </li>
+                    <li>
+                        <Link to="/myPage">마이페이지</Link>
                     </li>
                 </ul>
             </nav>

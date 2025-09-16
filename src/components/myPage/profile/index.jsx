@@ -80,7 +80,7 @@ const Profile = () => {
                     <div className="category-con">
                         <p>공지사항</p>
                         <p>투어 이용 안내</p>
-                        <p className="none-line">자주찾는질문</p>
+                        <p className="none-line">자주하는질문</p>
                         <p className="none-line ">고객센터 안내</p>
                     </div>
                 </div>

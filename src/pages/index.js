@@ -1,7 +1,8 @@
 export { default as Airport } from './airport';
 export { default as AirportSearch } from './airport/airportSearch';
 export { default as Home } from './home';
-export { default as Login } from './login';
+export { default as Login } from './login/Login';
+export { default as Join } from './login/Join';
 export { default as MyPage } from './myPage';
 export { default as NotFiles } from './notFiles';
 export { default as Tour } from './tour';
