@@ -1,12 +1,14 @@
 // src/pages/Join.jsx
-import React, { useState, useMemo } from 'react';
+import { useState, useMemo } from 'react';
 import './style.scss';
 import useAuthStore from '../../store/authStore'; // 경로 프로젝트 구조에 맞게 조정
+import JoinConsent from '../../components/login/join/JoinConsent';
 
 const Join = () => {
     const [activeField, setActiveField] = useState(null);
     const [gender, setGender] = useState('male');
     const [isSmsRequested, setIsSmsRequested] = useState(false);
+    const [consentOk, setConsentOk] = useState(false);
 
     const [form, setForm] = useState({
         username: '',
@@ -56,6 +58,10 @@ const Join = () => {
         }
         if (form.password && form.password !== form.passwordConfirm) {
             alert('비밀번호와 비밀번호 확인이 일치하지 않습니다.');
+            return;
+        }
+        if (!consentOk) {
+            alert('필수 약관에 모두 동의해 주세요.');
             return;
         }
 
@@ -325,10 +331,16 @@ const Join = () => {
                             onBlur={onBlur}
                         />
                     </div>
-
+                    <JoinConsent onRequiredChange={(v) => setConsentOk(Boolean(v))} />
                     {/* 제출 */}
                     <div className="form-actions">
-                        <button type="submit" className="button g middle go">
+                        <button
+                            type="submit"
+                            className="button g middle go"
+                            disabled={
+                                !consentOk // 기존 조건과 결합하려면 && otherChecks
+                            }
+                        >
                             회원가입
                         </button>
                         <button

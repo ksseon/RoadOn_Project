@@ -210,7 +210,7 @@ const Profile = ({ activeSection = null, onNavigate = () => {} }) => {
                         </p>
 
                         <p
-                            className="menu-item none-line"
+                            className="menu-item"
                             role="button"
                             tabIndex={0}
                             onClick={() => navigateOrLogin('support', { tab: 'faq' })}

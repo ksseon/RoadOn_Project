@@ -38,7 +38,6 @@ const Login = () => {
                 setLoading(false);
                 return;
             }
-
             // 로그인 성공: 현재 사용자로 설정하고 마이페이지로 이동
             setCurrent(user);
             navigate('/mypage');

@@ -1,19 +1,26 @@
-// src/components/NavBar.jsx  (파일 위치에 따라 import 경로 조정)
-
+// src/components/NavBar.jsx
 import { Link, useNavigate } from 'react-router-dom';
-import useAuthStore from '../../store/authStore'; // 경로가 다르면 조정
+import useAuthStore from '../../store/authStore'; // 경로에 맞게 조정
 
 const NavBar = () => {
     const currentUser = useAuthStore((s) => s.currentUser);
     const setCurrent = useAuthStore((s) => s.setCurrent);
+    const setToken = useAuthStore((s) => s.setToken); // 토큰 제거용
     const navigate = useNavigate();
 
+    // arrow function 스타일로 핸들러
     const handleLogout = () => {
-        // 테스트용 로그아웃: 현재 사용자 해제
+        // store에서 현재 사용자 제거 -> isLoggedIn도 false로 바뀜
         setCurrent(null);
-        // 필요하면 토큰도 없애려면 store에 setToken 액션 사용
-        // useAuthStore.getState().setToken(null);
-        navigate('/'); // 로그아웃 후 홈으로 이동 (원하면 /login 등으로 변경)
+
+        // 토큰도 제거 (있다면)
+        setToken && setToken(null);
+
+        // 필요하면 로컬스토리지 등 추가 정리: (store에 clearAll이 있으면 사용 가능)
+        // useAuthStore.getState().clearAll();
+
+        // 로그아웃 후 홈으로 이동
+        navigate('/');
     };
 
     const avatarSrc = currentUser?.avatar || '/images/icon/human.png';
@@ -47,7 +54,6 @@ const NavBar = () => {
                     <li>
                         {currentUser ? (
                             <Link to="/myPage" className="profile-link">
-                                {/* <img src={avatarSrc} alt="profile" /> */}
                                 <span>{displayName}</span>님 환영합니다
                             </Link>
                         ) : (
@@ -58,7 +64,6 @@ const NavBar = () => {
                         )}
                     </li>
 
-                    {/* 회원가입은 비로그인 상태에서만 보여줌 */}
                     {!currentUser && (
                         <li>
                             <Link to="/join">회원가입</Link>
@@ -67,8 +72,8 @@ const NavBar = () => {
 
                     <li>
                         {currentUser && (
-                            // 로그아웃은 버튼으로 처리 (스타일링은 CSS로)
-                            <Link to="/" className="logout-button button" onClick={handleLogout}>
+                            // 로그아웃은 버튼으로 처리: onClick에서 store 정리 후 navigate
+                            <Link type="button" className="logout-button" onClick={handleLogout}>
                                 로그아웃
                             </Link>
                         )}
