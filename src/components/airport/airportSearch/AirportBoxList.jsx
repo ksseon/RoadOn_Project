@@ -81,7 +81,6 @@ const AirportBoxList = () => {
                 <p>조건에 맞는 항공권이 없습니다.</p>
             )}
 
-            {/* Pagination.jsx 구조에 맞춰 props 변경 */}
             <Pagination
                 page={page}
                 total={airports.length}

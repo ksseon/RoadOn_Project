@@ -22,7 +22,7 @@ const AirportCon3 = () => {
     return (
         <section className="airport-main-con airport-main-con3">
             <div className="inner">
-                <h3>국내외 인기 여행지를 한눈에</h3>
+                <h3>해외 인기 여행지를 한눈에</h3>
                 <h4>24시간 무료 취소 가능한 항공권을 안심하고 예약하세요</h4>
 
                 <div className="promo-list">
