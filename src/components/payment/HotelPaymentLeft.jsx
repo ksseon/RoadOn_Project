@@ -1,7 +1,7 @@
-import '../style.scss';
+import './style.scss';
 import { IoCardOutline } from 'react-icons/io5';
 
-const PaymentLeft = ({ hotel, selectedRoom }) => {
+const HotelPaymentLeft = ({ hotel, selectedRoom }) => {
     return (
         <div className="pay payment-left">
             <div className="pay-detail">
@@ -47,7 +47,7 @@ const PaymentLeft = ({ hotel, selectedRoom }) => {
                             <input type="text" placeholder="영문 성" />
                         </div>
                     </div>
-                    <div className="pay-request">
+                    {/*<div className="pay-request">
                         <h4>요청사항</h4>
                         <textarea
                             name="request"
@@ -55,7 +55,7 @@ const PaymentLeft = ({ hotel, selectedRoom }) => {
                             placeholder="요청사항을 입력해주세요 (최대 100자)"
                             maxlength="100"
                         ></textarea>
-                    </div>
+                    </div>*/}
                     <div className="pay-coupon">
                         <h4>쿠폰</h4>
                         <select id="coupon" name="select-coupon">
@@ -118,4 +118,4 @@ const PaymentLeft = ({ hotel, selectedRoom }) => {
     );
 };
 
-export default PaymentLeft;
+export default HotelPaymentLeft;

@@ -5,8 +5,8 @@ import {
     MyPage,
     NotFiles,
     Login,
-    HotelsPayment,
-    HotelsPayCompleted,
+    Payment,
+    // PayCompleted,
     HotelsDetail,
     HotelsSearch,
     Tour,
@@ -24,13 +24,13 @@ export const MyRoutes = () => {
             <Routes>
                 <Route path="/" element={<Layout />}>
                     <Route index element={<Home />} />
-
+                    
+                    <Route path="payment" element={<Payment />} />
+                    /{/*Route path="payment/completed" element={<PayCompleted />} />*/}
                     <Route path="hotels">
                         <Route index element={<Hotels />} />
                         <Route path="search" element={<HotelsSearch />} />
                         <Route path=":slug" element={<HotelsDetail />} />
-                        <Route path="payment" element={<HotelsPayment />} />
-                        <Route path="payment/completed" element={<HotelsPayCompleted />} />
                     </Route>
 
                     <Route path="airport">

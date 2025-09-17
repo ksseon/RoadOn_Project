@@ -7,9 +7,13 @@ const DetailRight = ({ hotel, selectedRoom }) => {
         const reservationData = {
             hotel: hotel,
             selectedRoom: selectedRoom,
+            productType: 'hotel',
         };
 
-        navigate('/hotels/payment', {
+        // navigate('/hotels/payment', {
+        //     state: reservationData,
+        // });
+        navigate('/payment', {
             state: reservationData,
         });
     };
