@@ -10,12 +10,8 @@ const AirportSearch = () => {
             <div className="inner">
                 <Filter />
                 <div className="list-wrap">
-                    <div className="list-top">
-                        <div className="sort"></div>
-                    </div>
-                    <div className="list-box">
-                        <AirportBoxList />
-                    </div>
+                    {/* AirportBoxList 안에 이미 정렬 + 리스트 렌더링 있음 */}
+                    <AirportBoxList />
                 </div>
             </div>
         </main>

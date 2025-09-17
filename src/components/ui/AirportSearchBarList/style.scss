@@ -272,7 +272,7 @@
         }
     }
 
-    // DatePicker 전역 스타일
+    // DatePicker 전역 스타일 (달력)
     .react-datepicker-popper {
         z-index: 20;
     }
@@ -287,7 +287,6 @@
         box-shadow: 0 vw(6px) vw(18px) rgba(0, 0, 0, 0.25);
         animation: dp-fade-slide 0.2s ease-out;
 
-        // 🔺 달력 위에 세모 제거
         .react-datepicker__triangle {
             display: none;
         }
@@ -302,9 +301,8 @@
 
         .react-datepicker__day-name,
         .react-datepicker__day {
-            width: vw(36px);
-            height: vw(36px);
-            line-height: vw(36px);
+            width: vw(28px);
+            height: vw(28px);
             @include font-14px;
             color: $default;
             border-radius: 50%;
@@ -313,13 +311,18 @@
             justify-content: center;
             margin: 0;
         }
+        .react-datepicker__day--in-selecting-range,
+        .react-datepicker__day--in-range {
+            background-color: $orange;
+            color: #fff;
+        }
 
         .react-datepicker__day:hover {
             background: $orange;
             color: $white;
             border-radius: 50%;
-            width: vw(30px);
-            height: vw(30px);
+            width: vw(28px);
+            height: vw(28px);
         }
 
         .react-datepicker__day--selected,
@@ -328,14 +331,13 @@
         .react-datepicker__day--keyboard-selected,
         .react-datepicker__day--in-range {
             background-color: $orange;
-            color: $greyscale-1100;
+            color: $white;
             border-radius: 50%;
-            width: vw(30px);
-            height: vw(30px);
+            width: vw(28px);
+            height: vw(28px);
         }
     }
 
-    // 애니메이션 정의
     @keyframes dp-fade-slide {
         from {
             opacity: 0;

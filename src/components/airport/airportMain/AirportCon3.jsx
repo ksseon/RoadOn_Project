@@ -1,13 +1,12 @@
-// AirportCon3.jsx
 import { IoAirplane } from 'react-icons/io5';
 import { CgArrowsExchange } from 'react-icons/cg';
 import { useNavigate } from 'react-router-dom';
-import airportDetailData from '../../../api/airportDetailData';
+import useAirportStore from '../../../store/airportStore';
 
 const AirportCon3 = () => {
     const navigate = useNavigate();
+    const airportDetails = useAirportStore((s) => s.airportDetails);
 
-    //  랜덤으로 배열 섞기
     const shuffleArray = (array) => {
         const shuffled = [...array];
         for (let i = shuffled.length - 1; i > 0; i--) {
@@ -17,14 +16,13 @@ const AirportCon3 = () => {
         return shuffled;
     };
 
-    const promoFlights = shuffleArray(airportDetailData).slice(0, 4);
+    const promoFlights = shuffleArray(airportDetails).slice(0, 4);
 
     return (
         <section className="airport-main-con airport-main-con3">
             <div className="inner">
-                <h3>국내외 인기 여행지를 한눈에</h3>
+                <h3>해외 인기 여행지를 한눈에</h3>
                 <h4>24시간 무료 취소 가능한 항공권을 안심하고 예약하세요</h4>
-
                 <div className="promo-list">
                     {promoFlights.map((f) => (
                         <div
@@ -34,7 +32,6 @@ const AirportCon3 = () => {
                             style={{ cursor: 'pointer' }}
                         >
                             <img src={f.images} alt={f.airline} />
-
                             <div className="info">
                                 <small className="type">
                                     <IoAirplane className="icons" /> {f.airline}
@@ -45,7 +42,6 @@ const AirportCon3 = () => {
                                     {f.arrivalAirport}
                                 </h5>
                             </div>
-
                             <div className="details">
                                 <p className="date-condi">
                                     <span className="date">
@@ -53,7 +49,6 @@ const AirportCon3 = () => {
                                     </span>
                                     <span className="condition">수하물: {f.baggage}</span>
                                 </p>
-
                                 <div className="price-box">
                                     <strong className="price">
                                         {f.price.toLocaleString('ko-KR')}원 ~

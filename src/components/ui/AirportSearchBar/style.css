@@ -32,7 +32,7 @@
   cursor: pointer;
 }
 .airport-searchbar .search-box .search-tabs button:hover {
-  background: #e67248;
+  background: #ff7f50;
   color: #fff;
 }
 .airport-searchbar .search-box .search-tabs button.active {
@@ -323,9 +323,8 @@
 }
 .airport-searchbar .react-datepicker .react-datepicker__day-name,
 .airport-searchbar .react-datepicker .react-datepicker__day {
-  width: clamp(6.75px, 1.875vw, 36px);
-  height: clamp(6.75px, 1.875vw, 36px);
-  line-height: clamp(6.75px, 1.875vw, 36px);
+  width: clamp(5.25px, 1.4583333333vw, 28px);
+  height: clamp(5.25px, 1.4583333333vw, 28px);
   font-size: 0.875rem;
   font-weight: 400;
   letter-spacing: 0;
@@ -336,6 +335,11 @@
   align-items: center;
   justify-content: center;
   margin: 0;
+}
+.airport-searchbar .react-datepicker .react-datepicker__day--in-selecting-range,
+.airport-searchbar .react-datepicker .react-datepicker__day--in-range {
+  background-color: #ff7f50;
+  color: #fff;
 }
 .airport-searchbar .react-datepicker .react-datepicker__day:hover {
   background: #ff7f50;
