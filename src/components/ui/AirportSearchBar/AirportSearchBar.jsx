@@ -125,7 +125,7 @@ const AirportSearchBar = () => {
             </div>
         );
 
-    // ✅ 검색 실행 → filters 저장 → 검색 결과 페이지 이동
+    // 검색 실행 → filters 저장 → 검색 결과 페이지 이동
     const handleSearch = () => {
         const filterData = {
             mode,

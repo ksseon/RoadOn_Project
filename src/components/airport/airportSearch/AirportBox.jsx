@@ -63,7 +63,7 @@ const AirportBox = ({ airportId }) => {
     return (
         <section
             className={`airport-box ${filters.mode}`}
-            onClick={handleClick} // 카드 클릭 시 상세페이지 이동
+            onClick={handleClick}
             style={{ cursor: 'pointer' }}
         >
             {segments.map((seg, i) => (
