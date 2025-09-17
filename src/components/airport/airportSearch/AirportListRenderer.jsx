@@ -1,13 +1,12 @@
-import React, { useRef, useState, useMemo } from 'react';
+import React, { useRef, useState } from 'react';
 import useAirportStore from '../../../store/airportStore';
 import AirportBox from './AirportBox';
 import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io';
 import Pagination from '../../ui/pagination/Pagination';
 
-const AirportBoxList = () => {
-    const filters = useAirportStore((s) => s.filters);
-    const airports = useAirportStore((s) => s.airports);
+const AirportListRenderer = ({ airports = [], useFiltered = false }) => {
     const getFilteredAirports = useAirportStore((s) => s.getFilteredAirports);
+    const list = useFiltered ? getFilteredAirports() : airports;
 
     const [sortType, setSortType] = useState('all');
     const [isOpen, setIsOpen] = useState(false);
@@ -16,17 +15,11 @@ const AirportBoxList = () => {
 
     const dropdownRef = useRef(null);
 
-    // useMemo로 필터링된 값 계산 (필터 변경 시 자동 갱신)
-    const filteredAirports = useMemo(
-        () => getFilteredAirports(),
-        [filters, airports, getFilteredAirports]
-    );
-
-    let sortedAirports = [...filteredAirports];
+    let sortedList = [...list];
     if (sortType === 'low') {
-        sortedAirports.sort((a, b) => a.price - b.price);
+        sortedList.sort((a, b) => a.price - b.price);
     } else if (sortType === 'high') {
-        sortedAirports.sort((a, b) => b.price - a.price);
+        sortedList.sort((a, b) => b.price - a.price);
     }
 
     const options = [
@@ -36,14 +29,12 @@ const AirportBoxList = () => {
     ];
 
     const startIndex = (page - 1) * pageSize;
-    const currentAirports = sortedAirports.slice(startIndex, startIndex + pageSize);
+    const currentAirports = sortedList.slice(startIndex, startIndex + pageSize);
 
     return (
-        <section className="airport-box-list">
+        <div className="airport-box-list">
             <div className="list-header">
-                <h3>총 {sortedAirports.length.toLocaleString('ko-KR')}개 항공권</h3>
-
-                {/* 정렬 드롭다운 */}
+                <h3>총 {sortedList.length.toLocaleString('ko-KR')}개 항공권</h3>
                 <div
                     className={`custom-dropdown ${isOpen ? 'open' : ''}`}
                     ref={dropdownRef}
@@ -77,23 +68,22 @@ const AirportBoxList = () => {
                     )}
                 </div>
             </div>
-
             <div className="list-box">
                 {currentAirports.length > 0 ? (
                     currentAirports.map((a) => <AirportBox key={a.id} airportId={a.id} />)
                 ) : (
                     <p>조건에 맞는 항공권이 없습니다.</p>
-                )}
+                )}{' '}
             </div>
 
             <Pagination
                 page={page}
-                total={sortedAirports.length}
+                total={sortedList.length}
                 pageSize={pageSize}
                 onPageChange={setPage}
             />
-        </section>
+        </div>
     );
 };
 
-export default AirportBoxList;
+export default AirportListRenderer;

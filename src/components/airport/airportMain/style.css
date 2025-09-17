@@ -11,10 +11,10 @@
 .airport-main-con3 h3,
 .airport-main-con4 h3,
 .airport-main-con5 h3 {
-  font-size: 1.875rem;
+  font-size: 1.75rem;
   font-weight: 600;
   letter-spacing: 0;
-  line-height: 2.8125rem;
+  line-height: 2.625rem;
   color: #353535;
   text-align: left;
 }
@@ -22,7 +22,6 @@
 .airport-main-con3 h4,
 .airport-main-con4 h4,
 .airport-main-con5 h4 {
-  margin-top: clamp(3.75px, 1.0416666667vw, 20px);
   font-size: 1.25rem;
   font-weight: 400;
   letter-spacing: 0;
@@ -62,6 +61,8 @@
   box-shadow: 0 clamp(0.75px, 0.2083333333vw, 4px) clamp(1.5px, 0.4166666667vw, 8px) rgba(0, 0, 0, 0.05);
   transition: transform 0.2s ease;
   cursor: pointer;
+  display: flex;
+  flex-direction: column;
 }
 .airport-main-con2 .promo-list .promo-card-con:hover,
 .airport-main-con3 .promo-list .promo-card-con:hover,
@@ -85,6 +86,7 @@
 .airport-main-con4 .promo-list .promo-card-con .info,
 .airport-main-con5 .promo-list .promo-card-con .info {
   padding: clamp(3.375px, 0.9375vw, 18px);
+  flex-grow: 1;
 }
 
 .airport-main-con1 .visual-bg {
@@ -95,7 +97,7 @@
   width: 100%;
   height: clamp(103.125px, 28.6458333333vw, 550px);
   position: relative;
-  top: clamp(-215.625px, -59.8958333333vw, -1150px);
+  top: clamp(-112.5px, -31.25vw, -600px);
   z-index: -1;
   display: flex;
   justify-content: center;
@@ -120,16 +122,6 @@
   margin: clamp(3.75px, 1.0416666667vw, 20px) 0;
 }
 
-.airport-main-con2 .inner {
-  margin-top: clamp(-206.25px, -57.2916666667vw, -1100px);
-}
-.airport-main-con2 .inner h3 {
-  font-size: 1.875rem;
-  font-weight: 700;
-  letter-spacing: 0;
-  line-height: 2.8125rem;
-  margin-bottom: clamp(1.875px, 0.5208333333vw, 10px);
-}
 .airport-main-con2 .inner h3 span {
   color: #b3261e;
   margin-left: clamp(1.125px, 0.3125vw, 6px);
@@ -158,6 +150,8 @@
   box-shadow: 0 clamp(0.75px, 0.2083333333vw, 4px) clamp(1.5px, 0.4166666667vw, 8px) rgba(0, 0, 0, 0.05);
   transition: transform 0.2s ease;
   cursor: pointer;
+  display: flex;
+  flex-direction: column;
 }
 .airport-main-con2 .inner .promo-list .promo-card-con:hover {
   transform: translateY(-4px);
@@ -235,25 +229,38 @@
   color: #646464;
 }
 
-.airport-main-con {
-  margin-top: clamp(22.5px, 6.25vw, 120px);
+.airport-main-con3 {
+  margin-top: clamp(18.75px, 5.2083333333vw, 100px);
 }
-.airport-main-con .promo-list {
+.airport-main-con3 .promo-list {
   margin-top: clamp(7.5px, 2.0833333333vw, 40px);
   display: flex;
   flex-wrap: wrap;
   gap: clamp(3.75px, 1.0416666667vw, 20px);
   justify-content: space-between;
 }
-.airport-main-con .promo-list .promo-card-con {
+.airport-main-con3 .promo-list .promo-card-con {
   flex: 1 1 calc(25% - clamp(3.75px, 1.0416666667vw, 20px));
   max-width: calc(25% - clamp(3.75px, 1.0416666667vw, 20px));
   background: #fff;
   border-radius: clamp(2.25px, 0.625vw, 12px);
   border: 1px solid #e1e1e1;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
-.airport-main-con .promo-list .promo-card-con .info .type {
+.airport-main-con3 .promo-list .promo-card-con img {
+  width: 100%;
+  height: clamp(41.25px, 11.4583333333vw, 220px);
+  -o-object-fit: cover;
+     object-fit: cover;
+  display: block;
+}
+.airport-main-con3 .promo-list .promo-card-con .info {
+  padding: clamp(3.375px, 0.9375vw, 18px);
+  flex-grow: 1;
+}
+.airport-main-con3 .promo-list .promo-card-con .info .type {
   font-size: 0.875rem;
   font-weight: 400;
   letter-spacing: 0;
@@ -261,7 +268,7 @@
   color: #646464;
   display: block;
 }
-.airport-main-con .promo-list .promo-card-con .info .type .icons {
+.airport-main-con3 .promo-list .promo-card-con .info .type .icons {
   margin-right: clamp(1.125px, 0.3125vw, 6px);
   font-size: 0.875rem;
   font-weight: 400;
@@ -269,7 +276,7 @@
   line-height: 1.3125rem;
   color: #444444;
 }
-.airport-main-con .promo-list .promo-card-con .info .title {
+.airport-main-con3 .promo-list .promo-card-con .info .title {
   font-size: 1.25rem;
   font-weight: 600;
   letter-spacing: 0;
@@ -277,13 +284,13 @@
   color: #353535;
   margin-bottom: clamp(1.125px, 0.3125vw, 6px);
 }
-.airport-main-con .promo-list .promo-card-con .details {
+.airport-main-con3 .promo-list .promo-card-con .details {
   padding: clamp(3.75px, 1.0416666667vw, 20px);
   padding-top: 0;
   display: flex;
   justify-content: space-between;
 }
-.airport-main-con .promo-list .promo-card-con .details .date-condi {
+.airport-main-con3 .promo-list .promo-card-con .details .date-condi {
   flex-direction: column;
   display: flex;
   text-align: left;
@@ -293,13 +300,13 @@
   line-height: 1.3125rem;
   color: #646464;
 }
-.airport-main-con .promo-list .promo-card-con .details .price-box {
+.airport-main-con3 .promo-list .promo-card-con .details .price-box {
   display: flex;
   align-items: center;
   gap: clamp(1.5px, 0.4166666667vw, 8px);
   margin-top: clamp(4.125px, 1.1458333333vw, 22px);
 }
-.airport-main-con .promo-list .promo-card-con .details .price-box .price {
+.airport-main-con3 .promo-list .promo-card-con .details .price-box .price {
   position: relative;
   top: -4px;
   line-height: clamp(3.75px, 1.0416666667vw, 20px);
@@ -310,6 +317,9 @@
   color: #222222;
 }
 
+.airport-main-con4 {
+  margin-top: clamp(18.75px, 5.2083333333vw, 100px);
+}
 .airport-main-con4 .inner h3 img {
   width: clamp(18.75px, 5.2083333333vw, 100px);
 }
@@ -377,7 +387,7 @@
 }
 
 .airport-main-con5 {
-  margin-bottom: clamp(39px, 10.8333333333vw, 208px);
+  margin: clamp(18.75px, 5.2083333333vw, 100px) 0 clamp(39px, 10.8333333333vw, 208px) 0;
 }
 .airport-main-con5 .promo-list {
   margin-top: clamp(7.5px, 2.0833333333vw, 40px);

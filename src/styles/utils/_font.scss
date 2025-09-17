@@ -80,6 +80,12 @@
     letter-spacing: 0;
     line-height: rem(42px);
 }
+@mixin font-28px-SB {
+    @include font-size-clamp(28px);
+    font-weight: 600;
+    letter-spacing: 0;
+    line-height: rem(42px);
+}
 @mixin font-28px-EB {
     @include font-size-clamp(28px);
     font-weight: 800;
