@@ -6,7 +6,7 @@ const Tour = () => {
     return (
         <main id="tourPage">
             <TourMain />
-            {/* <TourDetail /> */}
+            <TourDetail />
         </main>
     );
 };

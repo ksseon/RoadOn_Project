@@ -3,16 +3,18 @@ import Layout from '../common/Layout';
 import {
     Airplane,
     Home,
-    HotelsMain,
-    Tour,
     MyPage,
     NotFiles,
     Login,
-    HotelsSearch,
-    HotelsDetail,
     HotelsPayment,
     HotelsPayCompleted,
     AirportSearch,
+    HotelsDetail,
+    HotelsSearch,
+    Tour,
+    Airport,
+    Hotels,
+    AirportDetail,
 } from '../pages';
 
 export const MyRoutes = () => {
@@ -21,18 +23,28 @@ export const MyRoutes = () => {
             <Routes>
                 <Route path="/" element={<Layout />}>
                     <Route index element={<Home />} />
-                    <Route path="/hotels" element={<HotelsMain />} />
-                    {/* <Route path="/hotelsSearch" element={<HotelsSearch />} /> */}
-                    <Route path="/hotels/search" element={<HotelsSearch />} />
-                    <Route path="/hotels/:slug" element={<HotelsDetail />} />
-                    <Route path="/hotels/payment" element={<HotelsPayment />} />
-                    <Route path="/hotels/payment/completed" element={<HotelsPayCompleted />} />
-                    <Route path="/airportSearch" element={<AirportSearch />} />
-                    <Route path="/tour" element={<Tour />} />
-                    <Route path="/airplane" element={<Airplane />} />
-                    <Route path="/myPage" element={<MyPage />} />
-                    <Route path="/login" element={<Login />} />
-                    <Route path="/*" element={<NotFiles />} />
+
+                    <Route path="hotels">
+                        <Route index element={<Hotels />} />
+                        <Route path="search" element={<HotelsSearch />} />
+                        <Route path=":slug" element={<HotelsDetail />} />
+                        <Route path="payment" element={<HotelsPayment />} />
+                        <Route path="payment/completed" element={<HotelsPayCompleted />} />
+                    </Route>
+
+                    <Route path="airport">
+                        <Route index element={<Airport />} />
+                        <Route path="search" element={<AirportSearch />} />
+                        <Route path=":slug" element={<AirportDetail />} />
+                    </Route>
+
+                    <Route path="tour" element={<Tour />} />
+
+                    <Route path="myPage" element={<MyPage />} />
+                    <Route path="login">
+                        <Route index element={<Login />} />
+                    </Route>
+                    <Route path="*" element={<NotFiles />} />
                 </Route>
             </Routes>
         </BrowserRouter>
