@@ -7,13 +7,13 @@ import {
     Login,
     HotelsPayment,
     HotelsPayCompleted,
-    AirportSearch,
     HotelsDetail,
     HotelsSearch,
     Tour,
     Airport,
     Hotels,
     AirportDetail,
+    AirportSearch,
 } from '../pages';
 import ScrollToTop from '../common/ScrollToTop';
 
