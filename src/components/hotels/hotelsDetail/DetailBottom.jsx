@@ -1,12 +1,14 @@
-import { useState } from "react";
-import DetailBotReviewsItem from "../../tour/tourDetail/detailBottom/DetailBotReviewsItem";
-import DetailPromoItem from "../../tour/tourDetail/detailBottom/DetailPromoItem";
-import DetailReviewItem from "./DetailReviewItem";
+import { useState } from 'react';
+import DetailBotReviewsItem from '../../tour/tourDetail/detailBottom/DetailBotReviewsItem';
+import DetailPromoItem from '../../tour/tourDetail/detailBottom/DetailPromoItem';
+import DetailReviewItem from './DetailReviewItem';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
-import { HiOutlineClipboardDocument } from "react-icons/hi2";
+import { HiOutlineClipboardDocument } from 'react-icons/hi2';
+import KakaoMap from './KakaoMap';
 
-const DetailBottom = ({hotel, reviews}) => {
-     const [copied, setCopied] = useState(false);
+const DetailBottom = ({ hotel, reviews }) => {
+    const [copied, setCopied] = useState(false);
+    const promoHotelIds = [3, 6, 9, 15];
 
     const handleCopySuccess = () => {
         setCopied(true);
@@ -15,22 +17,20 @@ const DetailBottom = ({hotel, reviews}) => {
 
     const calculateAverageRating = (reviews) => {
         if (!reviews || reviews.length === 0) return 0;
-        
+
         const totalRating = reviews.reduce((sum, review) => sum + review.rate, 0);
         const average = totalRating / reviews.length;
-        
+
         return average.toFixed(2); // 소수점 둘째자리까지
     };
 
     const averageRating = calculateAverageRating(reviews);
 
-     const [showAllReviews, setShowAllReviews] = useState(false);
+    const [showAllReviews, setShowAllReviews] = useState(false);
     const [displayedCount, setDisplayedCount] = useState(4);
 
     // 표시할 리뷰 개수 결정
-    const displayedReviews = showAllReviews 
-        ? reviews 
-        : reviews.slice(0, displayedCount);
+    const displayedReviews = showAllReviews ? reviews : reviews.slice(0, displayedCount);
 
     // 더보기/접기 버튼 클릭
     const handleShowMore = () => {
@@ -60,47 +60,51 @@ const DetailBottom = ({hotel, reviews}) => {
             return `방문자 리뷰 더보기`;
         }
     };
-    
 
     return (
         <section className="detail-bottom-info">
-            <section id="detail-loaction">
-            <h2 className="title">숙소 위치</h2>
-            <div className="map"></div>
-            <div className="address">
-                <strong>
-                    {hotel.address} 
-                    <CopyToClipboard 
-        text={hotel.address || hotel.location} 
-        onCopy={handleCopySuccess}
-    >
-        <span className="copy-icon" style={{ cursor: 'pointer', marginLeft: '8px' }}>
-            <HiOutlineClipboardDocument />
-        </span>
-    </CopyToClipboard>
-    {copied && <span className="copy-feedback">주소가 복사되었습니다.</span>}                 
-                </strong>
-                <ul className="vector">
-                    {hotel.landmark.map((place, idx)=>
-                        <li key={idx}>{place}</li>
-                    )}
-                </ul>
-            </div>
-        </section>
-        <section id="detail-Bot-Reviews">
-            <div className="reviews-wrap-head">
-                <h2 className="title">
-                    방문자 리뷰
-                    <span>({reviews.length})</span>
-                </h2>
-                <div className="rate">
-                    <span>
-                        <img src="/images/hotels/detail/icon/star_rate.svg" alt="별점" />
-                    </span>
-                    {averageRating}
-                </div>                
-            </div>
-           <div className="reviews-wrap-body">
+            <section id="detail-location">
+                <h2 className="title">숙소 위치</h2>
+
+                <KakaoMap address={hotel.address} hotelName={hotel.name} height="400px" />
+
+                <div className="address">
+                    <strong>
+                        {hotel.address}
+                        <CopyToClipboard
+                            text={hotel.address || hotel.location}
+                            onCopy={handleCopySuccess}
+                        >
+                            <span
+                                className="copy-icon"
+                                style={{ cursor: 'pointer', marginLeft: '8px' }}
+                            >
+                                <HiOutlineClipboardDocument />
+                            </span>
+                        </CopyToClipboard>
+                        {copied && <span className="copy-feedback">주소가 복사되었습니다.</span>}
+                    </strong>
+                    <ul className="vector">
+                        {hotel.landmark.map((place, idx) => (
+                            <li key={idx}>{place}</li>
+                        ))}
+                    </ul>
+                </div>
+            </section>
+            <section id="detail-Bot-Reviews">
+                <div className="reviews-wrap-head">
+                    <h2 className="title">
+                        방문자 리뷰
+                        <span>({reviews.length})</span>
+                    </h2>
+                    <div className="rate">
+                        <span>
+                            <img src="/images/hotels/detail/icon/star_rate.svg" alt="별점" />
+                        </span>
+                        {averageRating}
+                    </div>
+                </div>
+                <div className="reviews-wrap-body">
                     <ul className="reviews-wrap-body-list">
                         {displayedReviews.map((review) => (
                             <DetailReviewItem key={review.id} review={review} />
@@ -112,16 +116,15 @@ const DetailBottom = ({hotel, reviews}) => {
                         <p>{getButtonText()}</p>
                     </div>
                 )}
-        </section>
-        <section id="detail-Promo">
-            <h2 className="title">다른 고객들이 함께 본 숙소</h2>
-            <ul className="promo-list">
-                <DetailPromoItem />
-                <DetailPromoItem />
-                <DetailPromoItem />
-                <DetailPromoItem />
-            </ul>
-        </section>
+            </section>
+            <section id="detail-Promo">
+                <h2 className="title">다른 고객들이 함께 본 숙소</h2>
+                <ul className="promo-list">
+                    {promoHotelIds.map((hotelId) => (
+                        <DetailPromoItem key={hotelId} hotelId={hotelId} />
+                    ))}
+                </ul>
+            </section>
         </section>
     );
 };

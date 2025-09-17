@@ -6,15 +6,18 @@
     padding-top: vw(60px);
 }
 
-#detail-loaction {
+#detail-location {
     .map {
         background-color: #dcdcdc;
         height: vw(350px);
         margin: vw(30px) vw(10px) vw(20px);
     }
+    .title {
+        margin-bottom: vw(30px);
+    }
     .address {
         margin-top: vw(20px);
-        margin-left: vw(40px);
+        margin-left: vw(15px);
 
         strong {
             @include font-18px-SB;
@@ -42,7 +45,6 @@
 }
 
 #detail-Bot-Reviews {
-    
     .title {
         display: flex;
         span {
@@ -58,17 +60,19 @@
             &-head {
                 margin-top: vw(70px);
                 display: flex;
-                flex-direction: column;
-                border-bottom: vw(1px) solid #ddd;
+                // border-bottom: vw(1px) solid #ddd;
+                margin-bottom: vw(20px);
+                gap: vw(25px);
 
                 .rate {
                     display: flex;
+                    align-items: center;
                     @include font-24px-M;
                     span {
                         color: $star;
                         margin-right: vw(10px);
                     }
-                    @include font-30px-M;
+                    transform: translateY(vw(30px));
                 }
                 &-imgs {
                     height: vw(150px);
@@ -89,13 +93,14 @@
             &-body {
                 &-list {
                     li {
-                        height: vw(420px);
-                        padding: vw(20px);
+                        // height: vw(420px);
+                        padding: vw(30px) vw(20px);
                         display: flex;
                         justify-content: space-between;
-.rate-zone {
-    margin-bottom: vw(15px);
-}
+                        border-top: 1px solid $greyscale-500;
+                        .rate-zone {
+                            margin-bottom: vw(15px);
+                        }
                         .name-line {
                             width: vw(220px);
 
@@ -104,14 +109,13 @@
                             .thumbs {
                                 @include circle;
                                 width: vw(40px);
-        height: vw(40px);
-        border-radius: 100%;
-        overflow: hidden;
-        img {
-            width: 100%;
-            height: 100%;
-
-        }
+                                height: vw(40px);
+                                border-radius: 100%;
+                                overflow: hidden;
+                                img {
+                                    width: 100%;
+                                    height: 100%;
+                                }
                             }
                             .txts {
                                 display: flex;
@@ -212,6 +216,7 @@
 }
 
 #detail-Promo {
+    margin-bottom: vw(250px);
     h2 {
         &.title {
             padding-bottom: vw(30px);
@@ -228,10 +233,13 @@
             border-radius: vw(10px);
             overflow: hidden;
             .img-wrap {
-                background-color: #333;
                 width: vw(325px);
                 height: vw(290px);
+                overflow: hidden;
                 img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
                 }
             }
             .txt-wrap {
@@ -242,6 +250,7 @@
                 strong {
                     em {
                         @include font-18px;
+                        display: block;
                     }
                     @include font-20px-B;
                     display: block;
@@ -249,6 +258,8 @@
                 .rate {
                     @include font-18px;
                     line-height: 1.2;
+                    display: flex;
+                    gap: vw(4px);
                     span {
                         font-size: rem(15px);
                     }
@@ -261,6 +272,10 @@
                     .loc {
                         @include font-16px;
                         color: #6b6b6b;
+                        display: flex;
+                        gap: vw(4px);
+                        span {
+                        }
                     }
                     .pri {
                         @include font-20px;

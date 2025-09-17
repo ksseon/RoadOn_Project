@@ -1,7 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Layout from '../common/Layout';
 import {
-    Airplane,
     Home,
     MyPage,
     NotFiles,
@@ -16,10 +15,12 @@ import {
     Hotels,
     AirportDetail,
 } from '../pages';
+import ScrollToTop from '../common/ScrollToTop';
 
 export const MyRoutes = () => {
     return (
         <BrowserRouter>
+            <ScrollToTop />
             <Routes>
                 <Route path="/" element={<Layout />}>
                     <Route index element={<Home />} />

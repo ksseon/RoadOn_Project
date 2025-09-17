@@ -15,7 +15,7 @@ import {
 import RoomOption from './RoomOption';
 import Policies from './Policies';
 import Location from './Location';
-import MiniReviewItem from './MiniReviewItem'
+import MiniReviewItem from './MiniReviewItem';
 import DetailBotReviewsItem from '../../tour/tourDetail/detailBottom/DetailBotReviewsItem';
 
 const DetailLeft = ({
@@ -43,7 +43,6 @@ const DetailLeft = ({
         스파: Spa,
         '개별 바베큐': Bbq,
     };
-    console.log('miniReviews:', miniReviews);
 
     return (
         <div className="detail-left">
@@ -65,18 +64,22 @@ const DetailLeft = ({
                         <img src="/images/icon/like.svg" alt="찜하기" />
                     </div>
                 </article>
-               <section className="detail-reviews" style={{marginBottom: '20px'}}>
-    <ul className="list" style={{listStyle: 'none', padding: 0}}>
-        {miniReviews.map((review) => (
-            <MiniReviewItem 
-                key={review.uniqueId} 
-                review={review} 
-                style={{padding: '15px', border: '1px solid #ddd', marginBottom: '10px', borderRadius: '5px'}}
-            />
-        ))}
-    </ul>
-</section>
-            
+                <section className="detail-reviews" style={{ marginBottom: '20px' }}>
+                    <ul className="list" style={{ listStyle: 'none', padding: 0 }}>
+                        {miniReviews.map((review) => (
+                            <MiniReviewItem
+                                key={review.uniqueId}
+                                review={review}
+                                style={{
+                                    padding: '15px',
+                                    border: '1px solid #ddd',
+                                    marginBottom: '10px',
+                                    borderRadius: '5px',
+                                }}
+                            />
+                        ))}
+                    </ul>
+                </section>
             </section>
             <section className="detail-data">
                 <section className="detail-data-tab">
