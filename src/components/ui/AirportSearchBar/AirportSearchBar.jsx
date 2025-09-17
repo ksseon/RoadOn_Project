@@ -19,7 +19,6 @@ const AirportSearchBar = () => {
   const [openDropdown, setOpenDropdown] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
 
-  // 가는날 & 오는날 데이터
   const fromLocations = ["김포", "인천", "제주"];
   const toLocations = [
     "방콕",
@@ -63,7 +62,7 @@ const AirportSearchBar = () => {
         <div
           className="dropdown location-dropdown"
           onClick={(e) => e.stopPropagation()}
-          onMouseLeave={() => setOpenDropdown(null)} // 마우스 벗어나면 즉시 닫힘
+          onMouseLeave={() => setOpenDropdown(null)} 
         >
           <input
             type="text"
