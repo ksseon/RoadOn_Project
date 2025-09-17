@@ -23,6 +23,8 @@ const AirportSearchBar = () => {
     const [openDropdown, setOpenDropdown] = useState(null);
     const [searchTerm, setSearchTerm] = useState('');
 
+    const navigate = useNavigate();
+
     const fromLocations = ['김포', '인천', '제주'];
     const toLocations = [
         '방콕',
@@ -123,18 +125,28 @@ const AirportSearchBar = () => {
             </div>
         );
 
-    const navigate = useNavigate();
-
+    // ✅ 검색 실행 → filters 저장 → 검색 결과 페이지 이동
     const handleSearch = () => {
         const filterData = {
             mode,
             people,
             seat,
-            dates: mode === 'roundtrip' ? roundDates : mode === 'oneway' ? [onewayDate] : [],
+            dates:
+                mode === 'roundtrip'
+                    ? roundDates
+                    : mode === 'oneway'
+                    ? [onewayDate, null]
+                    : segments.map((s) => s.date),
             segments: mode === 'multicity' ? segments : [segments[0]],
         };
+
+        // 상태 저장 후 페이지 이동
         setFilters(filterData);
-        setTimeout(() => navigate('/airport/search'), 0);
+
+        // navigate를 안전하게 delay
+        requestAnimationFrame(() => {
+            navigate('/airport/search');
+        });
     };
 
     useEffect(() => {
@@ -185,6 +197,7 @@ const AirportSearchBar = () => {
                     </button>
                 </div>
 
+                {/* 왕복/편도 */}
                 {(mode === 'roundtrip' || mode === 'oneway') && (
                     <div className="search-form">
                         <div className="form-item date">
@@ -198,7 +211,7 @@ const AirportSearchBar = () => {
                                     locale={ko}
                                     dateFormat="MM.dd (eee)"
                                     placeholderText="가는날 - 오는날"
-                                    shouldCloseOnSelect={true}
+                                    shouldCloseOnSelect
                                 />
                             ) : (
                                 <DatePicker
@@ -207,7 +220,7 @@ const AirportSearchBar = () => {
                                     locale={ko}
                                     dateFormat="MM.dd (eee)"
                                     placeholderText="가는날"
-                                    shouldCloseOnSelect={true}
+                                    shouldCloseOnSelect
                                 />
                             )}
                         </div>
@@ -236,6 +249,7 @@ const AirportSearchBar = () => {
                     </div>
                 )}
 
+                {/* 다구간 */}
                 {mode === 'multicity' && (
                     <div className="search-form multicity">
                         {segments.map((seg, i) => (
@@ -252,7 +266,7 @@ const AirportSearchBar = () => {
                                         locale={ko}
                                         dateFormat="MM.dd (eee)"
                                         placeholderText="가는날"
-                                        shouldCloseOnSelect={true}
+                                        shouldCloseOnSelect
                                     />
                                 </div>
 

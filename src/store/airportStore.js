@@ -6,6 +6,35 @@ const ABS_MIN_PRICE = Math.min(...allPrices);
 const ABS_MAX_PRICE = Math.max(...allPrices);
 const STEP = 1000;
 
+// 공항명 매핑 (정규화용)
+const airportAliasMap = {
+    김포: ['김포', '김포공항', '김포 국제공항', 'GMP'],
+    인천: ['인천', '인천공항', '인천 국제공항', '인천 국제공항 - 터미널 2', 'ICN'],
+    제주: ['제주', '제주공항', '제주 국제공항', 'CJU'],
+    방콕: ['방콕', '수완나품', '수완나품 국제공항', 'BKK'],
+    싱가포르: ['싱가포르', '창이', '창이 국제공항', 'SIN'],
+    다낭: ['다낭', '다낭 국제공항', 'DAD'],
+    오사카: ['오사카', '간사이 국제공항', 'KIX'],
+    괌: ['괌', '괌 국제공항', 'GUM'],
+    후쿠오카: ['후쿠오카', '후쿠오카 국제공항', 'FUK'],
+    코타키나발루: ['코타키나발루', '코타키나발루 국제공항', 'BKI'],
+    나트랑: ['나트랑', '깜라인', '나트랑 깜라인 국제공항', 'CXR'],
+};
+
+//  공항 이름 정규화 함수
+const normalizeAirport = (name) => {
+    if (!name) return '';
+    const lower = name.trim().toLowerCase();
+
+    for (const [key, aliases] of Object.entries(airportAliasMap)) {
+        if (aliases.some((alias) => alias.toLowerCase().includes(lower))) {
+            return key;
+        }
+    }
+
+    return lower;
+};
+
 const useAirportStore = create((set, get) => ({
     airports: airportData,
     priceMin: ABS_MIN_PRICE,
@@ -24,7 +53,7 @@ const useAirportStore = create((set, get) => ({
         seat: '일반석',
     },
 
-    // 다중 필터 설정 (search 시)
+    //  필터 설정
     setFilters: (patch) =>
         set((state) => ({
             filters: {
@@ -33,7 +62,6 @@ const useAirportStore = create((set, get) => ({
             },
         })),
 
-    // 단일 필터 필드 설정 (filter UI 조작 시)
     setFilter: (patch) =>
         set((state) => ({
             filters: {
@@ -42,7 +70,6 @@ const useAirportStore = create((set, get) => ({
             },
         })),
 
-    // 가격 필터만 변경
     setPriceRange: (min, max) =>
         set((state) => ({
             filters: {
@@ -51,7 +78,6 @@ const useAirportStore = create((set, get) => ({
             },
         })),
 
-    // 필터 전체 초기화
     resetFilter: () =>
         set({
             filters: {
@@ -67,35 +93,36 @@ const useAirportStore = create((set, get) => ({
             },
         }),
 
-    // ID로 항공권 찾기
     getAirportById: (id) => get().airports.find((a) => a.id === id),
 
-    // 필터 적용 항공권 리스트 반환
+    // 필터링된 항공권 리스트 반환
     getFilteredAirports: () => {
         const { airports, filters } = get();
         const [minP, maxP] = filters.priceRange;
 
         return airports.filter((a) => {
-            // 가격
+            // 가격 필터
             if (a.price < minP || a.price > maxP) return false;
 
-            // 직항/경유
+            // 직항 여부
             if (filters.direct !== null && a.direct !== filters.direct) return false;
 
-            // 항공사
+            // 항공사 필터
             if (filters.airline && a.airline !== filters.airline) return false;
 
-            // 수화물
+            // 수하물 필터
             if (filters.baggage && a.baggage !== filters.baggage) return false;
 
-            // 출도착 구간 (단일 구간 기준)
+            // 출발/도착지 필터
             if (filters.segments?.length > 0) {
                 const seg = filters.segments[0];
-                const from = seg.from?.trim().toLowerCase();
-                const to = seg.to?.trim().toLowerCase();
+                const userFrom = normalizeAirport(seg.from);
+                const userTo = normalizeAirport(seg.to);
+                const dataFrom = normalizeAirport(a.departureAirport);
+                const dataTo = normalizeAirport(a.arrivalAirport);
 
-                if (from && !a.departureAirport.toLowerCase().includes(from)) return false;
-                if (to && !a.arrivalAirport.toLowerCase().includes(to)) return false;
+                if (userFrom && userFrom !== dataFrom) return false;
+                if (userTo && userTo !== dataTo) return false;
             }
 
             return true;
