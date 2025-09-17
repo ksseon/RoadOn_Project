@@ -1,10 +1,12 @@
-import { useState, useMemo } from 'react';
+// src/pages/Join.jsx
+import React, { useState, useMemo } from 'react';
 import './style.scss';
+import useAuthStore from '../../store/authStore'; // 경로 프로젝트 구조에 맞게 조정
 
 const Join = () => {
     const [activeField, setActiveField] = useState(null);
     const [gender, setGender] = useState('male');
-    const [isSmsRequested, setIsSmsRequested] = useState(false); // ⬅️ 추가
+    const [isSmsRequested, setIsSmsRequested] = useState(false);
 
     const [form, setForm] = useState({
         username: '',
@@ -24,16 +26,66 @@ const Join = () => {
     const onBlur = () => setActiveField(null);
     const onChange = (key) => (e) => setForm((s) => ({ ...s, [key]: e.target.value }));
 
-    // 아이디 유효성
+    // 간단한 유효성: 아이디 형식
     const usernameRegex = /^[a-zA-Z0-9_]{5,20}$/;
     const isUsernameValid = useMemo(
         () => (form.username ? usernameRegex.test(form.username) : true),
         [form.username]
     );
 
-    const handleRequestCode = () => {
-        // 필요 시 유효성 체크 후 setActiveField('phone') 등으로 안내 가능
-        setIsSmsRequested(true);
+    const handleRequestCode = () => setIsSmsRequested(true);
+
+    // auth store actions (addUser, setCurrent exist in store)
+    const addUser = useAuthStore((s) => s.addUser);
+    const setCurrent = useAuthStore((s) => s.setCurrent);
+
+    // 개발용 아바타 빌더 (간단)
+    const buildAvatar = (name) => '/images/myPage/profile-img.png';
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        // 최소 유효성 체크 (필요하면 확장)
+        if (!form.email) {
+            alert('이메일을 입력하세요.');
+            return;
+        }
+        if (!isUsernameValid) {
+            alert('아이디 형식이 맞지 않습니다. 영문/숫자/언더스코어 5~20자');
+            return;
+        }
+        if (form.password && form.password !== form.passwordConfirm) {
+            alert('비밀번호와 비밀번호 확인이 일치하지 않습니다.');
+            return;
+        }
+
+        // 저장할 user 객체 (민감 정보 제외)
+        const user = {
+            username: form.username || `${form.firstNameEn}${form.lastNameEn}`.toLowerCase(),
+            nameKo: form.nameKo,
+            firstNameEn: form.firstNameEn,
+            lastNameEn: form.lastNameEn,
+            email: form.email,
+            phone: form.phone,
+            birth: form.birth,
+            gender,
+            address: form.address,
+            avatar: buildAvatar(form.nameKo || form.username),
+            grade: 'Family', // 기본 등급 (테스트용)
+            couponCount: 3, // 테스트용 요약값
+            points: 22222, // 테스트용 요약값
+            reserveCount: 0,
+            wishlistCount: 0,
+        };
+
+        // store에 추가(스토어가 localStorage에 persist 하도록 구현되어 있어야 함)
+        const created = addUser(user); // addUser은 생성된 user 객체(id 포함)를 반환
+        setCurrent(created);
+
+        // UX: 간단 알림 및 콘솔(원하면 navigate로 이동)
+        alert('가입(테스트용) 완료되었습니다. 프로필에 반영됩니다.');
+        console.log('created user:', created);
+        // 예: navigate('/mypage') 하려면 react-router useNavigate 호출 후 이동
     };
 
     return (
@@ -46,7 +98,7 @@ const Join = () => {
                     <p>필수입력항목</p>
                 </div>
 
-                <form className="form">
+                <form className="form" onSubmit={handleSubmit}>
                     {/* 이메일 */}
                     <div className="form-group">
                         <div className="label">
@@ -191,7 +243,7 @@ const Join = () => {
                         </button>
                     </div>
 
-                    {/* 휴대폰 인증 — 버튼 클릭 후에만 표시 */}
+                    {/* 휴대폰 인증 */}
                     {isSmsRequested && (
                         <div className="form-group phoneAuth">
                             <div className="label">
@@ -232,7 +284,6 @@ const Join = () => {
                             />
                         </div>
 
-                        {/* 성별 토글 */}
                         <div className="form-group gender">
                             <div className="label">성별</div>
                             <div className="gender-group">
@@ -280,7 +331,11 @@ const Join = () => {
                         <button type="submit" className="button g middle go">
                             회원가입
                         </button>
-                        <button type="button" className="button middle back">
+                        <button
+                            type="button"
+                            className="button middle back"
+                            onClick={() => window.history.back()}
+                        >
                             돌아가기
                         </button>
                     </div>

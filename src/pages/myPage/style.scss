@@ -3,6 +3,7 @@
 #myPage {
     .inner {
         padding-top: vw(140px);
+        padding-bottom: vw(140px);
         .mypage-title {
             @include font-32px-B;
             color: $default;

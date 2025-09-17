@@ -261,13 +261,14 @@
         label {
             flex: 1;
             text-align: center;
-            padding: vw(10px) 0;
+            // padding: vw(10px) 0;
             cursor: pointer;
             background: #f9f9f9;
             color: #333;
             transition: 0.2s;
             width: vw(110px);
             height: vw(52px);
+            line-height: vw(52px);
 
             input {
                 display: none;

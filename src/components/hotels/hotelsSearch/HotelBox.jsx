@@ -42,7 +42,8 @@ const HotelBox = ({ hotelId }) => {
     return (
         <div className="hotel-box" onClick={handleHotelClick} style={{ cursor: 'pointer' }}>
             <div className="hotel-image">
-                <img src={`/images/hotels/detail/hotelsList/${hotel.image[0]}`} alt="" /><span className="heart"></span>
+                <img src={`/images/hotels/detail/hotelsList/${hotel.image[0]}`} alt="" />
+                <span className="heart"></span>
             </div>
             <div className="hotel-info">
                 <div className="info-top">
@@ -56,7 +57,7 @@ const HotelBox = ({ hotelId }) => {
                         <img
                             // src={`/images/hotels/detail/${starImageName}`}
                             src={`/images/hotels/detail/icon/star_rate.svg`}
-                            alt='별점'
+                            alt="별점"
                         />
                         <span>
                             {hotel.rate} ({hotel.reviewCount})

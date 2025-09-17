@@ -10,6 +10,7 @@
     .profile {
         &-name {
             &-wrap {
+                margin-top: vw(20px);
                 padding: vw(20px) vw(15px);
                 display: flex;
                 justify-content: space-between;

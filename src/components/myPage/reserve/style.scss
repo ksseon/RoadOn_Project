@@ -1,6 +1,10 @@
 @use '../../../styles/utils/' as *;
 
 #reserve {
+    .tab-button-wrap2 {
+        margin-top: vw(73px);
+        margin-bottom: vw(115px);
+    }
     .mypage-title {
         margin-bottom: vw(30px);
     }
