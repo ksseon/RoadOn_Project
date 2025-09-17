@@ -21,7 +21,6 @@ const AirportSearchBarList = () => {
 
   const setFilter = useAirportStore((s) => s.setFilter);
 
-  // 가는날 & 오는날
   const fromLocations = ["김포", "인천", "제주"];
   const toLocations = [
     "방콕",
@@ -123,7 +122,7 @@ const AirportSearchBarList = () => {
     );
   };
 
-  // 인원 & 좌석
+  // 인원/좌석
   const renderPeopleSeatDropdown = () =>
     openDropdown === "peopleSeat" && (
       <div
