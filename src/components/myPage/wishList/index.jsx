@@ -1,5 +1,5 @@
 import useHotelStore from '../../../store/hotelStore';
-import HotelBox from '../../hotels/hotelsSearch/HotelBox';
+// import HotelBox from '../../hotels/hotelsSearch/HotelBox';
 import './style.scss';
 import { IoIosArrowForward } from 'react-icons/io';
 const WishList = () => {
