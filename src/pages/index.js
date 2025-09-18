@@ -6,6 +6,7 @@ export { default as Join } from './login/Join';
 export { default as MyPage } from './myPage';
 export { default as NotFiles } from './notFiles';
 export { default as Tour } from './tour';
+export { default as TourDetail } from './tour/tourDetail';
 export { default as Hotels } from './hotels';
 export { default as HotelsMain } from './hotels';
 export { default as HotelsSearch } from './hotels/hotelsSearch';

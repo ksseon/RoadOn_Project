@@ -1,24 +1,24 @@
 import './style.scss';
-import DetailReviews from './DetailReviews';
-import { FaStar } from 'react-icons/fa';
+import DetailBotReviewsItem from '../detailBottom/DetailBotReviewsItem';
 
-const DetailTitle = () => {
+const DetailTitle = ({ tourData }) => {
+    if (!tourData) return null;
+
+    const { title, subtitle, desc } = tourData;
+
     return (
         <section className="detail-title">
             <article className="detail-title-head">
-                <em>《윤식당 2》</em>
-                <h3>스페인 테네리페 패키지</h3>
-                <b>Grand Hyatt jeju</b>
+                <em>{title}</em>
+                <h3>{subtitle}</h3>
+                <b>{desc}</b>
                 <p className="rate">
-                    <span>
-                        <FaStar />
-                    </span>
-                    4.8 (536)
+                    <span></span>
+                    4.5 (32)
                 </p>
             </article>
-            <DetailReviews />
+            <DetailBotReviewsItem tourData={tourData} />
         </section>
     );
 };
-
 export default DetailTitle;

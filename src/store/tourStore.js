@@ -1,6 +1,7 @@
 // src/store/tourStore.js
 import { create } from 'zustand';
 import packagesData from '../api/packagesData'; // 병합 완료된 패키지 데이터(이미지/benefits/slug 포함)
+import packagesReviewData from '../api/packagesReviewData';
 
 // 카테고리 탭 라벨
 export const CATEGORY_LABELS = ['드라마', '영화', '예능', 'K-POP'];
@@ -75,6 +76,7 @@ const normalizedTours = normalizePackagesToTours(packagesData);
 const useTourStore = create((set, get) => ({
     // 원본(참조용)
     packages: packagesData,
+    reviews: packagesReviewData,
 
     // UI가 실제로 쓰는 목록은 packages 기준으로 정규화한 tours
     tours: normalizedTours,
@@ -87,6 +89,9 @@ const useTourStore = create((set, get) => ({
     activeCategory: '예능',
     activeIndex: 0,
 
+    // 투어
+    currentTour: null,
+
     // actions
     setCategory: (cat) => set({ activeCategory: cat, activeIndex: 0 }),
     setIndex: (idx) => set({ activeIndex: idx }),
@@ -98,6 +103,20 @@ const useTourStore = create((set, get) => ({
         next.has(id) ? next.delete(id) : next.add(id);
         set({ excludedIds: next });
     },
+
+    // slug로 투어 데이터 설정
+    setCurrentTourBySlug: (slug) => {
+        const tour = packagesData.find((pkg) => pkg.slug === slug);
+        if (tour) {
+            set({ currentTour: tour });
+        } else {
+            console.warn(`Tour with slug "${slug}" not found`);
+            set({ currentTour: null });
+        }
+    },
+
+    // 현재 투어 초기화
+    clearCurrentTour: () => set({ currentTour: null }),
 }));
 
 export default useTourStore;

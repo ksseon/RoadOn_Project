@@ -6,7 +6,6 @@ const Tour = () => {
     return (
         <main id="tourPage">
             <TourMain />
-            <TourDetail />
         </main>
     );
 };
