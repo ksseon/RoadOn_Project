@@ -42,7 +42,7 @@ const useAirportStore = create((set, get) => ({
     filters: {
         mode: 'roundtrip',
         direct: null,
-        airline: null,
+        airline: [], // 다중 선택 배열로 변경
         baggage: null,
         priceRange: [ABS_MIN_PRICE, ABS_MAX_PRICE],
         segments: [],
@@ -81,7 +81,7 @@ const useAirportStore = create((set, get) => ({
             filters: {
                 mode: 'roundtrip',
                 direct: null,
-                airline: null,
+                airline: [], // 초기화 배열
                 baggage: null,
                 priceRange: [ABS_MIN_PRICE, ABS_MAX_PRICE],
                 segments: [],
@@ -101,7 +101,7 @@ const useAirportStore = create((set, get) => ({
         return airports.filter((a) => {
             if (a.price < minP || a.price > maxP) return false;
             if (filters.direct !== null && a.direct !== filters.direct) return false;
-            if (filters.airline && a.airline !== filters.airline) return false;
+            if (filters.airline.length > 0 && !filters.airline.includes(a.airline)) return false; // 다중 필터
             if (filters.baggage && a.baggage !== filters.baggage) return false;
 
             if (filters.segments?.length > 0) {
@@ -127,7 +127,7 @@ const useAirportStore = create((set, get) => ({
         return airportDetails.filter((a) => {
             if (a.price < minP || a.price > maxP) return false;
             if (filters.direct !== null && a.direct !== filters.direct) return false;
-            if (filters.airline && a.airline !== filters.airline) return false;
+            if (filters.airline.length > 0 && !filters.airline.includes(a.airline)) return false; // 다중 필터
             if (filters.baggage && a.baggage !== filters.baggage) return false;
 
             if (filters.segments?.length > 0) {

@@ -10,6 +10,7 @@
     .profile {
         &-name {
             &-wrap {
+                margin-top: vw(20px);
                 padding: vw(20px) vw(15px);
                 display: flex;
                 justify-content: space-between;
@@ -39,6 +40,8 @@
                         }
                     }
                     .grade {
+                        cursor: pointer;
+
                         display: flex;
                         align-items: center;
                         gap: vw(5px);
@@ -86,6 +89,7 @@
                     .profile {
                         &-coupon,
                         &-points {
+                            cursor: pointer;
                             display: flex;
                             flex-direction: column;
                             align-items: center;

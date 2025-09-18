@@ -1,12 +1,11 @@
 import './style.scss';
-import { useNavigate } from 'react-router-dom';
 import useAirportStore from '../../../store/airportStore';
 
 const AirportBox = ({ airportId }) => {
     const getAirportById = useAirportStore((state) => state.getAirportById);
     const filters = useAirportStore((state) => state.filters);
     const airport = getAirportById(airportId);
-    const navigate = useNavigate();
+
     if (!airport) return <div>항공권 정보를 찾을 수 없습니다.</div>;
 
     const formatDate = (date) =>
@@ -71,11 +70,7 @@ const AirportBox = ({ airportId }) => {
     };
 
     return (
-        <section
-            className={`airport-box ${filters.mode}`}
-            onClick={handleClick}
-            style={{ cursor: 'pointer' }}
-        >
+        <section className={`airport-box ${filters.mode}`}>
             {segments.map((seg, i) => (
                 <div className="flight-row" key={i}>
                     {/* 항공사 */}

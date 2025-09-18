@@ -126,18 +126,31 @@ const Filter = () => {
                     <ul>
                         {['전체', '대한항공', '에어서울', '진에어', '제주항공', '티웨이항공'].map(
                             (airline) => {
-                                const active =
-                                    (filters.airline === null && airline === '전체') ||
-                                    filters.airline === airline;
+                                const selectedAirlines = filters.airline || [];
+                                const isAll = airline === '전체';
+                                const isActive = isAll
+                                    ? selectedAirlines.length === 0
+                                    : selectedAirlines.includes(airline);
+
+                                const handleClick = () => {
+                                    if (isAll) {
+                                        // '전체' 선택 시 -> 선택 항공사 초기화
+                                        setFilter({ airline: [] });
+                                    } else {
+                                        // 항공사 선택/해제 토글
+                                        const alreadySelected = selectedAirlines.includes(airline);
+                                        const updatedAirlines = alreadySelected
+                                            ? selectedAirlines.filter((a) => a !== airline)
+                                            : [...selectedAirlines, airline];
+                                        setFilter({ airline: updatedAirlines });
+                                    }
+                                };
+
                                 return (
                                     <li key={airline}>
                                         <button
-                                            className={active ? 'active' : ''}
-                                            onClick={() =>
-                                                setFilter({
-                                                    airline: airline === '전체' ? null : airline,
-                                                })
-                                            }
+                                            className={isActive ? 'active' : ''}
+                                            onClick={handleClick}
                                         >
                                             {airline}
                                         </button>

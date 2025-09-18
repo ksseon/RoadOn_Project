@@ -2,6 +2,7 @@ import '../style.scss';
 import hotelData from '../../../api/hotelsListData';
 import useHotelStore from '../../../store/hotelStore';
 import { useNavigate } from 'react-router-dom';
+import WishButton from '../../ui/wishbutton/WishButton';
 
 const HotelBox = ({ hotelId }) => {
     const getHotelById = useHotelStore((state) => state.getHotelById);
@@ -33,7 +34,11 @@ const HotelBox = ({ hotelId }) => {
     return (
         <div className="hotel-box" onClick={handleHotelClick} style={{ cursor: 'pointer' }}>
             <div className="hotel-image">
-                <img src={`/images/hotels/detail/hotelsList/${hotel.image[0]}`} alt="" /><span className="heart"></span>
+                <img src={`/images/hotels/detail/hotelsList/${hotel.image[0]}`} alt="" />
+                {/* 기존 <span className="heart"></span> 를 대체하거나 병행 */}
+                <div className="wish-overlay" onClick={(e) => e.stopPropagation()}>
+                    <WishButton type="hotel" id={hotel.id} data={hotel} />
+                </div>
             </div>
             <div className="hotel-info">
                 <div className="info-top">
@@ -47,7 +52,7 @@ const HotelBox = ({ hotelId }) => {
                         <img
                             // src={`/images/hotels/detail/${starImageName}`}
                             src={`/images/hotels/detail/icon/star_rate.svg`}
-                            alt='별점'
+                            alt="별점"
                         />
                         <span>
                             {averageRating} ({hotel.reviewCount})
