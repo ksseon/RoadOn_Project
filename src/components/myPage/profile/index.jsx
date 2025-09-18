@@ -1,10 +1,11 @@
 // src/components/myPage/profile.jsx
-
 import './style.scss';
 import { IoIosArrowForward } from 'react-icons/io';
+import { useNavigate } from 'react-router-dom';
 import useAuthStore from '../../../store/authStore';
 
 const Profile = ({ activeSection = null, onNavigate = () => {} }) => {
+    const navigate = useNavigate();
     const currentUser = useAuthStore((s) => s.currentUser);
 
     const handleKey = (e, target, opts = {}) => {
@@ -18,8 +19,24 @@ const Profile = ({ activeSection = null, onNavigate = () => {} }) => {
         if (currentUser) {
             onNavigate(target, opts);
         } else {
-            // 비로그인 시 로그인 페이지로 이동 (앱 라우팅 구조에 맞게 수정 가능)
-            window.location.href = '/login';
+            navigate('/login');
+        }
+    };
+
+    // 변경: /mypage/editProfile 로 SPA 네비게이션
+    const goEditProfile = () => {
+        if (currentUser) {
+            navigate('/editProfile'); // 최종: /editProfile 로 이동
+        } else {
+            // SPA 방식으로 로그인 후 되돌아올 수 있게 state 전달
+            navigate('/login', { state: { from: location } });
+        }
+    };
+
+    const handleKeyEditProfile = (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            goEditProfile();
         }
     };
 
@@ -183,11 +200,19 @@ const Profile = ({ activeSection = null, onNavigate = () => {} }) => {
                         >
                             찜 목록
                         </p>
+
+                        {/* /mypage/editProfile 로 이동 */}
                         <p
                             className="menu-item none-line"
                             role="button"
                             tabIndex={0}
-                            onClick={() => onNavigate(null)}
+                            onClick={goEditProfile}
+                            onKeyDown={(e) => {
+                                if (e.key === 'Enter' || e.key === ' ') {
+                                    e.preventDefault();
+                                    goEditProfile();
+                                }
+                            }}
                         >
                             회원 정보 변경
                         </p>

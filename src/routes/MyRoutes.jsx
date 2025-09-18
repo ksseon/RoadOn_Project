@@ -16,6 +16,7 @@ import {
     Join,
 } from '../pages';
 import AirportDetail from '../components/airport/airportSearch/AirportDetail';
+import EditProfile from '../components/login/editProfile';
 
 export const MyRoutes = () => {
     return (
@@ -43,6 +44,7 @@ export const MyRoutes = () => {
                     <Route path="myPage" element={<MyPage />} />
                     <Route path="login" element={<Login />} />
                     <Route path="Join" element={<Join />} />
+                    <Route path="editProfile" element={<EditProfile />} />
 
                     <Route path="*" element={<NotFiles />} />
                 </Route>
