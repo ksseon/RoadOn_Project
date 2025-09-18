@@ -2,6 +2,8 @@ import FlightPaymentLeft from './FlightPaymentLeft';
 import FlightPaymentRight from './FlightPaymentRight';
 import HotelPaymentLeft from './HotelPaymentLeft';
 import HotelPaymentRight from './HotelPaymentRight';
+import TourPaymentLeft from './TourPaymentLeft';
+import TourPaymentRight from './TourPaymentRight';
 
 const PaymentLayout = ({ productType, productData }) => {
     const renderPaymentContent = () => {
