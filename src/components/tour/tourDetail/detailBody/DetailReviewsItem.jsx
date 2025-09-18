@@ -4,7 +4,7 @@ const DetailReviewsItem = () => {
         <li>
             <div className="lis-head">
                 <div className="lis-head-title">
-                    <div className="thumbs">{/* <img src="" alt="" /> */}</div>
+                    <div className="thumbs"><img src="/images/hotels/profile.jpg" alt="" /></div>
                     <div className="txt">
                         <strong>닉네임</strong>
                         <p>2025.09.03</p>

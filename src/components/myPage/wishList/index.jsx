@@ -1,3 +1,6 @@
+
+import useHotelStore from '../../../store/hotelStore';
+// import HotelBox from '../../hotels/hotelsSearch/HotelBox';
 // src/components/myPage/wishList.jsx
 import { useEffect, useMemo, useState } from 'react';
 import { usePagination } from '../../../store/paginationStore';

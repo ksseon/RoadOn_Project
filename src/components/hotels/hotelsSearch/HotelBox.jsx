@@ -6,6 +6,7 @@ import WishButton from '../../ui/wishbutton/WishButton';
 
 const HotelBox = ({ hotelId }) => {
     const getHotelById = useHotelStore((state) => state.getHotelById);
+    const getHotelReviews = useHotelStore((state) => state.getHotelReviews);
     const hotel = getHotelById(hotelId);
     const navigate = useNavigate();
 
@@ -13,32 +14,22 @@ const HotelBox = ({ hotelId }) => {
         return <div>호텔 정보를 찾을 수 없습니다.</div>;
     }
 
+    const calculateAverageRating = (hotelId, reviewCount) => {
+        const reviews = getHotelReviews(hotelId, reviewCount);
+        
+        if (!reviews || reviews.length === 0) return "0.00";
+        
+        const totalRating = reviews.reduce((sum, review) => sum + review.rate, 0);
+        const average = totalRating / reviews.length;
+        
+        return average.toFixed(1);
+    };
+
+    const averageRating = calculateAverageRating(hotel.id, hotel.reviewCount);
+    
     const handleHotelClick = () => {
         navigate(`/hotels/${hotel.slug}`);
     };
-
-    const calculateStarRating = (rate) => {
-        const roundedRate = Math.floor(rate * 2) / 2;
-
-        if (roundedRate < 1) return 0;
-        if (roundedRate < 1.5) return 1;
-        if (roundedRate < 2) return 1.5;
-        if (roundedRate < 2.5) return 2;
-        if (roundedRate < 3) return 2.5;
-        if (roundedRate < 3.5) return 3;
-        if (roundedRate < 4) return 3.5;
-        if (roundedRate < 4.5) return 4;
-        if (roundedRate < 5) return 4.5;
-        return 5;
-    };
-
-    const getStarImageName = (rating) => {
-        if (rating === 0) return 'star-0-5.svg';
-        return `star-${rating.toString().replace('.', '-')}.svg`;
-    };
-
-    const starRating = calculateStarRating(hotel.rate);
-    const starImageName = getStarImageName(starRating);
 
     return (
         <div className="hotel-box" onClick={handleHotelClick} style={{ cursor: 'pointer' }}>
@@ -64,7 +55,7 @@ const HotelBox = ({ hotelId }) => {
                             alt="별점"
                         />
                         <span>
-                            {hotel.rate} ({hotel.reviewCount})
+                            {averageRating} ({hotel.reviewCount})
                         </span>
                     </div>
                 </div>

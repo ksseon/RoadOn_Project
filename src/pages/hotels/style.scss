@@ -149,6 +149,15 @@
             }
             .big-img-2 {
                 width: vw(456px);
+                position: relative;
+                .more-img {
+                    font-size: vw(24px);
+                    box-shadow: #353535;
+                    position: absolute;
+                    z-index: 100;
+                    width: vw(24px);
+                    height: vw(24px);
+                }
             }
             .img-box {
                 overflow: hidden;
