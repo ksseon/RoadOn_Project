@@ -6,18 +6,18 @@ import {
     NotFiles,
     Login,
     Payment,
-    // PayCompleted,
+    // PayCompleted, 미완
     HotelsDetail,
     HotelsSearch,
     Tour,
+    TourDetail,
     Airport,
     Hotels,
     AirportDetail,
     AirportSearch,
-    Join
+    Join,
 } from '../pages';
 import ScrollToTop from '../common/ScrollToTop';
-
 
 export const MyRoutes = () => {
     return (
@@ -26,27 +26,25 @@ export const MyRoutes = () => {
             <Routes>
                 <Route path="/" element={<Layout />}>
                     <Route index element={<Home />} />
-                    
-                    <Route path="payment" element={<Payment />} />
-                    /{/*Route path="payment/completed" element={<PayCompleted />} />*/}
+                    <Route path="payment" element={<Payment />} />/
+                    {/*Route path="payment/completed" element={<PayCompleted />} />*/}
                     <Route path="hotels">
                         <Route index element={<Hotels />} />
                         <Route path="search" element={<HotelsSearch />} />
                         <Route path=":slug" element={<HotelsDetail />} />
                     </Route>
-
                     <Route path="airport">
                         <Route index element={<Airport />} />
                         <Route path="search" element={<AirportSearch />} />
                         <Route path=":slug" element={<AirportDetail />} />
                     </Route>
-
-                    <Route path="tour" element={<Tour />} />
-
+                    <Route path="tour">
+                        <Route index element={<Tour />} />
+                        <Route path=":slug" element={<TourDetail />} />
+                    </Route>
                     <Route path="myPage" element={<MyPage />} />
                     <Route path="login" element={<Login />} />
                     <Route path="Join" element={<Join />} />
-
                     <Route path="*" element={<NotFiles />} />
                 </Route>
             </Routes>

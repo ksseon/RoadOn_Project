@@ -101,7 +101,6 @@ export default [
         },
     },
 
-    ,
     // 2. 예능 - 윤식당
     {
         contents: '예능',
@@ -165,7 +164,6 @@ export default [
         },
     },
 
-    ,
     // 3. 드라마 - 폭싹 속았수다
     {
         contents: '드라마',
@@ -256,7 +254,6 @@ export default [
         },
     },
 
-    ,
     // 4. 영화 - 케데헌
     {
         contents: '영화',
@@ -334,7 +331,6 @@ export default [
         },
     },
 
-    ,
     // 5. K-POP - BTS
     {
         contents: 'K-POP',
@@ -419,7 +415,6 @@ export default [
         },
     },
 
-    ,
     // 6. K-POP - BLACKPINK
     {
         contents: 'K-POP',
@@ -498,7 +493,6 @@ export default [
         },
     },
 
-    ,
     // 7. 예능 - 서진이네
     {
         contents: '예능',

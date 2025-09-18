@@ -1,18 +1,17 @@
 import './style.scss';
-
 import DetailTitle from './DetailTitle';
 import DetailSide from './DetailSide';
 import DetailData from './DetailData';
 
-const DetailBodyInfo = () => {
+const DetailBodyInfo = ({ tourData }) => {
     return (
         <section className="detail-body-info">
             <div className="left">
-                <DetailTitle />
-                <DetailData />
+                <DetailTitle tourData={tourData} />
+                <DetailData tourData={tourData} />
             </div>
             <div className="right">
-                <DetailSide />
+                <DetailSide tourData={tourData} />
             </div>
         </section>
     );
