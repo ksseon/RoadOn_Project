@@ -2,6 +2,8 @@ export default [
     {
         code: 'W',
         name: 'WELCOME',
+        grade: 'WELCOME',
+
         condition: '가입 시 자동',
         columnClass: 'c-welcome',
         accrualText: '1% 적립',
@@ -31,6 +33,7 @@ export default [
     {
         code: 'F',
         name: 'FAMILY',
+        grade: 'FAMILY',
         condition: '6개월 동안 10만원 이상',
         columnClass: 'c-family',
         accrualText: '2% 적립',
@@ -60,6 +63,7 @@ export default [
     {
         code: 'V',
         name: 'VIP',
+        grade: 'VIP',
         condition: '6개월 동안 30만원 이상',
         columnClass: 'c-vip',
         accrualText: '3% 적립',
@@ -89,6 +93,7 @@ export default [
     {
         code: 'V',
         name: 'VVIP',
+        grade: 'VVIP',
         condition: '6개월 동안 50만원 이상',
         columnClass: 'c-vvip',
         accrualText: '4% 적립',

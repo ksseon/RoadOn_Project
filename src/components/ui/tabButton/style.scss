@@ -1,8 +1,9 @@
 @use '../../../styles/utils/' as *;
 
 .tab-button {
-    width: vw(180px);
+    min-width: vw(180px);
     height: vw(50px);
+
     box-sizing: border-box;
     @include font-20px-M;
     margin-right: vw(30px);

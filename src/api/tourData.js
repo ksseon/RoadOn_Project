@@ -1,4 +1,6 @@
 // src/api/tourData.js
+
+// 삭제예정
 export default [
     // 1) 윤식당 2
     {

@@ -7,10 +7,6 @@ import {
     MdKeyboardArrowRight,
 } from 'react-icons/md';
 
-// 사용법:
-// <Pagination page={page} total={total} pageSize={5} onPageChange={setPage} />
-// <Pagination page={page} total={total} pageSize={5} visibleCount={3} onPageChange={setPage} />
-
 const DOTS = '…';
 const range = (s, e) => Array.from({ length: e - s + 1 }, (_, i) => s + i);
 
@@ -45,17 +41,15 @@ const Pagination = ({
     total,
     pageSize = 5,
     onPageChange,
-    /** 한 번에 보이는 숫자(화살표 제외). siblingCount를 넘기면 이 값은 무시됩니다. */
     visibleCount = 5,
-    /** 맨앞/맨뒤 고정 노출할 숫자 개수 */
     boundaryCount = 1,
-    /** 현재 페이지 양옆 숫자 개수(우선순위 높음) */
     siblingCount,
     className = '',
 }) => {
-    const totalPages = Math.max(1, Math.ceil((total || 0) / pageSize));
+    // **안전 보장**: 외부에서 문자열로 들어와도 내부에서는 숫자 사용
+    const currentPage = Number(page) || 1;
+    const totalPages = Math.max(1, Math.ceil((Number(total) || 0) / Number(pageSize)));
 
-    // visibleCount → siblingCount 환산 (siblingCount 명시 시 우선)
     const effSibling =
         typeof siblingCount === 'number'
             ? Math.max(0, Math.floor(siblingCount))
@@ -66,14 +60,14 @@ const Pagination = ({
 
     const items = makeRange({
         totalPages,
-        page,
+        page: currentPage,
         siblingCount: effSibling,
         boundaryCount: Math.max(0, boundaryCount),
     });
 
     const go = (p) => {
-        const clamped = Math.max(1, Math.min(totalPages, p));
-        if (clamped !== page) onPageChange?.(clamped);
+        const clamped = Math.max(1, Math.min(totalPages, Number(p)));
+        if (clamped !== currentPage) onPageChange?.(clamped);
     };
 
     const Btn = ({ type, disabled, onClick, label, children }) => (
@@ -92,15 +86,20 @@ const Pagination = ({
         <nav className={`pagination ${className}`} role="navigation" aria-label="pagination">
             <ul className="pagination-list">
                 <li>
-                    <Btn type="first" disabled={page === 1} onClick={() => go(1)} label="첫 페이지">
+                    <Btn
+                        type="first"
+                        disabled={currentPage === 1}
+                        onClick={() => go(1)}
+                        label="첫 페이지"
+                    >
                         <MdOutlineFirstPage />
                     </Btn>
                 </li>
                 <li>
                     <Btn
                         type="prev"
-                        disabled={page === 1}
-                        onClick={() => go(page - 1)}
+                        disabled={currentPage === 1}
+                        onClick={() => go(currentPage - 1)}
                         label="이전 페이지"
                     >
                         <MdKeyboardArrowLeft />
@@ -116,9 +115,11 @@ const Pagination = ({
                         <li key={it}>
                             <button
                                 type="button"
-                                className={`pagination-page ${page === it ? 'is-active' : ''}`}
+                                className={`pagination-page ${
+                                    currentPage === it ? 'is-active' : ''
+                                }`}
                                 onClick={() => go(it)}
-                                aria-current={page === it ? 'page' : undefined}
+                                aria-current={currentPage === it ? 'page' : undefined}
                             >
                                 {it}
                             </button>
@@ -129,8 +130,8 @@ const Pagination = ({
                 <li>
                     <Btn
                         type="next"
-                        disabled={page === totalPages}
-                        onClick={() => go(page + 1)}
+                        disabled={currentPage === totalPages}
+                        onClick={() => go(currentPage + 1)}
                         label="다음 페이지"
                     >
                         <MdKeyboardArrowRight />
@@ -139,7 +140,7 @@ const Pagination = ({
                 <li>
                     <Btn
                         type="last"
-                        disabled={page === totalPages}
+                        disabled={currentPage === totalPages}
                         onClick={() => go(totalPages)}
                         label="마지막 페이지"
                     >

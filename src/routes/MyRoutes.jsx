@@ -13,8 +13,9 @@ import {
     Tour,
     Airport,
     Hotels,
-    AirportDetail,
+    Join,
 } from '../pages';
+import AirportDetail from '../components/airport/airportSearch/AirportDetail';
 
 export const MyRoutes = () => {
     return (
@@ -40,9 +41,9 @@ export const MyRoutes = () => {
                     <Route path="tour" element={<Tour />} />
 
                     <Route path="myPage" element={<MyPage />} />
-                    <Route path="login">
-                        <Route index element={<Login />} />
-                    </Route>
+                    <Route path="login" element={<Login />} />
+                    <Route path="Join" element={<Join />} />
+
                     <Route path="*" element={<NotFiles />} />
                 </Route>
             </Routes>
