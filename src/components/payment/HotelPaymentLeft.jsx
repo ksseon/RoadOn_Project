@@ -40,13 +40,13 @@ const HotelPaymentLeft = ({ hotel, selectedRoom }) => {
                             <span>{/*props*/}+82 01023457890</span>
                         </p>
                     </div>
-                    <div className="pay-passport">
+                    {/* <div className="pay-passport">
                         <h4>여권 영문 이름</h4>
                         <div className="eng-name">
                             <input type="text" placeholder="영문 이름" />
                             <input type="text" placeholder="영문 성" />
                         </div>
-                    </div>
+                    </div> */}
                     {/*<div className="pay-request">
                         <h4>요청사항</h4>
                         <textarea

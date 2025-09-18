@@ -56,8 +56,18 @@ const AirportBox = ({ airportId }) => {
     }
 
     // 클릭 시 상세페이지 이동
+    // const handleClick = () => {
+    //     navigate(`/airport/${airport.slug}`);
+    // };
     const handleClick = () => {
-        navigate(`/airport/${airport.slug}`);
+        const airportData = {
+            // hotel: hotel,
+            // selectedRoom: selectedRoom,
+            productType: 'flight',
+            airport: airport,
+            segments: segments,
+        };
+        navigate(`/payment`, { state: airportData });
     };
 
     return (

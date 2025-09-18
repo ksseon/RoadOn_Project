@@ -33,6 +33,100 @@
                 @include font-20px-SB;
                 margin-bottom: vw(20px);
             }
+            .flight-schedule {
+                display: flex;
+                flex-direction: column;
+                gap: vw(36px);
+                .depart-wrap {
+                    .depart-box {
+                        display: flex;
+                        align-items: center;
+                        gap: vw(20px);
+                        .depart {
+                            @include font-16px-M;
+                            box-sizing: border-box;
+                            padding: vw(6px) vw(8px);
+                            background-color: $foundation-orange-lighthover;
+                            border-radius: vw(5px);
+                        }
+                        .w-to-w {
+                            display: flex;
+                            gap: vw(25px);
+                            span {
+                                display: inline-block;
+                                &:nth-of-type(1) {
+                                }
+                                &:nth-of-type(2) {
+                                }
+                                img {
+                                }
+                            }
+                        }
+                    }
+                    .depart-info {
+                        width: vw(811px);
+                        height: vw(150px);
+                        border: 1px solid $greyscale-600;
+                        border-radius: vw(15px);
+                        box-sizing: border-box;
+                        // padding: vw(38.5px) vw(119px);
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        gap: vw(100px);
+                        .airline {
+                            display: flex;
+                            gap: vw(8px);
+                            .flight-logo {
+                                img {
+                                    width: vw(25px);
+                                    height: vw(25px);
+                                    border-radius: 50%;
+                                }
+                            }
+                            .info {
+                                .name {
+                                    @include font-16px-SB;
+                                }
+                                .code {
+                                    @include font-12px-SB;
+                                    color: $greyscale-1000;
+                                }
+                            }
+                        }
+                        .depart-arrive-wrap {
+                            display: flex;
+                            gap: vw(8px);
+                            text-align: center;
+                            justify-content: center;
+                            .time {
+                                display: flex;
+                                flex-direction: column;
+                                gap: vw(8px);
+                                .time-info {
+                                    display: flex;
+                                    flex-direction: column;
+                                    gap: vw(5px);
+                                    .dpt {
+                                        @include font-18px-M;
+                                    }
+                                    .dpa {
+                                        @include font-12px-SB;
+                                        color: $greyscale-1000;
+                                    }
+                                }
+                            }
+                            .flight-through {
+                                display: flex;
+                                flex-direction: column;
+                                .direct {
+                                    color: $orange;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
             .pay-schedule {
                 .check-in-out {
                     width: 100%;
@@ -75,6 +169,35 @@
                     span {
                         @include font-18px;
                         color: $greyscale-1100;
+                    }
+                }
+            }
+            .flight-resname {
+                p {
+                    display: flex;
+                    gap: vw(10px);
+                    input {
+                        width: vw(262px);
+                        height: vw(52px);
+                        gap: vw(10px);
+                        border-radius: vw(6px);
+                        border: 1px solid $greyscale-600;
+                        text-indent: vw(15px);
+                    }
+                }
+            }
+            .passenger-info {
+                .pass-head {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    h4 {
+                    }
+                    span {
+                        @include font-16px;
+                        display: flex;
+                        gap: vw(8px);
+                        align-items: center;
                     }
                 }
             }
