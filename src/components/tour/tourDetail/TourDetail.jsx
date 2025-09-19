@@ -12,6 +12,9 @@ const TourDetail = () => {
     const setCurrentTourBySlug = useTourStore((state) => state.setCurrentTourBySlug);
     const clearCurrentTour = useTourStore((state) => state.clearCurrentTour);
 
+    const getTourHighRatedReviews = useTourStore((state) => state.getTourHighRatedReviews);
+    const tourReviews = currentTour ? getTourHighRatedReviews(currentTour.id, 10) : [];
+
     useEffect(() => {
         if (slug) {
             setCurrentTourBySlug(slug);
@@ -38,10 +41,10 @@ const TourDetail = () => {
 
     return (
         <main id="TourDetail">
-                <div className="inner">
-                    <DetailBody tourData={currentTour} />
-                    <DetailBottom tourData={currentTour} />
-                </div>
+            <div className="inner">
+                <DetailBody tourData={currentTour} />
+                <DetailBottom tourData={currentTour} reviews={tourReviews} />
+            </div>
         </main>
     );
 };

@@ -63,6 +63,42 @@
                     margin-top: vw(15px);
                 }
             }
+            &-head-a {
+                color: $default;
+                margin-bottom: vw(30px);
+                display: flex;
+                justify-content: space-between;
+                .more-btn-a {
+                    display: flex;
+                    gap: vw(15px);
+                    margin-top: vw(22px);
+                    img {
+                        width: vw(50px);
+                        height: vw(50px);
+                        cursor: pointer;
+                    }
+                }
+                em {
+                    @include font-16px;
+                    margin-bottom: 10px;
+                }
+                h3 {
+                    padding: vw(15px) 0;
+
+                    @include font-32px-SB;
+                }
+                b {
+                    @include font-14px;
+                    font-family: 'Suit';
+                    text-transform: uppercase;
+                    color: #c7c7c7;
+                }
+                .rate {
+                    margin-top: vw(15px);
+                    display: flex;
+                    gap: vw(6px);
+                }
+            }
         }
         .detail-reviews {
             width: 100%;
@@ -490,6 +526,11 @@
                     &.reserve {
                         width: 100%;
                         border-radius: vw(8px);
+                        &:disabled {
+                            background-color: $foundation-orange-lightactive; // 예시 색상: 회색
+                            color: #666;
+                            cursor: not-allowed;
+                        }
                     }
                 }
             }
@@ -498,37 +539,37 @@
 }
 
 .hotel-thum {
-            display: flex;
-            gap: vw(24px);
-            .img-box {
-                height: vw(425px);
-                background-color: #ff0;
-                border-radius: vw(15px);
-            }
-            .big-img-1 {
-                width: vw(920px);
-            }
-            .big-img-2 {
-                width: vw(456px);
-                position: relative;
-                .more-img {
-                    font-size: vw(24px);
-                    box-shadow: #353535;
-                    position: absolute;
-                    z-index: 100;
-                    width: vw(24px);
-                    height: vw(24px);
-                }
-            }
-            .img-box {
-                overflow: hidden;
-                img {
-                    width: 100%;
-                    height: 100%;
-                    object-fit: cover;
-                }
-            }
+    display: flex;
+    gap: vw(24px);
+    .img-box {
+        height: vw(425px);
+        background-color: #ff0;
+        border-radius: vw(15px);
+    }
+    .big-img-1 {
+        width: vw(920px);
+    }
+    .big-img-2 {
+        width: vw(456px);
+        position: relative;
+        .more-img {
+            font-size: vw(24px);
+            box-shadow: #353535;
+            position: absolute;
+            z-index: 100;
+            width: vw(24px);
+            height: vw(24px);
         }
+    }
+    .img-box {
+        overflow: hidden;
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+}
 
 .box-thum {
     overflow: hidden;
