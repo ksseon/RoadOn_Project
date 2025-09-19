@@ -1,6 +1,6 @@
 import { useLocation } from 'react-router-dom';
-import PaymentCptLeft from '../../../components/hotels/hotelsPayCompleted/PaymentCptLeft';
-import PaymentCptRight from '../../../components/hotels/hotelsPayCompleted/PaymentCptRight';
+// import PaymentCptLeft from '../../../components/hotels/hotelsPayCompleted/PaymentCptLeft';
+// import PaymentCptRight from '../../../components/hotels/hotelsPayCompleted/PaymentCptRight';
 import '../style.scss';
 
 const hotelsPayCompleted = () => {
@@ -13,8 +13,8 @@ const hotelsPayCompleted = () => {
     return (
         <main className="hotel-pay-completed">
             <div className="inner">
-                <PaymentCptLeft hotel={hotel} selectedRoom={selectedRoom} />
-                <PaymentCptRight hotel={hotel} selectedRoom={selectedRoom} />
+                {/* <PaymentCptLeft hotel={hotel} selectedRoom={selectedRoom} />
+                <PaymentCptRight hotel={hotel} selectedRoom={selectedRoom} /> */}
             </div>
         </main>
     );

@@ -1,10 +1,12 @@
 import './style.scss';
 import useAirportStore from '../../../store/airportStore';
+import { useNavigate } from 'react-router-dom';
 
 const AirportBox = ({ airportId }) => {
     const getAirportById = useAirportStore((state) => state.getAirportById);
     const filters = useAirportStore((state) => state.filters);
     const airport = getAirportById(airportId);
+    const navigate = useNavigate();
 
     if (!airport) return <div>항공권 정보를 찾을 수 없습니다.</div>;
 
@@ -54,8 +56,27 @@ const AirportBox = ({ airportId }) => {
             })) || [];
     }
 
+    // 클릭 시 상세페이지 이동
+    // const handleClick = () => {
+    //     navigate(`/airport/${airport.slug}`);
+    // };
+    const handleClick = () => {
+        const airportData = {
+            // hotel: hotel,
+            // selectedRoom: selectedRoom,
+            productType: 'flight',
+            airport: airport,
+            segments: segments,
+        };
+        navigate(`/payment`, { state: airportData });
+    };
+
     return (
-        <section className={`airport-box ${filters.mode}`}>
+        <section
+            className={`airport-box ${filters.mode}`}
+            onClick={handleClick}
+            style={{ cursor: 'pointer' }}
+        >
             {segments.map((seg, i) => (
                 <div className="flight-row" key={i}>
                     {/* 항공사 */}

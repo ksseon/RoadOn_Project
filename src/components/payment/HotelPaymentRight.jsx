@@ -1,6 +1,6 @@
-import '../style.scss';
+import './style.scss';
 
-const PaymentRight = ({ hotel, selectedRoom }) => {
+const HotelPaymentRight = ({ hotel, selectedRoom }) => {
     return (
         <div className="pay payment-right">
             <div className="res-title">
@@ -54,4 +54,4 @@ const PaymentRight = ({ hotel, selectedRoom }) => {
     );
 };
 
-export default PaymentRight;
+export default HotelPaymentRight;

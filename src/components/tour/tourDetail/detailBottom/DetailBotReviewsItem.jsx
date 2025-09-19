@@ -43,6 +43,33 @@ const DetailBotReviewsItem = () => {
                 </div>
             </div>
         </li>
+        // import { MdKeyboardArrowDown } from 'react-icons/md';
+        // import MiniReviewItem from '../../../hotels/hotelsDetail/MiniReviewItem';
+
+        // const DetailBotReviewsItem = () => {
+        //     // const miniReviews = getHighRatedReviews(hotel.id, 3);
+        //     // miniReviews 데이터에서 아무거나 세개 뽑아와서 넣기 - 전달 (HotelsDetail.jsx 참고)
+        //     return (
+        //         <section className="detail-reviews" style={{ marginBottom: '20px' }}>
+        //             <ul className="list" style={{ listStyle: 'none', padding: 0 }}>
+        //                 {miniReviews.map((review) => (
+        //                     <MiniReviewItem
+        //                         key={review.uniqueId}
+        //                         review={review}
+        //                         style={{
+        //                             padding: '15px',
+        //                             border: '1px solid #ddd',
+        //                             marginBottom: '10px',
+        //                             borderRadius: '5px',
+        //                         }}
+        //                     />
+        //                 ))}
+        //             </ul>
+        //         </section>
+        //     );
+        // };
+
+        // export default DetailBotReviewsItem;
     );
 };
 

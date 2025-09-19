@@ -1,7 +1,8 @@
 // import ModalDemo from '../../components/ui/modal/Modal';
 import Filter from '../../../components/hotels/hotelsSearch/Filter';
-import HotelBox from '../../../components/hotels/hotelsSearch/hotelBox';
+import HotelBox from '../../../components/hotels/hotelsSearch/HotelBox';
 import MapModal from '../../../components/hotels/hotelsSearch/MapModal';
+import Pagination from '../../../components/ui/pagination/Pagination';
 import SearchBar from '../../../components/ui/SearchBar/SearchBar';
 import useHotelStore from '../../../store/hotelStore';
 import '../style.scss';
@@ -27,6 +28,7 @@ function hotelsSearch() {
                             />
                         ))}
                     </div>
+                    {/* <Pagination page={5} /> */}
                 </div>
             </div>
         </main>

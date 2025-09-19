@@ -5,6 +5,7 @@ import { Pagination, Autoplay } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import useTourStore, { CATEGORY_LABELS } from '../../../store/tourStore';
+import { useNavigate } from 'react-router-dom';
 
 const CategoryTabs = ({ active, onChange }) => (
     <div className="btns-wrap">
@@ -70,6 +71,8 @@ export default function TourMainCon2({
     slideDelayMs = 3500,
 }) {
     const swiperRef = useRef(null);
+
+    const navigate = useNavigate();
 
     // Zustand
     const activeCategory = useTourStore((s) => s.activeCategory);
@@ -226,7 +229,7 @@ export default function TourMainCon2({
                         type="button"
                         onClick={() => {
                             if (!current) return;
-                            window.location.href = `/tour/${current.slug || current.id}`;
+                            navigate(`/tour/${current.slug || current.id}`);
                         }}
                     >
                         자세히 보기

@@ -80,7 +80,7 @@ export default [
                     { place: '포항역 → 서울역', desc: 'KTX 복귀' },
                 ],
                 hotel: { name: '', room_type: '', desc: '숙박 없음' },
-            },
+            },            
         ],
         flight_info: {
             departure: {
@@ -99,9 +99,9 @@ export default [
                 duration: '3시간',
             },
         },
+        detailImg: ['hometown-chachacha-1.jpg','hometown-chachacha-2.jpg'],
     },
 
-    ,
     // 2. 예능 - 윤식당
     {
         contents: '예능',
@@ -163,9 +163,9 @@ export default [
                 duration: '13시간',
             },
         },
+        detailImg: ['youns-kitchen-1.jpg', 'youns-kitchen-3.jpg','youns-kitchen-2.jpg',],
     },
 
-    ,
     // 3. 드라마 - 폭싹 속았수다
     {
         contents: '드라마',
@@ -254,9 +254,9 @@ export default [
                 duration: '1시간 10분',
             },
         },
+        detailImg: ['when-life-gives-you-tangerines-01.jpg','when-life-gives-you-tangerines-2.jpg','when-life-gives-you-tangerines-1.jpeg'],
     },
 
-    ,
     // 4. 영화 - 케데헌
     {
         contents: '영화',
@@ -332,9 +332,9 @@ export default [
             },
             arrival: { airport_start: '서울', airport_end: '귀가' },
         },
+        detailImg: ['kpop-demon-hunters-1.jpg','kpop-demon-hunters-2.jpg'],
     },
 
-    ,
     // 5. K-POP - BTS
     {
         contents: 'K-POP',
@@ -417,9 +417,9 @@ export default [
                 duration: '약 3시간',
             },
         },
+        detailImg: ['bts-1.jpg','bts-2.jpg'],
     },
 
-    ,
     // 6. K-POP - BLACKPINK
     {
         contents: 'K-POP',
@@ -496,9 +496,9 @@ export default [
             },
             arrival: { airport_start: '서울', airport_end: '귀가' },
         },
+        detailImg: ['blackpink-1.jpg','blackpink-2.jpg'],
     },
 
-    ,
     // 7. 예능 - 서진이네
     {
         contents: '예능',
@@ -591,6 +591,7 @@ export default [
                 duration: '약 18시간',
             },
         },
+        detailImg: ['seojin-1.jpg','seojin-2.webp'],
     },
 
     // 8. 영화 - 하얼빈
@@ -692,5 +693,6 @@ export default [
             { icon: 'gift', text: '기념품 증정' },
         ],
         slug: 'harbin-film-tour',
+        detailImg: ['harbin-1.jpg','harbin-2.webp'],
     },
 ];
