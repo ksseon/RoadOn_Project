@@ -1,32 +1,77 @@
 // src/components/myPage/reserve.jsx
-import React, { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import TabButton from '../../ui/tabButton/TabButton';
-import ReserveItem from './reserveItem';
+import ReserveItem from './ReserveItem.jsx';
 import './style.scss';
 import { IoIosArrowForward } from 'react-icons/io';
 import Pagination from '../../ui/pagination/Pagination';
+import useReserveStore from '../../../store/reserveStore';
 
-const Reserve = ({ preview = true, previewCount = 2, onMore = () => {}, items = [] }) => {
-    const TABS = ['전체', '국내 숙소', '해외 숙소', '체험·투어 입장권'];
+const TABS = ['전체', '국내숙소', '해외숙소', '체험·투어입장권', '항공'];
+
+/**
+ * tab -> filter type
+ * - '전체' => null
+ * - '국내숙소' => hotel + domestic heuristic
+ * - '해외숙소' => hotel + !domestic
+ * - '체험·투어입장권' => package|tour
+ * - '항공' => flight
+ */
+const tabToFilter = (label) => {
+    const l = (label || '').toLowerCase();
+    if (l === '전체' || l === '전체') return { type: null };
+    if (l.includes('국내')) return { type: 'hotel', domestic: true };
+    if (l.includes('해외')) return { type: 'hotel', domestic: false };
+    if (l.includes('체험') || l.includes('투어') || l.includes('입장권'))
+        return { type: ['package', 'tour'] };
+    if (l.includes('항공')) return { type: 'flight' };
+    return { type: null };
+};
+
+// 휴리스틱: 호텔 위치 텍스트로 국내/해외 판단
+const isDomesticLocation = (loc) => {
+    if (!loc) return false;
+    const s = String(loc).toLowerCase();
+    // 한국/서울/제주/부산/대구/인천/광주/대전/울산/세종 키워드 포함하면 국내로 본다
+    return /한국|대한|서울|제주|부산|대구|인천|광주|대전|울산|세종|강원|경상|전라|충청/i.test(s);
+};
+
+const Reserve = ({ preview = true, previewCount = 2, onMore = () => {}, items = null }) => {
     const [activeTab, setActiveTab] = useState(TABS[0]);
-
-    // 로컬 페이징 (혹은 기존 usePagination으로 바꿔도 됨)
     const [page, setPage] = useState(1);
     const pageSize = 5;
 
+    const storeItems = useReserveStore((s) => s.itemsDetailed);
+    const data = Array.isArray(items) ? items : storeItems || [];
+
     useEffect(() => setPage(1), [activeTab]);
 
-    const data = Array.isArray(items) ? items : [];
-    const previewItems = data.length > 0 ? data.slice(0, previewCount) : null;
+    const filtered = useMemo(() => {
+        const f = tabToFilter(activeTab);
+        if (!f.type) return data.slice();
+        if (Array.isArray(f.type)) {
+            // package or tour
+            return data.filter((d) => f.type.includes((d.type || '').toString().toLowerCase()));
+        }
+        if (f.type === 'hotel' && typeof f.domestic === 'boolean') {
+            return data.filter((d) => {
+                if ((d.type || '').toString().toLowerCase() !== 'hotel') return false;
+                // product data의 location로 국내/해외 판별
+                const loc = d.data?.location ?? d.data?.address ?? '';
+                const domestic = isDomesticLocation(loc);
+                return f.domestic ? domestic : !domestic;
+            });
+        }
+        // simple type match
+        return data.filter((d) => (d.type || '').toString().toLowerCase() === f.type);
+    }, [data, activeTab]);
 
-    const total = data.length;
+    const total = filtered.length;
+    const previewItems = filtered.slice(0, previewCount);
     const pageItems = useMemo(() => {
         const start = (page - 1) * pageSize;
-        return data.slice(start, start + pageSize);
-    }, [data, page, pageSize]);
-
-    // (디버그) 확인용 로그 — 배포 땐 지우세요
-    // console.log('Reserve preview:', preview, 'previewCount:', previewCount, 'items.length:', data.length);
+        return filtered.slice(start, start + pageSize);
+    }, [filtered, page, pageSize]);
 
     return (
         <section id="reserve">
@@ -53,6 +98,7 @@ const Reserve = ({ preview = true, previewCount = 2, onMore = () => {}, items = 
                     </p>
                 ) : null}
             </div>
+
             <div className="tab-button-wrap2" aria-hidden={false}>
                 {TABS.map((label) => (
                     <TabButton
@@ -63,6 +109,7 @@ const Reserve = ({ preview = true, previewCount = 2, onMore = () => {}, items = 
                     />
                 ))}
             </div>
+
             <div className="reserve-table-wrap">
                 <table className="reserve-table">
                     <colgroup>
@@ -78,18 +125,18 @@ const Reserve = ({ preview = true, previewCount = 2, onMore = () => {}, items = 
                         <tr>
                             <th scope="col">예약일</th>
                             <th scope="col">예약코드</th>
-                            <th scope="col">상품명</th>
+                            <th scope="col">상품명 / 정보</th>
                             <th scope="col">결제 금액</th>
                             <th scope="col">인원</th>
-                            <th scope="col">출발일/귀국일</th>
-                            <th scope="col">여행/예약상태</th>
+                            <th scope="col">여행기간</th>
+                            <th scope="col">상태</th>
                         </tr>
                     </thead>
                     <tbody>
                         {preview ? (
                             previewItems && previewItems.length > 0 ? (
                                 previewItems.map((r) => (
-                                    <ReserveItem key={r.id ?? r.reservationId} data={r} />
+                                    <ReserveItem key={r.uid || r.reservationId} data={r} />
                                 ))
                             ) : (
                                 <>
@@ -99,7 +146,7 @@ const Reserve = ({ preview = true, previewCount = 2, onMore = () => {}, items = 
                             )
                         ) : pageItems.length > 0 ? (
                             pageItems.map((r) => (
-                                <ReserveItem key={r.id ?? r.reservationId} data={r} />
+                                <ReserveItem key={r.uid || r.reservationId} data={r} />
                             ))
                         ) : (
                             <tr>
@@ -112,7 +159,7 @@ const Reserve = ({ preview = true, previewCount = 2, onMore = () => {}, items = 
                 </table>
             </div>
 
-            {!preview && (
+            {!preview && total > pageSize && (
                 <Pagination page={page} total={total} pageSize={pageSize} onPageChange={setPage} />
             )}
         </section>
