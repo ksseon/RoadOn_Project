@@ -9,6 +9,65 @@ const STORAGE_KEY = 'app:reserve_v1';
 // --- 개발용 시드(샘플) 데이터: 예약 항목 예시 ---
 // 항공(flight) 3개, 패키지(package) 3개, 투어(tour) 3개
 const SAMPLE_RESERVATIONS = [
+    // --- hotels (숙소) ---
+    {
+        uid: 'res-hotel-001',
+        reservationId: 'HOTEL-20250901-001',
+        type: 'hotel',
+        id: 'hotel-seoul-001',
+        status: 'ready',
+        createdAt: '2025-09-01T08:00:00.000Z',
+        totalAmount: 180000,
+        guests: { adult: 2, child: 0 },
+        startDate: '2025-09-20',
+        endDate: '2025-09-21',
+        data: {
+            name: '서울 그랜드 호텔',
+            location: '서울특별시 중구',
+            roomType: '더블룸',
+            nights: 1,
+        },
+        isUsed: false,
+    },
+    {
+        uid: 'res-hotel-002',
+        reservationId: 'HOTEL-20250815-002',
+        type: 'hotel',
+        id: 'hotel-jeju-007',
+        status: 'completed',
+        createdAt: '2025-08-15T10:30:00.000Z',
+        totalAmount: 95000,
+        guests: { adult: 1, child: 0 },
+        startDate: '2025-08-20',
+        endDate: '2025-08-21',
+        data: {
+            name: '제주 바다뷰 게스트하우스',
+            location: '제주특별자치도 서귀포시',
+            roomType: '싱글',
+            nights: 1,
+        },
+        isUsed: true,
+    },
+    {
+        uid: 'res-hotel-003',
+        reservationId: 'HOTEL-20250905-003',
+        type: 'hotel',
+        id: 'hotel-bangkok-01',
+        status: 'ready',
+        createdAt: '2025-09-05T09:00:00.000Z',
+        totalAmount: 1350000,
+        guests: { adult: 2, child: 1 },
+        startDate: '2025-10-01',
+        endDate: '2025-10-04',
+        data: {
+            name: 'Bangkok Luxury Hotel',
+            location: 'Bangkok, Thailand',
+            roomType: 'Family Suite',
+            nights: 3,
+        },
+        isUsed: false,
+    },
+
     // --- flights (항공) ---
     {
         uid: 'res-flight-001',

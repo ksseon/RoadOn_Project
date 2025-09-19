@@ -13,7 +13,6 @@ import {
     TourDetail,
     Airport,
     Hotels,
-    AirportDetail,
     AirportSearch,
     Join,
 } from '../pages';
