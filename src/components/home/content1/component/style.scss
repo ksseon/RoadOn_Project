@@ -1,4 +1,3 @@
-
 @use "../../../../styles/utils" as *;
 
 .circle-component {
@@ -28,7 +27,6 @@
         &:hover {
           transform: scale(1.1);
           opacity: 0.9;
->>>>>>> 52069f1f2d13c6b3a79dca22e120df6d6235eae0
         }
       }
     }
