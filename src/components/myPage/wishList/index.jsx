@@ -1,6 +1,3 @@
-
-import useHotelStore from '../../../store/hotelStore';
-// import HotelBox from '../../hotels/hotelsSearch/HotelBox';
 // src/components/myPage/wishList.jsx
 import { useEffect, useMemo, useState } from 'react';
 import { usePagination } from '../../../store/paginationStore';
@@ -13,7 +10,7 @@ import TabButton from '../../ui/tabButton/TabButton';
 import Pagination from '../../ui/pagination/Pagination';
 import useWishStore from '../../../store/wishStore';
 
-const TABS = ['전체', '국내 숙소', '해외 숙소', '체험·투어 입장권'];
+const TABS = ['전체', '국내 숙소', '해외 숙소', '체험·투어 입장권', '항공'];
 
 const KOREAN_REGIONS = [
     '서울',
@@ -81,6 +78,7 @@ const WishList = ({ preview = true, onMore = () => {}, previewCount = 2 }) => {
             return items.filter((it) => it.type === 'hotel' && !isDomesticHotel(it));
         if (activeTab === '체험·투어 입장권')
             return items.filter((it) => it.type === 'package' || it.type === 'tour');
+        if (activeTab === '항공') return items.filter((it) => it.type === 'flight');
         return items;
     }, [items, activeTab]);
 

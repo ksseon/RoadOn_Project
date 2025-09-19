@@ -1,5 +1,5 @@
 // src/store/reserveStore.js
-import create from 'zustand';
+import { create } from 'zustand';
 
 const RES_KEY = 'app:reservations_v1';
 
