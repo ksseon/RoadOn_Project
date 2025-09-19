@@ -27,6 +27,9 @@ const FlightPaymentLeft = ({ airport, segments }) => {
     return "가는편";
   };
 
+  console.log("현재 인원 수:", filters.people);
+  console.log("현재 좌석 종류:", filters.seat);
+
   return (
     <div className="pay payment-left">
       <div className="pay-detail">
@@ -34,6 +37,11 @@ const FlightPaymentLeft = ({ airport, segments }) => {
           <img src="/images/icon/before.svg" alt="이전" />
           예약 확인 및 결제
         </h3>
+        <div className="seat-info">
+          <p>선택 좌석: {filters.seat}</p>
+          <p>탑승 인원: {filters.people}명</p>
+        </div>
+
         <div className="pay-box-wrap">
           <div className="flight-schedule">
             {segments.map((segment, index) => (
