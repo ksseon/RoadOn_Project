@@ -6,12 +6,11 @@
 .airport-main-con4,
 .airport-main-con5 {
     h3 {
-        @include font-30px-SB;
+        @include font-28px-SB;
         color: $default;
         text-align: left;
     }
     h4 {
-        margin-top: vw(20px);
         @include font-20px;
         color: $greyscale-1100;
         text-align: left;
@@ -27,26 +26,33 @@
         grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
         gap: vw(20px);
         margin-top: vw(20px);
+
         .promo-card-con {
             background: $white;
             border-radius: vw(12px);
-            border: 1px solid$greyscale-500;
+            border: 1px solid $greyscale-500;
             overflow: hidden;
             box-shadow: 0 vw(4px) vw(8px) rgba(0, 0, 0, 0.05);
             transition: transform 0.2s ease;
             cursor: pointer;
+            display: flex;
+            flex-direction: column;
+
             &:hover {
                 transform: translateY(-4px);
                 box-shadow: 0 vw(6px) vw(12px) rgba(0, 0, 0, 0.1);
             }
+
             img {
                 width: 100%;
-                height: vw(235px);
-                object-fit: cover;
+                height: vw(235px); // ✅ 이미지 높이 고정
+                object-fit: cover; // ✅ 비율 유지하면서 채움
                 display: block;
             }
+
             .info {
                 padding: vw(18px);
+                flex-grow: 1; // ✅ 텍스트 영역 균등 분배
             }
         }
     }
@@ -62,7 +68,7 @@
         width: 100%;
         height: vw(550px);
         position: relative;
-        top: vw(-1150px);
+        top: vw(-600px);
         z-index: -1;
         display: flex;
         justify-content: center;
@@ -88,11 +94,7 @@
 //Con2
 .airport-main-con2 {
     .inner {
-        margin-top: vw(-1100px);
         h3 {
-            @include font-30px-B;
-            margin-bottom: vw(10px);
-
             span {
                 color: $red;
                 margin-left: vw(6px);
@@ -108,6 +110,7 @@
             flex-wrap: wrap;
             gap: vw(20px);
             justify-content: space-between;
+
             .promo-card-con {
                 flex: 1 1 calc(25% - vw(20px));
                 max-width: calc(25% - vw(20px));
@@ -118,17 +121,23 @@
                 box-shadow: 0 vw(4px) vw(8px) rgba(0, 0, 0, 0.05);
                 transition: transform 0.2s ease;
                 cursor: pointer;
+                display: flex;
+                flex-direction: column;
+
                 &:hover {
                     transform: translateY(-4px);
                     box-shadow: 0 vw(6px) vw(12px) rgba(0, 0, 0, 0.1);
                 }
+
                 img {
                     width: 100%;
                     height: vw(220px);
                     object-fit: cover;
                 }
+
                 .info {
                     padding: vw(18px);
+
                     .type {
                         color: $greyscale-900;
                         margin-bottom: vw(4px);
@@ -145,6 +154,7 @@
                         @include font-14px;
                         color: #646464;
                         margin-top: vw(6px);
+
                         .icon {
                             margin-right: vw(6px);
                             color: $greyscale-1100;
@@ -156,6 +166,7 @@
                         align-items: center;
                         gap: vw(8px);
                         margin-top: vw(16px);
+
                         .original {
                             @include font-14px;
                             color: $greyscale-700;
@@ -185,8 +196,8 @@
 }
 
 //Con3
-.airport-main-con {
-    margin-top: vw(120px);
+.airport-main-con3 {
+    margin-top: vw(100px);
 
     .promo-list {
         margin-top: vw(40px);
@@ -202,8 +213,20 @@
             border-radius: vw(12px);
             border: 1px solid #e1e1e1;
             overflow: hidden;
+            display: flex;
+            flex-direction: column; // ✅ 카드 정렬 보정
+
+            img {
+                width: 100%;
+                height: vw(220px); // ✅ 높이 고정
+                object-fit: cover;
+                display: block;
+            }
 
             .info {
+                padding: vw(18px);
+                flex-grow: 1;
+
                 .type {
                     @include font-14px;
                     color: $greyscale-1100;
@@ -228,6 +251,7 @@
                 padding-top: 0;
                 display: flex;
                 justify-content: space-between;
+
                 .date-condi {
                     flex-direction: column;
                     display: flex;
@@ -240,6 +264,7 @@
                     align-items: center;
                     gap: vw(8px);
                     margin-top: vw(22px);
+
                     .price {
                         position: relative;
                         top: -4px;
@@ -255,6 +280,7 @@
 
 //Con4
 .airport-main-con4 {
+    margin-top: vw(100px);
     .inner {
         h3 {
             img {
@@ -298,6 +324,7 @@
                 padding: vw(20px);
                 color: $white;
                 background: linear-gradient(to top, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0) 100%);
+
                 .type {
                     @include font-14px;
                     opacity: 0.9;
@@ -324,12 +351,14 @@
 
 //Con5
 .airport-main-con5 {
-    margin-bottom: vw(208px);
+    margin: vw(100px) 0 vw(208px) 0;
+
     .promo-list {
         margin-top: vw(40px);
         display: flex;
         flex-wrap: wrap;
         justify-content: space-between;
+
         .event {
             width: vw(446px);
             height: vw(160px);
@@ -343,10 +372,12 @@
             text-align: left;
             align-items: center;
             justify-content: center;
+
             &:hover {
                 transform: translateY(-4px);
                 box-shadow: 0 vw(6px) vw(12px) rgba(0, 0, 0, 0.1);
             }
+
             &.card1 {
                 background-color: #eaf7ff;
             }
@@ -356,6 +387,7 @@
             &.card3 {
                 background-color: #f3f5ff;
             }
+
             p {
                 @include font-20px-M;
                 margin-right: vw(40px);

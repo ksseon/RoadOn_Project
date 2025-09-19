@@ -1,56 +1,146 @@
-import { create } from "zustand";
-import airportData from "../api/airportListData";
+// ✅ Zustand store 설정 (store/airportStore.js)
+import { create } from 'zustand';
+import airportData from '../api/airportListData';
 
-// 전체 가격 범위(데이터에서 계산)
 const allPrices = airportData.map((a) => a.price);
 const ABS_MIN_PRICE = Math.min(...allPrices);
 const ABS_MAX_PRICE = Math.max(...allPrices);
-const STEP = 1000; // 1,000원 단위
+const STEP = 1000;
+
+const airportAliasMap = {
+    김포: ['김포', '김포공항', '김포 국제공항', 'GMP'],
+    인천: ['인천', '인천공항', '인천 국제공항', '인천 국제공항 - 터미널 2', 'ICN'],
+    제주: ['제주', '제주공항', '제주 국제공항', 'CJU'],
+    방콕: ['방콕', '수완나품', '수완나품 국제공항', 'BKK'],
+    싱가포르: ['싱가포르', '창이', '창이 국제공항', 'SIN'],
+    다낭: ['다낭', '다낭 국제공항', 'DAD'],
+    오사카: ['오사카', '간사이 국제공항', 'KIX'],
+    괌: ['괌', '괌 국제공항', 'GUM'],
+    후쿠오카: ['후쿠오카', '후쿠오카 국제공항', 'FUK'],
+    코타키나발루: ['코타키나발루', '코타키나발루 국제공항', 'BKI'],
+    나트랑: ['나트랑', '깜라인', '나트랑 깜라인 국제공항', 'CXR'],
+};
+
+const normalizeAirport = (name) => {
+    if (!name) return '';
+    const lower = name.trim().toLowerCase();
+    for (const [key, aliases] of Object.entries(airportAliasMap)) {
+        if (aliases.some((alias) => alias.toLowerCase().includes(lower))) {
+            return key;
+        }
+    }
+    return lower;
+};
 
 const useAirportStore = create((set, get) => ({
-  airports: airportData,
+    airports: airportData,
+    airportDetails: airportData,
+    priceMin: ABS_MIN_PRICE,
+    priceMax: ABS_MAX_PRICE,
+    STEP,
 
-  priceMin: ABS_MIN_PRICE,
-  priceMax: ABS_MAX_PRICE,
-
-  filters: {
-    direct: null, // true(직항) | false(경유) | null(전체)
-    airline: null, // 항공사명 or null
-    baggage: null, // '포함' or null
-    priceRange: [ABS_MIN_PRICE, ABS_MAX_PRICE], // [min, max]
-  },
-
-  getAirportById: (id) => get().airports.find((a) => a.id === id),
-
-  setFilter: (patch) => set((s) => ({ filters: { ...s.filters, ...patch } })),
-
-  setPriceRange: (min, max) =>
-    set((s) => ({ filters: { ...s.filters, priceRange: [min, max] } })),
-
-  resetFilter: () =>
-    set({
-      filters: {
+    filters: {
+        mode: 'roundtrip',
         direct: null,
-        airline: null,
+        airline: [],
         baggage: null,
         priceRange: [ABS_MIN_PRICE, ABS_MAX_PRICE],
-      },
-    }),
+        segments: [],
+        dates: [],
+        people: 1,
+        seat: '일반석',
+    },
 
-  getFilteredAirports: () => {
-    const { airports, filters } = get();
-    const [minP, maxP] = filters.priceRange;
+    setFilters: (patch) =>
+        set((state) => ({
+            filters: {
+                ...state.filters,
+                ...patch,
+            },
+        })),
 
-    return airports.filter((a) => {
-      if (filters.direct !== null && a.direct !== filters.direct) return false;
-      if (filters.airline && a.airline !== filters.airline) return false;
-      if (filters.baggage && a.baggage !== filters.baggage) return false;
-      if (a.price < minP || a.price > maxP) return false;
-      return true;
-    });
-  },
+    setFilter: (patch) =>
+        set((state) => ({
+            filters: {
+                ...state.filters,
+                ...patch,
+            },
+        })),
 
-  STEP,
+    setPriceRange: (min, max) =>
+        set((state) => ({
+            filters: {
+                ...state.filters,
+                priceRange: [min, max],
+            },
+        })),
+
+    resetFilter: () =>
+        set({
+            filters: {
+                mode: 'roundtrip',
+                direct: null,
+                airline: [],
+                baggage: null,
+                priceRange: [ABS_MIN_PRICE, ABS_MAX_PRICE],
+                segments: [],
+                dates: [],
+                people: 1,
+                seat: '일반석',
+            },
+        }),
+
+    getAirportById: (id) => get().airports.find((a) => a.id === id),
+
+    getFilteredAirports: () => {
+        const { airports, filters } = get();
+        const [minP, maxP] = filters.priceRange;
+
+        return airports.filter((a) => {
+            if (a.price < minP || a.price > maxP) return false;
+            if (filters.direct !== null && a.direct !== filters.direct) return false;
+            if (filters.airline.length > 0 && !filters.airline.includes(a.airline)) return false;
+            if (filters.baggage && a.baggage !== filters.baggage) return false;
+
+            if (filters.segments?.length > 0) {
+                const seg = filters.segments[0];
+                const userFrom = normalizeAirport(seg.from);
+                const userTo = normalizeAirport(seg.to);
+                const dataFrom = normalizeAirport(a.departureAirport);
+                const dataTo = normalizeAirport(a.arrivalAirport);
+
+                if (userFrom && userFrom !== dataFrom) return false;
+                if (userTo && userTo !== dataTo) return false;
+            }
+
+            return true;
+        });
+    },
+
+    getFilteredAirportDetails: () => {
+        const { airportDetails, filters } = get();
+        const [minP, maxP] = filters.priceRange;
+
+        return airportDetails.filter((a) => {
+            if (a.price < minP || a.price > maxP) return false;
+            if (filters.direct !== null && a.direct !== filters.direct) return false;
+            if (filters.airline.length > 0 && !filters.airline.includes(a.airline)) return false;
+            if (filters.baggage && a.baggage !== filters.baggage) return false;
+
+            if (filters.segments?.length > 0) {
+                const seg = filters.segments[0];
+                const userFrom = normalizeAirport(seg.from);
+                const userTo = normalizeAirport(seg.to);
+                const dataFrom = normalizeAirport(a.departureAirport);
+                const dataTo = normalizeAirport(a.arrivalAirport);
+
+                if (userFrom && userFrom !== dataFrom) return false;
+                if (userTo && userTo !== dataTo) return false;
+            }
+
+            return true;
+        });
+    },
 }));
 
 export default useAirportStore;

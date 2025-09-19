@@ -1,24 +1,44 @@
 import './style.scss';
-import DetailReviews from './DetailReviews';
-import { FaStar } from 'react-icons/fa';
+// import DetailBotReviewsItem from '../detailBottom/DetailBotReviewsItem';
+import DetailReviewItem from '../detailBottom/DetailReviewItem';
+import useTourStore from '../../../../store/tourStore';
+import MiniReviewItem from '../../../hotels/hotelsDetail/MiniReviewItem';
 
-const DetailTitle = () => {
+const DetailTitle = ({ tourData }) => {
+    const reviews = useTourStore((state) => state.reviews);
+    const getTourHighRatedReviews = useTourStore((state) => state.getTourHighRatedReviews);
+    if (!tourData) return null;
+
+    const { title, subtitle, desc, id } = tourData;
+    const miniReviews = getTourHighRatedReviews(id, 3);
+
     return (
         <section className="detail-title">
-            <article className="detail-title-head">
-                <em>《윤식당 2》</em>
-                <h3>스페인 테네리페 패키지</h3>
-                <b>Grand Hyatt jeju</b>
-                <p className="rate">
-                    <span>
-                        <FaStar />
-                    </span>
-                    4.8 (536)
-                </p>
+            <article className="detail-title-head-a">
+                <div>
+                    <em>{title}</em>
+                    <h3>{subtitle}</h3>
+                    <b>{desc}</b>
+                    <p className="rate">
+                        <img src="/images/icon/star_rate.svg" alt="별점" />
+                        <span>4.5 (32)</span>
+                    </p>
+                </div>
+                <div className="more-btn-a">
+                    <img src="/images/icon/share.svg" alt="공유" />
+                    <img src="/images/icon/like.svg" alt="찜하기" />
+                </div>
             </article>
-            <DetailReviews />
+            {/* <DetailBotReviewsItem tourData={tourData} /> */}
+            {/* <DetailReviewItem review={reviews} /> */}
+            <section className="detail-reviews">
+                <ul className="list">
+                    {miniReviews.map((review) => (
+                        <MiniReviewItem key={review.uniqueId} review={review} />
+                    ))}
+                </ul>
+            </section>
         </section>
     );
 };
-
 export default DetailTitle;

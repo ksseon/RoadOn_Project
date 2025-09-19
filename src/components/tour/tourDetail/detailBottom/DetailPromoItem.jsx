@@ -1,20 +1,51 @@
 import { FaStar } from 'react-icons/fa';
 import { IoLocationOutline } from 'react-icons/io5';
-const DetailPromoItem = () => {
+import Reco from '../../../../api/hotelsPromo';
+import { useNavigate } from 'react-router-dom';
+import useHotelStore from '../../../../store/hotelStore';
+
+const DetailPromoItem = ({ hotelId }) => {
+    const navigate = useNavigate();
+    const getHotelById = useHotelStore((state) => state.getHotelById);
+    const getHotelReviews = useHotelStore((state) => state.getHotelReviews);
+
+    const hotel = getHotelById(hotelId);
+    if (!hotel) {
+        return null;
+    }
+
+    const calculateAverageRating = (hotelId, reviewCount) => {
+        const reviews = getHotelReviews(hotelId, reviewCount);
+
+        if (!reviews || reviews.length === 0) return '0.00';
+
+        const totalRating = reviews.reduce((sum, review) => sum + review.rate, 0);
+        const average = totalRating / reviews.length;
+
+        return average.toFixed(1); // 소수점 첫째자리까지
+    };
+
+    const averageRating = calculateAverageRating(hotel.id, hotel.reviewCount);
+
+    const handleHotelClick = () => {
+        navigate(`/hotels/${hotel.slug}`);
+    };
+
     return (
-        <li className="promo-list-item">
+        <li className="promo-list-item" onClick={handleHotelClick} style={{ cursor: 'pointer' }}>
             <div className="img-wrap">
-                <img src="" alt="" />
+                <img src={`/images/hotels/detail/hotelsList/${hotel.image[0]}`} alt="호텔 이미지" />
             </div>
             <div className="txt-wrap">
                 <strong>
-                    <em>호텔 비즈니스</em>호텔 골든데이지 서귀포오션
+                    <em>
+                        {hotel.type} {hotel.star}
+                    </em>
+                    {hotel.name}
                 </strong>
                 <p className="rate">
-                    <span>
-                        <FaStar />
-                    </span>
-                    4.8 (336)
+                    <img src="/images/hotels/detail/icon/star_rate.svg" alt="별점" />
+                    {averageRating} ({hotel.reviewCount})
                 </p>
 
                 <div className="info">
@@ -22,10 +53,10 @@ const DetailPromoItem = () => {
                         <span>
                             <IoLocationOutline />
                         </span>
-                        서귀포시, 제주
+                        {hotel.location}
                     </p>
                     <p className="pri">
-                        350,000원 / <span> 박</span>
+                        {hotel.price.toLocaleString()}원 /<span> 박</span>
                     </p>
                 </div>
             </div>

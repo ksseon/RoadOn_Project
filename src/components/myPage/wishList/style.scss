@@ -2,88 +2,105 @@
 
 #wish-list {
     margin-top: vw(170px);
+    .mypage-title {
+        margin-bottom: vw(30px);
+        height: max-content;
+    }
+    .tab-button-wrap {
+        margin-top: vw(73px);
+        margin-bottom: vw(115px);
+    }
     .wish-list-main {
         &-wrap {
             margin-top: vw(30px);
+            .list-box {
+                display: flex;
+                flex-direction: column;
+                gap: vw(20px);
+                .hotel-box {
+                    // width: vw(1060px);
+                    width: 100%;
+                    height: vw(280px);
+                    border: vw(1px) solid $greyscale-600;
+                    border-radius: vw(10px);
+                    display: flex;
+                    justify-content: space-between;
+                    gap: vw(40px);
+                    padding: vw(20px) vw(24px);
+                    box-sizing: border-box;
+                    cursor: pointer;
+                    .hotel-image {
+                        width: vw(290px);
+                        height: vw(240px);
+                        border-radius: vw(4px);
+                        overflow: hidden;
+                        .heart {
+                        }
+                        img {
+                            width: 100%;
+                            height: 100%;
+                            object-fit: cover;
+                        }
+                    }
+                    .hotel-info {
+                        flex: 1 1 auto;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: space-between;
+                        .info-top {
+                            margin-top: vw(15px);
+                            .top-title {
+                                margin-bottom: vw(15px);
+                                span {
+                                    color: $greyscale-1100;
+                                    @include font-18px-M;
+                                    display: block;
+                                    // margin-bottom: vw(6px);
+                                }
+                                h4 {
+                                    @include font-24px-M;
+                                }
+                            }
+                            .rate {
+                                display: flex;
+                                align-items: center;
+                                gap: vw(6px);
+                            }
+                        }
+                        .info-bottom {
+                            display: flex;
+                            justify-content: space-between;
+                            align-items: flex-end;
+                            margin-bottom: vw(15px);
+                            .bottom-location {
+                                display: flex;
+                                gap: vw(6px);
+                                align-items: center;
+                                margin-bottom: vw(8px);
+                                img {
+                                }
+                                span {
+                                    @include font-20px;
+                                }
+                            }
+                            .bottom-price {
+                                text-align: right;
+                                span {
+                                    display: block;
+                                    @include font-20px-M;
+                                    color: $greyscale-1000;
+                                }
+                                strong {
+                                    display: block;
+                                    @include font-30px-SB;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
     .hotel-box {
-        // width: vw(1060px);
-        margin-bottom: vw(20px);
-        &:last-child {
-            margin-bottom: 0;
-        }
-        width: 100%;
-        height: vw(280px);
-        border: vw(1px) solid $greyscale-600;
-        border-radius: vw(10px);
-        display: flex;
-        gap: vw(40px);
-        padding: vw(20px) vw(24px);
-        box-sizing: border-box;
-        cursor: pointer;
-        .hotel-image {
-            min-width: vw(290px);
-            height: vw(240px);
-            background-color: #333;
-            border-radius: vw(4px);
-            .heart {
-            }
-        }
-        .hotel-info {
-            display: flex;
-            width: 100%;
-            flex-direction: column;
-            justify-content: space-between;
-            .info-top {
-                margin-top: vw(15px);
-                .top-title {
-                    margin-bottom: vw(15px);
-                    span {
-                        color: $greyscale-1100;
-                        @include font-18px-M;
-                        display: block;
-                        // margin-bottom: vw(6px);
-                    }
-                    h4 {
-                        @include font-24px-M;
-                    }
-                }
-                .rate {
-                }
-            }
-            .info-bottom {
-                display: flex;
-                justify-content: space-between;
-                align-items: flex-end;
-                // width: vw(955px);
-                width: 100%;
-
-                margin-bottom: vw(15px);
-                .bottom-location {
-                    display: flex;
-                    gap: vw(6px);
-                    align-items: center;
-                    margin-bottom: vw(8px);
-                    img {
-                    }
-                    span {
-                        @include font-20px;
-                    }
-                }
-                .bottom-price {
-                    text-align: right;
-                    span {
-                        display: block;
-                        @include font-20px-M;
-                        color: $greyscale-1000;
-                    }
-                    strong {
-                        display: block;
-                        @include font-30px-SB;
-                    }
-                }
-            }
-        }
     }
 }

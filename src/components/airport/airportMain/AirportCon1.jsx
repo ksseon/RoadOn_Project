@@ -1,4 +1,7 @@
-import AirportSearchBar from "../../../components/ui/AirportSearchBar/AirportSearchBar";
+import { useState } from 'react';
+import AirportSearchBar from '../../../components/ui/AirportSearchBar/AirportSearchBar';
+import { FiCalendar } from 'react-icons/fi';
+import DatePicker from 'react-datepicker';
 
 const AirportCon1 = () => {
   return (

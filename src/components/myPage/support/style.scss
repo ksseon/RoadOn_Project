@@ -1,6 +1,7 @@
 @use '../../../styles/utils/' as *;
 
 #support {
+    padding-bottom: vw(300px);
     .tab-button-wrap {
         margin-top: vw(98px);
         margin-bottom: vw(35px);
@@ -9,6 +10,7 @@
         &-notice {
             &-table {
                 &-wrap {
+                    pointer-events: none;
                     margin-top: vw(50px);
                     colgroup {
                         col {
@@ -53,7 +55,95 @@
         }
     }
     .faq {
+        .tab-button-wrap2 {
+            margin: vw(90px) vw(54px) vw(30px);
+        }
+
+        &-main {
+            &-wrap {
+                cursor: pointer;
+            }
+
+            /* 공통: 질문/답변 행 */
+            &-item-question,
+            &-item-answer {
+                display: flex;
+                padding: vw(20px);
+                border-bottom: 1px solid $greyscale-500;
+                h2 {
+                    padding-right: vw(40px);
+                }
+                &:hover {
+                    h2,
+                    p {
+                        color: $greyscale-1200;
+                    }
+                }
+                h2,
+                p {
+                    color: $greyscale-900;
+                }
+            }
+
+            /* 질문 */
+            &-item-question {
+                justify-content: space-between;
+                &-txt {
+                    display: flex;
+                }
+                &-icon {
+                    color: $default;
+                }
+
+                h2,
+                p,
+                &-icon {
+                    @include font-20px-B;
+                    transition: 0.3s;
+                }
+            }
+
+            /* 답변(기본: 닫힘) */
+            &-item-answer {
+                display: none;
+
+                h2,
+                p {
+                }
+
+                h2 {
+                    color: $mint;
+                    @include font-20px-B;
+                }
+                p {
+                    @include font-20px;
+                }
+            }
+
+            /* ---- 아이템 스코프 ---- */
+            &-item {
+                &.on {
+                    .faq-main-item-question {
+                        background-color: #fafafa;
+                        border-bottom-color: transparent; // 분리감 주기(선택)
+                        h2,
+                        p {
+                            color: $default;
+                        }
+                        &-icon {
+                            height: vw(25px);
+                            transform: rotate(-180deg);
+                        }
+                    }
+                    .faq-main-item-answer {
+                        background-color: #fafafa;
+                        display: flex; // 펼침
+                    }
+                }
+            }
+        }
     }
+
     .guide {
         &-main {
             &-wrap {

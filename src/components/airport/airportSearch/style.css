@@ -19,38 +19,40 @@
 }
 .airport .inner .filter-wrap {
   width: clamp(56.25px, 15.625vw, 300px);
+  /* 가격 슬라이더 */
 }
 .airport .inner .filter-wrap .event-modal {
   margin: 0 auto;
   margin-bottom: clamp(9px, 2.5vw, 48px);
 }
-.airport .inner .filter-wrap .event-modal .swiper-slide {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 .airport .inner .filter-wrap .event-modal .event-card {
+  width: clamp(56.25px, 15.625vw, 300px);
   height: clamp(26.25px, 7.2916666667vw, 140px);
   border-radius: clamp(2.25px, 0.625vw, 12px);
   padding: clamp(3.75px, 1.0416666667vw, 20px);
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background: #f4fbff;
 }
-.airport .inner .filter-wrap .event-modal .event-card p {
-  font-size: 1.125rem;
+.airport .inner .filter-wrap .event-modal .event-card .text-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.airport .inner .filter-wrap .event-modal .event-card .text-box p {
+  font-size: 1rem;
   font-weight: 400;
   letter-spacing: 0;
-  line-height: 1.6875rem;
+  line-height: 1.5rem;
   color: #353535;
-  line-height: 1.5;
 }
-.airport .inner .filter-wrap .event-modal .event-card img {
+.airport .inner .filter-wrap .event-modal .event-card .text-box img {
   width: clamp(11.25px, 3.125vw, 60px);
   margin: 0 clamp(1.875px, 0.5208333333vw, 10px);
 }
-.airport .inner .filter-wrap .event-modal .swiper-button-prev,
-.airport .inner .filter-wrap .event-modal .swiper-button-next {
+.airport .inner .filter-wrap .swiper-button-prev,
+.airport .inner .filter-wrap .swiper-button-next {
   color: transparent;
 }
 .airport .inner .filter-wrap .filter .filtering {
@@ -100,6 +102,16 @@
   gap: clamp(1.125px, 0.3125vw, 6px);
   margin-bottom: clamp(4.5px, 1.25vw, 24px);
 }
+.airport .inner .filter-wrap .type .type-title .redo .refresh-icon {
+  margin-top: clamp(0.75px, 0.2083333333vw, 4px);
+  font-size: 1rem;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1.5rem;
+}
+.airport .inner .filter-wrap .type .type-title .redo:hover {
+  color: #ff7f50;
+}
 .airport .inner .filter-wrap .type ul {
   margin-left: clamp(3.75px, 1.0416666667vw, 20px);
   display: flex;
@@ -146,9 +158,6 @@
   flex-wrap: wrap;
   gap: clamp(2.25px, 0.625vw, 12px);
 }
-.airport .inner .filter-wrap .star ul li {
-  background-color: none;
-}
 .airport .inner .filter-wrap .star ul li button {
   padding: clamp(1.125px, 0.3125vw, 6px) clamp(2.8125px, 0.78125vw, 15px);
   box-sizing: border-box;
@@ -164,6 +173,119 @@
 }
 .airport .inner .filter-wrap .star ul li button:hover {
   background-color: #ebebeb;
+}
+.airport .inner .filter-wrap .star ul li button.active {
+  background-color: #ff7f50;
+  border: none;
+  color: #fff;
+}
+.airport .inner .filter-wrap .price .price-slider .ranges {
+  position: relative;
+  height: clamp(5.625px, 1.5625vw, 30px);
+  margin: 0 clamp(1.125px, 0.3125vw, 6px) clamp(1.875px, 0.5208333333vw, 10px);
+  /* 회색 기본 바 */
+  /* 주황 선택 바 */
+}
+.airport .inner .filter-wrap .price .price-slider .ranges .base-track {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  transform: translateY(-50%);
+  height: clamp(0.75px, 0.2083333333vw, 4px);
+  background: #ebebeb;
+  border-radius: clamp(1.125px, 0.3125vw, 6px);
+  z-index: 5;
+  pointer-events: none;
+}
+.airport .inner .filter-wrap .price .price-slider .ranges input[type=range] {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: clamp(1.875px, 0.5208333333vw, 10px);
+  transform: translateY(-50%);
+  height: clamp(3.375px, 0.9375vw, 18px);
+  margin: 0;
+  background: none;
+  pointer-events: none;
+  -webkit-appearance: none;
+  z-index: 30;
+}
+.airport .inner .filter-wrap .price .price-slider .ranges input[type=range]:nth-of-type(2) {
+  z-index: 40;
+}
+.airport .inner .filter-wrap .price .price-slider .ranges input[type=range]::-webkit-slider-runnable-track {
+  height: clamp(1.125px, 0.3125vw, 6px);
+  background: transparent;
+  border-radius: clamp(1.125px, 0.3125vw, 6px);
+  pointer-events: none;
+}
+.airport .inner .filter-wrap .price .price-slider .ranges input[type=range]::-moz-range-track {
+  height: clamp(1.125px, 0.3125vw, 6px);
+  background: transparent;
+  border-radius: clamp(1.125px, 0.3125vw, 6px);
+  pointer-events: none;
+}
+.airport .inner .filter-wrap .price .price-slider .ranges input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: clamp(3.375px, 0.9375vw, 18px);
+  height: clamp(3.375px, 0.9375vw, 18px);
+  border-radius: 50%;
+  background: #ff7f50;
+  border: 0;
+  box-shadow: 0 0 0 clamp(0.375px, 0.1041666667vw, 2px) #fff;
+  cursor: pointer;
+  pointer-events: auto;
+  margin-top: 0;
+  position: relative;
+}
+.airport .inner .filter-wrap .price .price-slider .ranges input[type=range]::-moz-range-thumb {
+  width: clamp(3.375px, 0.9375vw, 18px);
+  height: clamp(3.375px, 0.9375vw, 18px);
+  border-radius: 50%;
+  background: #ff7f50;
+  border: 0;
+  cursor: pointer;
+  pointer-events: auto;
+  margin: 0;
+  position: relative;
+}
+.airport .inner .filter-wrap .price .price-slider .ranges .track-fill {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  height: clamp(0.75px, 0.2083333333vw, 4px);
+  background: #ff7f50;
+  border-radius: clamp(1.125px, 0.3125vw, 6px);
+  z-index: 15;
+  left: 0;
+  right: 0;
+  pointer-events: none;
+}
+.airport .inner .filter-wrap .price .price-slider .ranges .price-tooltip {
+  position: absolute;
+  bottom: clamp(3.375px, 0.9375vw, 18px);
+  transform: translateX(-50%);
+  color: #828282;
+  padding: 6px 10px;
+  border-radius: 6px;
+  white-space: nowrap;
+  z-index: 50;
+  pointer-events: none;
+}
+.airport .inner .filter-wrap .price .price-slider .desc {
+  font-size: 0.875rem;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1.3125rem;
+  color: #353535;
+}
+.airport .inner .filter-wrap .price .price-slider .desc strong {
+  color: #ff7f50;
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: 1.5rem;
 }
 .airport .inner .filter-wrap .service ul {
   display: flex;
@@ -230,34 +352,79 @@
   flex-direction: column;
   gap: clamp(3.75px, 1.0416666667vw, 20px);
 }
-@media (max-width: 1023px) {
-  .airport .about .inner {
-    padding: 2rem 0;
-  }
-  .airport .about h2 {
-    font-size: 2rem;
-  }
+
+/* 오른쪽 영역(항공 카드) */
+.airport-box-list .list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: clamp(3.75px, 1.0416666667vw, 20px);
+}
+.airport-box-list .list-header h3 {
+  font-size: 1.25rem;
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: 1.875rem;
+}
+.airport-box-list .list-header .custom-dropdown {
+  position: relative;
+  text-align: center;
+  align-items: center;
+  width: clamp(23.4375px, 6.5104166667vw, 125px);
+  height: clamp(7.5px, 2.0833333333vw, 40px);
+  border-radius: clamp(1.875px, 0.5208333333vw, 10px);
+  color: #353535;
+  border: none;
+  background-color: #f2f2f2;
+  cursor: pointer;
+  padding: 0 clamp(1.875px, 0.5208333333vw, 10px);
+}
+.airport-box-list .list-header .custom-dropdown .dropdown-selected {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: 1.5rem;
+  color: #353535;
+  padding-top: clamp(1.125px, 0.3125vw, 6px);
+}
+.airport-box-list .list-header .custom-dropdown .dropdown-selected .dropdown-icon {
+  margin-left: clamp(1.125px, 0.3125vw, 6px);
+  font-size: 1rem;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1.5rem;
+  transition: transform 0.2s ease;
+}
+.airport-box-list .list-header .custom-dropdown .dropdown-selected .dropdown-icon.open {
+  transform: rotate(180deg);
+}
+.airport-box-list .list-header .custom-dropdown .dropdown-options {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #d4d4d4;
+  width: clamp(23.4375px, 6.5104166667vw, 125px);
+  height: clamp(18.75px, 5.2083333333vw, 100px);
+  border-radius: clamp(1.875px, 0.5208333333vw, 10px);
 }
 
 .airport-box {
   display: grid;
-  grid-template-columns: 2fr 0fr 1fr 1fr 2fr;
+  grid-template-columns: 1.1fr 1fr 1.5fr 1fr 1fr;
   align-items: center;
-  gap: clamp(1.875px, 0.5208333333vw, 10px);
   width: clamp(196.875px, 54.6875vw, 1050px);
   height: clamp(52.5px, 14.5833333333vw, 280px);
-  padding: clamp(9.375px, 2.6041666667vw, 50px);
+  padding: clamp(11.25px, 3.125vw, 60px);
   border: 1px solid #e1e1e1;
   border-radius: clamp(2.8125px, 0.78125vw, 15px);
   background: #fff;
   box-shadow: 0 clamp(0.375px, 0.1041666667vw, 2px) clamp(1.125px, 0.3125vw, 6px) rgba(0, 0, 0, 0.05);
-  cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
   margin-bottom: clamp(3.75px, 1.0416666667vw, 20px);
-  /* 항공사 */
-  /* 출발, 도착 */
-  /* 비행 경로 (타임라인 + 직항/경유) */
-  /* 가격 */
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
 }
 .airport-box:hover {
   transform: translateY(-3px);
@@ -266,34 +433,38 @@
 .airport-box .airline {
   display: flex;
   align-items: center;
-  gap: clamp(4.6875px, 1.3020833333vw, 25px);
+  gap: clamp(1.875px, 0.5208333333vw, 10px);
 }
-.airport-box .airline .logo {
-  width: clamp(6.5625px, 1.8229166667vw, 35px);
+.airport-box .airline .flight-logo {
+  margin-right: clamp(2.8125px, 0.78125vw, 15px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
 }
-.airport-box .airline .logo img {
-  width: 100%;
-  height: 100%;
-  -o-object-fit: contain;
-     object-fit: contain;
-  border-radius: clamp(9.375px, 2.6041666667vw, 50px);
+.airport-box .airline .flight-logo img {
+  width: clamp(5.625px, 1.5625vw, 30px);
+  height: clamp(5.625px, 1.5625vw, 30px);
+  border-radius: 50%;
   border: 1px solid #ebebeb;
 }
-.airport-box .airline .logo .placeholder {
-  display: block;
-  width: 100%;
-  height: 100%;
-  background: #f8f8f8;
+.airport-box .airline .flight-logo .placeholder {
+  width: clamp(5.625px, 1.5625vw, 30px);
+  height: clamp(5.625px, 1.5625vw, 30px);
   border-radius: 50%;
+  background: #f8f8f8;
 }
 .airport-box .airline .info {
-  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 .airport-box .airline .info .name {
   font-size: 1.25rem;
   font-weight: 400;
   letter-spacing: 0;
   line-height: 1.875rem;
+  white-space: nowrap;
 }
 .airport-box .airline .info .code {
   font-size: 1rem;
@@ -301,10 +472,10 @@
   letter-spacing: 0;
   line-height: 1.5rem;
   color: #828282;
+  white-space: nowrap;
 }
 .airport-box .departure,
 .airport-box .arrival {
-  width: clamp(30px, 8.3333333333vw, 160px);
   display: flex;
   flex-direction: column;
   align-items: center;

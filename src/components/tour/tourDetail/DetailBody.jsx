@@ -3,11 +3,11 @@ import DetailThum from './detailBody/DetailThum';
 
 import './style.scss';
 
-const DetailBody = () => {
+const DetailBody = ({ tourData }) => {
     return (
         <section id="DetailBody">
-            <DetailThum />
-            <DetailBodyInfo />
+            <DetailThum tourData={tourData} />
+            <DetailBodyInfo tourData={tourData} />
         </section>
     );
 };

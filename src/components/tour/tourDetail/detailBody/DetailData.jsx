@@ -2,7 +2,7 @@ import DetailCon2 from './detailData/DetailCon2';
 import DetailDataTab from './detailData/DetailDataTab';
 import './style.scss';
 
-const DetailData = () => {
+const DetailData = ({tourData }) => {
     return (
         <section className="detail-data">
             <DetailDataTab />
@@ -38,7 +38,7 @@ const DetailData = () => {
             <div className="con con2 description">
                 <h2>여행 상세 정보</h2>
 
-                <DetailCon2 />
+                <DetailCon2 tourData={tourData} />
             </div>
             {/* <div className="con con3 location">
                 <h2>숙소 위치</h2>
