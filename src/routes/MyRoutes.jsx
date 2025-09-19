@@ -15,6 +15,7 @@ import {
     Hotels,
     AirportSearch,
     Join,
+    Landing,
 } from '../pages';
 
 import AirportDetail from '../components/airport/airportSearch/AirportDetail';
@@ -26,7 +27,8 @@ export const MyRoutes = () => {
         <BrowserRouter>
             <ScrollToTop />
             <Routes>
-                <Route path="/" element={<Layout />}>
+                <Route path="/landing" element={<Landing />} />
+                <Route element={<Layout />}>
                     <Route index element={<Home />} />
                     <Route path="payment" element={<Payment />} />/
                     {/*Route path="payment/completed" element={<PayCompleted />} />*/}
