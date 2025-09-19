@@ -1,7 +1,7 @@
 // src/components/myPage/reserve.jsx
 import { useEffect, useMemo, useState } from 'react';
 import TabButton from '../../ui/tabButton/TabButton';
-import ReserveItem from './reserveItem.jsx';
+import ReserveItem from './ReserveItem.jsx';
 import './style.scss';
 import { IoIosArrowForward } from 'react-icons/io';
 import Pagination from '../../ui/pagination/Pagination';
