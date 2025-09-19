@@ -12,5 +12,6 @@ export { default as HotelsMain } from './hotels';
 export { default as HotelsSearch } from './hotels/hotelsSearch';
 export { default as HotelsDetail } from './hotels/hotelsDetail';
 export { default as Payment } from './payment';
+export { default as Landing } from './landing';
 //export { default as PayCompleted } from './payment/PayCompleted';
 export { default as AirportDetail } from '../components/airport/airportSearch/AirportDetail';
