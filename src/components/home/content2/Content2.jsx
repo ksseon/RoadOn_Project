@@ -75,6 +75,9 @@ const CouponEvent = () => {
           <p className="subhead">뭘 좋아할지 몰라 다 준비했어요!</p>
           <span className="special-event-badge">쿠폰 전체 받기</span>
         </div>
+        <div className="couponbg">
+          <img src="./images/main/couponbg.png" alt="couponbg" />
+        </div>
       </div>
       <div className="marquee-wrapper">
         <div className="marquee" ref={marqueeRef}>
