@@ -11,12 +11,12 @@ function Home() {
     return (
         <main className="home">
             <HomeVisual />
-            {/* <Content1 /> */}
-            {/* <Content2 /> */}
-            {/* <Content3 /> */}
+            <Content1 />
+            <Content2 />
+            <Content3 />
             <Content4 />
-            {/* <Content5 /> */}
-            {/* <Content6 /> */}
+            <Content5 />
+            <Content6 />
         </main>
     );
 }
