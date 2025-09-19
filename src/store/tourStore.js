@@ -117,6 +117,30 @@ const useTourStore = create((set, get) => ({
 
     // 현재 투어 초기화
     clearCurrentTour: () => set({ currentTour: null }),
+
+    getTourHighRatedReviews: (tourId, count = 3) => {
+        // 3점 이상 리뷰만 필터링
+        const highRatedReviews = packagesReviewData.filter((review) => review.rate >= 3);
+
+        // 투어 ID 기반 시드로 고정된 순서
+        const seededRandom = (seed) => {
+            let x = Math.sin(seed) * 10000;
+            return x - Math.floor(x);
+        };
+
+        // 고정된 순서로 섞기
+        const shuffledReviews = [...highRatedReviews].sort((a, b) => {
+            const seedA = seededRandom(tourId * 300 + a.id); // 투어용 다른 시드
+            const seedB = seededRandom(tourId * 300 + b.id);
+            return seedA - seedB;
+        });
+
+        return shuffledReviews.slice(0, count).map((review, index) => ({
+            ...review,
+            tourId: tourId,
+            uniqueId: `tour-mini-${tourId}-${review.id}-${index}`,
+        }));
+    },
 }));
 
 export default useTourStore;

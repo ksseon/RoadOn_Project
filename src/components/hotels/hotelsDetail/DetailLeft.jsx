@@ -16,7 +16,7 @@ import RoomOption from './RoomOption';
 import Policies from './Policies';
 import Location from './Location';
 import MiniReviewItem from './MiniReviewItem';
-import DetailBotReviewsItem from '../../tour/tourDetail/detailBottom/DetailBotReviewsItem';
+// import DetailBotReviewsItem from '../../tour/tourDetail/detailBottom/DetailBotReviewsItem';
 
 const DetailLeft = ({
     hotel,
