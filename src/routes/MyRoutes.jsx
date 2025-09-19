@@ -1,6 +1,7 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Layout from '../common/Layout';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Layout from "../common/Layout";
 import {
+
     Home,
     MyPage,
     NotFiles,
@@ -13,14 +14,18 @@ import {
     TourDetail,
     Airport,
     Hotels,
-    AirportDetail,
     AirportSearch,
     Join,
     Landing,
 } from '../pages';
+
+
+import AirportDetail from '../components/airport/airportSearch/AirportDetail';
 import ScrollToTop from '../common/ScrollToTop';
+import EditProfile from '../components/login/editProfile';
 
 export const MyRoutes = () => {
+
     return (
         <BrowserRouter>
             <ScrollToTop />
@@ -47,10 +52,11 @@ export const MyRoutes = () => {
                     <Route path="myPage" element={<MyPage />} />
                     <Route path="login" element={<Login />} />
                     <Route path="Join" element={<Join />} />
+                    <Route path="editProfile" element={<EditProfile />} />
                     <Route path="*" element={<NotFiles />} />
                 </Route>
             </Routes>
         </BrowserRouter>
     );
-    main;
+   
 };

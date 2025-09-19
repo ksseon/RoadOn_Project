@@ -33,6 +33,12 @@
                             align-items: center;
                             gap: vw(12px);
                             color: #353535;
+                            &.active {
+                                // 클릭된 li에 대한 스타일
+                                background-color: $orange; // 예시
+                                border-color: #ddd;
+                                color: $white;
+                            }
                             span {
                                 width: vw(14px);
                                 height: vw(14px);
@@ -66,6 +72,27 @@
                     display: flex;
                     flex-direction: column;
                     gap: vw(10px);
+                    li {
+                        span {
+                            &.checked {
+                                // 체크되었을 때 스타일
+                                background-color: #5c6ac4;
+                                border-color: #5c6ac4;
+
+                                &:after {
+                                    content: '';
+                                    position: absolute;
+                                    top: 50%;
+                                    left: 50%;
+                                    width: 0.3rem;
+                                    height: 0.6rem;
+                                    border: solid white;
+                                    border-width: 0 2px 2px 0;
+                                    transform: translate(-50%, -50%) rotate(45deg);
+                                }
+                            }
+                        }
+                    }
                 }
             }
             .star,
@@ -214,6 +241,7 @@
                             img {
                                 width: vw(50px);
                                 height: vw(50px);
+                                cursor: pointer;
                             }
                         }
                     }
