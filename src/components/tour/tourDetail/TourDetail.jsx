@@ -38,26 +38,10 @@ const TourDetail = () => {
 
     return (
         <main id="TourDetail">
-            {/* <div className="searchBar-BG">
-                <SearchBar
-                    size="web"
-                    defaultQuery=""
-                    defaultDateText=""
-                    defaultGuestsText=""
-                    inputPlaceholder="패키지 검색"
-                    chipDatePlaceholder="날짜"
-                    chipGuestsPlaceholder="인원 선택"
-                    searchLabel="검색"
-                    className="transparent"
-                    onSearch={(p) => console.log('SEARCH', p)}
-                />
-            </div> */}
-            <main id="TourDetail">
                 <div className="inner">
                     <DetailBody tourData={currentTour} />
                     <DetailBottom tourData={currentTour} />
                 </div>
-            </main>
         </main>
     );
 };

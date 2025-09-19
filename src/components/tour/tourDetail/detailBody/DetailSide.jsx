@@ -1,10 +1,12 @@
 import './style.scss';
 import { FiMinus, FiPlus } from 'react-icons/fi';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const DetailSide = ({ tourData }) => {
     const [childCount, setChildCount] = useState(0);
     const [adultCount, setAdultCount] = useState(0);
+    const navigate = useNavigate();
 
     if (!tourData) return null;
 
@@ -25,6 +27,23 @@ const DetailSide = ({ tourData }) => {
             });
         }
     };
+
+    const handleReservation = () => {
+        const reservationData = {
+            tour: tourData,
+            adultCount: adultCount,
+            childCount: childCount,
+            totalPrice: totalPrice,
+            productType: 'tour'
+        };
+
+        navigate('/payment', {
+            state: reservationData
+        });
+
+         console.log("전달할 데이터:", reservationData);
+    };
+    
 
     return (
         <section className="detail-side">
@@ -83,18 +102,11 @@ const DetailSide = ({ tourData }) => {
                 </div>
             </div>
             <div className="btn-wrap">
-                <button 
+                {/* adultCount와 childCount가 모두 0일 때 버튼 비활성 */}
+               <button 
                     className="button large o reserve"
                     disabled={adultCount === 0 && childCount === 0}
-                    onClick={() => {
-                        // 예약 로직 구현
-                        console.log('예약 데이터:', {
-                            tour: tourData.title,
-                            adults: adultCount,
-                            children: childCount,
-                            total: totalPrice
-                        });
-                    }}
+                    onClick={handleReservation}
                 >
                     예약하기
                 </button>
