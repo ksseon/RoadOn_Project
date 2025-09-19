@@ -125,7 +125,17 @@ const Carousel = () => {
     { id: 10, title: "London", num: "10", img: "./images/main/stay10.png" },
   ];
   return (
-    <div>
+    <div className="content3">
+      <div className="hot_hotels">HOT 인기 숙소</div>
+      <div className="contet3bg">
+        <img src="/images/main/content3_bg.png" alt="content3_bg" />{" "}
+        {/* 배경 */}
+        <video autoPlay muted loop playsInline>
+          <source src="/videos/main/visual_bg.mp4" type="video/mp4" />
+          브라우저가 비디오 태그를 지원하지 않습니다.
+        </video>
+      </div>
+
       <div className="carousel" ref={carouselRef}>
         {data.map((d) => (
           <div key={d.id} className="carousel-item">
