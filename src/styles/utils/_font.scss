@@ -17,9 +17,9 @@
 // FONT MIXINS
 // --------------------
 
-// 60px
-@mixin font-60px-B {
-    @include font-size-clamp(60px);
+// 80px
+@mixin font-68px-B {
+    @include font-size-clamp(68px);
     font-weight: 700;
     letter-spacing: 0;
     line-height: rem(60px);
